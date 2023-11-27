@@ -1,14 +1,41 @@
 package model;
 
+import java.util.Arrays;
+
 public class Hylde {
-    private int nummer;
-    private boolean[] pladserArray;
+    private final int nummer;
+    private final boolean[] pladserArray;
     private boolean erLedig;
-    private int størrelse;
+    private final int størrelse;
 
     public Hylde(int nummer, int størrelse) {
         this.nummer = nummer;
         this.størrelse = størrelse;
         pladserArray  = new boolean[størrelse];
+    }
+
+    public int getNummer() {
+        return nummer;
+    }
+
+    public boolean[] getPladserArray() {
+        return Arrays.copyOf(pladserArray, størrelse);
+    }
+
+    public boolean isErLedig() {
+        return erLedig;
+    }
+
+    public int getStørrelse() {
+        return størrelse;
+    }
+
+    public boolean erPladsLedig(int index){
+        return pladserArray[index];
+    }
+
+    public void skiftPladsStatus(int index){
+        boolean value = pladserArray[index];
+        pladserArray[index] = !value;
     }
 }
