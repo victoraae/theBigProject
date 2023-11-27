@@ -35,7 +35,7 @@
             <HBox prefHeight="100.0" prefWidth="303.0">
                <children>
                   <Button fx:id="btnGem" mnemonicParsing="false" onAction="#btnGemAction" prefHeight="26.0" prefWidth="100.0" text="Gem" textAlignment="RIGHT" textOverrun="CLIP" />
-                  <Button fx:id="btnLuk" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Luk">
+                  <Button fx:id="btnLuk" mnemonicParsing="false" onAction="#btnLukAction" prefHeight="25.0" prefWidth="108.0" text="Luk">
                      <HBox.margin>
                         <Insets left="200.0" />
                      </HBox.margin>

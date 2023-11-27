@@ -34,7 +34,7 @@ public class Hylde {
         return pladserArray[index];
     }
 
-    public void skiftPladsStatus(int index){
+    public void skiftPladsStatus(int index) {
         boolean value = pladserArray[index];
         pladserArray[index] = !value;
     }
