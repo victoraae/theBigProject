@@ -1,10 +1,11 @@
 package storage;
 
+import controller.Storage;
 import model.*;
 
 import java.util.ArrayList;
 
-public class ListStorage {
+public class ListStorage implements Storage {
     private final ArrayList<Lager> lagre = new ArrayList<>();
 
     public Lager sletLager(Lager lager){
