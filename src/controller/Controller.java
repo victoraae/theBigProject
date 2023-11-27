@@ -12,13 +12,13 @@ public abstract class Controller {
         storage.tilføjLager(lager);
         return lager;
     }
-    public static Reol opretReol(Lager lager, int størrelse, int nummer, int maxAntalHylder){
-        Reol reol = new Reol(størrelse, nummer, maxAntalHylder);
+    public static Reol opretReol(Lager lager, int nummer, int størrelse, int maxAntalHylder){
+        Reol reol = new Reol(nummer, størrelse, maxAntalHylder);
         lager.tilføjReol(reol);
         return reol;
     }
-    public static Hylde opretHylde(Reol reol, int nummer, int størrelse){
-        Hylde hylde = new Hylde(nummer, størrelse);
+    public static Hylde opretHylde(Reol reol, int nummer){
+        Hylde hylde = new Hylde(nummer, reol.getStørrelse());
         reol.tilføjHylde(hylde);
         return hylde;
     }
@@ -32,7 +32,7 @@ public abstract class Controller {
             Controller.sletReol(reol);
         }
         storage.sletLager(lager);
-        return lager; //Skal dette maaske være en kopi i stedet for, eller noget hvor forbindelserne er bevaret???
+        return lager; //Skal dette måske være en kopi i stedet for, eller noget hvor forbindelserne er bevaret???
     }
     public static Reol sletReol(Reol reol){
         for(Hylde hylde : reol.getHylder()){

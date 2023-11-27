@@ -8,6 +8,7 @@ public class Lager {
     private final double størrelse;
     private int kapacitet;
     private final int maxAntalReoler;
+    // komposition 1 --> 0..* Reol
     private final ArrayList<Reol> reoler = new ArrayList<>();
 
     public Lager(String navn, String adresse, double størrelse, int kapacitet, int maxAntalReoler) {
