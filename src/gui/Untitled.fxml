@@ -27,7 +27,7 @@
    <children>
       <ImageView fitHeight="115.0" fitWidth="355.0" pickOnBounds="true" GridPane.columnIndex="1">
          <image>
-            <Image url="/Users/mathiasskrivernordentoft/Documents/GitHub/theBigProject/src/guiAssets/whisky.png" />
+            <Image url="@whisky.png" />
          </image>
       </ImageView>
       <VBox prefHeight="200.0" prefWidth="100.0" />
