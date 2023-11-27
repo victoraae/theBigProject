@@ -14,6 +14,7 @@ public class ListStorage implements Storage {
     }
     public void tilføjLager(Lager lager){
         lagre.add(lager);
+        System.out.println("TEST");
     }
 
     public ArrayList<Lager> getLagre() {

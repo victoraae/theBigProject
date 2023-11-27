@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.04356384277344" minWidth="10.0" prefWidth="118.43560791015625" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.6730041503906" minWidth="10.0" prefWidth="352.9340515136719" />
@@ -35,8 +34,8 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="303.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Gem" textAlignment="RIGHT" textOverrun="CLIP" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Luk">
+                  <Button fx:id="btnGem" mnemonicParsing="false" onAction="#btnGemAction" prefHeight="26.0" prefWidth="100.0" text="Gem" textAlignment="RIGHT" textOverrun="CLIP" />
+                  <Button fx:id="btnLuk" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Luk">
                      <HBox.margin>
                         <Insets left="200.0" />
                      </HBox.margin>
@@ -47,7 +46,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="194.0" prefWidth="349.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <TextField alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="0.0" prefWidth="200.0" promptText="Indtast lagernavn:">
+            <TextField fx:id="txfLagerNavn" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="0.0" prefWidth="200.0" promptText="Indtast lagernavn:">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -55,12 +54,11 @@
                   <Font name="System Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField prefHeight="29.0" prefWidth="256.0" promptText="Indtast adresse:" />
-            <TextField prefHeight="16.0" prefWidth="354.0" promptText="Indtast størrelse på lageret (m^2)" />
-            <TextField promptText="Indtast pladser på lager:" />
-            <TextField promptText="Indtast det maksimale antal reoler:" />
+            <TextField fx:id="txfAdresse" prefHeight="29.0" prefWidth="256.0" promptText="Indtast adresse:" />
+            <TextField fx:id="txfStørrelse" prefHeight="16.0" prefWidth="354.0" promptText="Indtast størrelse på lageret (m^2)" />
+            <TextField fx:id="txfKapacitet" promptText="Indtast pladser på lager:" />
+            <TextField fx:id="txfMaksReoler" promptText="Indtast det maksimale antal reoler:" />
          </children>
       </VBox>
-      <Pane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </GridPane>
