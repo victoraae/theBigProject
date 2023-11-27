@@ -25,13 +25,8 @@ public abstract class Controller {
     public static void opdaterLager(Lager lager, String navn){
         lager.setNavn(navn);
     }
-    public static Hylde sletHylde(Reol reol, Hylde hylde){
-        reol.sletHylde(hylde);
-        return hylde;
-    }
-    public static void tilføjFad(Hylde hylde){}
-    //TODO: LAV FAD eller destillat objekt som retur type i sletFad
-    public static void sletFad(Hylde hylde){}
+
+
     public static Lager sletLager(Lager lager){
         for(Reol reol : lager.getReoler()){
             Controller.sletReol(reol);
@@ -46,6 +41,14 @@ public abstract class Controller {
         return reol;
     }
 
+    public static Hylde sletHylde(Reol reol, Hylde hylde){
+        reol.sletHylde(hylde);
+        return hylde;
+    }
 
 
+
+    public static void tilføjFad(Hylde hylde){}
+    //TODO: LAV FAD eller destillat objekt som retur type i sletFad
+    public static void sletFad(Hylde hylde){}
 }
