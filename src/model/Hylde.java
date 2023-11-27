@@ -22,7 +22,7 @@ public class Hylde {
         return Arrays.copyOf(pladserArray, størrelse);
     }
 
-    public boolean isErLedig() {
+    public boolean erLedig() {
         return erLedig;
     }
 

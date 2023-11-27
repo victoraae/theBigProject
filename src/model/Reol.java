@@ -6,20 +6,21 @@ public class Reol {
     private final int størrelse;
     private final int nummer;
     private final int maxAntalHylder;
+    // komposition 1 --> 0..* Hylde
     private final ArrayList<Hylde> hylder = new ArrayList<>();
 
-    public Reol(int størrelse, int nummer, int maxAntalHylder) {
-        this.størrelse = størrelse;
+    public Reol(int nummer, int størrelse, int maxAntalHylder) {
         this.nummer = nummer;
+        this.størrelse = størrelse;
         this.maxAntalHylder = maxAntalHylder;
-    }
-
-    public int getStørrelse() {
-        return størrelse;
     }
 
     public int getNummer() {
         return nummer;
+    }
+
+    public int getStørrelse() {
+        return størrelse;
     }
 
     public int getMaxAntalHylder() {
