@@ -10,19 +10,25 @@ public abstract class Controller {
         Controller.storage = storage;
     }
     public static Lager opretLager(String navn, String adresse, double størrelse, int kapacitet, int maxAntalReoler){
-        Lager lager = new Lager(navn, adresse, størrelse, kapacitet, maxAntalReoler);
-        storage.tilføjLager(lager);
-        return lager;
+        if (størrelse > 0){
+            Lager lager = new Lager(navn, adresse, størrelse, kapacitet, maxAntalReoler);
+            storage.tilføjLager(lager);
+            return lager;
+        } else return null;
     }
     public static Reol opretReol(Lager lager, int nummer, int størrelse, int maxAntalHylder){
-        Reol reol = new Reol(lager,nummer, størrelse, maxAntalHylder);
-        lager.tilføjReol(reol);
-        return reol;
+        if (størrelse > 0){
+            Reol reol = new Reol(lager, nummer, størrelse, maxAntalHylder);
+            lager.tilføjReol(reol);
+            return reol;
+        } else return null;
     }
     public static Hylde opretHylde(Reol reol, int nummer){
-        Hylde hylde = new Hylde(reol, nummer, reol.getStørrelse());
-        reol.tilføjHylde(hylde);
-        return hylde;
+        if (reol.getHylder().size() < reol.getMaxAntalHylder()){
+            Hylde hylde = new Hylde(reol, nummer, reol.getStørrelse());
+            reol.tilføjHylde(hylde);
+            return hylde;
+        } else return null;
     }
     public static void opdaterLager(Lager lager, String navn){
         lager.setNavn(navn);
@@ -45,8 +51,6 @@ public abstract class Controller {
         reol.sletHylde(hylde);
         return hylde;
     }
-
-
 
     public static void tilføjFad(Hylde hylde){}
     //TODO: LAV FAD eller destillat objekt som retur type i sletFad

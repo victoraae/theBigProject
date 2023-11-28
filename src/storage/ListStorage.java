@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListStorage implements Storage {
-    private final ArrayList<Lager> lagre = new ArrayList<>();
+    private final List<Lager> lagre = new ArrayList<>();
 
     public Lager sletLager(Lager lager){
         lagre.remove(lager);
