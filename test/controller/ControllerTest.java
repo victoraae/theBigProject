@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import storage.ListStorage;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -109,11 +110,24 @@ class ControllerTest {
     @Test
     void sletLager() {
         //Testcase 1
-        //Act
+        //Arrange
         Lager lager = Controller.opretLager("Lager2", "Adresse1", 5, 0, 5);
+        //Act
+        Controller.sletLager(lager);
         //Assert
         List<Lager> lagre = Controller.getLagre();
-        assertEquals(lager, lagre.get(lagre.size()-1));
+        assertEquals(0, lagre.size());
+
+        //Testcase 2
+        //Arrange
+        Lager lager2 = Controller.opretLager("Lager3", "Adresse1", 5, 0, 5);
+        Lager lager3 = Controller.opretLager("Lager4", "Adresse1", 5, 0, 5);
+        //Act
+        Controller.sletLager(lager2);
+        //Assert
+        lagre = Controller.getLagre();
+        assertEquals(1, lagre.size());
+        assertEquals(lager3, lagre.get(0));
     }
 
     @Test
