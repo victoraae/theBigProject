@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lager {
     private String navn;
@@ -9,7 +10,7 @@ public class Lager {
     private int kapacitet;
     private final int maxAntalReoler;
     // komposition 1 --> 0..* Reol
-    private final ArrayList<Reol> reoler = new ArrayList<>();
+    private final List<Reol> reoler = new ArrayList<>();
 
     public Lager(String navn, String adresse, double størrelse, int kapacitet, int maxAntalReoler) {
         this.navn = navn;

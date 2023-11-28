@@ -1,13 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reol {
     private final int størrelse;
     private final int nummer;
     private final int maxAntalHylder;
     // komposition 1 --> 0..* Hylde
-    private final ArrayList<Hylde> hylder = new ArrayList<>();
+    private final List<Hylde> hylder = new ArrayList<>();
 
     public Reol(int nummer, int størrelse, int maxAntalHylder) {
         this.nummer = nummer;

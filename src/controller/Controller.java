@@ -57,4 +57,8 @@ public abstract class Controller {
     public static void tilføjFad(Hylde hylde){}
     //TODO: LAV FAD eller destillat objekt som retur type i sletFad
     public static void sletFad(Hylde hylde){}
+
+    public static List<Lager> getLagre(){
+        return storage.getLagre();
+    }
 }
