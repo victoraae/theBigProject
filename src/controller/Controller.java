@@ -2,6 +2,8 @@ package controller;
 
 import model.*;
 
+import java.util.List;
+
 public abstract class Controller {
     private static Storage storage;
     public static void setStorage(Storage storage){
@@ -51,4 +53,8 @@ public abstract class Controller {
     public static void tilføjFad(Hylde hylde){}
     //TODO: LAV FAD eller destillat objekt som retur type i sletFad
     public static void sletFad(Hylde hylde){}
+
+    public static List<Lager> getLagre(){
+        return storage.getLagre();
+    }
 }
