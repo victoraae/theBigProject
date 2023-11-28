@@ -4,9 +4,10 @@ import controller.Storage;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListStorage implements Storage {
-    private final ArrayList<Lager> lagre = new ArrayList<>();
+    private final List<Lager> lagre = new ArrayList<>();
 
     public Lager sletLager(Lager lager){
         lagre.remove(lager);
@@ -17,7 +18,7 @@ public class ListStorage implements Storage {
         System.out.println("TEST");
     }
 
-    public ArrayList<Lager> getLagre() {
+    public List<Lager> getLagre() {
         return new ArrayList<>(lagre);
     }
 }
