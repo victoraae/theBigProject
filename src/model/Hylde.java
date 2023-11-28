@@ -7,11 +7,13 @@ public class Hylde {
     private final boolean[] pladserArray;
     private boolean erLedig;
     private final int størrelse;
+    private final Reol reol;
 
-    public Hylde(int nummer, int størrelse) {
+    public Hylde(Reol reol, int nummer, int størrelse) {
         this.nummer = nummer;
         this.størrelse = størrelse;
         pladserArray  = new boolean[størrelse];
+        this.reol = reol;
     }
 
     public int getNummer() {
@@ -37,5 +39,9 @@ public class Hylde {
     public void skiftPladsStatus(int index) {
         boolean value = pladserArray[index];
         pladserArray[index] = !value;
+    }
+
+    public Reol getReol() {
+        return reol;
     }
 }

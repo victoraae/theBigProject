@@ -15,12 +15,12 @@ public abstract class Controller {
         return lager;
     }
     public static Reol opretReol(Lager lager, int nummer, int størrelse, int maxAntalHylder){
-        Reol reol = new Reol(nummer, størrelse, maxAntalHylder);
+        Reol reol = new Reol(lager,nummer, størrelse, maxAntalHylder);
         lager.tilføjReol(reol);
         return reol;
     }
     public static Hylde opretHylde(Reol reol, int nummer){
-        Hylde hylde = new Hylde(nummer, reol.getStørrelse());
+        Hylde hylde = new Hylde(reol, nummer, reol.getStørrelse());
         reol.tilføjHylde(hylde);
         return hylde;
     }
@@ -30,20 +30,18 @@ public abstract class Controller {
 
 
     public static Lager sletLager(Lager lager){
-        for(Reol reol : lager.getReoler()){
-            Controller.sletReol(reol);
-        }
         storage.sletLager(lager);
         return lager; //Skal dette måske være en kopi i stedet for, eller noget hvor forbindelserne er bevaret???
     }
     public static Reol sletReol(Reol reol){
-        for(Hylde hylde : reol.getHylder()){
-            Controller.sletHylde(reol, hylde);
-        }
+        Lager lager = reol.getLager();
+        lager.sletReol(reol);
+
         return reol;
     }
 
-    public static Hylde sletHylde(Reol reol, Hylde hylde){
+    public static Hylde sletHylde(Hylde hylde){
+        Reol reol = hylde.getReol();
         reol.sletHylde(hylde);
         return hylde;
     }

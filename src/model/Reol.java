@@ -9,11 +9,13 @@ public class Reol {
     private final int maxAntalHylder;
     // komposition 1 --> 0..* Hylde
     private final List<Hylde> hylder = new ArrayList<>();
+    private final Lager lager;
 
-    public Reol(int nummer, int størrelse, int maxAntalHylder) {
+    public Reol(Lager lager, int nummer, int størrelse, int maxAntalHylder) {
         this.nummer = nummer;
         this.størrelse = størrelse;
         this.maxAntalHylder = maxAntalHylder;
+        this.lager = lager;
     }
 
     public int getNummer() {
@@ -38,5 +40,9 @@ public class Reol {
 
     public void sletHylde(Hylde hylde){
         hylder.remove(hylde);
+    }
+
+    public Lager getLager() {
+        return lager;
     }
 }
