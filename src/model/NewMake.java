@@ -8,13 +8,15 @@ public class NewMake {
     private double alkoholprocent;
     private final String ansvarlig;
     private double liter;
+    private final Fad fad;
 
-    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, double liter) {
+    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, double liter, Fad fad) {
         this.navn = navn;
         this.datoForPåfyldning = datoForPåfyldning;
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
         this.liter = liter;
+        this.fad = fad;
     }
 
     // getter metoder laves på alle attributter, da de er alle vigtige for historiefortællingen
@@ -36,5 +38,9 @@ public class NewMake {
 
     public double getLiter() {
         return liter;
+    }
+
+    public Fad getFad() {
+        return fad;
     }
 }
