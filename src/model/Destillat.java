@@ -4,19 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Desillat {
+public class Destillat {
     private LocalDate dato;
     private double alkoholProcent;
     private String ansvarlig;
     private double liter;
     private int antalGange;
     private String rygemateriale;
-    //retning 0..* --> 1 korn
+    //association 0..* --> 1 korn
     private Korn korn;
-    //retining 1 --> 0..* newmake
+    //association 1 --> 0..* newmake
     private List<NewMake> newMakes = new ArrayList<>();
 
-    public Desillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn) {
+    public Destillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn) {
         this.dato = dato;
         this.alkoholProcent = alkoholProcent;
         this.ansvarlig = ansvarlig;
