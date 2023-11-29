@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public abstract class Controller {
@@ -52,11 +53,48 @@ public abstract class Controller {
         return hylde;
     }
 
-    public static void tilføjFad(Hylde hylde){}
-    //TODO: LAV FAD eller destillat objekt som retur type i sletFad
-    public static void sletFad(Hylde hylde){}
+    /**
+     * pre: hylden skal have plads til dette fad
+     * @param hylde nullable
+     */
+    public static Fad opretFad(Lager lager, Hylde hylde, int nummer, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse){
+        Fad fad = new Fad(nummer, leverandør, oprindeslesland, materiale, tidligereIndhold, størrelse, lager, hylde);
+        storage.tilføjFad(fad);
+        hylde.tilføjFad(størrelse.getStørrelse());
+
+        return fad;
+    }
+
 
     public static List<Lager> getLagre(){
         return storage.getLagre();
     }
+
+    public static List<Destillat> getDestillater(){
+        return storage.getDestillater();
+    }
+
+    public static List<Korn> getKorn(){
+        return storage.getKorn();
+    }
+
+    public static List<Fad> getFade(){
+        return storage.getFade();
+    }
+
+
+    public static Korn opretKorn(String sort, String bondemand, int år, String mark, String maltningsprocess){
+        Korn korn = new Korn(sort, bondemand, år, mark, maltningsprocess);
+        storage.tilføjKorn(korn);
+        return korn;
+    }
+
+    public static Destillat opretDestillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn){
+        Destillat destillat = new Destillat(dato, alkoholProcent, ansvarlig, liter, antalGange, rygemateriale, korn);
+        storage.tilføjDestillat(destillat);
+        return destillat;
+    }
+
+
+
 }

@@ -12,7 +12,7 @@ public class Hylde {
     public Hylde(Reol reol, int nummer, int størrelse) {
         this.nummer = nummer;
         this.størrelse = størrelse;
-        pladserArray  = new boolean[størrelse];
+        pladserArray = new boolean[størrelse];
         this.reol = reol;
     }
 
@@ -32,13 +32,80 @@ public class Hylde {
         return størrelse;
     }
 
-    public boolean erPladsLedig(int index){
+    public boolean erPladsLedig(int index) {
         return pladserArray[index];
     }
 
-    public void skiftPladsStatus(int index) {
-        boolean value = pladserArray[index];
-        pladserArray[index] = !value;
+    /**
+     *
+     * @return returnerer true hvis fad blev tilføjet, false hvis der ikke er plads på hylden
+     */
+    public boolean tilføjFad(String størrelse) {
+        boolean result = false;
+
+        if (størrelse.equals("LILLE")) {
+            for (int i = 0; i < pladserArray.length && !result; i++) {
+                if (pladserArray[i]) {
+                    result = true;
+                    pladserArray[i] = false;
+                }
+            }
+        }
+
+        if (størrelse.equals("MELLEM")) {
+            for (int i = 0; i < pladserArray.length - 1 && !result; i++) {
+                if (pladserArray[i] && pladserArray[i + 1] && (i+1)%2==0) {
+                    result = true;
+                    pladserArray[i] = false;
+                    pladserArray[i + 1] = false;
+                }
+            }
+        }
+
+        if (størrelse.equals("STOR")) {
+            for (int i = 0; i < pladserArray.length - 3 && !result; i++) {
+                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i+1)%4==0) {
+                    result = true;
+                    pladserArray[i] = false;
+                    pladserArray[i + 1] = false;
+                    pladserArray[i + 2] = false;
+                    pladserArray[i + 3] = false;
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Hjælpemetode tiltænkt GUI
+     */
+    public boolean erDerPladsTilFad(String størrelse) {
+        boolean result = false;
+
+        if (størrelse.equals("LILLE")) {
+            for (int i = 0; i < pladserArray.length && !result; i++) {
+                if (pladserArray[i]) {
+                    result = true;
+                }
+            }
+        }
+
+        if (størrelse.equals("MELLEM")) {
+            for (int i = 0; i < pladserArray.length - 1 && !result; i++) {
+                if (pladserArray[i] && pladserArray[i + 1] && (i+1)%2==0) {
+                    result = true;
+                }
+            }
+        }
+
+        if (størrelse.equals("STOR")) {
+            for (int i = 0; i < pladserArray.length - 3 && !result; i++) {
+                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i+1)%4==0) {
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
 
     public Reol getReol() {

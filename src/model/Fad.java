@@ -7,7 +7,7 @@ public class Fad {
     private String materiale;
     private int gangeBrugt;
     private String tidligereIndhold;
-    private int størrelse;
+    private FadStørrelser størrelse;
     private Lager lager;
     //Association 0..* -> 1 Lager
     private Hylde hylde; //Nullable
@@ -16,7 +16,7 @@ public class Fad {
     /**
      * Hylde kan være null, for et fad der er på lager uden reoler.
      */
-    public Fad(int nummer, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, int størrelse, Lager lager, Hylde hylde) {
+    public Fad(int nummer, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse, Lager lager, Hylde hylde) {
         this.nummer = nummer;
         this.leverandør = leverandør;
         this.oprindeslesland = oprindeslesland;
@@ -51,7 +51,7 @@ public class Fad {
         return tidligereIndhold;
     }
 
-    public int getStørrelse() {
+    public FadStørrelser getStørrelse() {
         return størrelse;
     }
 
