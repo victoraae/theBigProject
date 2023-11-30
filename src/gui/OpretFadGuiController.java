@@ -75,8 +75,10 @@ public class OpretFadGuiController {
         Fad fad = new Fad(leverandør, oprindLand, materiale, tidlIndohld, størrelse, lager, hylde);
         alert.setContentText(fad.toString());
         alert.setHeaderText("Bekræft oplysninger");
+        alert.showAndWait();
 
         Controller.opretFad(lager, hylde, leverandør, oprindLand, materiale, tidlIndohld, størrelse);
+        fortrydAction();
     }
 
     @FXML
