@@ -60,7 +60,11 @@ public abstract class Controller {
     public static Fad opretFad(Lager lager, Hylde hylde, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse){
         Fad fad = new Fad(leverandør, oprindeslesland, materiale, tidligereIndhold, størrelse, lager, hylde);
         storage.tilføjFad(fad);
-        hylde.tilføjFad(størrelse.getStørrelse());
+        if (hylde != null){
+            hylde.tilføjFad(størrelse.getStørrelse());
+        } else {
+            // TODO: tilføjFad metode i Lager - skal bruges, når vi har et lager uden reoler
+        }
 
         return fad;
     }
@@ -89,12 +93,11 @@ public abstract class Controller {
         return korn;
     }
 
+    /**
+     * pre: dato <= dagens dato, 0 <= alkoholprocent <= 100, liter > 0, antal gange > 0 */
     public static Destillat opretDestillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn){
         Destillat destillat = new Destillat(dato, alkoholProcent, ansvarlig, liter, antalGange, rygemateriale, korn);
         storage.tilføjDestillat(destillat);
         return destillat;
     }
-
-
-
 }
