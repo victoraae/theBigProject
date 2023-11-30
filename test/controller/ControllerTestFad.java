@@ -23,10 +23,10 @@ class ControllerTestFad {
     @BeforeEach
     void setUp() {
         Controller.setStorage(new ListStorage());
-        Lager lager1 = Controller.opretLager("Lager1", "Adresse1", 50, 100, 0);
-        Lager lager2 = Controller.opretLager("Lager2", "Adresse2", 100, 300, 5);
-        Reol reol = Controller.opretReol(lager2, 1, 10, 6);
-        Hylde hylde = Controller.opretHylde(reol, 1);
+        lager1 = Controller.opretLager("Lager1", "Adresse1", 50, 100, 0);
+        lager2 = Controller.opretLager("Lager2", "Adresse2", 100, 300, 5);
+        reol = Controller.opretReol(lager2, 1, 10, 6);
+        hylde = Controller.opretHylde(reol, 1);
     }
 
     @Test

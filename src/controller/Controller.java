@@ -63,7 +63,7 @@ public abstract class Controller {
         if (hylde != null){
             hylde.tilføjFad(størrelse.getStørrelse());
         } else {
-            // TODO: tilføjFad metode i Lager - skal bruges, når vi har et lager uden reoler
+            lager.tilføjFad(størrelse.getStørrelse());
         }
 
         return fad;
