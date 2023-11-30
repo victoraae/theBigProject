@@ -51,6 +51,7 @@ public class ÅbenVinduer {
         stage.setScene(scene);
         stage.setTitle("Korn");
 
+
         stage.showAndWait();
     }
     public static void setParent(Stage parent) {

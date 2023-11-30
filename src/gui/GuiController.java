@@ -84,28 +84,20 @@ public class GuiController {
 
     @FXML
     private Button btnVælgKorn;
-
     @FXML
     private Button btnOpretKorn;
-
     @FXML
     private Label lblFBKorn;
-
     @FXML
     private ListView<Korn> lvwKorn;
-
     @FXML
-    private TextArea txaMalkningsprocess;
-
+    private TextArea txaMaltningsprocess;
     @FXML
     private TextField txfAar;
-
     @FXML
     private TextField txfBondemand;
-
     @FXML
     private TextField txfNavnPaaMark;
-
     @FXML
     private TextField txfSort;
 
@@ -115,14 +107,24 @@ public class GuiController {
         if(korn == null){
             setFejlBesked(lblFBKorn, "vælg en kornsort fra listen, eller opret en ny");
         }
+        kornsort = korn;
     }
 
     @FXML
     public void opretKornAction(){
         String sort = txfSort.getText();
         String navnPåMark = txfNavnPaaMark.getText();
+        String bondemand = txfBondemand.getText();
+        String maltning = txaMaltningsprocess.getText();
 
+        int år = 0;
+        try {
+            Integer.parseInt(txfAar.getText());
+        }catch(NumberFormatException ex){
+            setFejlBesked(lblFBDestillat, "forkert tal format for årstal");
+        }
 
+        Controller.opretKorn(sort, bondemand, år, navnPåMark, maltning);
     }
 
 
