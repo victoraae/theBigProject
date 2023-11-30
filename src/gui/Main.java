@@ -21,7 +21,7 @@ public class Main {
         initStorage();
         System.out.println("Storage er initialiseret");
 
-        Application.launch(Gui.class);
+        Application.launch(HovedVindue.class);
 
         ListStorage.gemStorage(storage);
     }

@@ -58,7 +58,7 @@ public class ListStorage implements Storage, Serializable {
 
     // -------------------------------------------------------------------------
     public static ListStorage læsStorage(){
-        String fileName = "src/studentapplication/storage.ser";
+        String fileName = "src/storage.ser";
         try (FileInputStream fileIn = new FileInputStream(fileName);
              ObjectInputStream objIn = new ObjectInputStream(fileIn)
         ) {
@@ -74,7 +74,7 @@ public class ListStorage implements Storage, Serializable {
     }
 
     public static void gemStorage(Storage storage) {
-        String fileName = "src/studentapplication/storage.ser";
+        String fileName = "src/storage.ser";
         try (FileOutputStream fileOut = new FileOutputStream(fileName);
              ObjectOutputStream objOut = new ObjectOutputStream(fileOut)
         ) {
