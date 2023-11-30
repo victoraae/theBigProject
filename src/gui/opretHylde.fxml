@@ -8,8 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HyldeGuiController">
    <children>
       <ImageView fitHeight="134.0" fitWidth="264.0" layoutX="197.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,7 +19,7 @@
       <Label layoutX="14.0" layoutY="108.0" text="Vælg reol" />
       <TextField fx:id="txfIStorrelse" layoutX="216.0" layoutY="173.0" promptText="Indtast størrelse" />
       <TextField fx:id="txfAntalHylder" layoutX="216.0" layoutY="213.0" promptText="Indtast max antal hylder" />
-      <Button fx:id="btnOpretReol" layoutX="285.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Opret reol" />
+      <Button fx:id="btnOpretReol" layoutX="285.0" layoutY="254.0" mnemonicParsing="false" onAction="#btnOpretReol" prefHeight="25.0" prefWidth="79.0" text="Opret reol" />
       <Label layoutX="216.0" layoutY="141.0" text="Lager:" />
       <TextField fx:id="txfStorrelse" layoutX="216.0" layoutY="292.0" promptText="Indtast størrelse" />
       <Button fx:id="btnOpretHylde" layoutX="286.0" layoutY="325.0" mnemonicParsing="false" text="Opret hylde" />

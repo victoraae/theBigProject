@@ -34,7 +34,7 @@ public class ÅbenVinduer {
         stage.showAndWait();
     }
 
-    public void åbenKornVindue(){
+    public void åbenKornVindue() {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("kornVindue.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
@@ -51,11 +51,10 @@ public class ÅbenVinduer {
         stage.setScene(scene);
         stage.setTitle("Korn");
 
-
         stage.showAndWait();
     }
 
-    public void åbenFadVindue(){
+    public void åbenFadVindue() {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("opretFad.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
@@ -76,7 +75,7 @@ public class ÅbenVinduer {
         stage.showAndWait();
     }
 
-    public void åbenLagerVindue(){
+    public void åbenLagerVindue() {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("opretLager.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
@@ -99,4 +98,26 @@ public class ÅbenVinduer {
     public static void setParent(Stage parent) {
         ÅbenVinduer.parent = parent;
     }
+
+
+    public void åbenHyldeVindue() {
+        Stage stage = new Stage();
+        URL fxmlFileName = this.getClass().getResource("opretHylde.fxml");
+        if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(fxmlFileName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.initModality(Modality.APPLICATION_MODAL);
+        Scene scene = new Scene(root);
+        stage.initOwner(parent);
+        stage.setScene(scene);
+        stage.setTitle("Opret hylde");
+
+        stage.showAndWait();
+    }
 }
+
