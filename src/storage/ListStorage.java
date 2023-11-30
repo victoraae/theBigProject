@@ -3,10 +3,11 @@ package storage;
 import controller.Storage;
 import model.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListStorage implements Storage {
+public class ListStorage implements Storage, Serializable {
     private final List<Lager> lagre = new ArrayList<>();
     private final List<Destillat> destillater = new ArrayList<>();
     private final List<Fad> fade = new ArrayList<>();
@@ -52,5 +53,37 @@ public class ListStorage implements Storage {
 
     public List<Lager> getLagre() {
         return new ArrayList<>(lagre);
+    }
+
+
+    // -------------------------------------------------------------------------
+    public static ListStorage læsStorage(){
+        String fileName = "src/studentapplication/storage.ser";
+        try (FileInputStream fileIn = new FileInputStream(fileName);
+             ObjectInputStream objIn = new ObjectInputStream(fileIn)
+        ) {
+            Object obj = objIn.readObject();
+            ListStorage storage = (ListStorage) obj;
+            System.out.println("Storage læst fra fil " + fileName);
+            return storage;
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println("Der opstod en fejl under deserialisering af Storage");
+            System.out.println(ex);
+            return null;
+        }
+    }
+
+    public static void gemStorage(Storage storage) {
+        String fileName = "src/studentapplication/storage.ser";
+        try (FileOutputStream fileOut = new FileOutputStream(fileName);
+             ObjectOutputStream objOut = new ObjectOutputStream(fileOut)
+        ) {
+            objOut.writeObject(storage);
+            System.out.println("Storage gemt i filen " + fileName);
+        } catch (IOException ex) {
+            System.out.println("Der opstod en fejl under deserialisering af Storage");
+            System.out.println(ex);
+            throw new RuntimeException();
+        }
     }
 }
