@@ -1,6 +1,7 @@
 package model;
 
 public class Fad {
+    private static int antalFade = 0;      // statisk så den kan deles blandt alle forekomster af Fad-klassen
     private int nummer;
     private String leverandør;
     private String oprindeslesland;
@@ -16,8 +17,9 @@ public class Fad {
     /**
      * Hylde kan være null, for et fad der er på lager uden reoler.
      */
-    public Fad(int nummer, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse, Lager lager, Hylde hylde) {
-        this.nummer = nummer;
+    public Fad(String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse, Lager lager, Hylde hylde) {
+        antalFade++;
+        this.nummer = antalFade;
         this.leverandør = leverandør;
         this.oprindeslesland = oprindeslesland;
         this.materiale = materiale;

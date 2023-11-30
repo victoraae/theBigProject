@@ -57,8 +57,8 @@ public abstract class Controller {
      * pre: hylden skal have plads til dette fad
      * @param hylde nullable
      */
-    public static Fad opretFad(Lager lager, Hylde hylde, int nummer, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse){
-        Fad fad = new Fad(nummer, leverandør, oprindeslesland, materiale, tidligereIndhold, størrelse, lager, hylde);
+    public static Fad opretFad(Lager lager, Hylde hylde, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse){
+        Fad fad = new Fad(leverandør, oprindeslesland, materiale, tidligereIndhold, størrelse, lager, hylde);
         storage.tilføjFad(fad);
         hylde.tilføjFad(størrelse.getStørrelse());
 
