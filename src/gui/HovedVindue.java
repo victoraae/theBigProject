@@ -14,7 +14,6 @@ import java.util.NoSuchElementException;
 
 public class HovedVindue extends Application {
 
-    private Stage parent;
     @Override
     public void start(Stage stage) throws Exception {
         URL fxmlFileName = this.getClass().getResource("hovedOversigt.fxml");
@@ -25,19 +24,8 @@ public class HovedVindue extends Application {
         stage.setMinHeight(root.minHeight(-1));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        parent = stage;
+        ÅbenVinduer.setParent(stage);
         stage.show();
-    }
-
-    private void openSubWindow(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sub_fxml_file.fxml"));
-        Stage root = loader.load();
-        Scene scene = new Scene(root);
-        root.initOwner(parent);
-        root.setScene();
-        root.setTitle("Subvindue");
-
-        root.show();
     }
 }
 
