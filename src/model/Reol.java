@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reol {
+public class Reol implements Serializable {
     private final int størrelse;
     private final int nummer;
     private final int maxAntalHylder;

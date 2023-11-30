@@ -1,10 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Destillat {
+public class Destillat implements Serializable {
     private LocalDate dato;
     private double alkoholProcent;
     private String ansvarlig;

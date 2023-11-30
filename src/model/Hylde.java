@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Hylde {
+public class Hylde implements Serializable {
     private final int nummer;
     private final boolean[] pladserArray;
     private boolean erLedig;

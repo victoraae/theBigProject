@@ -1,6 +1,8 @@
 package model;
 
-public class Korn {
+import java.io.Serializable;
+
+public class Korn implements Serializable {
     private final String sort;
     private final String bondemand;
     private final int år;

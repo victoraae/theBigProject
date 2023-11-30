@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class NewMake {
+public class NewMake implements Serializable {
     private String navn;
     private final LocalDate datoForPåfyldning;
     private double alkoholprocent;

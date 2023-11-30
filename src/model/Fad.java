@@ -1,6 +1,8 @@
 package model;
 
-public class Fad {
+import java.io.Serializable;
+
+public class Fad implements Serializable {
     private static int antalFade = 0;      // statisk så den kan deles blandt alle forekomster af Fad-klassen
     private int nummer;
     private String leverandør;
