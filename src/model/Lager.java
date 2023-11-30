@@ -9,6 +9,7 @@ public class Lager implements Serializable {
     private final String adresse;
     private final double størrelse;
     private int kapacitet;
+    private int pladserTilbage;     // bruges med lagre, der ikke har reoler
     private final int maxAntalReoler;
     // komposition 1 --> 0..* Reol
     private final List<Reol> reoler = new ArrayList<>();
@@ -18,6 +19,7 @@ public class Lager implements Serializable {
         this.adresse = adresse;
         this.størrelse = størrelse;
         this.kapacitet = kapacitet;
+        this.pladserTilbage = kapacitet;
         this.maxAntalReoler = maxAntalReoler;
     }
 
@@ -51,5 +53,55 @@ public class Lager implements Serializable {
 
     public void sletReol(Reol reol){
         reoler.remove(reol);
+    }
+
+    /**
+     *
+     * @return returnerer true hvis fad blev tilføjet, false hvis der ikke er plads på lageret
+     */
+    public boolean tilføjFad(String størrelse) {
+        boolean result = false;
+
+        if (størrelse.equals("LILLE")){
+            if (pladserTilbage >= 1){
+                result = true;
+                pladserTilbage--;
+            }
+        } else if (størrelse.equals("MELLEM")){
+            if (pladserTilbage >= 2){
+                result = true;
+                pladserTilbage -= 2;
+            }
+        } else if (størrelse.equals("STOR")){
+            if (pladserTilbage >= 4){
+                result = true;
+                pladserTilbage -= 4;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Hjælpemetode tiltænkt GUI
+     */
+    public boolean erDerPladsTilFad(String størrelse) {
+        boolean result = false;
+
+        if (størrelse.equals("LILLE")){
+            if (pladserTilbage >= 1){
+                result = true;
+            }
+        } else if (størrelse.equals("MELLEM")){
+            if (pladserTilbage >= 2){
+                result = true;
+            }
+        } else if (størrelse.equals("STOR")){
+            if (pladserTilbage >= 4){
+                result = true;
+            }
+        }
+
+        return result;
     }
 }
