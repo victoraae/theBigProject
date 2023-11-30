@@ -46,7 +46,7 @@ public class NewMake {
         return fad;
     }
 
-    public Destillat getDestillat() {
+    public Destillat getDesillat() {
         return destillat;
     }
 }
