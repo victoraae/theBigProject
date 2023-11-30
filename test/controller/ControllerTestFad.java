@@ -51,5 +51,10 @@ class ControllerTestFad {
         // Assert
         fade = Controller.getFade();
         assertEquals(fad3, fade.get(fade.size() - 1));
+
+        // udskriver alle fade - en slags test af Fads toString()-metode
+        for (Fad f : fade){
+            System.out.println(f);
+        }
     }
 }

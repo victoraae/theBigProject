@@ -66,4 +66,18 @@ public class Fad implements Serializable {
     public Hylde getHylde() {
         return hylde;
     }
+
+    @Override
+    public String toString(){
+        String result = "Fad nr. " + nummer + ", størrelse: " + størrelse + ", lavet af " + materiale + ". Leverandør: '"
+                + leverandør + "', land: " + oprindeslesland + ". Har tidligere indeholdt " + tidligereIndhold + ".";
+        if (getHylde() != null){
+            result += " Opbevares på " + lager.getNavn() + ", reol: " + hylde.getReol().getNummer()
+                    + ", hylde: " + hylde.getNummer() + ".";
+        } else {
+            result += " Opbevares på " + lager.getNavn() + ".";
+        }
+
+        return result;
+    }
 }

@@ -37,4 +37,13 @@ public class Korn implements Serializable {
     public String getMaltningsprocess() {
         return maltningsprocess;
     }
+
+    @Override
+    public String toString() {
+        String result = "Korn sort " + sort + ", dyrket af " + bondemand + " i " + år + " på marken "
+                + mark + ". Information om maltningsprocessen: " + maltningsprocess;
+
+        return result;
+    }
+
 }

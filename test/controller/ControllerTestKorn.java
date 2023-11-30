@@ -1,5 +1,6 @@
 package controller;
 
+import model.Fad;
 import model.Korn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,5 +45,10 @@ class ControllerTestKorn {
         korn = Controller.getKorn();
         assertEquals(korn3, korn.get(korn.size() - 1));
         assertEquals(3, korn.size());
+
+        // udskriver alle korn - en slags test af Korns toString()-metode
+        for (Korn k : korn){
+            System.out.println(k);
+        }
     }
 }

@@ -46,4 +46,12 @@ public class Reol implements Serializable {
     public Lager getLager() {
         return lager;
     }
+
+    @Override
+    public String toString(){
+        String result = "Reol nr. " + nummer + ", står på lager " + lager.getNavn()
+                + ". Antal pladser: " + størrelse + ", max antal hylder: " + maxAntalHylder + ".";
+
+        return result;
+    }
 }

@@ -47,6 +47,11 @@ class ControllerTest {
         //Assert
         lagre = Controller.getLagre();
         assertEquals(lager, lagre.get(lagre.size()-1));
+
+        // udskriver alle lagre - en slags test af Lagers toString()-metode
+        for (Lager l : lagre){
+            System.out.println(l);
+        }
     }
 
     @Test
@@ -83,6 +88,11 @@ class ControllerTest {
         reoler = Controller.getLagre().get(0).getReoler();
         //assertNotEquals(reol, reoler.get(reoler.size()-1));
         //TODO: Lagrets maks antal reoler må ikke overskrides!!!
+
+        // udskriver alle reoler - en slags test af Reols toString()-metode
+        for (Reol r : reoler){
+            System.out.println(r);
+        }
     }
 
     @Test
@@ -105,6 +115,11 @@ class ControllerTest {
         hylder = Controller.getLagre().get(0).getReoler().get(0).getHylder();
         //assertNotEquals(hylde, hylder.get(hylder.size()-1));
         //TODO: Reolens maks antal hylder må ikke overskrides!!!
+
+        // udskriver alle hylder - en slags test af Hyldes toString()-metode
+        for (Hylde h : hylder){
+            System.out.println(h);
+        }
     }
 
     @Test

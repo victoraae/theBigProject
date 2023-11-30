@@ -14,6 +14,7 @@ public class Hylde implements Serializable {
         this.nummer = nummer;
         this.størrelse = størrelse;
         pladserArray = new boolean[størrelse];
+        this.erLedig = true;
         this.reol = reol;
     }
 
@@ -111,5 +112,12 @@ public class Hylde implements Serializable {
 
     public Reol getReol() {
         return reol;
+    }
+
+    @Override
+    public String toString(){
+        String result = "Hylde nr. " + nummer + ", antal pladser: " + størrelse + ", har ledige pladser: " + erLedig + ".";
+
+        return result;
     }
 }

@@ -32,7 +32,7 @@ class ControllerTestDestillat {
 
         // TC2
         // Act
-        Destillat destillat2 = Controller.opretDestillat(dato, 60, "Snævar", 200, 2, "", korn);
+        Destillat destillat2 = Controller.opretDestillat(dato, 60, "Snævar", 200, 2, "materiale", korn);
         // Assert
         destillater = Controller.getDestillater();
         assertEquals(destillat2, destillater.get(destillater.size() - 1));
@@ -44,5 +44,10 @@ class ControllerTestDestillat {
         destillater = Controller.getDestillater();
         assertEquals(destillat3, destillater.get(destillater.size() - 1));
         assertEquals(3, destillater.size());
+
+        // udskriver alle destillater - en slags test af Destillats toString()-metode
+        for (Destillat d : destillater){
+            System.out.println(d);
+        }
     }
 }
