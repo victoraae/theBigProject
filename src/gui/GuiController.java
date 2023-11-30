@@ -26,8 +26,8 @@ public class GuiController {
                 !txfKapacitet.getText().isEmpty() && !txfStørrelse.getText().isEmpty() &&
                 !txfMaksReoler.getText().isEmpty()) {
             Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-            dialog.setContentText(txfLagerNavn.getText() + "\n"
-                    + txfAdresse.getText() + "\n");
+            dialog.setContentText("KVITTERING:\n" + "--------------\n" + "Lagernavn: " + txfLagerNavn.getText() + "\nadresse: "
+                    + txfAdresse.getText() + "\nstørrelse pr. m^2: " + txfKapacitet.getText() + "\npladser på lager: " + txfStørrelse.getText() + "\nmaksimale antaler reoler: " + txfMaksReoler.getText() + "\n--------------");
             dialog.showAndWait();
             dialog.setHeaderText("Bekræft oplysninger:");
             dialog.setTitle("Er du sikker?");
