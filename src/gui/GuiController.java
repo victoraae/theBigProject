@@ -53,21 +53,22 @@ public class GuiController {
     private Button btnDestillatLuk;
 
     private Korn kornsort;
+
     @FXML
-    public void opretDestillatAction(){
+    public void opretDestillatAction() {
         LocalDate dato = dateSelector.getValue();
         double alko = 0;
         int antalLiter = 0;
-                try {
-                   alko = Double.parseDouble(txfAlkoholProcent.getText());
-                   antalLiter = Integer.parseInt(txfAntalLiter.getText());
-                }catch(NumberFormatException ex){
-                    setFejlBesked(lblFBDestillat, "Forkert tal format");
-                }
-                String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
-                String rygeMateriale = txfRygeMateriale.getText();
+        try {
+            alko = Double.parseDouble(txfAlkoholProcent.getText());
+            antalLiter = Integer.parseInt(txfAntalLiter.getText());
+        } catch (NumberFormatException ex) {
+            setFejlBesked(lblFBDestillat, "Forkert tal format");
+        }
+        String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
+        String rygeMateriale = txfRygeMateriale.getText();
 
-        if(kornsort==null) {
+        if (kornsort == null) {
             setFejlBesked(lblFBDestillat, "vælg kornsort");
         }
 
@@ -76,7 +77,7 @@ public class GuiController {
     }
 
     @FXML
-    public void åbenKornVindueAction(){
+    public void åbenKornVindueAction() {
         Main.åbenVinduer.åbenKornVindue();
     }
 
@@ -102,16 +103,16 @@ public class GuiController {
     private TextField txfSort;
 
     @FXML
-    public void vælgKornAction(){
+    public void vælgKornAction() {
         Korn korn = lvwKorn.getSelectionModel().getSelectedItem();
-        if(korn == null){
+        if (korn == null) {
             setFejlBesked(lblFBKorn, "vælg en kornsort fra listen, eller opret en ny");
         }
         kornsort = korn;
     }
 
     @FXML
-    public void opretKornAction(){
+    public void opretKornAction() {
         String sort = txfSort.getText();
         String navnPåMark = txfNavnPaaMark.getText();
         String bondemand = txfBondemand.getText();
@@ -120,7 +121,7 @@ public class GuiController {
         int år = 0;
         try {
             Integer.parseInt(txfAar.getText());
-        }catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             setFejlBesked(lblFBDestillat, "forkert tal format for årstal");
         }
 
@@ -130,39 +131,7 @@ public class GuiController {
 
 
 
-
-
-//    @FXML
-//    private void btnGemAction() {
-//      if (!txfLagerNavn.getText().isEmpty() && !txfAdresse.getText().isEmpty() &&
-//                !txfKapacitet.getText().isEmpty() && !txfStørrelse.getText().isEmpty() &&
-//                !txfMaksReoler.getText().isEmpty()) {
-//            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-//            dialog.setContentText("KVITTERING:\n" + "--------------\n" + "Lagernavn: " + txfLagerNavn.getText() + "\nadresse: "
-//                    + txfAdresse.getText() + "\nstørrelse pr. m^2: " + txfKapacitet.getText() + "\npladser på lager: " + txfStørrelse.getText() + "\nmaksimale antaler reoler: " + txfMaksReoler.getText() + "\n--------------");
-//            dialog.showAndWait();
-//            dialog.setHeaderText("Bekræft oplysninger:");
-//            dialog.setTitle("Er du sikker?");
-//            double størrelse = Double.parseDouble(txfStørrelse.getText());
-//            int kapacitet = Integer.parseInt(txfKapacitet.getText());
-//            int maxAntalHylder = Integer.parseInt(txfMaksReoler.getText());
-//            Controller.opretLager(txfLagerNavn.getText(), txfAdresse.getText(), størrelse, kapacitet, maxAntalHylder);
-//        } else {
-//            Alert dialog = new Alert(Alert.AlertType.ERROR);
-//            dialog.setTitle("Du har ikke udfyldt alle felterne");
-//            dialog.setContentText("Venligst udfyld alle felterne, før du fortsætter.");
-//            dialog.showAndWait();
-//        }
-//
-//    }
-//    @FXML
-//    private void btnLukAction() {
-//        Stage stage = (Stage) btnLuk.getScene().getWindow();
-//        stage.close();
-//    }
-
-
-    public void setFejlBesked(Label lblFB, String besked){
+    public void setFejlBesked(Label lblFB, String besked) {
         int index = lblFB.getText().indexOf(':');
         lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
         lblFB.setVisible(true);

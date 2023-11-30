@@ -12,19 +12,23 @@ public class HovedGuiController {
     @FXML
     private Button btnOpretLager;
 
-    public void initialize(){
+    public void initialize() {
 
     }
+
     @FXML
     public void åbenDestillatVindueAction() {
         Main.åbenVinduer.åbenDestillatVindue();
     }
+
     @FXML
-    public void åbenFadVindueAction(){
+    public void åbenFadVindueAction() {
         Main.åbenVinduer.åbenFadVindue();
     }
+
     @FXML
-    public void åbenLagerVindueAction(){
+    public void åbenLagerVindueAction() {
         Main.åbenVinduer.åbenLagerVindue();
     }
 }
+
