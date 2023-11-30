@@ -3,6 +3,7 @@ package gui;
 import controller.Controller;
 import controller.Storage;
 import javafx.application.Application;
+import model.*;
 import storage.ListStorage;
 
 public class Main {
@@ -27,6 +28,10 @@ public class Main {
     }
 
     public static void initStorage() {
-        // TODO
+        Lager lager = Controller.opretLager("Lager 1", "Adresse 1", 230, 500, 7);
+        Controller.opretLager("Lager 2", "Adresse 2", 230, 500, 7);
+        Reol reol = Controller.opretReol(lager, 1, 15, 3);
+        Controller.opretReol(lager, 2, 15, 4);
+        Controller.opretHylde(reol, 1);
     }
 }

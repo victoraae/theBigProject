@@ -1,6 +1,8 @@
 package model;
 
-public enum FadStørrelser {
+import java.io.Serializable;
+
+public enum FadStørrelser{
     L30("LILLE"),
     L50("LILLE"),
     L100("MELLEM"),

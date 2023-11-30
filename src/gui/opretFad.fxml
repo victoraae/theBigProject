@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OpretFadGuiController">
    <children>
       <ImageView fitHeight="126.0" fitWidth="230.0" layoutX="185.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,9 +22,9 @@
       <TextField fx:id="txfMateriale" layoutX="257.0" layoutY="292.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast materiale" />
       <TextField fx:id="txfTidligereIndhold" layoutX="257.0" layoutY="324.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast tidligere indhold" />
       <ComboBox fx:id="cmbVælgStorelse" layoutX="350.0" layoutY="165.0" prefWidth="150.0" promptText="Vælg størrelse" />
-      <Button fx:id="btnOpretFad" layoutX="431.0" layoutY="357.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Opret" />
-      <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="374.0" text="FejlBesked" textFill="#dd0303" visible="false" />
-      <Button layoutX="83.0" layoutY="357.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
+      <Button fx:id="btnOpretFad" layoutX="431.0" layoutY="357.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Opret" />
+      <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="374.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
+      <Button fx:id="btnFortryd" layoutX="83.0" layoutY="357.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
       <Label layoutX="31.0" layoutY="60.0" text="Opret fad">
          <font>
             <Font size="33.0" />
@@ -37,6 +37,6 @@
       <Label layoutX="158.0" layoutY="265.0" text="Oprindelsesland:" />
       <Label layoutX="192.0" layoutY="296.0" prefHeight="17.0" prefWidth="56.0" text="Materiale:" />
       <Label layoutX="157.0" layoutY="328.0" text="Tidligere indhold:" />
-      <Button fx:id="btnVaelgLagerPlads" layoutX="75.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Vælg Lager Plads" />
+      <ComboBox fx:id="cmbVælgLager" layoutX="73.0" layoutY="153.0" prefWidth="150.0" promptText="Vælg lager" />
    </children>
 </Pane>
