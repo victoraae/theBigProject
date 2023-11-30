@@ -1,10 +1,8 @@
-import controller.Controller;
+import gui.Main;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
-public class GuiController {
+public class hovedVindueController {
     @FXML
     private Button btnOpretDestillat;
 
@@ -16,7 +14,7 @@ public class GuiController {
 
     @FXML
     public void opretDestillatAction() {
-
+        Main.åbenVinduer.åbenDestillatVindue();
     }
 //    @FXML
 //    private void btnGemAction() {
