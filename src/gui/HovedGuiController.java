@@ -15,9 +15,16 @@ public class HovedGuiController {
     public void initialize(){
 
     }
-
     @FXML
     public void åbenDestillatVindueAction() {
         Main.åbenVinduer.åbenDestillatVindue();
+    }
+    @FXML
+    public void åbenFadVindueAction(){
+        Main.åbenVinduer.åbenFadVindue();
+    }
+    @FXML
+    public void åbenLagerVindueAction(){
+        Main.åbenVinduer.åbenLagerVindue();
     }
 }

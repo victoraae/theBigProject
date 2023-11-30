@@ -14,8 +14,8 @@
          </image>
       </ImageView>
       <Button fx:id="btnOpretDestillat" layoutX="155.0" layoutY="158.0" mnemonicParsing="false" onAction="#åbenDestillatVindueAction" prefHeight="28.0" prefWidth="99.0" text="Opret destillat" />
-      <Button fx:id="btnOpretFad" layoutX="300.0" layoutY="158.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="99.0" text="Opret fad" />
-      <Button fx:id="btnOpretLager" layoutX="438.0" layoutY="157.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="99.0" text="Opret lager" />
+      <Button fx:id="btnOpretFad" layoutX="300.0" layoutY="158.0" mnemonicParsing="false" onAction="#åbenFadVindueAction" prefHeight="28.0" prefWidth="99.0" text="Opret fad" />
+      <Button fx:id="btnOpretLager" layoutX="438.0" layoutY="157.0" mnemonicParsing="false" onAction="#åbenLagerVindueAction" prefHeight="28.0" prefWidth="99.0" text="Opret lager" />
       <Label layoutX="14.0" layoutY="115.0" text="Husk omhældning" />
    </children>
 </Pane>
