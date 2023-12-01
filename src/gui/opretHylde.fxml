@@ -22,7 +22,7 @@
       <Button fx:id="btnOpretReol" layoutX="216.0" layoutY="258.0" mnemonicParsing="false" onAction="#opretReolAction" prefHeight="25.0" prefWidth="79.0" text="Opret reol" />
       <Label layoutX="216.0" layoutY="141.0" text="Lager:" />
       <Button fx:id="btnOpretHylde" layoutX="374.0" layoutY="312.0" mnemonicParsing="false" onAction="#opretHyldeAction" text="Opret hylde" />
-      <Button fx:id="txfLuk" layoutX="352.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Luk" />
+      <Button fx:id="txfLuk" layoutX="352.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnLukAction" prefHeight="25.0" prefWidth="71.0" text="Luk" />
       <ListView fx:id="lvwVaelgHylder" layoutX="451.0" layoutY="138.0" prefHeight="265.0" prefWidth="200.0" />
       <Label layoutX="453.0" layoutY="117.0" text="Vælg hylder" />
       <Button fx:id="btnVaelgHylde" layoutX="561.0" layoutY="412.0" mnemonicParsing="false" text="Vælg hylde" />

@@ -50,11 +50,10 @@ public class HyldeGuiController {
         lager = LagerGuiController.valgtLager;
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
-
-
             lvwVaelgReol.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     reol = newValue;
+                    opdaterListViewHylde();
                 }
             });
         }
@@ -87,7 +86,6 @@ public class HyldeGuiController {
         if (reol != null) {
             Hylde hylde = Controller.opretHylde(reol, 1);
             if (hylde != null) {
-                reol.tilføjHylde(hylde);
                 opdaterListViewHylde();
             }
         }
@@ -109,5 +107,9 @@ public class HyldeGuiController {
         int index = lblFB.getText().indexOf(':');
         lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
         lblFB.setVisible(true);
+    }
+    public void btnLukAction() {
+        Stage stage = (Stage) txfLuk.getScene().getWindow();
+        stage.close();
     }
 }
