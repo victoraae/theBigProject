@@ -12,14 +12,17 @@ public class Main {
     public static void main(String[] args) {
         åbenVinduer = new ÅbenVinduer();
         Storage storage = ListStorage.læsStorage();
-        if (storage == null) {
+
+        boolean flag = storage==null;
+        if (flag) {
             storage = new ListStorage();
             System.out.println("Tom ListStorage oprettet");
         }
 
         Controller.setStorage(storage);
+        if(flag) initStorage();
 
-        initStorage();
+
         System.out.println("Storage er initialiseret");
 
         Application.launch(HovedVindue.class);
