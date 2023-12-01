@@ -23,13 +23,18 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="txfAlkoholProcent" editable="false" layoutX="281.0" layoutY="255.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast alkoholprocent" />
-      <TextField fx:id="txfNavnPaaAnsvarlig" editable="false" layoutX="281.0" layoutY="290.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast navn på ansvarlig" />
-      <TextField fx:id="txfRygeMateriale" editable="false" layoutX="281.0" layoutY="327.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast rygemateriale" />
+      <TextField fx:id="txfAlkoholProcent" layoutX="281.0" layoutY="255.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast alkoholprocent" />
+      <TextField fx:id="txfNavnPaaAnsvarlig" layoutX="281.0" layoutY="290.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast navn på ansvarlig" />
+      <TextField fx:id="txfRygeMateriale" layoutX="281.0" layoutY="327.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast rygemateriale" />
       <DatePicker fx:id="dateSelector" layoutX="281.0" layoutY="403.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast Dato" />
       <Button fx:id="btnDestilleriGem" layoutX="524.0" layoutY="505.0" mnemonicParsing="false" onAction="#opretDestillatAction" prefHeight="30.0" prefWidth="78.0" text="Gem" />
-      <TextField fx:id="txfAntalLiter" editable="false" layoutX="281.0" layoutY="361.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast antal liter" />
-      <Label fx:id="lblFBDestillat" layoutX="14.0" layoutY="547.0" prefHeight="17.0" prefWidth="78.0" text="FejlBesked:" textFill="RED" visible="false" />
-      <Button fx:id="btnDestillatLuk" layoutX="92.0" layoutY="505.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="Luk" />
+      <TextField fx:id="txfAntalLiter" layoutX="281.0" layoutY="361.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast antal liter" />
+      <Label fx:id="lblFBDestillat" layoutX="14.0" layoutY="547.0" prefHeight="17.0" prefWidth="653.0" text="FejlBesked:" textFill="RED" visible="false" />
+      <Button fx:id="btnDestillatLuk" layoutX="92.0" layoutY="505.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="30.0" prefWidth="56.0" text="Luk" />
+      <Label layoutX="164.0" layoutY="260.0" prefHeight="17.0" prefWidth="90.0" text="Alkohol procent:" />
+      <Label layoutX="163.0" layoutY="295.0" prefHeight="17.0" prefWidth="99.0" text="Navn på ansvarlig:" />
+      <Label layoutX="163.0" layoutY="332.0" prefHeight="17.0" prefWidth="84.0" text="Rygemateriale:" />
+      <Label layoutX="163.0" layoutY="366.0" prefHeight="17.0" prefWidth="56.0" text="Antal liter:" />
+      <Label layoutX="166.0" layoutY="408.0" prefHeight="17.0" prefWidth="31.0" text="Dato:" />
    </children>
 </Pane>

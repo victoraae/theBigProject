@@ -3,15 +3,14 @@ package gui;
 import controller.Controller;
 import gui.Main;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Destillat;
+import model.Fad;
 import model.Korn;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class DestillatGuiController {
     @FXML
@@ -55,17 +54,37 @@ public class DestillatGuiController {
             alko = Double.parseDouble(txfAlkoholProcent.getText());
             antalLiter = Integer.parseInt(txfAntalLiter.getText());
         }catch(NumberFormatException ex){
-            setFejlBesked(lblFBDestillat, "Forkert tal format");
+            setFejlBesked(lblFBDestillat, "Forkert tal format i alkohol, eller antal liter");
+            return;
         }
         String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
         String rygeMateriale = txfRygeMateriale.getText();
 
         if(kornsort==null) {
             setFejlBesked(lblFBDestillat, "vælg kornsort");
+            return;
+        }
+        if(dato.isAfter(LocalDate.now())){
+            setFejlBesked(lblFBDestillat, "dato skal være i dag eller tidligere");
+            return;
         }
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        Destillat destillat = new Destillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
+        alert.setContentText(destillat.toString());
+        alert.setHeaderText("Bekræft oplysninger");
 
-        Destillat destillat = Controller.opretDestillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.YES){
+           Controller.opretDestillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
+           lukAction();
+        }
+    }
+
+    @FXML
+    public void lukAction(){
+        Stage stage = (Stage) lblFBDestillat.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -76,7 +95,7 @@ public class DestillatGuiController {
 
     public void setFejlBesked(Label lblFB, String besked){
         int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
+        lblFB.setText(lblFB.getText().substring(0, index+1) + " " + besked);
         lblFB.setVisible(true);
     }
 }
