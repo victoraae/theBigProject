@@ -12,6 +12,7 @@ public class Reol implements Serializable {
     private final List<Hylde> hylder = new ArrayList<>();
     private final Lager lager;
 
+
     public Reol(Lager lager, int nummer, int størrelse, int maxAntalHylder) {
         this.nummer = nummer;
         this.størrelse = størrelse;

@@ -70,6 +70,7 @@ public class DestillatGuiController {
     @FXML
     public void åbenKornVindueAction(){
         Main.åbenVinduer.åbenKornVindue();
+        if(kornsort!=null) txfValgtKorn.setText(kornsort.toString());
     }
 
     public void setFejlBesked(Label lblFB, String besked){

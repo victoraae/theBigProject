@@ -13,6 +13,7 @@ public class Lager implements Serializable {
     private final int maxAntalReoler;
     // komposition 1 --> 0..* Reol
     private final List<Reol> reoler = new ArrayList<>();
+    private int antalReolerNu = 0;
 
     public Lager(String navn, String adresse, double størrelse, int kapacitet, int maxAntalReoler) {
         this.navn = navn;
@@ -116,5 +117,9 @@ public class Lager implements Serializable {
         }
 
         return result;
+    }
+
+    public int getAntalReolerNu() {
+        return ++antalReolerNu;
     }
 }
