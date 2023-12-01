@@ -54,13 +54,18 @@ public class DestillatGuiController {
             alko = Double.parseDouble(txfAlkoholProcent.getText());
             antalLiter = Integer.parseInt(txfAntalLiter.getText());
         }catch(NumberFormatException ex){
-            setFejlBesked(lblFBDestillat, "Forkert tal format");
+            setFejlBesked(lblFBDestillat, "Forkert tal format i alkohol, eller antal liter");
+            return;
         }
         String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
         String rygeMateriale = txfRygeMateriale.getText();
 
         if(kornsort==null) {
             setFejlBesked(lblFBDestillat, "vælg kornsort");
+            return;
+        }
+        if(dato.isAfter(LocalDate.now())){
+            setFejlBesked(lblFBDestillat, "dato skal være i dag eller tidligere");
             return;
         }
 
