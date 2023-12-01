@@ -23,7 +23,7 @@ public class HyldeGuiController {
     private Button btnVaelgHylde;
 
     @FXML
-    private ListView lvwVaelgHylder;
+    private ListView<Hylde> lvwVaelgHylder;
 
     @FXML
     private ListView<Reol> lvwVaelgReol;
@@ -59,6 +59,7 @@ public class HyldeGuiController {
         }
     }
 
+
     @FXML
     public void opretReolAction() {
         try {
@@ -77,7 +78,7 @@ public class HyldeGuiController {
                 }
             }
         } catch (NumberFormatException e) {
-            System.out.println("Test fejl: " + e.toString());
+            System.out.println(e.toString());
         }
     }
 
@@ -108,8 +109,10 @@ public class HyldeGuiController {
         lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
         lblFB.setVisible(true);
     }
+
     public void btnLukAction() {
         Stage stage = (Stage) txfLuk.getScene().getWindow();
         stage.close();
     }
 }
+

@@ -29,7 +29,7 @@ public abstract class Controller {
     }
     public static Hylde opretHylde(Reol reol, int nummer){
         if (reol.getHylder().size() < reol.getMaxAntalHylder()){
-            Hylde hylde = new Hylde(reol, nummer, reol.getStørrelse());
+            Hylde hylde = new Hylde(reol, reol.getAntalHylderNu(), reol.getStørrelse());
             reol.tilføjHylde(hylde);
             return hylde;
         } else return null;

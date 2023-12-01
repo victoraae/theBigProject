@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.Hylde;
 import model.Lager;
 
 
@@ -37,6 +38,8 @@ public class LagerGuiController {
     private TextField txfStørrelse;
 
     public static Lager valgtLager;
+
+    public static Hylde valgtHylde;
     public void initialize(){
         lvwVaelgLager.getItems().setAll(Controller.getLagre());
         ChangeListener<Lager> listener = (ov, o, n) -> this.opdaterValgtLager();
