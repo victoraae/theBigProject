@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Hylde;
 import model.Lager;
 import model.Reol;
 
@@ -41,6 +42,7 @@ public class HyldeGuiController {
     @FXML
     private TextField txfStorrelse;
     private Lager lager;
+    private Reol reol;
 
     public void initialize() {
         lager = LagerGuiController.valgtLager;
@@ -49,6 +51,20 @@ public class HyldeGuiController {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
         }
     }
+    @FXML
+    public void initializeHylde() {
+        if (reol != null) {
+            lvwVaelgHylder.getItems().setAll(reol.getHylder());
+        }
+    }
+    @FXML
+    public void initializeReol() {
+        lager = LagerGuiController.valgtLager;
+        if (lager != null) {
+            lvwVaelgReol.getItems().setAll(lager.getReoler());
+        }
+    }
+
 
     @FXML
     public void opretReolAction() {
@@ -73,7 +89,20 @@ public class HyldeGuiController {
     }
 
     @FXML
-    public void opdaterListView() {
+    public void opretHyldeAction() {
+        if (reol != null) {
+            Hylde hylde = Controller.opretHylde(reol, 1);
+            reol.tilføjHylde(hylde);
+            opdaterListViewHylde();
+        }
+    }
+    public void opdaterListViewHylde() {
+        if (reol != null) {
+            lvwVaelgHylder.getItems().setAll(reol.getHylder());
+        }
+    }
+
+    public void opdaterListViewReol() {
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
         }
