@@ -78,8 +78,7 @@ public class HyldeGuiController {
             if (lager != null) {
                 Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
                 if (reol != null) {
-                    //lager.tilføjReol(reol);
-                    opdaterListView();
+                    opdaterListViewReol();
                     System.out.println("Test" + reol);
                 }
             }
