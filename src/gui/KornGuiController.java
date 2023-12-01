@@ -51,21 +51,41 @@ public class KornGuiController {
 
         int år = 0;
         try {
-            Integer.parseInt(txfAar.getText());
+            år = Integer.parseInt(txfAar.getText());
+            if(txfAar.getText().trim().length()!=4){ //årstal skal være 4 cifre
+                setFejlBesked(lblFBKorn, "forkert tal format for årstal");
+                return;
+            }
         }catch(NumberFormatException ex){
             setFejlBesked(lblFBKorn, "forkert tal format for årstal");
+            return;
         }
 
+        if(txfSort.getText().isBlank() ||txfBondemand.getText().isBlank() || txfNavnPaaMark.getText().isBlank() ||txaMaltningsprocess.getText().isBlank()){
+            setFejlBesked(lblFBKorn, "Alle felter skal udfyldes for at oprette korn");
+            return;
+        }
+
+        lblFBKorn.setVisible(false);
         Controller.opretKorn(sort, bondemand, år, navnPåMark, maltning);
         opdaterListView();
+        clearFelter();
     }
 
     public void opdaterListView(){
         lvwKorn.getItems().setAll(Controller.getKorn());
     }
+
+    private void clearFelter(){
+        txfAar.clear();
+        txfBondemand.clear();
+        txfSort.clear();
+        txfNavnPaaMark.clear();
+        txaMaltningsprocess.clear();
+    }
     public void setFejlBesked(Label lblFB, String besked){
         int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
+        lblFB.setText(lblFB.getText().substring(0, index+1) + " " + besked);
         lblFB.setVisible(true);
     }
 }

@@ -36,5 +36,7 @@ public class Main {
         Reol reol = Controller.opretReol(lager, 1, 15, 3);
         Controller.opretReol(lager, 2, 15, 4);
         Controller.opretHylde(reol, 1);
+        Controller.opretKorn("Evergreen Byg", "Lars Larsen", 2017, "Mark 1", "Ristet lys");
+        Controller.opretKorn("Irina Byg", "Keld Keldsen", 2018, "Mark 2", "Ristet mørk");
     }
 }
