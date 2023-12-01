@@ -3,6 +3,7 @@ package gui;
 import controller.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.Korn;
 
 public class KornGuiController {
@@ -36,6 +37,9 @@ public class KornGuiController {
             setFejlBesked(lblFBKorn, "vælg en kornsort fra listen, eller opret en ny");
         }
         DestillatGuiController.kornsort = korn;
+
+        Stage stage = (Stage) lvwKorn.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
