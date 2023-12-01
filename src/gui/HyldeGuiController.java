@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Hylde;
 import model.Lager;
 import model.Reol;
 
@@ -33,30 +34,39 @@ public class HyldeGuiController {
 
     @FXML
     private Button txfLuk;
+    private Lager lager;
+    private Reol reol;
 
     @FXML
-    private TextField txfStorrelse;
-    private Lager lager;
+    public void initializeHylde() {
+        if (reol != null) {
+            lvwVaelgHylder.getItems().setAll(reol.getHylder());
+        }
+    }
 
-    public void initialize() {
+    @FXML
+    public void initializeReol() {
+        lager = LagerGuiController.valgtLager;
         if (lager != null) {
-            lager = LagerGuiController.valgtLager;
             lvwVaelgReol.getItems().setAll(lager.getReoler());
         }
     }
 
-    public void btnOpretReol() {
+    @FXML
+    public void opretReolAction() {
         try {
             int nummer = 1;
-            int størrelse = Integer.parseInt(txfStorrelse.getText());
-            int maxAntalHylder = Integer.parseInt(txfAntalHylder.getText());
+            String storrelseText = txfIStorrelse.getText();
+            String antalHylderText = txfAntalHylder.getText();
 
-            if (lager != null) {
-                Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
-                if (reol != null) {
+            if (!storrelseText.isEmpty() && !antalHylderText.isEmpty()) {
+                int størrelse = Integer.parseInt(storrelseText);
+                int maxAntalHylder = Integer.parseInt(antalHylderText);
+
+                if (lager != null) {
+                    Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
                     lager.tilføjReol(reol);
-                    opdaterListView();
-                    System.out.println("Test" + reol);
+                    opdaterListViewReol();
                 }
             }
         } catch (NumberFormatException e) {
@@ -64,7 +74,20 @@ public class HyldeGuiController {
         }
     }
 
-    public void opdaterListView() {
+    @FXML
+    public void opretHyldeAction() {
+        if (reol != null) {
+            Hylde hylde = Controller.opretHylde(reol, 1);
+            reol.tilføjHylde(hylde);
+            opdaterListViewHylde();
+        }
+    }
+    public void opdaterListViewHylde() {
+        if (reol != null) {
+            lvwVaelgHylder.getItems().setAll(reol.getHylder());
+        }
+    }
+    public void opdaterListViewReol() {
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
         }
