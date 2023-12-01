@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +26,7 @@ public class HyldeGuiController {
     private ListView lvwVaelgHylder;
 
     @FXML
-    private ListView lvwVaelgReol;
+    private ListView<Reol> lvwVaelgReol;
 
     @FXML
     private TextField txfAntalHylder;
@@ -43,28 +44,21 @@ public class HyldeGuiController {
     private TextField txfStorrelse;
     private Lager lager;
     private Reol reol;
+    private Reol valgtReol;
 
     public void initialize() {
         lager = LagerGuiController.valgtLager;
-
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
-        }
-    }
-    @FXML
-    public void initializeHylde() {
-        if (reol != null) {
-            lvwVaelgHylder.getItems().setAll(reol.getHylder());
-        }
-    }
-    @FXML
-    public void initializeReol() {
-        lager = LagerGuiController.valgtLager;
-        if (lager != null) {
-            lvwVaelgReol.getItems().setAll(lager.getReoler());
-        }
-    }
 
+
+            lvwVaelgReol.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    reol = newValue;
+                }
+            });
+        }
+    }
 
     @FXML
     public void opretReolAction() {
@@ -73,13 +67,14 @@ public class HyldeGuiController {
             int størrelse = Integer.parseInt(txfIStorrelse.getText());
             int maxAntalHylder = Integer.parseInt(txfAntalHylder.getText());
 
-            if(størrelse<1 || maxAntalHylder <1) setFejlBesked(lblFejlBesked, "størrelse og maxAntalHylder skal være større end nul");
+            if (størrelse < 1 || maxAntalHylder < 1)
+                setFejlBesked(lblFejlBesked, "størrelse og maxAntalHylder skal være større end nul");
 
             if (lager != null) {
                 Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
                 if (reol != null) {
                     opdaterListViewReol();
-                    System.out.println("Test" + reol);
+                    this.reol = reol;
                 }
             }
         } catch (NumberFormatException e) {
@@ -91,10 +86,13 @@ public class HyldeGuiController {
     public void opretHyldeAction() {
         if (reol != null) {
             Hylde hylde = Controller.opretHylde(reol, 1);
-            reol.tilføjHylde(hylde);
-            opdaterListViewHylde();
+            if (hylde != null) {
+                reol.tilføjHylde(hylde);
+                opdaterListViewHylde();
+            }
         }
     }
+
     public void opdaterListViewHylde() {
         if (reol != null) {
             lvwVaelgHylder.getItems().setAll(reol.getHylder());
@@ -107,7 +105,7 @@ public class HyldeGuiController {
         }
     }
 
-    public void setFejlBesked(Label lblFB, String besked){
+    public void setFejlBesked(Label lblFB, String besked) {
         int index = lblFB.getText().indexOf(':');
         lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
         lblFB.setVisible(true);
