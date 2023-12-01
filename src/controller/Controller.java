@@ -17,12 +17,15 @@ public abstract class Controller {
             return lager;
         } else return null;
     }
+
+    /**
+     * Pre: nummer>0, maxAntalHylder>0
+     */
     public static Reol opretReol(Lager lager, int nummer, int størrelse, int maxAntalHylder){
-        if (størrelse > 0){
-            Reol reol = new Reol(lager, nummer, størrelse, maxAntalHylder);
+            int i = lager.getAntalReolerNu();
+            Reol reol = new Reol(lager, i, størrelse, maxAntalHylder);
             lager.tilføjReol(reol);
             return reol;
-        } else return null;
     }
     public static Hylde opretHylde(Reol reol, int nummer){
         if (reol.getHylder().size() < reol.getMaxAntalHylder()){
