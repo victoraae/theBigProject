@@ -28,20 +28,32 @@ public class PaaFyldDestillatGuiController {
     private Button btnPaafyld;
 
     @FXML
+    private Label lblDestillatLiter;
+    @FXML
     private ListView<Destillat> lvwDestillater;
 
     @FXML
     private ListView<Fad> lvwFade;
-
+    @FXML
     private ListView<String> lvwValgteFade;
     @FXML
     private TextField txfAntalLiter;
     private Destillat destillat;
+
     private HashMap<Fad, Double> valgteFade = new HashMap<>();
 
     public void initialize() {
         opdaterListViewDestillat();
         opdaterListViewFad();
+    }
+
+    @FXML
+    public void opdaterDestillatLiter() {
+        Destillat destillat = lvwDestillater.getSelectionModel().getSelectedItem();
+        int index = lblDestillatLiter.getText().indexOf(':');
+        lblDestillatLiter.setText(lblDestillatLiter.getText().substring(0, index + 1) + " " + destillat.getLiter());
+        System.out.println("Test");
+
     }
 
     @FXML
@@ -102,10 +114,10 @@ public class PaaFyldDestillatGuiController {
             return;
         }
         if (valgteFade.keySet().contains(fad)) {
-         setFejlBesked(lblFejlBesked,"Det valgte fad er optaget");
-         return;
+            setFejlBesked(lblFejlBesked, "Det valgte fad er optaget");
+            return;
         } else {
-            valgteFade.put(fad,antalLiter);
+            valgteFade.put(fad, antalLiter);
             lvwOpdaterValgteFade();
         }
     }
