@@ -119,5 +119,25 @@ public class ÅbenVinduer {
 
         stage.showAndWait();
     }
-}
+    public void åbenPaafyldDestillatVindue() {
+        Stage stage = new Stage();
+        URL fxmlFileName = this.getClass().getResource("paaFyldDestillat.fxml");
+        if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(fxmlFileName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.initModality(Modality.APPLICATION_MODAL);
+        Scene scene = new Scene(root);
+        stage.initOwner(parent);
+        stage.setScene(scene);
+        stage.setTitle("Påfyld Destillat");
+
+        stage.showAndWait();
+    }
+    }
+
 
