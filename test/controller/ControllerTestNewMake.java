@@ -35,7 +35,6 @@ class ControllerTestNewMake {
         // TC1
         // Act
         NewMake newMake1 = Controller.opretNewMake("NM1", 60.5, "Snævar", 50, fad, destillat);
-        // burde ikke blive oprettet, da 300L > 100L
 
         // Assert
         List<NewMake> newMakes = Controller.getNewMakes();
