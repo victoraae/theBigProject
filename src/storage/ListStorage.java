@@ -12,6 +12,7 @@ public class ListStorage implements Storage, Serializable {
     private final List<Destillat> destillater = new ArrayList<>();
     private final List<Fad> fade = new ArrayList<>();
     private final List<Korn> korn = new ArrayList<>();
+    private final List<NewMake> newMakes = new ArrayList<>();
 
     public Lager sletLager(Lager lager){
         lagre.remove(lager);
@@ -53,6 +54,13 @@ public class ListStorage implements Storage, Serializable {
 
     public List<Lager> getLagre() {
         return new ArrayList<>(lagre);
+    }
+
+    public void tilføjNewMake(NewMake newMake){
+        this.newMakes.add(newMake);
+    }
+    public List<NewMake> getNewMakes(){
+        return new ArrayList<>(newMakes);
     }
 
 

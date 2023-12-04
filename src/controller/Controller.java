@@ -3,6 +3,7 @@ package controller;
 import model.*;
 
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.List;
 
 public abstract class Controller {
@@ -102,5 +103,14 @@ public abstract class Controller {
         Destillat destillat = new Destillat(dato, alkoholProcent, ansvarlig, liter, antalGange, rygemateriale, korn);
         storage.tilføjDestillat(destillat);
         return destillat;
+    }
+
+    /** Pre: 0 <= alkoholprocent <= 100, liter > 0 */
+    public static NewMake opretNewMake(String navn, double alkoholprocent, String ansvarlig, double liter, Fad fad, Destillat destillat){
+        LocalDate datoForPåfyldning = LocalDate.now();
+        NewMake newMake = new NewMake(navn, datoForPåfyldning, alkoholprocent, ansvarlig, liter, fad, destillat);
+        destillat.tilføjNewMake(newMake);
+        storage.tilføjNewMake(newMake);
+        return newMake;
     }
 }

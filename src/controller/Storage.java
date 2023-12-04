@@ -18,5 +18,6 @@ public interface Storage {
     public List<Fad> getFade();
     public void tilføjKorn(Korn korn);
     public List<Korn> getKorn();
-
+    public void tilføjNewMake(NewMake newMake);
+    public List<NewMake> getNewMakes();
 }
