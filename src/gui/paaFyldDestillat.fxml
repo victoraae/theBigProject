@@ -26,13 +26,13 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ListView fx:id="lvwDistillater" layoutX="7.0" layoutY="145.0" onEditStart="#lvwDistillaterAction" prefHeight="176.0" prefWidth="134.0" />
+      <ListView fx:id="lvwDestillater" layoutX="7.0" layoutY="145.0" onEditStart="#opdaterListViewDestillat" prefHeight="176.0" prefWidth="134.0" />
       <Label layoutX="158.0" layoutY="115.0" text="Fade:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ListView fx:id="lvwFade" layoutX="158.0" layoutY="145.0" onEditStart="#lvwFadeAction" prefHeight="176.0" prefWidth="142.0" />
+      <ListView fx:id="lvwFade" layoutX="158.0" layoutY="145.0" onEditStart="#opdaterListViewFad" prefHeight="176.0" prefWidth="142.0" />
       <TextField fx:id="txfAntalLiter" layoutX="262.0" layoutY="334.0" onAction="#txfAntalLiterAction" prefHeight="25.0" prefWidth="128.0" promptText="Indtast antal liter" />
       <Label layoutX="158.0" layoutY="338.0" text="Antal Liter på fad:" />
       <Button fx:id="btnGem" layoutX="507.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnGemAction" prefHeight="25.0" prefWidth="79.0" text="Gem" />
