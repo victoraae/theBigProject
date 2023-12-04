@@ -122,4 +122,12 @@ public class Lager implements Serializable {
     public int getAntalReolerNu() {
         return ++antalReolerNu;
     }
+
+    public int getPladserTilbage() {
+        return pladserTilbage;
+    }
+
+    public void incPladserTilbage(){
+        pladserTilbage++;
+    }
 }

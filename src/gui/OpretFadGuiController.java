@@ -64,20 +64,32 @@ public class OpretFadGuiController {
         String materiale = txfMateriale.getText();
         String leverandør = txfNavnPaaLeveradoer.getText();
         String oprindLand =  txfOprindelsesland.getText();
-        String tidlIndohld = txfTidligereIndhold.getText();
+        String tidlIndhold = txfTidligereIndhold.getText();
 
         if(materiale.isBlank() ||leverandør.isBlank()||materiale.isBlank() ||materiale.isBlank() ){
             setFejlBesked(lblFejlBesked, "Alle felter skal udfyldes");
             return;
         }
 
+
+        if(hylde==null && !lager.erDerPladsTilFad(størrelse.getStørrelse())){
+            setFejlBesked(lblFejlBesked, "Der er ikke plads på det valgte lager");
+            return;
+        }
+
+        if(hylde!=null && !hylde.erDerPladsTilFad(størrelse.getStørrelse())){
+            setFejlBesked(lblFejlBesked, "Der er ikke plads på den valgte hylde");
+            return;
+        }
+
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-        Fad fad = new Fad(leverandør, oprindLand, materiale, tidlIndohld, størrelse, lager, hylde);
+        Fad fad = new Fad(leverandør, oprindLand, materiale, tidlIndhold, størrelse, lager, hylde);
         alert.setContentText(fad.toString());
         alert.setHeaderText("Bekræft oplysninger");
         alert.showAndWait();
 
-        Controller.opretFad(lager, hylde, leverandør, oprindLand, materiale, tidlIndohld, størrelse);
+        Controller.opretFad(lager, hylde, leverandør, oprindLand, materiale, tidlIndhold, størrelse);
         fortrydAction();
     }
 

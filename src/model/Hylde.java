@@ -14,6 +14,9 @@ public class Hylde implements Serializable {
         this.nummer = nummer;
         this.størrelse = størrelse;
         pladserArray = new boolean[størrelse];
+        for(int i = 0 ; i < pladserArray.length ; i++){
+            pladserArray[i] = true;
+        }
         this.erLedig = true;
         this.reol = reol;
     }
@@ -38,11 +41,8 @@ public class Hylde implements Serializable {
         return pladserArray[index];
     }
 
-    /**
-     *
-     * @return returnerer true hvis fad blev tilføjet, false hvis der ikke er plads på hylden
-     */
-    public boolean tilføjFad(String størrelse) {
+
+    public void tilføjFad(String størrelse) {
         boolean result = false;
 
         if (størrelse.equals("LILLE")) {
@@ -75,7 +75,6 @@ public class Hylde implements Serializable {
                 }
             }
         }
-        return result;
     }
 
     /**
@@ -116,7 +115,7 @@ public class Hylde implements Serializable {
 
     @Override
     public String toString(){
-        String result = "Hylde nr. " + nummer + ", antal pladser: " + størrelse + ", har ledige pladser: " + erLedig + ".";
+        String result = "Hylde nr. " + nummer +  "Reol nr: "+ reol.getNummer() + ", antal pladser: " + størrelse + ", har ledige pladser: " + erLedig + ".";
 
         return result;
     }
