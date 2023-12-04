@@ -44,7 +44,8 @@ public class Main {
         Korn korn = Controller.opretKorn("Evergreen Byg", "Lars Larsen", 2017, "Mark 1", "Ristet lys");
         Controller.opretKorn("Irina Byg", "Keld Keldsen", 2018, "Mark 2", "Ristet mørk");
         Controller.opretDestillat(LocalDate.of(23,4,12),42,"Karsten",20,1,"Weed",korn);
-        Fad fad = Controller.opretFad(lager,hylde,"Karsten","Danmark","Jern","Weed",FadStørrelser.L50);
+        Fad fad = Controller.opretFad(lager,hylde,"Karsten","Danmark","Jern","Weed", FadStørrelser.L50);
+        Controller.opretFad(lager, hylde, "Bobbi","Danmark","Guld","Cherry", FadStørrelser.L250);
 
     }
 }

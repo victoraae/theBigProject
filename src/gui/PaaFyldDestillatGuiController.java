@@ -49,18 +49,22 @@ public class PaaFyldDestillatGuiController {
 
     public void opdaterDestillatLiter() {
         Destillat destillat = lvwDestillater.getSelectionModel().getSelectedItem();
+        this.destillat = destillat;
         int index = lblDestillatLiter.getText().indexOf(':');
         lblDestillatLiter.setText(lblDestillatLiter.getText().substring(0, index + 1) + " " + destillat.getLiter());
     }
 
     public void opdaterFadeAntalLiter(){
+        int index = lblAntalLiterPaaFad.getText().indexOf(':');
+        lblAntalLiterPaaFad.setText(lblAntalLiterPaaFad.getText().substring(0, index + 1) + " " + fadeAntalLiter());
+    }
+
+    public double fadeAntalLiter(){
         double total = 0;
         for(double d : valgteFade.values()){
             total += d;
         }
-
-        int index = lblAntalLiterPaaFad.getText().indexOf(':');
-        lblAntalLiterPaaFad.setText(lblAntalLiterPaaFad.getText().substring(0, index + 1) + " " + total);
+        return total;
     }
 
     @FXML
@@ -71,7 +75,7 @@ public class PaaFyldDestillatGuiController {
     void opdaterValgteFade() {
         ArrayList<String> valgteFade = new ArrayList<>();
         for (Map.Entry<Fad, Double> entry : this.valgteFade.entrySet()) {
-            valgteFade.add(entry.getKey().toString() + ", liter: " + entry.getValue());
+            valgteFade.add(entry.getKey().toStringKort() + ", liter: " + entry.getValue());
         }
         lvwValgteFade.getItems().setAll(valgteFade);
     }
@@ -94,10 +98,24 @@ public class PaaFyldDestillatGuiController {
             setFejlBesked(lblFejlBesked, "Det valgte fad er optaget");
             return;
         }
+        if(fad.getStørrelse().getInt() < antalLiter){
+            setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, tjek fadstørrelse");
+            return;
+        }
+        if(antalLiter<1){
+            setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
+            return;
+        }
+        if(destillat!=null && destillat.getLiter() < antalLiter+fadeAntalLiter()){
+            setFejlBesked(lblFejlBesked, "Der er indtastet for meget påfyldt væske, tjek destillatets antal liter");
+            return;
+        }
+
 
         valgteFade.put(fad, antalLiter);
         opdaterValgteFade();
         opdaterFadeAntalLiter();
+        lblFejlBesked.setVisible(false);
     }
 
     public void setFejlBesked(Label lblFB, String besked) {

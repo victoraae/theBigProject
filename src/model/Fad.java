@@ -80,4 +80,10 @@ public class Fad implements Serializable {
 
         return result;
     }
+
+    public String toStringKort(){
+        String result = "nr: " + nummer +", str: " + størrelse + ", " + lager.getNavn();
+        if (getHylde() != null) result += ", reol: " + hylde.getReol().getNummer();
+        return result;
+    }
 }
