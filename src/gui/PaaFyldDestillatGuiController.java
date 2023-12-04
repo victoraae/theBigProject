@@ -2,6 +2,7 @@ package gui;
 
 import controller.Controller;
 import controller.Storage;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,80 +19,56 @@ import java.util.List;
 import java.util.Map;
 
 public class PaaFyldDestillatGuiController {
-
     @FXML
     private Button btnGem;
-
     @FXML
     private Label lblFejlBesked;
     @FXML
     private Button btnPaafyld;
-
     @FXML
     private Label lblDestillatLiter;
     @FXML
     private ListView<Destillat> lvwDestillater;
-
     @FXML
     private ListView<Fad> lvwFade;
     @FXML
     private ListView<String> lvwValgteFade;
     @FXML
+    private Label lblAntalLiterPaaFad;
+    @FXML
     private TextField txfAntalLiter;
     private Destillat destillat;
-
     private HashMap<Fad, Double> valgteFade = new HashMap<>();
 
     public void initialize() {
-        opdaterListViewDestillat();
-        opdaterListViewFad();
+        lvwFade.getItems().setAll(Controller.getFade());
+        lvwDestillater.getItems().setAll(Controller.getDestillater());
+        ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
+        lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
     }
 
-    @FXML
     public void opdaterDestillatLiter() {
         Destillat destillat = lvwDestillater.getSelectionModel().getSelectedItem();
         int index = lblDestillatLiter.getText().indexOf(':');
         lblDestillatLiter.setText(lblDestillatLiter.getText().substring(0, index + 1) + " " + destillat.getLiter());
-        System.out.println("Test");
+    }
 
+    public void opdaterFadeAntalLiter(){
+        double total = 0;
+        for(double d : valgteFade.values()){
+            total += d;
+        }
+
+        int index = lblAntalLiterPaaFad.getText().indexOf(':');
+        lblAntalLiterPaaFad.setText(lblAntalLiterPaaFad.getText().substring(0, index + 1) + " " + total);
     }
 
     @FXML
-    void btnGemAction() {
+    void gemAction() {
 
     }
 
-    @FXML
-    void lblFejlBeskedAction() {
-
-    }
-
-    @FXML
-    void lvwDistillaterAction() {
-
-    }
-
-    @FXML
-    void lvwFadeAction() {
-
-    }
-
-    @FXML
-    void txfAntalLiterAction() {
-
-    }
-
-    public void opdaterListViewFad() {
-        lvwFade.getItems().setAll(Controller.getFade());
-    }
-
-
-    public void opdaterListViewDestillat() {
-        lvwDestillater.getItems().setAll(Controller.getDestillater());
-    }
-
-    @FXML
-    void lvwOpdaterValgteFade() {
+    void opdaterValgteFade() {
         ArrayList<String> valgteFade = new ArrayList<>();
         for (Map.Entry<Fad, Double> entry : this.valgteFade.entrySet()) {
             valgteFade.add(entry.getKey().toString() + ", liter: " + entry.getValue());
@@ -100,7 +77,7 @@ public class PaaFyldDestillatGuiController {
     }
 
     @FXML
-    void btnPaaFyldAction() {
+    void paaFyldAction() {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
         if (fad == null) {
             setFejlBesked(lblFejlBesked, "Vælg et fad");
@@ -116,10 +93,11 @@ public class PaaFyldDestillatGuiController {
         if (valgteFade.keySet().contains(fad)) {
             setFejlBesked(lblFejlBesked, "Det valgte fad er optaget");
             return;
-        } else {
-            valgteFade.put(fad, antalLiter);
-            lvwOpdaterValgteFade();
         }
+
+        valgteFade.put(fad, antalLiter);
+        opdaterValgteFade();
+        opdaterFadeAntalLiter();
     }
 
     public void setFejlBesked(Label lblFB, String besked) {
