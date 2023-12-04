@@ -90,6 +90,10 @@ public abstract class Controller {
         return storage.getFade();
     }
 
+    public static List<NewMake> getNewMakes(){
+        return storage.getNewMakes();
+    }
+
 
     public static Korn opretKorn(String sort, String bondemand, int år, String mark, String maltningsprocess){
         Korn korn = new Korn(sort, bondemand, år, mark, maltningsprocess);
