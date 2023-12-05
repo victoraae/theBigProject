@@ -55,4 +55,9 @@ public class NewMake implements Serializable {
         mængder.add(mængde);
         liter += mængde.getMængde();
     }
+
+    @Override
+    public String toString() {
+        return "NewMake: " + ", mængder: "+  mængder;
+    }
 }

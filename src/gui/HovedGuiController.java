@@ -38,5 +38,9 @@ public class HovedGuiController {
     public void åbenLagerVindueAction() {
         Main.åbenVinduer.åbenLagerVindue();
     }
+    @FXML
+    public void åbenNewMakesVindueAction() {
+        Main.åbenVinduer.åbenNewMakeVindue();
+    }
 }
 

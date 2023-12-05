@@ -113,10 +113,12 @@ public abstract class Controller {
     public static void paafyldDestillat(ArrayList<Mængde> mængder, Fad fad) {
         NewMake newMake = new NewMake("Temp", LocalDate.now(), 2.1, "Temp", fad);
 
+
         for(Mængde mængde : mængder){
             mængde.setNewMake(newMake);
-            System.out.println("TEST");
+            newMake.tilføjMængde(mængde);
         }
+        storage.tilføjNewMake(newMake);
     }
 
 //    /** Pre: 0 <= alkoholprocent <= 100, liter > 0 */

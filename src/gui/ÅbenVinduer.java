@@ -139,6 +139,27 @@ public class ÅbenVinduer {
 
         stage.showAndWait();
     }
+
+    public void åbenNewMakeVindue() {
+        Stage stage = new Stage();
+        URL fxmlFileName = this.getClass().getResource("listeNewmakes.fxml");
+        if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
+        stage.setResizable(false);
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(fxmlFileName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.initModality(Modality.APPLICATION_MODAL);
+        Scene scene = new Scene(root);
+        stage.initOwner(parent);
+        stage.setScene(scene);
+        stage.setTitle("Liste over newmakes");
+
+        stage.showAndWait();
+    }
 }
+
 
 
