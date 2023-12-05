@@ -110,9 +110,11 @@ public abstract class Controller {
     }
 
     /** Pre: 0 <= alkoholprocent <= 100, liter > 0 */
-    public static NewMake opretNewMake(String navn, double alkoholprocent, String ansvarlig, double liter, Fad fad) {
+    public static NewMake opretNewMake(String navn, double alkoholprocent, String ansvarlig, double liter, Fad fad, Destillat destillat) {
         LocalDate datoForPåfyldning = LocalDate.now();
-        NewMake newMake = new NewMake(navn, datoForPåfyldning, alkoholprocent, ansvarlig, liter, fad);
+        NewMake newMake = new NewMake(navn, datoForPåfyldning, alkoholprocent, ansvarlig, fad);
+        Mængde mængde = new Mængde(liter, newMake, destillat);
+        newMake.tilføjMængde(mængde);
         storage.tilføjNewMake(newMake);
         return newMake;
     }

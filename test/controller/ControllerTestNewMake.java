@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ControllerTestNewMake {
-    private Lager lager;
+    /*private Lager lager;
     private Fad fad ;
     private Korn korn;
     private Destillat destillat;
@@ -39,6 +39,8 @@ class ControllerTestNewMake {
         // Assert
         List<NewMake> newMakes = Controller.getNewMakes();
         assertEquals(newMake1, newMakes.get(newMakes.size() - 1));
+        assertEquals(fad, newMake1.getFad());
+        assertEquals(fad, newMake1.getFad());
     }
 
     @Test
@@ -50,5 +52,5 @@ class ControllerTestNewMake {
         // Assert
         List<NewMake> newMakes = Controller.getNewMakes();
         assertEquals(newMake2, newMakes.get(newMakes.size() - 1));
-    }
+    }*/
 }

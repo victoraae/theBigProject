@@ -15,8 +15,6 @@ public class Destillat implements Serializable {
     private String rygemateriale;
     //association 0..* --> 1 korn
     private Korn korn;
-    //association 1 --> 0..* newmake
-    private List<NewMake> newMakes = new ArrayList<>();
 
     public Destillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn) {
         this.dato = dato;

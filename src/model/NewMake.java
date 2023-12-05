@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewMake implements Serializable {
     private String navn;
@@ -10,13 +12,13 @@ public class NewMake implements Serializable {
     private final String ansvarlig;
     private double liter;
     private final Fad fad;
+    private List<Mængde> mængder = new ArrayList<>();
 
-    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, double liter, Fad fad) {
+    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Fad fad) {
         this.navn = navn;
         this.datoForPåfyldning = datoForPåfyldning;
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
-        this.liter = liter;
         this.fad = fad;
     }
 
@@ -45,4 +47,12 @@ public class NewMake implements Serializable {
         return fad;
     }
 
+    public List<Mængde> getMængder() {
+        return new ArrayList<>(mængder);
+    }
+
+    public void tilføjMængde(Mængde mængde){
+        mængder.add(mængde);
+        liter += mængde.getMængde();
+    }
 }
