@@ -18,7 +18,7 @@ public class ÅbenVinduer {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("opretDestillat.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = null;
         try {
             root = FXMLLoader.load(fxmlFileName);
@@ -38,7 +38,7 @@ public class ÅbenVinduer {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("kornVindue.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = null;
         try {
             root = FXMLLoader.load(fxmlFileName);
@@ -58,7 +58,7 @@ public class ÅbenVinduer {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("opretFad.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = null;
         try {
             root = FXMLLoader.load(fxmlFileName);
@@ -79,7 +79,7 @@ public class ÅbenVinduer {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("opretLager.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = null;
         try {
             root = FXMLLoader.load(fxmlFileName);
@@ -104,7 +104,7 @@ public class ÅbenVinduer {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("opretHylde.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = null;
         try {
             root = FXMLLoader.load(fxmlFileName);
@@ -119,11 +119,12 @@ public class ÅbenVinduer {
 
         stage.showAndWait();
     }
+
     public void åbenPaafyldDestillatVindue() {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource("paaFyldDestillat.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = null;
         try {
             root = FXMLLoader.load(fxmlFileName);
@@ -138,6 +139,6 @@ public class ÅbenVinduer {
 
         stage.showAndWait();
     }
-    }
+}
 
 

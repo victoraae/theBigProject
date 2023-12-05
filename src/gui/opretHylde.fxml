@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HyldeGuiController">
    <children>
@@ -26,5 +27,10 @@
       <ListView fx:id="lvwVaelgHylder" layoutX="451.0" layoutY="138.0" prefHeight="265.0" prefWidth="200.0" />
       <Label layoutX="453.0" layoutY="117.0" text="Vælg hylder" />
       <Label fx:id="lblFejlBesked" layoutX="14.0" layoutY="416.0" prefHeight="17.0" prefWidth="321.0" text="FejlBesked:" textFill="RED" visible="false" />
+      <Label layoutX="15.0" layoutY="47.0" prefHeight="37.0" prefWidth="171.0" text="Opret hylde">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

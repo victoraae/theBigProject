@@ -21,25 +21,25 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Label layoutX="7.0" layoutY="115.0" text="Destillater:">
+      <Label layoutX="7.0" layoutY="115.0" text="Fade:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ListView fx:id="lvwDestillater" layoutX="7.0" layoutY="145.0" prefHeight="176.0" prefWidth="134.0" />
-      <Label layoutX="158.0" layoutY="115.0" text="Fade:">
+      <ListView fx:id="lvwFade" layoutX="7.0" layoutY="145.0" prefHeight="176.0" prefWidth="134.0" />
+      <Label layoutX="158.0" layoutY="115.0" text="Destillater:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ListView fx:id="lvwFade" layoutX="158.0" layoutY="145.0" prefHeight="176.0" prefWidth="142.0" />
+      <ListView fx:id="lvwDestillater" layoutX="158.0" layoutY="145.0" prefHeight="176.0" prefWidth="142.0" />
       <TextField fx:id="txfAntalLiter" layoutX="262.0" layoutY="334.0" prefHeight="25.0" prefWidth="128.0" promptText="Indtast antal liter" />
       <Label layoutX="158.0" layoutY="338.0" text="Antal Liter på fad:" />
       <Button fx:id="btnGem" layoutX="507.0" layoutY="355.0" mnemonicParsing="false" onAction="#gemAction" prefHeight="25.0" prefWidth="79.0" text="Gem" />
       <Label fx:id="lblFejlBesked" layoutX="7.0" layoutY="400.0" prefHeight="17.0" prefWidth="567.0" text="FejlBesked:" textFill="#f80000" visible="false" />
       <ListView layoutX="-375.0" layoutY="-341.0" prefHeight="200.0" prefWidth="200.0" />
-      <ListView fx:id="lvwValgteFade" layoutX="337.0" layoutY="142.0" prefHeight="183.0" prefWidth="251.0" />
-      <Label layoutX="337.0" layoutY="115.0" prefHeight="27.0" prefWidth="106.0" text="Valgte fade">
+      <ListView fx:id="lvwMængder" layoutX="337.0" layoutY="142.0" prefHeight="183.0" prefWidth="251.0" />
+      <Label layoutX="337.0" layoutY="115.0" prefHeight="27.0" prefWidth="106.0" text="Mængder:">
          <font>
             <Font size="20.0" />
          </font>

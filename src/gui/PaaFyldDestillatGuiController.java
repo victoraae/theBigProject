@@ -6,10 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.*;
 import storage.ListStorage;
 
@@ -32,59 +29,53 @@ public class PaaFyldDestillatGuiController {
     @FXML
     private ListView<Fad> lvwFade;
     @FXML
-    private ListView<String> lvwValgteFade;
+    private ListView<Mængde> lvwMængder;
     @FXML
     private Label lblAntalLiterPaaFad;
     @FXML
     private TextField txfAntalLiter;
     private Destillat destillat;
-    private HashMap<Fad, Double> valgteFade = new HashMap<>();
+    private Fad fad;
+    private ArrayList<Mængde> mængder = new ArrayList<>();
 
     public void initialize() {
         lvwFade.getItems().setAll(Controller.getFade());
         lvwDestillater.getItems().setAll(Controller.getDestillater());
-        ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
-        lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
+       ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
+       lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
+
+        ChangeListener<Fad> listener2 = (ov, o, n) -> this.opdaterValgtFad();
+        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener2);
     }
 
-    public void opdaterDestillatLiter() {
-        Destillat destillat = lvwDestillater.getSelectionModel().getSelectedItem();
-        this.destillat = destillat;
-        int index = lblDestillatLiter.getText().indexOf(':');
-        lblDestillatLiter.setText(lblDestillatLiter.getText().substring(0, index + 1) + " " + destillat.getLiter());
+    private void opdaterValgtFad() {
+        fad = lvwFade.getSelectionModel().getSelectedItem();
     }
 
-    public void opdaterFadeAntalLiter(){
-        int index = lblAntalLiterPaaFad.getText().indexOf(':');
-        lblAntalLiterPaaFad.setText(lblAntalLiterPaaFad.getText().substring(0, index + 1) + " " + fadeAntalLiter());
+    private void opdaterDestillatLiter() {
+        destillat = lvwDestillater.getSelectionModel().getSelectedItem();
     }
 
-    public double fadeAntalLiter(){
-        double total = 0;
-        for(double d : valgteFade.values()){
-            total += d;
-        }
-        return total;
-    }
 
     @FXML
     void gemAction() {
-
+        Controller.paafyldDestillat(mængder, fad);
     }
 
-    void opdaterValgteFade() {
-        ArrayList<String> valgteFade = new ArrayList<>();
-        for (Map.Entry<Fad, Double> entry : this.valgteFade.entrySet()) {
-            valgteFade.add(entry.getKey().toStringKort() + ", liter: " + entry.getValue());
-        }
-        lvwValgteFade.getItems().setAll(valgteFade);
+    void opdaterLvwMængder() {
+        lvwMængder.getItems().setAll(mængder);
     }
 
     @FXML
     void paaFyldAction() {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+        Destillat destillat1 = lvwDestillater.getSelectionModel().getSelectedItem();
         if (fad == null) {
             setFejlBesked(lblFejlBesked, "Vælg et fad");
+            return;
+        }
+        if(destillat1==null) {
+            setFejlBesked(lblFejlBesked, "Vælg et destillat");
             return;
         }
         double antalLiter = 0;
@@ -94,27 +85,27 @@ public class PaaFyldDestillatGuiController {
             setFejlBesked(lblFejlBesked, "Indtast et gyldigt tal");
             return;
         }
-        if (valgteFade.keySet().contains(fad)) {
-            setFejlBesked(lblFejlBesked, "Det valgte fad er optaget");
-            return;
-        }
         if(fad.getStørrelse().getInt() < antalLiter){
             setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, tjek fadstørrelse");
             return;
         }
-        if(antalLiter<1){
+        if(antalLiter<=0){
             setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-        if(destillat!=null && destillat.getLiter() < antalLiter+fadeAntalLiter()){
-            setFejlBesked(lblFejlBesked, "Der er indtastet for meget påfyldt væske, tjek destillatets antal liter");
+        if(destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()){
+            setFejlBesked(lblFejlBesked, "Der er ikke nok destillats væske, tjek destillats antal liter");
+            return;
+        }
+        if(fad.getStørrelse().getInt() < sumLiter() + antalLiter){
+            setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
 
 
-        valgteFade.put(fad, antalLiter);
-        opdaterValgteFade();
-        opdaterFadeAntalLiter();
+
+        mængder.add(new Mængde(antalLiter, destillat1));
+        opdaterLvwMængder();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
     }
@@ -123,6 +114,23 @@ public class PaaFyldDestillatGuiController {
         int index = lblFB.getText().indexOf(':');
         lblFB.setText(lblFB.getText().substring(0, index + 1) + " " + besked);
         lblFB.setVisible(true);
+    }
+
+    public ArrayList<Destillat> getDestillaterFraMængder(){
+        ArrayList<Destillat> result = new ArrayList<>();
+        for(Mængde mængde : mængder){
+            result.add(mængde.getDestillat());
+        }
+        return result;
+    }
+
+    public double sumLiter(){
+        double result = 0;
+
+        for(Mængde mængde : mængder){
+            result += mængde.getMængde();
+        }
+        return result;
     }
 }
 

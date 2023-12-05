@@ -5,9 +5,8 @@ public class Mængde {
     private NewMake newMake;
     private Destillat destillat;
 
-    public Mængde(double mængde, NewMake newMake, Destillat destillat) {
+    public Mængde(double mængde, Destillat destillat) {
         this.mængde = mængde;
-        this.newMake = newMake;
         this.destillat = destillat;
     }
 
@@ -21,5 +20,16 @@ public class Mængde {
 
     public Destillat getDestillat() {
         return destillat;
+    }
+
+    public void setNewMake(NewMake newMake) {
+        this.newMake = newMake;
+    }
+
+    @Override
+    public String toString() {//TODO:: lav en navn variabel eller id i destillat klasse
+        String result = "Mængde: " + mængde + ", destillat: " + destillat.getDato();
+        if(newMake!=null) result += ", newMake: " + newMake.getNavn();
+        return result;
     }
 }

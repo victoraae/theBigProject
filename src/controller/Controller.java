@@ -4,6 +4,7 @@ import model.*;
 
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Controller {
@@ -109,13 +110,22 @@ public abstract class Controller {
         return destillat;
     }
 
-    /** Pre: 0 <= alkoholprocent <= 100, liter > 0 */
-    public static NewMake opretNewMake(String navn, double alkoholprocent, String ansvarlig, double liter, Fad fad, Destillat destillat) {
-        LocalDate datoForPåfyldning = LocalDate.now();
-        NewMake newMake = new NewMake(navn, datoForPåfyldning, alkoholprocent, ansvarlig, fad);
-        Mængde mængde = new Mængde(liter, newMake, destillat);
-        newMake.tilføjMængde(mængde);
-        storage.tilføjNewMake(newMake);
-        return newMake;
+    public static void paafyldDestillat(ArrayList<Mængde> mængder, Fad fad) {
+        NewMake newMake = new NewMake("Temp", LocalDate.now(), 2.1, "Temp", fad);
+
+        for(Mængde mængde : mængder){
+            mængde.setNewMake(newMake);
+            System.out.println("TEST");
+        }
     }
+
+//    /** Pre: 0 <= alkoholprocent <= 100, liter > 0 */
+//    public static NewMake opretNewMake(String navn, double alkoholprocent, String ansvarlig, double liter, Fad fad, Destillat destillat) {
+//        LocalDate datoForPåfyldning = LocalDate.now();
+//        NewMake newMake = new NewMake(navn, datoForPåfyldning, alkoholprocent, ansvarlig, fad);
+//        Mængde mængde = new Mængde(liter, newMake, destillat);
+//        newMake.tilføjMængde(mængde);
+//        storage.tilføjNewMake(newMake);
+//        return newMake;
+//    }
 }

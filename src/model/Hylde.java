@@ -14,7 +14,7 @@ public class Hylde implements Serializable {
         this.nummer = nummer;
         this.størrelse = størrelse;
         pladserArray = new boolean[størrelse];
-        for(int i = 0 ; i < pladserArray.length ; i++){
+        for (int i = 0; i < pladserArray.length; i++) {
             pladserArray[i] = true;
         }
         this.erLedig = true;
@@ -56,7 +56,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("MELLEM")) {
             for (int i = 0; i < pladserArray.length - 1 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && (i+1)%2==0) {
+                if (pladserArray[i] && pladserArray[i + 1] && (i + 1) % 2 == 0) {
                     result = true;
                     pladserArray[i] = false;
                     pladserArray[i + 1] = false;
@@ -66,7 +66,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("STOR")) {
             for (int i = 0; i < pladserArray.length - 3 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i+1)%4==0) {
+                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i + 1) % 4 == 0) {
                     result = true;
                     pladserArray[i] = false;
                     pladserArray[i + 1] = false;
@@ -93,7 +93,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("MELLEM")) {
             for (int i = 0; i < pladserArray.length - 1 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && (i+1)%2==0) {
+                if (pladserArray[i] && pladserArray[i + 1] && (i + 1) % 2 == 0) { //TODO:: virker ikke...
                     result = true;
                 }
             }
@@ -101,7 +101,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("STOR")) {
             for (int i = 0; i < pladserArray.length - 3 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i+1)%4==0) {
+                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i + 1) % 4 == 0) {//TODO:: virker måske heller ikke
                     result = true;
                 }
             }
@@ -114,8 +114,8 @@ public class Hylde implements Serializable {
     }
 
     @Override
-    public String toString(){
-        String result = "Hylde nr. " + nummer +  "Reol nr: "+ reol.getNummer() + ", antal pladser: " + størrelse + ", har ledige pladser: " + erLedig + ".";
+    public String toString() {
+        String result = "Hylde nr. " + nummer + " Reol nr: " + reol.getNummer() + ", antal pladser: " + størrelse + ", har ledige pladser: " + erLedig + ".";
 
         return result;
     }

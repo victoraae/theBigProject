@@ -26,9 +26,9 @@
       <TextArea fx:id="txaMaltningsprocess" layoutX="416.0" layoutY="380.0" prefHeight="129.0" prefWidth="173.0" promptText="Beskriv maltningsprocessen" />
       <Button fx:id="btnOpretKorn" layoutX="515.0" layoutY="522.0" mnemonicParsing="false" onAction="#opretKornAction" prefHeight="25.0" prefWidth="74.0" text="Opret" />
       <Label layoutX="20.0" layoutY="281.0" prefHeight="17.0" prefWidth="134.0" text="Vælg kornsort fra listen" />
-      <Label layoutX="184.0" layoutY="151.0" text="Vælg, eller opret ny kornsort">
+      <Label layoutX="110.0" layoutY="141.0" text="Vælg, eller opret ny kornsort">
          <font>
-            <Font size="24.0" />
+            <Font size="37.0" />
          </font>
       </Label>
       <Label fx:id="lblFBKorn" layoutX="21.0" layoutY="567.0" prefHeight="17.0" prefWidth="403.0" text="Fejlbesked:" textFill="#d00a0a" visible="false" />

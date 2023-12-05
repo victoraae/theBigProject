@@ -18,7 +18,7 @@ public class HovedVindue extends Application {
     public void start(Stage stage) throws Exception {
         URL fxmlFileName = this.getClass().getResource("hovedOversigt.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
-
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(fxmlFileName);
         stage.setMinWidth(root.minWidth(-1));
         stage.setMinHeight(root.minHeight(-1));
