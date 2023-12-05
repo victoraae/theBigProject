@@ -56,9 +56,6 @@ public class Destillat implements Serializable {
         this.antalGange = antalGange;
     }
 
-    public void tilføjNewMake(NewMake newMake){
-        this.newMakes.add(newMake);
-    }
 
     @Override
     public String toString(){

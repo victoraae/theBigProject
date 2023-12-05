@@ -10,16 +10,14 @@ public class NewMake implements Serializable {
     private final String ansvarlig;
     private double liter;
     private final Fad fad;
-    private final Destillat destillat;
 
-    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, double liter, Fad fad, Destillat destillat) {
+    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, double liter, Fad fad) {
         this.navn = navn;
         this.datoForPåfyldning = datoForPåfyldning;
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
         this.liter = liter;
         this.fad = fad;
-        this.destillat = destillat;
     }
 
     // getter metoder laves på alle attributter, da de er alle vigtige for historiefortællingen
@@ -47,7 +45,4 @@ public class NewMake implements Serializable {
         return fad;
     }
 
-    public Destillat getDesillat() {
-        return destillat;
-    }
 }
