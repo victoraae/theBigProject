@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         åbenVinduer = new ÅbenVinduer();
-        Storage storage = ListStorage.læsStorage();
+        Storage storage = null; //ListStorage.læsStorage();
         
         boolean flag = storage==null;
         if (flag) {
