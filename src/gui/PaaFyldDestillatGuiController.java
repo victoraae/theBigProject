@@ -116,6 +116,7 @@ public class PaaFyldDestillatGuiController {
         opdaterValgteFade();
         opdaterFadeAntalLiter();
         lblFejlBesked.setVisible(false);
+        txfAntalLiter.clear();
     }
 
     public void setFejlBesked(Label lblFB, String besked) {
