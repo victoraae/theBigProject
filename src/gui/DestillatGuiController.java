@@ -54,18 +54,18 @@ public class DestillatGuiController {
             alko = Double.parseDouble(txfAlkoholProcent.getText());
             antalLiter = Integer.parseInt(txfAntalLiter.getText());
         }catch(NumberFormatException ex){
-            setFejlBesked(lblFBDestillat, "Forkert tal format i alkohol, eller antal liter");
+            HovedVindue.setFejlBesked(lblFBDestillat, "Forkert tal format i alkohol, eller antal liter");
             return;
         }
         String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
         String rygeMateriale = txfRygeMateriale.getText();
 
         if(kornsort==null) {
-            setFejlBesked(lblFBDestillat, "vælg kornsort");
+            HovedVindue.setFejlBesked(lblFBDestillat, "vælg kornsort");
             return;
         }
         if(dato.isAfter(LocalDate.now())){
-            setFejlBesked(lblFBDestillat, "dato skal være i dag eller tidligere");
+            HovedVindue.setFejlBesked(lblFBDestillat, "dato skal være i dag eller tidligere");
             return;
         }
 
@@ -91,11 +91,5 @@ public class DestillatGuiController {
     public void åbenKornVindueAction(){
         Main.åbenVinduer.åbenKornVindue();
         if(kornsort!=null) txfValgtKorn.setText(kornsort.toString());
-    }
-
-    public void setFejlBesked(Label lblFB, String besked){
-        int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index+1) + " " + besked);
-        lblFB.setVisible(true);
     }
 }

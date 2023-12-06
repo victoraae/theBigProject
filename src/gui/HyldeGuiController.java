@@ -74,7 +74,7 @@ public class HyldeGuiController {
             int maxAntalHylder = Integer.parseInt(txfAntalHylder.getText());
 
             if (størrelse < 1 || maxAntalHylder < 1)
-                setFejlBesked(lblFejlBesked, "størrelse og maxAntalHylder skal være større end nul");
+                HovedVindue.setFejlBesked(lblFejlBesked, "størrelse og maxAntalHylder skal være større end nul");
 
             if (lager != null) {
                 Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
@@ -108,12 +108,6 @@ public class HyldeGuiController {
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
         }
-    }
-
-    public void setFejlBesked(Label lblFB, String besked) {
-        int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
-        lblFB.setVisible(true);
     }
 
     public void btnLukAction() {

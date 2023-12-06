@@ -5,9 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.control.*;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.NoSuchElementException;
@@ -26,6 +25,15 @@ public class HovedVindue extends Application {
         stage.setScene(scene);
         ÅbenVinduer.setParent(stage);
         stage.show();
+    }
+
+    /**
+     * En hjælpe metode de andre klasser kan bruge til at sætte fejlbesked i labels
+     */
+    public static void setFejlBesked(Label lblFB, String besked){
+        int index = lblFB.getText().indexOf(':');
+        lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
+        lblFB.setVisible(true);
     }
 }
 

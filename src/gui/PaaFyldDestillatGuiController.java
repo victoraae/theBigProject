@@ -74,34 +74,34 @@ public class PaaFyldDestillatGuiController {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
         Destillat destillat1 = lvwDestillater.getSelectionModel().getSelectedItem();
         if (fad == null) {
-            setFejlBesked(lblFejlBesked, "Vælg et fad");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
             return;
         }
         if(destillat1==null) {
-            setFejlBesked(lblFejlBesked, "Vælg et destillat");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et destillat");
             return;
         }
         double antalLiter = 0;
         try {
             antalLiter = Double.parseDouble(txfAntalLiter.getText());
         } catch (NumberFormatException e) {
-            setFejlBesked(lblFejlBesked, "Indtast et gyldigt tal");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Indtast et gyldigt tal");
             return;
         }
         if(fad.getStørrelse().getInt() < antalLiter){
-            setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, tjek fadstørrelse");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, tjek fadstørrelse");
             return;
         }
         if(antalLiter<=0){
-            setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
         if(destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()){
-            setFejlBesked(lblFejlBesked, "Der er ikke nok destillats væske, tjek destillats antal liter");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok destillats væske, tjek destillats antal liter");
             return;
         }
         if(fad.getStørrelse().getInt() < sumLiter() + antalLiter){
-            setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
 
@@ -111,12 +111,6 @@ public class PaaFyldDestillatGuiController {
         opdaterLvwMængder();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
-    }
-
-    public void setFejlBesked(Label lblFB, String besked) {
-        int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index + 1) + " " + besked);
-        lblFB.setVisible(true);
     }
 
     public ArrayList<Destillat> getDestillaterFraMængder(){
