@@ -35,6 +35,10 @@ public class PaaFyldDestillatGuiController {
     private Label lblAntalLiterPaaFad;
     @FXML
     private TextField txfAntalLiter;
+    @FXML
+    private TextField txfAnsvarligNavn;
+    @FXML
+    private TextField txfNewMakeNavn;
     private Destillat destillat;
     private Fad fad;
     private ArrayList<Mængde> mængder = new ArrayList<>();
@@ -42,8 +46,8 @@ public class PaaFyldDestillatGuiController {
     public void initialize() {
         lvwFade.getItems().setAll(Controller.getFade());
         lvwDestillater.getItems().setAll(Controller.getDestillater());
-       ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
-       lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
+        ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
+        lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
 
         ChangeListener<Fad> listener2 = (ov, o, n) -> this.opdaterValgtFad();
         lvwFade.getSelectionModel().selectedItemProperty().addListener(listener2);
@@ -60,7 +64,19 @@ public class PaaFyldDestillatGuiController {
 
     @FXML
     void gemAction() {
-        Controller.paafyldDestillat(mængder, fad);
+        String navn = txfNewMakeNavn.getText().trim();
+        String ansvarlig = txfAnsvarligNavn.getText().trim();
+
+        if (navn.isBlank()){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Navn på New Make kan ikke være tom");
+            return;
+        }
+
+        if (ansvarlig.isBlank()){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
+            return;
+        }
+        Controller.paafyldDestillat(navn, ansvarlig, mængder, fad);
         Stage stage = (Stage) btnGem.getScene().getWindow();
         stage.close();
     }
@@ -106,7 +122,6 @@ public class PaaFyldDestillatGuiController {
         }
 
 
-
         mængder.add(new Mængde(antalLiter, destillat1));
         opdaterLvwMængder();
         lblFejlBesked.setVisible(false);
@@ -115,16 +130,16 @@ public class PaaFyldDestillatGuiController {
 
     public ArrayList<Destillat> getDestillaterFraMængder(){
         ArrayList<Destillat> result = new ArrayList<>();
-        for(Mængde mængde : mængder){
+        for (Mængde mængde : mængder) {
             result.add(mængde.getDestillat());
         }
         return result;
     }
 
-    public double sumLiter(){
+    public double sumLiter() {
         double result = 0;
 
-        for(Mængde mængde : mængder){
+        for (Mængde mængde : mængder) {
             result += mængde.getMængde();
         }
         return result;
