@@ -53,27 +53,54 @@ public class LagerGuiController {
 
     @FXML
     private void btnGemAction() {
-        if (!txfLagerNavn.getText().isEmpty() && !txfAdresse.getText().isEmpty() &&
-                !txfKapacitet.getText().isEmpty() && !txfStørrelse.getText().isEmpty() &&
-                !txfMaksReoler.getText().isEmpty()) {
-            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-            dialog.setContentText("KVITTERING:\n" + "--------------\n" + "Lagernavn: " + txfLagerNavn.getText() + "\nadresse: "
-                    + txfAdresse.getText() + "\nstørrelse pr. m^2: " + txfKapacitet.getText() + "\npladser på lager: " + txfStørrelse.getText() + "\nmaksimale antaler reoler: " + txfMaksReoler.getText() + "\n--------------");
-            dialog.showAndWait();
-            dialog.setHeaderText("Bekræft oplysninger:");
-            dialog.setTitle("Er du sikker?");
-            double størrelse = Double.parseDouble(txfStørrelse.getText());
-            int kapacitet = Integer.parseInt(txfKapacitet.getText());
-            int maxAntalHylder = Integer.parseInt(txfMaksReoler.getText());
+        try {
+            if (!txfLagerNavn.getText().isEmpty() && !txfAdresse.getText().isEmpty() &&
+                    !txfKapacitet.getText().isEmpty() && !txfStørrelse.getText().isEmpty() &&
+                    !txfMaksReoler.getText().isEmpty()) {
 
+                double størrelse;
+                int kapacitet, maxAntalHylder;
 
-            Lager lager = Controller.opretLager(txfLagerNavn.getText(), txfAdresse.getText(), størrelse, kapacitet, maxAntalHylder);
+                try {
+                    størrelse = Double.parseDouble(txfStørrelse.getText());
+                    kapacitet = Integer.parseInt(txfKapacitet.getText());
+                    maxAntalHylder = Integer.parseInt(txfMaksReoler.getText());
+                } catch (NumberFormatException ex) {
+                    setFejlBesked(lblFejlBesked, "Størrelse, kapacitet og antal reoler skal være numeriske værdier");
+                    return;
+                }
 
-            opdaterListView();
-        } else {
-         setFejlBesked(lblFejlBesked,"Venligst udfyld alle felterne før du fortsætter");
+                if (!txfLagerNavn.getText().matches(".*[a-zA-Z]+.*")) {
+                    setFejlBesked(lblFejlBesked, "Lagernavnet skal indeholde bogstaver");
+                    return;
+                }
+
+                if (!txfAdresse.getText().matches(".*[a-zA-Z]+.*")) {
+                    setFejlBesked(lblFejlBesked, "Adressen skal indeholde bogstaver");
+                    return;
+                }
+
+                Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+                dialog.setContentText("KVITTERING:\n" + "--------------\n" + "Lagernavn: " + txfLagerNavn.getText() + "\nadresse: "
+                        + txfAdresse.getText() + "\nstørrelse pr. m^2: " + txfKapacitet.getText() + "\npladser på lager: " + txfStørrelse.getText() + "\nmaksimale antaler reoler: " + txfMaksReoler.getText() + "\n--------------");
+                dialog.showAndWait();
+                dialog.setHeaderText("Bekræft oplysninger:");
+                dialog.setTitle("Er du sikker?");
+
+                Lager lager = Controller.opretLager(txfLagerNavn.getText(), txfAdresse.getText(), størrelse, kapacitet, maxAntalHylder);
+
+                opdaterListView();
+
+            } else {
+                setFejlBesked(lblFejlBesked, "Venligst udfyld alle felterne før du fortsætter");
+            }
+        } catch (NumberFormatException e) {
+            setFejlBesked(lblFejlBesked, "Størrelse, kapacitet og antal reoler skal være numeriske værdier");
+        } catch (Exception e) {
+            setFejlBesked(lblFejlBesked, "Lagernavn og adresse skal indeholde bogstaver");
         }
     }
+
 
     @FXML
     public void btnÅbenHylde() {
@@ -81,6 +108,7 @@ public class LagerGuiController {
             lblFejlBesked.setVisible(true);
             setFejlBesked(lblFejlBesked, "Du har ikke valgt noget lager");
         } else {
+            lblFejlBesked.setVisible(false);
             Main.åbenVinduer.åbenHyldeVindue();
         }
     }

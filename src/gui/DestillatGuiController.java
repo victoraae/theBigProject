@@ -43,53 +43,66 @@ public class DestillatGuiController {
     @FXML
     private Button btnDestillatLuk;
 
-     public static Korn kornsort;
+    public static Korn kornsort;
 
     @FXML
-    public void opretDestillatAction(){
-        LocalDate dato = dateSelector.getValue();
-        double alko = 0;
-        int antalLiter = 0;
+    public void opretDestillatAction() {
         try {
+            LocalDate dato = dateSelector.getValue();
+            double alko = 0;
+            int antalLiter = 0;
             alko = Double.parseDouble(txfAlkoholProcent.getText());
             antalLiter = Integer.parseInt(txfAntalLiter.getText());
-        }catch(NumberFormatException ex){
-            HovedVindue.setFejlBesked(lblFBDestillat, "Forkert tal format i alkohol, eller antal liter");
-            return;
-        }
-        String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
-        String rygeMateriale = txfRygeMateriale.getText();
 
-        if(kornsort==null) {
-            HovedVindue.setFejlBesked(lblFBDestillat, "vælg kornsort");
-            return;
-        }
-        if(dato.isAfter(LocalDate.now())){
-            HovedVindue.setFejlBesked(lblFBDestillat, "dato skal være i dag eller tidligere");
-            return;
+            String navnPåAnsvarlig = txfNavnPaaAnsvarlig.getText();
+            String rygeMateriale = txfRygeMateriale.getText();
+
+            if (kornsort == null) {
+                HovedVindue.setFejlBesked(lblFBDestillat, "vælg kornsort");
+                return;
+            }
+            if (dato != null) {
+                if (dato.isAfter(LocalDate.now())) {
+                    HovedVindue.setFejlBesked(lblFBDestillat, "dato skal være i dag eller tidligere");
+                    return;
+                }
+            } else {
+                HovedVindue.setFejlBesked(lblFBDestillat, "Du skal angive en dato");
+            }
+            if (!txfNavnPaaAnsvarlig.getText().matches(".*[a-zA-Z]+.*")) {
+                HovedVindue.setFejlBesked(lblFBDestillat, "Navn på ansvarlig skal indeholde bostaver");
+                return;
+            }
+            if (!txfRygeMateriale.getText().matches(".*[a-zA-Z]+.*")) {
+                HovedVindue.setFejlBesked(lblFBDestillat, "Rygemateriale skal indeholde bostaver");
+                return;
+            }
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+            Destillat destillat = new Destillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
+            alert.setContentText(destillat.toString());
+            alert.setHeaderText("Bekræft oplysninger");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.YES) {
+                Controller.opretDestillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
+                lukAction();
+            }
+        } catch (NumberFormatException e) {
+            HovedVindue.setFejlBesked(lblFBDestillat, "AlkoholProcent og/eller antal liter skal være numeriske værdier");
         }
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-        Destillat destillat = new Destillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
-        alert.setContentText(destillat.toString());
-        alert.setHeaderText("Bekræft oplysninger");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.YES){
-           Controller.opretDestillat(dato, alko, navnPåAnsvarlig, antalLiter, 2, rygeMateriale, kornsort);
-           lukAction();
-        }
     }
 
     @FXML
-    public void lukAction(){
+    public void lukAction() {
         Stage stage = (Stage) lblFBDestillat.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    public void åbenKornVindueAction(){
+    public void åbenKornVindueAction() {
         Main.åbenVinduer.åbenKornVindue();
-        if(kornsort!=null) txfValgtKorn.setText(kornsort.toString());
+        if (kornsort != null) txfValgtKorn.setText(kornsort.toString());
     }
 }

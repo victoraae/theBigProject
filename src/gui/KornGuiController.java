@@ -34,16 +34,17 @@ public class KornGuiController {
     public void vælgKornAction() {
         Korn korn = lvwKorn.getSelectionModel().getSelectedItem();
         if (korn == null) {
-            HovedVindue.setFejlBesked(lblFBKorn, "vælg en kornsort fra listen, eller opret en ny");
-        }
-        DestillatGuiController.kornsort = korn;
+            HovedVindue.setFejlBesked(lblFBKorn, "Vælg en kornsort fra listen, eller opret en ny");
+        } else {
+            DestillatGuiController.kornsort = korn;
 
-        Stage stage = (Stage) lvwKorn.getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage) lvwKorn.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
-    public void opretKornAction(){
+    public void opretKornAction() {
         String sort = txfSort.getText();
         String navnPåMark = txfNavnPaaMark.getText();
         String bondemand = txfBondemand.getText();
@@ -52,12 +53,24 @@ public class KornGuiController {
         int år = 0;
         try {
             år = Integer.parseInt(txfAar.getText());
-            if(txfAar.getText().trim().length()!=4){ //årstal skal være 4 cifre
+            if (txfAar.getText().trim().length() != 4) {
                 HovedVindue.setFejlBesked(lblFBKorn, "forkert tal format for årstal");
                 return;
             }
-        }catch(NumberFormatException ex){
-            HovedVindue.setFejlBesked(lblFBKorn, "forkert tal format for årstal");
+            if (!txfSort.getText().matches(".*[a-zA-Z]+.*")) {
+                HovedVindue.setFejlBesked(lblFBKorn, "Kornsort navn skal indeholde bostaver");
+                return;
+            }
+            if (!txfBondemand.getText().matches(".*[a-zA-Z]+.*")) {
+                HovedVindue.setFejlBesked(lblFBKorn, "Navn på bondemand skal indeholde bogstaver");
+                return;
+            }
+            if (!txfNavnPaaMark.getText().matches(".*[a-zA-Z]+.*")) {
+                HovedVindue.setFejlBesked(lblFBKorn,"Navn på marken skal indeholde bostaver");
+                return;
+            }
+            }catch(NumberFormatException ex){
+            HovedVindue.setFejlBesked(lblFBKorn, "Årstal skal indeholde numeriske værdier");
             return;
         }
 

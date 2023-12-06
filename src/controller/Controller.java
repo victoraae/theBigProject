@@ -132,4 +132,5 @@ public abstract class Controller {
 
         return alkoholLiter / totalLiter * 100;
     }
+
 }

@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.lang.invoke.MutableCallSite;
 
 public class Fad implements Serializable {
     private static int antalFade = 0;      // statisk så den kan deles blandt alle forekomster af Fad-klassen
@@ -68,18 +69,18 @@ public class Fad implements Serializable {
     }
 
     @Override
-    public String toString(){
-        String result = "Fad nr. " + nummer + ", størrelse: " + størrelse + ", lavet af " + materiale + ". Leverandør: '"
-                + leverandør + "', land: " + oprindeslesland + ". Har tidligere indeholdt " + tidligereIndhold + ".";
-        if (getHylde() != null){
-            result += " Opbevares på " + lager.getNavn() + ", reol: " + hylde.getReol().getNummer()
-                    + ", hylde: " + hylde.getNummer() + ".";
-        } else {
-            result += " Opbevares på " + lager.getNavn() + ".";
-        }
-
+    public String toString() {
+            String result = "Fad nr. " + nummer + ", størrelse: " + størrelse + ", lavet af " + materiale + ". Leverandør: '"
+                    + leverandør + "', land: " + oprindeslesland + ". Har tidligere indeholdt " + tidligereIndhold + ".";
+            if (getHylde() != null) {
+                result += " Opbevares på " + lager.getNavn() + ", reol: " + hylde.getReol().getNummer()
+                        + ", hylde: " + hylde.getNummer() + ".";
+                result += " Opbevares på " + lager.getNavn() + ".";
+            }
         return result;
     }
+
+
 
     public String toStringKort(){
         String result = "nr: " + nummer +", str: " + størrelse + ", " + lager.getNavn();

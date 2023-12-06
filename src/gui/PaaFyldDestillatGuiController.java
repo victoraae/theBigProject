@@ -64,21 +64,35 @@ public class PaaFyldDestillatGuiController {
 
     @FXML
     void gemAction() {
+
         String navn = txfNewMakeNavn.getText().trim();
         String ansvarlig = txfAnsvarligNavn.getText().trim();
 
-        if (navn.isBlank()){
-            HovedVindue.setFejlBesked(lblFejlBesked, "Navn på New Make kan ikke være tom");
+        if (navn.isBlank()) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "Navn på NewMake kan ikke være tom");
             return;
         }
 
-        if (ansvarlig.isBlank()){
+        if (ansvarlig.isBlank()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
             return;
         }
-        Controller.paafyldDestillat(navn, ansvarlig, mængder, fad);
-        Stage stage = (Stage) btnGem.getScene().getWindow();
-        stage.close();
+        if (!txfNewMakeNavn.getText().matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "NewMakes navn må kun indeholde bogstaver");
+            return;
+        }
+        if (!txfAnsvarligNavn.getText().matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "Ansvarlig navn må kun indeholde bogstaver");
+            return;
+        }
+        if (lvwMængder.getItems() != null) {
+            Controller.paafyldDestillat(navn, ansvarlig, mængder, fad);
+            Stage stage = (Stage) btnGem.getScene().getWindow();
+            stage.close();
+        } else {
+
+        }
+
     }
 
     void opdaterLvwMængder() {
@@ -93,7 +107,7 @@ public class PaaFyldDestillatGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
             return;
         }
-        if(destillat1==null) {
+        if (destillat1 == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et destillat");
             return;
         }
@@ -101,22 +115,22 @@ public class PaaFyldDestillatGuiController {
         try {
             antalLiter = Double.parseDouble(txfAntalLiter.getText());
         } catch (NumberFormatException e) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Indtast et gyldigt tal");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Antal liter på fad må kun indeholde numeriske værdier");
             return;
         }
-        if(fad.getStørrelse().getInt() < antalLiter){
+        if (fad.getStørrelse().getInt() < antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, tjek fadstørrelse");
             return;
         }
-        if(antalLiter<=0){
+        if (antalLiter <= 0) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-        if(destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()){
+        if (destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok destillats væske, tjek destillats antal liter");
             return;
         }
-        if(fad.getStørrelse().getInt() < sumLiter() + antalLiter){
+        if (fad.getStørrelse().getInt() < sumLiter() + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
@@ -128,7 +142,7 @@ public class PaaFyldDestillatGuiController {
         txfAntalLiter.clear();
     }
 
-    public ArrayList<Destillat> getDestillaterFraMængder(){
+    public ArrayList<Destillat> getDestillaterFraMængder() {
         ArrayList<Destillat> result = new ArrayList<>();
         for (Mængde mængde : mængder) {
             result.add(mængde.getDestillat());

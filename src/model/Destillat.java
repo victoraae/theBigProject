@@ -56,15 +56,18 @@ public class Destillat implements Serializable {
 
 
     @Override
-    public String toString(){
-        String result = liter + "l destillat lavet d." + dato.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
-                + " af " + ansvarlig + ", " + alkoholProcent + "%, destilleret " + antalGange + " gange. Lavet med "
-                + korn.getSort() + " kornsort";
+    public String toString() {
+        String result = "";
+        if (dato != null) {
+            result = liter + "l destillat lavet d." + dato.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
+                    + " af " + ansvarlig + ", " + alkoholProcent + "%, destilleret " + antalGange + " gange. Lavet med "
+                    + korn.getSort() + " kornsort";
 
-        if (!rygemateriale.isBlank()){
-            result += " og rygemateriale " + rygemateriale + ".";
-        } else {
-            result += ".";
+            if (!rygemateriale.isBlank()) {
+                result += " og rygemateriale " + rygemateriale + ".";
+            } else {
+                result += ".";
+            }
         }
         return result;
     }

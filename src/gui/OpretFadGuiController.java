@@ -34,7 +34,7 @@ public class OpretFadGuiController {
     @FXML
     private TextField txfTidligereIndhold;
 
-    public void initialize(){
+    public void initialize() {
         cmbVælgStorelse.getItems().setAll(FadStørrelser.class.getEnumConstants());
         cmbVælgLager.getItems().setAll(Controller.getLagre());
 
@@ -42,12 +42,12 @@ public class OpretFadGuiController {
         cmbVælgLager.getSelectionModel().selectedItemProperty().addListener(listener);
     }
 
-    private void opdaterCmbHylder(){
+    private void opdaterCmbHylder() {
         Lager lager = cmbVælgLager.getValue();
         ArrayList<Hylde> hylder = new ArrayList<>();
 
-        if(lager!=null){
-            for(Reol reol : lager.getReoler()){
+        if (lager != null) {
+            for (Reol reol : lager.getReoler()) {
                 hylder.addAll(reol.getHylder());
             }
             cmbVælgHylde.getItems().setAll(hylder);
@@ -55,7 +55,7 @@ public class OpretFadGuiController {
     }
 
     @FXML
-    public void opretFadAction(){
+    public void opretFadAction() {
         Lager lager = cmbVælgLager.getValue();
         Hylde hylde = cmbVælgHylde.getValue();
         FadStørrelser størrelse = cmbVælgStorelse.getValue();
@@ -63,26 +63,41 @@ public class OpretFadGuiController {
 
         String materiale = txfMateriale.getText();
         String leverandør = txfNavnPaaLeveradoer.getText();
-        String oprindLand =  txfOprindelsesland.getText();
+        String oprindLand = txfOprindelsesland.getText();
         String tidlIndhold = txfTidligereIndhold.getText();
 
-        if(materiale.isBlank() ||leverandør.isBlank()||materiale.isBlank() ||materiale.isBlank() ){
+        if (materiale.isBlank() || leverandør.isBlank() || materiale.isBlank() || materiale.isBlank()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Alle felter skal udfyldes");
             return;
         }
 
-
-        if(hylde==null && !lager.erDerPladsTilFad(størrelse.getStørrelse())){
-            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke plads på det valgte lager");
-            return;
+        if (størrelse != null) {
+            if (hylde == null && !lager.erDerPladsTilFad(størrelse.getStørrelse())) {
+                HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke plads på det valgte lager");
+                return;
+            }
         }
 
-        if(hylde!=null && !hylde.erDerPladsTilFad(størrelse.getStørrelse())){
+        if (hylde != null && !hylde.erDerPladsTilFad(størrelse.getStørrelse())) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke plads på den valgte hylde");
             return;
         }
-
-
+        if (!txfNavnPaaLeveradoer.getText().matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked,"Leverandørens navn skal indeholde bostaver");
+            return;
+        }
+        if (!txfOprindelsesland.getText().matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked,"Oprindelsesland skal indeholde bogstaver");
+            return;
+        }
+        if (!txfMateriale.getText().matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "Materiale skal indeholde bogstaver");
+            return;
+        }
+        if (!txfTidligereIndhold.getText().matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "Tidligere indhold skal indeholde bogstaver");
+            return;
+        }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
         Fad fad = new Fad(leverandør, oprindLand, materiale, tidlIndhold, størrelse, lager, hylde);
         alert.setContentText(fad.toString());
@@ -94,7 +109,7 @@ public class OpretFadGuiController {
     }
 
     @FXML
-    public void fortrydAction(){
+    public void fortrydAction() {
         Stage stage = (Stage) btnFortryd.getScene().getWindow();
         stage.close();
     }

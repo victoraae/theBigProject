@@ -112,7 +112,7 @@ public class HyldeGuiController {
                 }
             }
         } catch (NumberFormatException e) {
-            System.out.println(e.toString());
+            setFejlBesked(lblFejlBesked,"Du kan kun indsætte numeriske værdier");
         }
     }
 

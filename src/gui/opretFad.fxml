@@ -22,9 +22,9 @@
       <TextField fx:id="txfMateriale" layoutX="257.0" layoutY="292.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast materiale" />
       <TextField fx:id="txfTidligereIndhold" layoutX="257.0" layoutY="324.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast tidligere indhold" />
       <ComboBox fx:id="cmbVælgStorelse" layoutX="350.0" layoutY="165.0" prefWidth="150.0" promptText="Vælg størrelse" />
-      <Button fx:id="btnOpretFad" layoutX="431.0" layoutY="357.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Opret" />
-      <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="374.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
-      <Button fx:id="btnFortryd" layoutX="83.0" layoutY="357.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
+      <Button fx:id="btnOpretFad" layoutX="497.0" layoutY="362.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Opret" />
+      <Label fx:id="lblFejlBesked" layoutX="2.0" layoutY="366.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
+      <Button fx:id="btnFortryd" layoutX="319.0" layoutY="362.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
       <Label layoutX="31.0" layoutY="60.0" text="Opret fad">
          <font>
             <Font size="33.0" />
