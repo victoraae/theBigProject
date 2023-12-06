@@ -39,5 +39,6 @@
             <Font size="30.0" />
          </font>
       </Label>
+      <Label fx:id="lblFejlBesked" layoutX="14.0" layoutY="462.0" text="Fejlbesked! " textFill="#c60505" visible="false" />
    </children>
 </Pane>

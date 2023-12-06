@@ -44,6 +44,8 @@ public class HyldeGuiController {
     private Label lblValgtLager;
 
     @FXML
+    private Label lblAntalPladserTilbage;
+    @FXML
     private TextField txfStorrelse;
     private Lager lager;
     private Reol reol;
@@ -66,21 +68,47 @@ public class HyldeGuiController {
     }
 
 
+  /*  public void antalPladserTilbage(String besked) {
+        String text = lblAntalPladserTilbage.getText();
+        int index = text.indexOf(':');
+        int size = 0;
+
+        if (index != -1 && index < text.length()) {
+            lblAntalPladserTilbage.setText(text.substring(0, index + 1) + " " + besked);
+        } else {
+            lblAntalPladserTilbage.setText(text + ": " + besked);
+        }
+        while (valgtReol != null) {
+
+        }
+    }
+
+   */
+
     @FXML
     public void opretReolAction() {
         try {
             int nummer = 1;
-            int størrelse = Integer.parseInt(txfIStorrelse.getText());
-            int maxAntalHylder = Integer.parseInt(txfAntalHylder.getText());
-
-            if (størrelse < 1 || maxAntalHylder < 1)
-                setFejlBesked(lblFejlBesked, "størrelse og maxAntalHylder skal være større end nul");
 
             if (lager != null) {
-                Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
-                if (reol != null) {
-                    opdaterListViewReol();
-                    this.reol = reol;
+                String textStørrelse = txfIStorrelse.getText();
+                String textAntalHylder = txfAntalHylder.getText();
+
+                if (textStørrelse.isEmpty() || textAntalHylder.isEmpty()) {
+                    setFejlBesked(lblFejlBesked, "du skal udfylde begge textfelter");
+                } else {
+                    int størrelse = Integer.parseInt(textStørrelse);
+                    int maxAntalHylder = Integer.parseInt(textAntalHylder);
+
+                    if (størrelse < 1 || maxAntalHylder < 1) {
+                        setFejlBesked(lblFejlBesked, "størrelse og maxAntalHylder skal være større end nul");
+                    } else {
+                        Reol reol = Controller.opretReol(lager, nummer, størrelse, maxAntalHylder);
+                        if (reol != null) {
+                            opdaterListViewReol();
+                            this.reol = reol;
+                        }
+                    }
                 }
             }
         } catch (NumberFormatException e) {
@@ -90,6 +118,9 @@ public class HyldeGuiController {
 
     @FXML
     public void opretHyldeAction() {
+        if (valgtReol == null) {
+            setFejlBesked(lblFejlBesked, "Du har ikke valgt en reol");
+        }
         if (reol != null) {
             Hylde hylde = Controller.opretHylde(reol, 1);
             if (hylde != null) {
@@ -111,9 +142,16 @@ public class HyldeGuiController {
     }
 
     public void setFejlBesked(Label lblFB, String besked) {
-        int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
-        lblFB.setVisible(true);
+        String text = lblFB.getText();
+        int index = text.indexOf(':');
+
+        if (index != -1 && index < text.length()) {
+            lblFB.setText(text.substring(0, index + 1) + " " + besked);
+            lblFB.setVisible(true);
+        } else {
+            lblFB.setText(text + ": " + besked);
+            lblFB.setVisible(true);
+        }
     }
 
     public void btnLukAction() {

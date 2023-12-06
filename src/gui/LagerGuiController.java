@@ -33,14 +33,15 @@ public class LagerGuiController {
 
     @FXML
     private TextField txfMaksReoler;
-
     @FXML
     private TextField txfStørrelse;
-
+    @FXML
+    private Label lblFejlBesked;
     public static Lager valgtLager;
 
     public static Hylde valgtHylde;
-    public void initialize(){
+
+    public void initialize() {
         lvwVaelgLager.getItems().setAll(Controller.getLagre());
         ChangeListener<Lager> listener = (ov, o, n) -> this.opdaterValgtLager();
         lvwVaelgLager.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -79,11 +80,32 @@ public class LagerGuiController {
 
     @FXML
     public void btnÅbenHylde() {
-    Main.åbenVinduer.åbenHyldeVindue();
+        if (valgtLager == null) {
+            lblFejlBesked.setVisible(true);
+            setFejlBesked(lblFejlBesked, "Du har ikke valgt noget lager");
+        } else {
+            Main.åbenVinduer.åbenHyldeVindue();
+        }
     }
+
+    public void setFejlBesked(Label lblFB, String besked) {
+        String text = lblFB.getText();
+        int index = text.indexOf(':');
+
+        if (index != -1 && index < text.length()) {
+            lblFB.setText(text.substring(0, index + 1) + " " + besked);
+            lblFB.setVisible(true);
+        } else {
+            lblFB.setText(text + ": " + besked);
+            lblFB.setVisible(true);
+        }
+    }
+
+
     public void opdaterListView() {
         lvwVaelgLager.getItems().setAll(Controller.getLagre());
     }
+
     public Lager getValgtLager() {
         return lvwVaelgLager.getSelectionModel().getSelectedItem();
     }
