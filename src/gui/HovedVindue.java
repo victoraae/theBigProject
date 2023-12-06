@@ -32,7 +32,7 @@ public class HovedVindue extends Application {
      */
     public static void setFejlBesked(Label lblFB, String besked){
         int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index) + " " + besked);
+        lblFB.setText(lblFB.getText().substring(0, index+1) + " " + besked);
         lblFB.setVisible(true);
     }
 }
