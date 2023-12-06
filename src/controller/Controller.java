@@ -110,9 +110,10 @@ public abstract class Controller {
         return destillat;
     }
 
-    public static void paafyldDestillat(ArrayList<Mængde> mængder, Fad fad) {
-        NewMake newMake = new NewMake("Temp", LocalDate.now(), 2.1, "Temp", fad);
-
+    /** Pre: 0 <= alkoholprocent <= 100 */
+    public static void paafyldDestillat(String navn, String ansvarlig, ArrayList<Mængde> mængder, Fad fad) {
+        double alkoholProcent = beregnAlkoholProcent(mængder);
+        NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fad);
 
         for(Mængde mængde : mængder){
             mængde.setNewMake(newMake);
@@ -121,13 +122,14 @@ public abstract class Controller {
         storage.tilføjNewMake(newMake);
     }
 
-//    /** Pre: 0 <= alkoholprocent <= 100, liter > 0 */
-//    public static NewMake opretNewMake(String navn, double alkoholprocent, String ansvarlig, double liter, Fad fad, Destillat destillat) {
-//        LocalDate datoForPåfyldning = LocalDate.now();
-//        NewMake newMake = new NewMake(navn, datoForPåfyldning, alkoholprocent, ansvarlig, fad);
-//        Mængde mængde = new Mængde(liter, newMake, destillat);
-//        newMake.tilføjMængde(mængde);
-//        storage.tilføjNewMake(newMake);
-//        return newMake;
-//    }
+    public static double beregnAlkoholProcent(ArrayList<Mængde> mængder){
+        double totalLiter = 0;
+        double alkoholLiter = 0;
+        for (Mængde m : mængder){
+            totalLiter += m.getMængde();
+            alkoholLiter += m.getMængde() * (m.getDestillat().getAlkoholProcent() / 100);
+        }
+
+        return alkoholLiter / totalLiter * 100;
+    }
 }

@@ -34,7 +34,7 @@ public class KornGuiController {
     public void vælgKornAction() {
         Korn korn = lvwKorn.getSelectionModel().getSelectedItem();
         if (korn == null) {
-            setFejlBesked(lblFBKorn, "vælg en kornsort fra listen, eller opret en ny");
+            HovedVindue.setFejlBesked(lblFBKorn, "vælg en kornsort fra listen, eller opret en ny");
         }
         DestillatGuiController.kornsort = korn;
 
@@ -53,16 +53,16 @@ public class KornGuiController {
         try {
             år = Integer.parseInt(txfAar.getText());
             if(txfAar.getText().trim().length()!=4){ //årstal skal være 4 cifre
-                setFejlBesked(lblFBKorn, "forkert tal format for årstal");
+                HovedVindue.setFejlBesked(lblFBKorn, "forkert tal format for årstal");
                 return;
             }
         }catch(NumberFormatException ex){
-            setFejlBesked(lblFBKorn, "forkert tal format for årstal");
+            HovedVindue.setFejlBesked(lblFBKorn, "forkert tal format for årstal");
             return;
         }
 
         if(txfSort.getText().isBlank() ||txfBondemand.getText().isBlank() || txfNavnPaaMark.getText().isBlank() ||txaMaltningsprocess.getText().isBlank()){
-            setFejlBesked(lblFBKorn, "Alle felter skal udfyldes for at oprette korn");
+            HovedVindue.setFejlBesked(lblFBKorn, "Alle felter skal udfyldes for at oprette korn");
             return;
         }
 
@@ -82,10 +82,5 @@ public class KornGuiController {
         txfSort.clear();
         txfNavnPaaMark.clear();
         txaMaltningsprocess.clear();
-    }
-    public void setFejlBesked(Label lblFB, String besked){
-        int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index+1) + " " + besked);
-        lblFB.setVisible(true);
     }
 }

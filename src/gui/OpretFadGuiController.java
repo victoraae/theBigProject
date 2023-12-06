@@ -67,18 +67,18 @@ public class OpretFadGuiController {
         String tidlIndhold = txfTidligereIndhold.getText();
 
         if(materiale.isBlank() ||leverandør.isBlank()||materiale.isBlank() ||materiale.isBlank() ){
-            setFejlBesked(lblFejlBesked, "Alle felter skal udfyldes");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Alle felter skal udfyldes");
             return;
         }
 
 
         if(hylde==null && !lager.erDerPladsTilFad(størrelse.getStørrelse())){
-            setFejlBesked(lblFejlBesked, "Der er ikke plads på det valgte lager");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke plads på det valgte lager");
             return;
         }
 
         if(hylde!=null && !hylde.erDerPladsTilFad(størrelse.getStørrelse())){
-            setFejlBesked(lblFejlBesked, "Der er ikke plads på den valgte hylde");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke plads på den valgte hylde");
             return;
         }
 
@@ -99,9 +99,4 @@ public class OpretFadGuiController {
         stage.close();
     }
 
-    public void setFejlBesked(Label lblFB, String besked){
-        int index = lblFB.getText().indexOf(':');
-        lblFB.setText(lblFB.getText().substring(0, index+1) + " " + besked);
-        lblFB.setVisible(true);
-    }
 }
