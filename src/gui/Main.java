@@ -7,13 +7,14 @@ import model.*;
 import storage.ListStorage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
     public static ÅbenVinduer åbenVinduer;
 
     public static void main(String[] args) {
         åbenVinduer = new ÅbenVinduer();
-        Storage storage = ListStorage.læsStorage();
+        Storage storage = null; //ListStorage.læsStorage();
         
         boolean flag = storage==null;
         if (flag) {
@@ -37,11 +38,10 @@ public class Main {
         Controller.opretLager("Lager 2", "Adresse 2", 230, 500, 7);
         Reol reol = Controller.opretReol(lager, 1, 15, 3);
         Controller.opretReol(lager, 2, 15, 4);
-       Hylde hylde =  Controller.opretHylde(reol, 1);
+        Hylde hylde =  Controller.opretHylde(reol, 1);
         Korn korn = Controller.opretKorn("Evergreen Byg", "Lars Larsen", 2017, "Mark 1", "Ristet lys");
         Controller.opretKorn("Irina Byg", "Keld Keldsen", 2018, "Mark 2", "Ristet mørk");
         Controller.opretDestillat(LocalDate.of(23,4,12),42,"Karsten",20,1,"Weed",korn);
         Fad fad = Controller.opretFad(lager,hylde,"Karsten","Danmark","Jern","Weed",FadStørrelser.L50);
-
     }
 }

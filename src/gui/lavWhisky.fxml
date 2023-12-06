@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.WhiskyGuiController">
+   <children>
+      <ImageView fitHeight="127.0" fitWidth="228.0" layoutX="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@whisky.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="320.0" layoutY="128.0" text="Lav whisky">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGem" layoutX="549.0" layoutY="319.0" mnemonicParsing="false" onAction="#gemAction" prefHeight="35.0" prefWidth="63.0" text="Gem" />
+      <ListView fx:id="lvwNewMakes" layoutX="22.0" layoutY="190.0" prefHeight="164.0" prefWidth="360.0" />
+      <Label layoutX="22.0" layoutY="163.0" text="New makes">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="410.0" layoutY="190.0" text="Whisky navn:" />
+      <TextField fx:id="txfWhiskyNavn" layoutX="504.0" layoutY="186.0" prefHeight="25.0" prefWidth="215.0" promptText="Indtast navn på whiskyen" />
+      <Label layoutX="410.0" layoutY="221.0" text="Ansvarligs navn:" />
+      <TextField fx:id="txfAnsvarligNavn" layoutX="504.0" layoutY="217.0" prefHeight="25.0" prefWidth="215.0" promptText="Indtast navn på den ansvarlige" />
+      <Label layoutX="410.0" layoutY="252.0" text="Liter vand:" />
+      <TextField fx:id="txfLiterVand" layoutX="504.0" layoutY="248.0" prefHeight="25.0" prefWidth="215.0" promptText="Liter vand whiskyen er fortyndet med" />
+      <Label fx:id="lblFejlBesked" layoutX="22.0" layoutY="379.0" prefHeight="17.0" prefWidth="480.0" text="FejlBesked: " textFill="RED" visible="false" />
+   </children>
+</Pane>
