@@ -41,6 +41,9 @@ public class HyldeGuiController {
     private Label lblFejlBesked;
 
     @FXML
+    private Label lblValgtLager;
+
+    @FXML
     private TextField txfStorrelse;
     private Lager lager;
     private Reol reol;
@@ -48,6 +51,9 @@ public class HyldeGuiController {
 
     public void initialize() {
         lager = LagerGuiController.valgtLager;
+        int index = lblValgtLager.getText().indexOf(':');
+        lblValgtLager.setText(lblValgtLager.getText().substring(0, index) + " " + lager);
+
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
             lvwVaelgReol.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

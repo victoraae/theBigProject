@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.*;
 import storage.ListStorage;
 
@@ -60,6 +61,8 @@ public class PaaFyldDestillatGuiController {
     @FXML
     void gemAction() {
         Controller.paafyldDestillat(mængder, fad);
+        Stage stage = (Stage) btnGem.getScene().getWindow();
+        stage.close();
     }
 
     void opdaterLvwMængder() {
