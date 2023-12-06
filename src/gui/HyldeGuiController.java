@@ -95,7 +95,7 @@ public class HyldeGuiController {
                 String textAntalHylder = txfAntalHylder.getText();
 
                 if (textStørrelse.isEmpty() || textAntalHylder.isEmpty()) {
-                    setFejlBesked(lblFejlBesked, "Du skal udfylde begge textfelter");
+                    setFejlBesked(lblFejlBesked, "Du skal udfylde textfelterne");
                 } else {
                     int størrelse = Integer.parseInt(textStørrelse);
                     int maxAntalHylder = Integer.parseInt(textAntalHylder);
