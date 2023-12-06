@@ -89,7 +89,6 @@ public class PaaFyldDestillatGuiController {
             Controller.paafyldDestillat(navn, ansvarlig, mængder, fad);
             Stage stage = (Stage) btnGem.getScene().getWindow();
             stage.close();
-        } else {
 
         }
 
