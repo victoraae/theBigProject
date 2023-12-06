@@ -71,10 +71,7 @@ public class LagerGuiController {
 
             opdaterListView();
         } else {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Du har ikke udfyldt alle felterne");
-            dialog.setContentText("Venligst udfyld alle felterne, før du fortsætter.");
-            dialog.showAndWait();
+         setFejlBesked(lblFejlBesked,"Venligst udfyld alle felterne før du fortsætter");
         }
     }
 
