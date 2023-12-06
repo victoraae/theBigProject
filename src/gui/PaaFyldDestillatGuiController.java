@@ -35,6 +35,10 @@ public class PaaFyldDestillatGuiController {
     private Label lblAntalLiterPaaFad;
     @FXML
     private TextField txfAntalLiter;
+    @FXML
+    private TextField txfAnsvarligNavn;
+    @FXML
+    private TextField txfNewMakeNavn;
     private Destillat destillat;
     private Fad fad;
     private ArrayList<Mængde> mængder = new ArrayList<>();
@@ -42,8 +46,8 @@ public class PaaFyldDestillatGuiController {
     public void initialize() {
         lvwFade.getItems().setAll(Controller.getFade());
         lvwDestillater.getItems().setAll(Controller.getDestillater());
-       ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
-       lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
+        ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
+        lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
 
         ChangeListener<Fad> listener2 = (ov, o, n) -> this.opdaterValgtFad();
         lvwFade.getSelectionModel().selectedItemProperty().addListener(listener2);
@@ -60,7 +64,19 @@ public class PaaFyldDestillatGuiController {
 
     @FXML
     void gemAction() {
-        Controller.paafyldDestillat(mængder, fad);
+        String navn = txfNewMakeNavn.getText().trim();
+        String ansvarlig = txfAnsvarligNavn.getText().trim();
+
+        if (navn.isBlank()){
+            setFejlBesked(lblFejlBesked, "Navn på New Make kan ikke være tom");
+            return;
+        }
+
+        if (ansvarlig.isBlank()){
+            setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
+            return;
+        }
+        Controller.paafyldDestillat(navn, ansvarlig, mængder, fad);
         Stage stage = (Stage) btnGem.getScene().getWindow();
         stage.close();
     }
@@ -77,7 +93,7 @@ public class PaaFyldDestillatGuiController {
             setFejlBesked(lblFejlBesked, "Vælg et fad");
             return;
         }
-        if(destillat1==null) {
+        if (destillat1 == null) {
             setFejlBesked(lblFejlBesked, "Vælg et destillat");
             return;
         }
@@ -88,23 +104,22 @@ public class PaaFyldDestillatGuiController {
             setFejlBesked(lblFejlBesked, "Indtast et gyldigt tal");
             return;
         }
-        if(fad.getStørrelse().getInt() < antalLiter){
+        if (fad.getStørrelse().getInt() < antalLiter) {
             setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, tjek fadstørrelse");
             return;
         }
-        if(antalLiter<=0){
+        if (antalLiter <= 0) {
             setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-        if(destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()){
+        if (destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()) {
             setFejlBesked(lblFejlBesked, "Der er ikke nok destillats væske, tjek destillats antal liter");
             return;
         }
-        if(fad.getStørrelse().getInt() < sumLiter() + antalLiter){
+        if (fad.getStørrelse().getInt() < sumLiter() + antalLiter) {
             setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
-
 
 
         mængder.add(new Mængde(antalLiter, destillat1));
@@ -119,18 +134,18 @@ public class PaaFyldDestillatGuiController {
         lblFB.setVisible(true);
     }
 
-    public ArrayList<Destillat> getDestillaterFraMængder(){
+    public ArrayList<Destillat> getDestillaterFraMængder() {
         ArrayList<Destillat> result = new ArrayList<>();
-        for(Mængde mængde : mængder){
+        for (Mængde mængde : mængder) {
             result.add(mængde.getDestillat());
         }
         return result;
     }
 
-    public double sumLiter(){
+    public double sumLiter() {
         double result = 0;
 
-        for(Mængde mængde : mængder){
+        for (Mængde mængde : mængder) {
             result += mængde.getMængde();
         }
         return result;
