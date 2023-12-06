@@ -94,6 +94,9 @@ public abstract class Controller {
     public static List<NewMake> getNewMakes(){
         return storage.getNewMakes();
     }
+    public static List<Whisky> getWhiskyer(){
+        return storage.getWhiskyer();
+    }
 
 
     public static Korn opretKorn(String sort, String bondemand, int år, String mark, String maltningsprocess){
@@ -111,7 +114,7 @@ public abstract class Controller {
     }
 
     /** Pre: 0 <= alkoholprocent <= 100 */
-    public static void paafyldDestillat(String navn, String ansvarlig, ArrayList<Mængde> mængder, Fad fad) {
+    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Fad fad) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
         NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fad);
 
@@ -120,9 +123,10 @@ public abstract class Controller {
             newMake.tilføjMængde(mængde);
         }
         storage.tilføjNewMake(newMake);
+        return newMake;
     }
 
-    public static double beregnAlkoholProcent(ArrayList<Mængde> mængder){
+    public static double beregnAlkoholProcent(List<Mængde> mængder){
         double totalLiter = 0;
         double alkoholLiter = 0;
         for (Mængde m : mængder){
@@ -133,4 +137,44 @@ public abstract class Controller {
         return alkoholLiter / totalLiter * 100;
     }
 
+    public static double beregnAlkoholProcentWhisky(List<NewMake> newMakes, double literVand){
+        double totalLiter = literVand;
+        double alkoholLiter = 0;
+        for (NewMake newMake : newMakes){
+            totalLiter += newMake.getLiter();
+            alkoholLiter += newMake.getLiter() * (newMake.getAlkoholprocent()/ 100);
+        }
+
+        return alkoholLiter / totalLiter * 100;
+    }
+
+    /**
+     * Pre: den yngste newMake skal mindst have lagret i 3 år
+     */
+    public static Whisky opretWhisky(String navn, String ansvarlig, double literVand, List<NewMake> newMakes){
+        String kvalitetsstempel = newMakes.size()>1 ? "single malt": "single cask";
+
+        Whisky whisky = new Whisky(navn, ansvarlig, LocalDate.now(), Controller.sumLiter(newMakes), beregnAlkoholProcentWhisky(newMakes, literVand), kvalitetsstempel, newMakes);
+
+        Double antalFlasker2 =  Controller.sumLiter(newMakes)*0.7;
+        int antalFlasker = antalFlasker2.intValue();
+
+        for(int i = 1 ; i<= antalFlasker ; i++){
+            whisky.opretFlaske(i, antalFlasker);
+        }
+
+        storage.tilføjWhisky(whisky);
+        return whisky;
+    }
+
+    private static double sumLiter(List<NewMake> newMakes) {
+        double result = 0;
+
+        for (NewMake newMake : newMakes) {
+            result += newMake.getLiter();
+        }
+        return result;
+    }
+
+    //TODO:: noget med alderen på vores whisky, hvor mange år den har modnet
 }

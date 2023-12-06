@@ -13,6 +13,7 @@ public class Whisky {
     private String kvalitetsstempel;
     private final List<NewMake> newMakes;
     private final List<Flaske> flasker = new ArrayList<>();
+    private final int år = 2018;
 
     public Whisky(String navn, String ansvarlig, LocalDate dato, double antalLiter, double alkoholProcent, String kvalitetsstempel, List<NewMake> newMakes) {
         this.navn = navn;
@@ -55,7 +56,16 @@ public class Whisky {
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
-    public void opretFlaske(int nummer){
-        flasker.add(new Flaske(nummer));
+    public void opretFlaske(int nummer, int antalFlasker){
+        flasker.add(new Flaske(nummer, this, antalFlasker));
+    }
+
+    public int getÅr() {
+        return år;
+    }
+
+    @Override
+    public String toString() {
+        return navn;
     }
 }

@@ -17,6 +17,12 @@ public class HovedGuiController {
     @FXML
     private Button btnPaafyldDestillat;
 
+    @FXML
+    private Button btnLavWhisky;
+
+    @FXML
+    private Button btnHistorik;
+
     public void initialize() {
 
     }
@@ -41,6 +47,16 @@ public class HovedGuiController {
     @FXML
     public void åbenNewMakesVindueAction() {
         Main.åbenVinduer.åbenNewMakeVindue();
+    }
+
+    @FXML
+    public void åbenLavWhiskyVindueAction() {
+        Main.åbenVinduer.åbenLavWhiskyVindue();
+    }
+
+    @FXML
+    public void åbenHistorikVindueAction(){
+        Main.åbenVinduer.åbenHistorikVindue();
     }
 }
 
