@@ -35,8 +35,8 @@
       <ListView fx:id="lvwDestillater" layoutX="158.0" layoutY="145.0" prefHeight="176.0" prefWidth="142.0" />
       <TextField fx:id="txfAntalLiter" layoutX="158.0" layoutY="356.0" prefHeight="25.0" prefWidth="128.0" promptText="Indtast antal liter" />
       <Label layoutX="54.0" layoutY="360.0" text="Antal liter på fad:" />
-      <Button fx:id="btnGem" layoutX="495.0" layoutY="436.0" mnemonicParsing="false" onAction="#gemAction" prefHeight="25.0" prefWidth="79.0" text="Gem" />
-      <Label fx:id="lblFejlBesked" layoutX="17.0" layoutY="440.0" prefHeight="17.0" prefWidth="567.0" text="FejlBesked:" textFill="#f80000" visible="false" />
+      <Button fx:id="btnGem" layoutX="495.0" layoutY="428.0" mnemonicParsing="false" onAction="#gemAction" prefHeight="25.0" prefWidth="79.0" text="Gem" />
+      <Label fx:id="lblFejlBesked" layoutX="7.0" layoutY="460.0" prefHeight="17.0" prefWidth="567.0" text="FejlBesked:" textFill="#f80000" />
       <ListView layoutX="-375.0" layoutY="-341.0" prefHeight="200.0" prefWidth="200.0" />
       <ListView fx:id="lvwMængder" layoutX="337.0" layoutY="142.0" prefHeight="183.0" prefWidth="251.0" />
       <Label layoutX="337.0" layoutY="115.0" prefHeight="27.0" prefWidth="106.0" text="Mængder:">
