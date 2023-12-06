@@ -20,5 +20,6 @@
       <Button fx:id="btnPaafyldDestillat" layoutX="149.0" layoutY="234.0" mnemonicParsing="false" onAction="#åbenPaafyldDestillatAction" prefHeight="25.0" prefWidth="97.0" text="Påfyld destillat" />
       <Button fx:id="btnListeOverNewmakes" layoutX="293.0" layoutY="234.0" mnemonicParsing="false" onAction="#åbenNewMakesVindueAction" text="Vis alle newmakes" />
       <Button fx:id="btnLavWhisky" layoutX="464.0" layoutY="234.0" mnemonicParsing="false" text="Lav whisky" />
+      <Button fx:id="btnHistorik" layoutX="148.0" layoutY="294.0" mnemonicParsing="false" onAction="#åbenHistorikVindueAction" text="Vis historik" />
    </children>
 </Pane>
