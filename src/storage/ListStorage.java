@@ -13,6 +13,7 @@ public class ListStorage implements Storage, Serializable {
     private final List<Fad> fade = new ArrayList<>();
     private final List<Korn> korn = new ArrayList<>();
     private final List<NewMake> newMakes = new ArrayList<>();
+    private final List<Whisky> whiskyer = new ArrayList<>();
 
     public Lager sletLager(Lager lager){
         lagre.remove(lager);
@@ -61,6 +62,14 @@ public class ListStorage implements Storage, Serializable {
     }
     public List<NewMake> getNewMakes(){
         return new ArrayList<>(newMakes);
+    }
+    @Override
+    public void tilføjWhisky(Whisky whisky) {
+        whiskyer.add(whisky);
+    }
+    @Override
+    public List<Whisky> getWhiskyer() {
+        return new ArrayList<>(whiskyer);
     }
 
 

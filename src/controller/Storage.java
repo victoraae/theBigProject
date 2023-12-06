@@ -20,4 +20,6 @@ public interface Storage {
     public List<Korn> getKorn();
     public void tilføjNewMake(NewMake newMake);
     public List<NewMake> getNewMakes();
+    public void tilføjWhisky(Whisky whisky);
+    public List<Whisky> getWhiskyer();
 }
