@@ -95,7 +95,7 @@ public class HyldeGuiController {
                 String textAntalHylder = txfAntalHylder.getText();
 
                 if (textStørrelse.isEmpty() || textAntalHylder.isEmpty()) {
-                    setFejlBesked(lblFejlBesked, "du skal udfylde begge textfelter");
+                    setFejlBesked(lblFejlBesked, "Du skal udfylde begge textfelter");
                 } else {
                     int størrelse = Integer.parseInt(textStørrelse);
                     int maxAntalHylder = Integer.parseInt(textAntalHylder);
@@ -118,16 +118,23 @@ public class HyldeGuiController {
 
     @FXML
     public void opretHyldeAction() {
-        if (valgtReol == null) {
+        if (reol != null) {
+            if (reol.getMaxAntalHylder() <= reol.getAntalHylderNu()) {
+                setFejlBesked(lblFejlBesked, "Du har ikke flere pladser på reolen");
+            }
+        }
+        if (reol == null) {
             setFejlBesked(lblFejlBesked, "Du har ikke valgt en reol");
         }
         if (reol != null) {
             Hylde hylde = Controller.opretHylde(reol, 1);
             if (hylde != null) {
                 opdaterListViewHylde();
+                lblFejlBesked.setVisible(false);
             }
         }
     }
+
 
     public void opdaterListViewHylde() {
         if (reol != null) {
