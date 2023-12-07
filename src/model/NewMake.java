@@ -14,7 +14,7 @@ public class NewMake implements Serializable {
     private final String ansvarlig;
     private double liter;
     private final List<FadTilNM> fade = new ArrayList<>();
-    private List<Mængde> mængder = new ArrayList<>();
+    private final List<Mængde> mængder = new ArrayList<>();
     private boolean erAktiv;
     private double literTilbage;
     private final Map<NewMake, Double> newMakesLiter;
@@ -64,7 +64,7 @@ public class NewMake implements Serializable {
     }
 
     /**
-     * pre: literTilbage-liter != 0
+     * pre: literTilbage-liter må ikke være mindre end nul
      */
     public void tilføjFad(Fad fad, double liter){
         fade.add(new FadTilNM(liter, fad, this));
@@ -85,6 +85,10 @@ public class NewMake implements Serializable {
 
     public double getLiterTilbage() {
         return literTilbage;
+    }
+
+    public void decLiterTilbage(double liter){
+        literTilbage-=liter;
     }
 
     public Map<NewMake, Double> getNewMakesLiter() {

@@ -116,6 +116,7 @@ public abstract class Controller {
 
     /** Pre: 0 <= alkoholprocent <= 100
      * param: newMakesLiter kan være et tomt map
+     * Destillaterne i mængder skal have tilstrækkeligt literTilbage
      */
     public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
