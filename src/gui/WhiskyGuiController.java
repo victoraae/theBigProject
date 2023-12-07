@@ -7,8 +7,11 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Destillat;
 import model.Fad;
+import model.Mængde;
 import model.NewMake;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WhiskyGuiController {
@@ -66,9 +69,31 @@ public class WhiskyGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Indtast et gyldigt nummer");
             return;
         }
+        if (!måViLaveWhisky(newMakes)){
+            HovedVindue.setFejlBesked(lblFejlBesked,
+                    "Du må ikke lave whisky ud fra New Makes der IKKE har lagret i mindst 3 år!");
+            return;
+        }
 
         Controller.opretWhisky(navn, ansvarlig, literVand, newMakes);
         Stage stage = (Stage) btnGem.getScene().getWindow();
         stage.close();
+    }
+
+    // hjælpemetode der tjekker om alle
+    //TODO:: en omhlædig skaber newmakes der har tomme mængder lister
+    @FXML
+    public boolean måViLaveWhisky(List<NewMake> newMakes) {
+        boolean result = true;
+        for (int i = 0; i < newMakes.size() && result; i++) {
+            NewMake newMake = newMakes.get(i);
+            List<Mængde> mængder = newMake.getMængder();
+            if (!mængder.isEmpty()) {
+                if (newMake.getDatoForPåfyldning().isAfter(LocalDate.now().minusYears(3))) {
+                    result = false;
+                }
+            }
+        }
+        return result;
     }
 }
