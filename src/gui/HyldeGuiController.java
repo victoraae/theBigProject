@@ -1,7 +1,6 @@
 package gui;
 
 import controller.Controller;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -68,7 +67,7 @@ public class HyldeGuiController {
     }
 
 
-  /*  public void antalPladserTilbage(String besked) {
+    public void antalPladserTilbage(String besked) {
         String text = lblAntalPladserTilbage.getText();
         int index = text.indexOf(':');
         int size = 0;
@@ -78,21 +77,24 @@ public class HyldeGuiController {
         } else {
             lblAntalPladserTilbage.setText(text + ": " + besked);
         }
-        while (valgtReol != null) {
 
-        }
     }
 
-   */
 
     @FXML
     public void opretReolAction() {
         try {
             int nummer = 1;
-
             if (lager != null) {
                 String textStørrelse = txfIStorrelse.getText();
                 String textAntalHylder = txfAntalHylder.getText();
+                if (reol != null) {
+                    if (lager.getReoler().size() >= lager.getMaxAntalReoler()) {
+                        setFejlBesked(lblFejlBesked, "Der er ikke plads til flere reoler på lageret");
+                        return;
+                    }
+                }
+
 
                 if (textStørrelse.isEmpty() || textAntalHylder.isEmpty()) {
                     setFejlBesked(lblFejlBesked, "Du skal udfylde textfelterne");
@@ -112,29 +114,28 @@ public class HyldeGuiController {
                 }
             }
         } catch (NumberFormatException e) {
-            setFejlBesked(lblFejlBesked,"Du kan kun indsætte numeriske værdier");
+            setFejlBesked(lblFejlBesked, "Du kan kun indsætte numeriske værdier");
         }
     }
 
     @FXML
     public void opretHyldeAction() {
-        if (reol != null) {
-            if (reol.getMaxAntalHylder() <= reol.getAntalHylderNu()) {
-                setFejlBesked(lblFejlBesked, "Du har ikke flere pladser på reolen");
-            }
-        }
         if (reol == null) {
             setFejlBesked(lblFejlBesked, "Du har ikke valgt en reol");
+            return;
         }
-        if (reol != null) {
-            Hylde hylde = Controller.opretHylde(reol, 1);
-            if (hylde != null) {
-                opdaterListViewHylde();
-                lblFejlBesked.setVisible(false);
-            }
+
+        if (reol.getHylder().size() >= reol.getMaxAntalHylder()) {
+            setFejlBesked(lblFejlBesked, "Der er ikke plads til flere hylder på reolen");
+            return;
+        }
+
+        Hylde hylde = Controller.opretHylde(reol, 1);
+        if (hylde != null) {
+            opdaterListViewHylde();
+            lblFejlBesked.setVisible(false);
         }
     }
-
 
     public void opdaterListViewHylde() {
         if (reol != null) {

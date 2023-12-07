@@ -11,7 +11,8 @@ public class Reol implements Serializable {
     // komposition 1 --> 0..* Hylde
     private final List<Hylde> hylder = new ArrayList<>();
     private final Lager lager;
-    private int antalHylderNu;
+    private int antalHylderNuTæller;
+    private int antalHylder;
 
 
     public Reol(Lager lager, int nummer, int størrelse, int maxAntalHylder) {
@@ -37,6 +38,7 @@ public class Reol implements Serializable {
         return new ArrayList<>(hylder);
     }
 
+
     public void tilføjHylde(Hylde hylde){
         hylder.add(hylde);
     }
@@ -49,9 +51,6 @@ public class Reol implements Serializable {
         return lager;
     }
 
-    public int getAntalHylderNu() {
-        return ++antalHylderNu;
-    }
 
     @Override
     public String toString(){

@@ -70,11 +70,15 @@ public class DestillatGuiController {
                 HovedVindue.setFejlBesked(lblFBDestillat, "Du skal angive en dato");
             }
             if (!txfNavnPaaAnsvarlig.getText().matches(".*[a-zA-Z]+.*")) {
-                HovedVindue.setFejlBesked(lblFBDestillat, "Navn på ansvarlig skal indeholde bostaver");
+                HovedVindue.setFejlBesked(lblFBDestillat, "Navn på ansvarlig skal indeholde bogstaver");
                 return;
             }
             if (!txfRygeMateriale.getText().matches(".*[a-zA-Z]+.*")) {
-                HovedVindue.setFejlBesked(lblFBDestillat, "Rygemateriale skal indeholde bostaver");
+                HovedVindue.setFejlBesked(lblFBDestillat, "Rygemateriale skal indeholde bogstaver");
+                return;
+            }
+            if (navnPåAnsvarlig.isBlank() || rygeMateriale.isBlank() || txfAntalLiter.getText().isBlank() || txfAlkoholProcent.getText().isBlank()) {
+                HovedVindue.setFejlBesked(lblFBDestillat, "Alle felter skal udfyldes");
                 return;
             }
 

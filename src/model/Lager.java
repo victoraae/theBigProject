@@ -48,33 +48,33 @@ public class Lager implements Serializable {
         this.navn = navn;
     }
 
-    public void tilføjReol(Reol reol){
+    public void tilføjReol(Reol reol) {
         reoler.add(reol);
     }
 
-    public void sletReol(Reol reol){
+    public void sletReol(Reol reol) {
         reoler.remove(reol);
     }
 
+
     /**
-     *
      * @return returnerer true hvis fad blev tilføjet, false hvis der ikke er plads på lageret
      */
     public boolean tilføjFad(String størrelse) {
         boolean result = false;
 
-        if (størrelse.equals("LILLE")){
-            if (pladserTilbage >= 1){
+        if (størrelse.equals("LILLE")) {
+            if (pladserTilbage >= 1) {
                 result = true;
                 pladserTilbage--;
             }
-        } else if (størrelse.equals("MELLEM")){
-            if (pladserTilbage >= 2){
+        } else if (størrelse.equals("MELLEM")) {
+            if (pladserTilbage >= 2) {
                 result = true;
                 pladserTilbage -= 2;
             }
-        } else if (størrelse.equals("STOR")){
-            if (pladserTilbage >= 4){
+        } else if (størrelse.equals("STOR")) {
+            if (pladserTilbage >= 4) {
                 result = true;
                 pladserTilbage -= 4;
             }
@@ -89,16 +89,16 @@ public class Lager implements Serializable {
     public boolean erDerPladsTilFad(String størrelse) {
         boolean result = false;
 
-        if (størrelse.equals("LILLE")){
-            if (pladserTilbage >= 1){
+        if (størrelse.equals("LILLE")) {
+            if (pladserTilbage >= 1) {
                 result = true;
             }
-        } else if (størrelse.equals("MELLEM")){
-            if (pladserTilbage >= 2){
+        } else if (størrelse.equals("MELLEM")) {
+            if (pladserTilbage >= 2) {
                 result = true;
             }
-        } else if (størrelse.equals("STOR")){
-            if (pladserTilbage >= 4){
+        } else if (størrelse.equals("STOR")) {
+            if (pladserTilbage >= 4) {
                 result = true;
             }
         }
@@ -107,10 +107,10 @@ public class Lager implements Serializable {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String result = "Lager " + navn + ", adresse: " + adresse
                 + ". Areal: " + størrelse + " m^2, kapacitet: " + kapacitet + " pladser.";
-        if (maxAntalReoler != 0){
+        if (maxAntalReoler != 0) {
             result += " Max antal reoler: " + maxAntalReoler + ".";
         } else {
             result += " Ledige pladser tilbage: " + pladserTilbage + ".";
@@ -127,7 +127,12 @@ public class Lager implements Serializable {
         return pladserTilbage;
     }
 
-    public void incPladserTilbage(){
+    public void incPladserTilbage() {
         pladserTilbage++;
     }
+
+    public int getMaxAntalReoler() {
+        return maxAntalReoler;
+    }
 }
+
