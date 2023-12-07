@@ -86,7 +86,7 @@ public class PaaFyldDestillatGuiController {
             return;
         }
         if (lvwMængder.getItems() != null) {
-            Controller.paafyldDestillat(navn, ansvarlig, mængder, fad);
+            Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>());
             Stage stage = (Stage) btnGem.getScene().getWindow();
             stage.close();
 

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Controller {
     private static Storage storage;
@@ -113,10 +114,12 @@ public abstract class Controller {
         return destillat;
     }
 
-    /** Pre: 0 <= alkoholprocent <= 100 */
-    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Fad fad) {
+    /** Pre: 0 <= alkoholprocent <= 100
+     * param: newMakesLiter kan være et tomt map
+     */
+    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
-        NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fad);
+        NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fadeTilLiter, newMakesLiter);
 
         for(Mængde mængde : mængder){
             mængde.setNewMake(newMake);
@@ -177,4 +180,5 @@ public abstract class Controller {
     }
 
     //TODO:: noget med alderen på vores whisky, hvor mange år den har modnet
+    //TODO:: controller metode med tilføj fad på newMake der søger for at literTilbage ikke falder under 0
 }
