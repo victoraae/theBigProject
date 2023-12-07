@@ -22,4 +22,6 @@ public interface Storage {
     public List<NewMake> getNewMakes();
     public void tilføjWhisky(Whisky whisky);
     public List<Whisky> getWhiskyer();
+    public void sletNewMake(NewMake newMake);
+
 }

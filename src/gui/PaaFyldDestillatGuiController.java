@@ -63,14 +63,25 @@ public class PaaFyldDestillatGuiController {
     }
 
     @FXML
-    void gemAction(ActionEvent event) {
+    public void gemAction(ActionEvent event) {
         for(FadTilNM fnm : fadeTilNM){
             Controller.tilføjFTilNMtilNM(fnm, newMake);
         }
+
+        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    void paaFyldAction() {
+    public void lukAction(){
+        Controller.sletNewMake(newMake);
+
+        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void paaFyldAction() {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
         if (fad == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
@@ -91,9 +102,12 @@ public class PaaFyldDestillatGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-
         if (fad.getStørrelse().getInt() < antalLiterFraFTilNM() + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
+            return;
+        }
+        if(newMake.getLiter() < antalLiterFraFTilNM() + antalLiter){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke tilstrækkelig mængde væske i NewMake, tjek NewMakes liter");
             return;
         }
 

@@ -72,6 +72,11 @@ public class ListStorage implements Storage, Serializable {
         return new ArrayList<>(whiskyer);
     }
 
+    @Override
+    public void sletNewMake(NewMake newMake) {
+        newMakes.remove(newMake);
+    }
+
 
     // -------------------------------------------------------------------------
     public static ListStorage læsStorage(){

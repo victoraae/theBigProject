@@ -193,4 +193,11 @@ public abstract class Controller {
         nm.tilføjFad(fnm);
         fnm.getFad().tilføjFadTilNM(fnm);
     }
+
+    /**
+     * metode til paafyld gui trin 2, hvis man trykker fortryd
+     */
+    public static void sletNewMake(NewMake newMake){
+        storage.sletNewMake(newMake);
+    }
 }

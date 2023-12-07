@@ -94,8 +94,6 @@ public class PaaFyldTrinEtGuiController {
 
     @FXML
     public void næsteKnapAction() {
-        Main.åbenVinduer.åbenPaafyldDestillatVindue();
-
         String navn = txfNMNavn.getText().trim();
         String ansvarlig = txfAnsvarligNavn.getText().trim();
 
@@ -122,6 +120,8 @@ public class PaaFyldTrinEtGuiController {
 
         NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>());
         PaaFyldDestillatGuiController.newMake = newMake;
+        Main.åbenVinduer.åbenPaafyldDestillatVindue();
+        fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes
     }
 
     @FXML
