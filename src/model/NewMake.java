@@ -29,6 +29,19 @@ public class NewMake implements Serializable {
         lavFadTilNM(fadeTilLiter);
     }
 
+    /**
+     * vi kan ikke huske hvad fadeTilLiter i ovenstående konstruktor skal bruges til
+     */
+    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<NewMake, Double> newMakesLiter) {
+        this.navn = navn;
+        this.datoForPåfyldning = datoForPåfyldning;
+        this.alkoholprocent = alkoholprocent;
+        this.ansvarlig = ansvarlig;
+        this.newMakesLiter = newMakesLiter;
+    }
+
+
+
     // getter metoder laves på alle attributter, da de er alle vigtige for historiefortællingen
     public String getNavn() {
         return navn;
@@ -66,8 +79,8 @@ public class NewMake implements Serializable {
     /**
      * pre: literTilbage-liter må ikke være mindre end nul
      */
-    public void tilføjFad(Fad fad, double liter){
-        fade.add(new FadTilNM(liter, fad, this));
+    public void tilføjFad(FadTilNM fnm){
+        fade.add(fnm);
     }
 
     /**

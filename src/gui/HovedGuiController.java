@@ -28,7 +28,7 @@ public class HovedGuiController {
     }
     @FXML
     public void åbenPaafyldDestillatAction() {
-        Main.åbenVinduer.åbenPaafyldDestillatVindue();
+        Main.åbenVinduer.åbenPaaFyldTrinEtVindue();
     }
     @FXML
     public void åbenDestillatVindueAction() {
@@ -58,5 +58,12 @@ public class HovedGuiController {
     public void åbenHistorikVindueAction(){
         Main.åbenVinduer.åbenHistorikVindue();
     }
+
+    @FXML
+    public void åbenPaafyldDestillatTrin2(){
+        Main.åbenVinduer.åbenPaafyldDestillatVindue();
+    }
+
+
 }
 

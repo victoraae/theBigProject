@@ -25,6 +25,7 @@ public class Destillat implements Serializable {
         this.antalGange = antalGange;
         this.rygemateriale = rygemateriale;
         this.korn = korn;
+        this.literTilbage = liter;
     }
 
     public LocalDate getDato() {
@@ -53,6 +54,10 @@ public class Destillat implements Serializable {
 
     public void setAntalGange(int antalGange) {
         this.antalGange = antalGange;
+    }
+
+    public double getLiterTilbage() {
+        return literTilbage;
     }
 
     /**

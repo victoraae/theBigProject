@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.*;
 import storage.ListStorage;
 
@@ -20,94 +21,59 @@ public class PaaFyldDestillatGuiController {
     @FXML
     private Button btnGem;
     @FXML
-    private Label lblFejlBesked;
+    private Button btnLuk;
     @FXML
     private Button btnPaafyld;
     @FXML
-    private Label lblDestillatLiter;
+    private Label lblFejlBesked;
     @FXML
-    private ListView<Destillat> lvwDestillater;
+    private ListView<FadTilNM> lvwFadTilNM;
     @FXML
     private ListView<Fad> lvwFade;
     @FXML
-    private ListView<Mængde> lvwMængder;
-    @FXML
-    private Label lblAntalLiterPaaFad;
-    @FXML
     private TextField txfAntalLiter;
     @FXML
-    private TextField txfAnsvarligNavn;
+    private Label lblNMLiter;
     @FXML
-    private TextField txfNewMakeNavn;
-    private Destillat destillat;
+    private Label lblFadeLiter;
+
     private Fad fad;
-    private ArrayList<Mængde> mængder = new ArrayList<>();
+    private ArrayList<FadTilNM> fadeTilNM = new ArrayList<>();
+    public static NewMake newMake;
+    private double fadeAntalLiter;
 
     public void initialize() {
-        lvwFade.getItems().setAll(Controller.getFade());
-        lvwDestillater.getItems().setAll(Controller.getDestillater());
-        ChangeListener<Destillat> listener = (ov, o, n) -> this.opdaterDestillatLiter();
-        lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener);
+        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter()+"");
+        HovedVindue.setFejlBesked(lblFadeLiter, 0+"");
 
-        ChangeListener<Fad> listener2 = (ov, o, n) -> this.opdaterValgtFad();
-        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener2);
+
+        lvwFade.getItems().setAll(Controller.getFade());
+
+        ChangeListener<Fad> listener = (ov, o, n) -> this.opdaterValgtFad();
+        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
+
     }
 
     private void opdaterValgtFad() {
         fad = lvwFade.getSelectionModel().getSelectedItem();
     }
-
-    private void opdaterDestillatLiter() {
-        destillat = lvwDestillater.getSelectionModel().getSelectedItem();
+    private void opdaterLvwFadTilNM() {
+        lvwFadTilNM.getItems().setAll(fadeTilNM);
+        HovedVindue.setFejlBesked(lblFadeLiter, this.antalLiterFraFTilNM()+"");
     }
-
 
     @FXML
-    void gemAction() {
-
-        String navn = txfNewMakeNavn.getText().trim();
-        String ansvarlig = txfAnsvarligNavn.getText().trim();
-
-        if (navn.isBlank()) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Navn på NewMake kan ikke være tom");
-            return;
+    void gemAction(ActionEvent event) {
+        for(FadTilNM fnm : fadeTilNM){
+            Controller.tilføjFTilNMtilNM(fnm, newMake);
         }
-
-        if (ansvarlig.isBlank()) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
-            return;
-        }
-        if (!txfNewMakeNavn.getText().matches(".*[a-zA-Z]+.*")) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "NewMakes navn må kun indeholde bogstaver");
-            return;
-        }
-        if (!txfAnsvarligNavn.getText().matches(".*[a-zA-Z]+.*")) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Ansvarlig navn må kun indeholde bogstaver");
-            return;
-        }
-        if (lvwMængder.getItems() != null) {
-            Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>());
-            Stage stage = (Stage) btnGem.getScene().getWindow();
-            stage.close();
-
-        }
-
-    }
-
-    void opdaterLvwMængder() {
-        lvwMængder.getItems().setAll(mængder);
     }
 
     @FXML
     void paaFyldAction() {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
-        Destillat destillat1 = lvwDestillater.getSelectionModel().getSelectedItem();
         if (fad == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
-            return;
-        }
-        if (destillat1 == null) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et destillat");
             return;
         }
         double antalLiter = 0;
@@ -125,35 +91,27 @@ public class PaaFyldDestillatGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-        if (destillat.getLiter() < antalLiter || destillat.getLiter() < antalLiter + sumLiter()) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok destillats væske, tjek destillats antal liter");
-            return;
-        }
-        if (fad.getStørrelse().getInt() < sumLiter() + antalLiter) {
+
+        if (fad.getStørrelse().getInt() < antalLiterFraFTilNM() + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
 
 
-        mængder.add(new Mængde(antalLiter, destillat1));
-        opdaterLvwMængder();
+        fadeTilNM.add(new FadTilNM(antalLiter, fad, newMake));
+        opdaterLvwFadTilNM();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
     }
 
-    public ArrayList<Destillat> getDestillaterFraMængder() {
-        ArrayList<Destillat> result = new ArrayList<>();
-        for (Mængde mængde : mængder) {
-            result.add(mængde.getDestillat());
-        }
-        return result;
-    }
 
-    public double sumLiter() {
+    /**
+     * hjæple metode til gui
+     */
+    private double antalLiterFraFTilNM(){
         double result = 0;
-
-        for (Mængde mængde : mængder) {
-            result += mængde.getMængde();
+        for(FadTilNM f : fadeTilNM){
+            result += f.getLiter();
         }
         return result;
     }

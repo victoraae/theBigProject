@@ -171,6 +171,9 @@ public abstract class Controller {
         return whisky;
     }
 
+    /**
+     * hjælpe metode til controller
+     */
     private static double sumLiter(List<NewMake> newMakes) {
         double result = 0;
 
@@ -182,4 +185,12 @@ public abstract class Controller {
 
     //TODO:: noget med alderen på vores whisky, hvor mange år den har modnet
     //TODO:: controller metode med tilføj fad på newMake der søger for at literTilbage ikke falder under 0
+
+    /**
+     * Pre: FadTilNM's antal liter må ikke overskride newMake'ts antal liter
+     */
+    public static void tilføjFTilNMtilNM(FadTilNM fnm, NewMake nm){
+        nm.tilføjFad(fnm);
+        fnm.getFad().tilføjFadTilNM(fnm);
+    }
 }
