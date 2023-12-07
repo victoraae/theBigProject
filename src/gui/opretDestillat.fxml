@@ -9,32 +9,32 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DestillatGuiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DestillatGuiController">
    <children>
-      <ImageView fitHeight="142.0" fitWidth="270.0" layoutX="237.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="160.0" fitWidth="400.0" layoutX="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whisky.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnÅbenKorn" layoutX="147.0" layoutY="200.0" mnemonicParsing="false" onAction="#åbenKornVindueAction" prefHeight="35.0" prefWidth="106.0" text="Vælg korn..." />
-      <TextField fx:id="txfValgtKorn" editable="false" layoutX="281.0" layoutY="205.0" prefHeight="26.0" prefWidth="198.0" promptText="Korn sort" />
-      <Label layoutX="21.0" layoutY="71.0" prefHeight="34.0" prefWidth="198.0" text="Opret destilat">
+      <Button fx:id="btnÅbenKorn" layoutX="140.0" layoutY="195.0" mnemonicParsing="false" onAction="#åbenKornVindueAction" prefHeight="30.0" prefWidth="90.0" text="Vælg korn..." />
+      <TextField fx:id="txfValgtKorn" editable="false" layoutX="257.0" layoutY="195.0" prefHeight="26.0" prefWidth="198.0" promptText="Korn sort" />
+      <Label layoutX="237.0" layoutY="133.0" prefHeight="35.0" prefWidth="147.0" text="Opret destilat">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txfAlkoholProcent" layoutX="281.0" layoutY="255.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast alkoholprocent" />
-      <TextField fx:id="txfNavnPaaAnsvarlig" layoutX="281.0" layoutY="290.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast navn på ansvarlig" />
-      <TextField fx:id="txfRygeMateriale" layoutX="281.0" layoutY="327.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast rygemateriale" />
-      <DatePicker fx:id="dateSelector" layoutX="281.0" layoutY="403.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast Dato" />
-      <Button fx:id="btnDestilleriGem" layoutX="524.0" layoutY="505.0" mnemonicParsing="false" onAction="#opretDestillatAction" prefHeight="30.0" prefWidth="78.0" text="Gem" />
-      <TextField fx:id="txfAntalLiter" layoutX="281.0" layoutY="361.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast antal liter" />
-      <Label fx:id="lblFBDestillat" layoutX="14.0" layoutY="547.0" prefHeight="17.0" prefWidth="653.0" text="FejlBesked:" textFill="RED" visible="false" />
-      <Button fx:id="btnDestillatLuk" layoutX="92.0" layoutY="505.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="30.0" prefWidth="56.0" text="Luk" />
-      <Label layoutX="164.0" layoutY="260.0" prefHeight="17.0" prefWidth="90.0" text="Alkohol procent:" />
-      <Label layoutX="163.0" layoutY="295.0" prefHeight="17.0" prefWidth="99.0" text="Navn på ansvarlig:" />
-      <Label layoutX="163.0" layoutY="332.0" prefHeight="17.0" prefWidth="84.0" text="Rygemateriale:" />
-      <Label layoutX="163.0" layoutY="366.0" prefHeight="17.0" prefWidth="56.0" text="Antal liter:" />
-      <Label layoutX="166.0" layoutY="408.0" prefHeight="17.0" prefWidth="31.0" text="Dato:" />
+      <TextField fx:id="txfAlkoholProcent" layoutX="257.0" layoutY="233.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast alkoholprocent" />
+      <TextField fx:id="txfNavnPaaAnsvarlig" layoutX="257.0" layoutY="270.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast navn på ansvarlig" />
+      <TextField fx:id="txfRygeMateriale" layoutX="257.0" layoutY="307.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast rygemateriale" />
+      <DatePicker fx:id="dateSelector" layoutX="257.0" layoutY="380.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast Dato" />
+      <Button fx:id="btnDestilleriGem" layoutX="504.0" layoutY="415.0" mnemonicParsing="false" onAction="#opretDestillatAction" prefHeight="30.0" prefWidth="78.0" text="Gem" />
+      <TextField fx:id="txfAntalLiter" layoutX="257.0" layoutY="343.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast antal liter" />
+      <Label fx:id="lblFBDestillat" layoutX="39.0" layoutY="457.0" prefHeight="17.0" prefWidth="543.0" text="FejlBesked:" textFill="RED" visible="false" />
+      <Button fx:id="btnDestillatLuk" layoutX="39.0" layoutY="415.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="30.0" prefWidth="56.0" text="Luk" />
+      <Label layoutX="140.0" layoutY="238.0" prefHeight="17.0" prefWidth="90.0" text="Alkohol procent:" />
+      <Label layoutX="139.0" layoutY="275.0" prefHeight="17.0" prefWidth="99.0" text="Navn på ansvarlig:" />
+      <Label layoutX="139.0" layoutY="312.0" prefHeight="17.0" prefWidth="84.0" text="Rygemateriale:" />
+      <Label layoutX="139.0" layoutY="348.0" prefHeight="17.0" prefWidth="56.0" text="Antal liter:" />
+      <Label layoutX="139.0" layoutY="385.0" prefHeight="17.0" prefWidth="31.0" text="Dato:" />
    </children>
 </Pane>

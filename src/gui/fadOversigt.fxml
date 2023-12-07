@@ -8,23 +8,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="lvwFade" layoutX="41.0" layoutY="120.0" prefHeight="200.0" prefWidth="528.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="202.0" pickOnBounds="true" preserveRatio="true">
+      <ListView fx:id="lvwFade" layoutX="38.0" layoutY="152.0" prefHeight="207.0" prefWidth="528.0" />
+      <ImageView fitHeight="142.0" fitWidth="400.0" layoutX="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whisky.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnOpretFad" layoutX="468.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Opret fad..." />
-      <Button fx:id="btnVælgFad" layoutX="44.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Vælg fad" />
-      <Label layoutX="17.0" layoutY="70.0" prefHeight="25.0" prefWidth="170.0" text="Oversigt over fade">
+      <Button fx:id="btnOpretFad" layoutX="473.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Opret fad..." />
+      <Button fx:id="btnVælgFad" layoutX="38.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Vælg fad" />
+      <Label layoutX="200.0" layoutY="98.0" prefHeight="35.0" prefWidth="200.0" text="Oversigt over fade">
          <font>
-            <Font size="20.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblAntalLiter" layoutX="432.0" layoutY="77.0" text="Samlet antal liter:" />
-      <Label fx:id="lblFadeAntalLiter" layoutX="432.0" layoutY="96.0" text="Fade antal liter:" />
+      <Label fx:id="lblAntalLiter" layoutX="457.0" layoutY="107.0" text="Samlet antal liter:" />
+      <Label fx:id="lblFadeAntalLiter" layoutX="457.0" layoutY="126.0" text="Fade antal liter:" />
    </children>
 </Pane>
