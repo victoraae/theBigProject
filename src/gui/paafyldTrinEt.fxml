@@ -10,33 +10,39 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaaFyldTrinEtGuiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaaFyldTrinEtGuiController">
    <children>
-      <ImageView fitHeight="131.0" fitWidth="226.0" layoutX="173.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="149.0" fitWidth="400.0" layoutX="116.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whisky.png" />
          </image>
       </ImageView>
-      <ListView fx:id="lvwDestillater" layoutX="6.0" layoutY="178.0" prefHeight="200.0" prefWidth="277.0" />
-      <ListView fx:id="lvwMængder" layoutX="394.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="6.0" layoutY="152.0" prefHeight="17.0" prefWidth="83.0" text="Destillater:" />
-      <Label layoutX="394.0" layoutY="161.0" prefHeight="17.0" prefWidth="75.0" text="Mængder:" />
-      <Label layoutX="129.0" layoutY="118.0" prefHeight="25.0" prefWidth="302.0" text="Trin 1: Lav et NewMake ud fra destillater">
+      <ListView fx:id="lvwDestillater" layoutX="27.0" layoutY="175.0" prefHeight="230.0" prefWidth="274.0" />
+      <ListView fx:id="lvwMængder" layoutX="324.0" layoutY="175.0" prefHeight="230.0" prefWidth="274.0" />
+      <Label layoutX="27.0" layoutY="148.0" prefHeight="27.0" prefWidth="111.0" text="Destillater">
          <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="324.0" layoutY="148.0" prefHeight="27.0" prefWidth="95.0" text="Mængder">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="111.0" layoutY="107.0" prefHeight="35.0" prefWidth="436.0" text="Trin 1: Lav et NewMake ud fra destillater">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btnNæste" layoutX="529.0" layoutY="565.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
-      <Button fx:id="btnFortryd" layoutX="20.0" layoutY="565.0" mnemonicParsing="false" onAction="#fortrydAction" text="Fortryd" />
-      <TextField fx:id="txfAntalLiter" layoutX="55.0" layoutY="387.0" promptText="Indtast antal liter" />
-      <Label layoutX="13.0" layoutY="391.0" prefHeight="17.0" prefWidth="35.0" text="Liter:" />
-      <Button fx:id="btnTilføjTilNM" layoutX="55.0" layoutY="439.0" mnemonicParsing="false" onAction="#tilføjMængdeAction" text="Tilføj til NewMake" />
-      <Label fx:id="lblFejlBesked" layoutX="17.0" layoutY="603.0" prefHeight="17.0" prefWidth="566.0" text="FejlBesked:" textFill="RED" visible="false" />
-      <Label layoutX="312.0" layoutY="404.0" prefHeight="17.0" prefWidth="111.0" text="Navn på NewMake:" />
-      <Label layoutX="315.0" layoutY="443.0" prefHeight="17.0" prefWidth="111.0" text="Navn på ansvarlig:" />
-      <TextField fx:id="txfNMNavn" layoutX="431.0" layoutY="400.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på NewMake" />
-      <TextField fx:id="txfAnsvarligNavn" layoutX="431.0" layoutY="439.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på ansvarlig" />
-      <DatePicker fx:id="datoVælger" layoutX="431.0" layoutY="476.0" prefHeight="25.0" prefWidth="149.0" promptText="Vælg dato" />
-      <Label layoutX="382.0" layoutY="480.0" prefHeight="17.0" prefWidth="35.0" text="Dato:" />
+      <Button fx:id="btnNæste" layoutX="547.0" layoutY="565.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
+      <Button fx:id="btnFortryd" layoutX="20.0" layoutY="565.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
+      <TextField fx:id="txfAntalLiter" layoutX="71.0" layoutY="425.0" promptText="Indtast antal liter" />
+      <Label layoutX="29.0" layoutY="429.0" prefHeight="17.0" prefWidth="35.0" text="Liter:" />
+      <Button fx:id="btnTilføjTilNM" layoutX="71.0" layoutY="464.0" mnemonicParsing="false" onAction="#tilføjMængdeAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til NewMake" />
+      <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="603.0" prefHeight="17.0" prefWidth="591.0" text="FejlBesked:" textFill="RED" visible="false" />
+      <Label layoutX="326.0" layoutY="430.0" prefHeight="17.0" prefWidth="111.0" text="Navn på NewMake:" />
+      <Label layoutX="329.0" layoutY="469.0" prefHeight="17.0" prefWidth="111.0" text="Navn på ansvarlig:" />
+      <TextField fx:id="txfNMNavn" layoutX="442.0" layoutY="425.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på NewMake" />
+      <TextField fx:id="txfAnsvarligNavn" layoutX="442.0" layoutY="464.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på ansvarlig" />
+      <DatePicker fx:id="datoVælger" layoutX="442.0" layoutY="501.0" prefHeight="25.0" prefWidth="160.0" promptText="Vælg dato" />
+      <Label layoutX="396.0" layoutY="506.0" prefHeight="17.0" prefWidth="35.0" text="Dato:" />
    </children>
 </Pane>

@@ -64,9 +64,11 @@ public class PaaFyldDestillatGuiController {
     }
 
     @FXML
-    public void gemAction(ActionEvent event) {
+    public void gemAction() {
 
         Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
+        newMake.setLiter(fadeAntalLiter);
+        newMake.setLiterTilbage(fadeAntalLiter);
 
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
@@ -113,6 +115,7 @@ public class PaaFyldDestillatGuiController {
 
 
         fadeTilNM.add(new FadTilNM(antalLiter, fad, newMake));
+        this.fadeAntalLiter += antalLiter;
         opdaterLvwFadTilNM();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();

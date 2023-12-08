@@ -122,4 +122,8 @@ public class NewMake implements Serializable {
     public void setLiter(double liter) {
         this.liter = liter;
     }
+
+    public String toStringKort() {
+        return "New make " + navn + ", liter tilbage: " + literTilbage + "l";
+    }
 }

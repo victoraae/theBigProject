@@ -22,6 +22,8 @@ public class HovedGuiController {
 
     @FXML
     private Button btnHistorik;
+    @FXML
+    private Button btnOmhæld;
 
     public void initialize() {
 
@@ -64,6 +66,9 @@ public class HovedGuiController {
         Main.åbenVinduer.åbenPaafyldDestillatVindue();
     }
 
-
+    @FXML
+    public void åbenOmhældTrinEtVindue(){
+        Main.åbenVinduer.åbenOmhældTrinEtVindue();
+    }
 }
 
