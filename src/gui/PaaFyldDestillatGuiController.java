@@ -43,8 +43,8 @@ public class PaaFyldDestillatGuiController {
     private double fadeAntalLiter;
 
     public void initialize() {
-        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter()+"");
-        HovedVindue.setFejlBesked(lblFadeLiter, 0+"");
+        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter() + "");
+        HovedVindue.setFejlBesked(lblFadeLiter, 0 + "");
 
 
         lvwFade.getItems().setAll(Controller.getFade());
@@ -57,23 +57,23 @@ public class PaaFyldDestillatGuiController {
     private void opdaterValgtFad() {
         fad = lvwFade.getSelectionModel().getSelectedItem();
     }
+
     private void opdaterLvwFadTilNM() {
         lvwFadTilNM.getItems().setAll(fadeTilNM);
-        HovedVindue.setFejlBesked(lblFadeLiter, this.antalLiterFraFTilNM()+"");
+        HovedVindue.setFejlBesked(lblFadeLiter, this.antalLiterFraFTilNM() + "");
     }
 
     @FXML
     public void gemAction(ActionEvent event) {
-        for(FadTilNM fnm : fadeTilNM){
-            Controller.tilføjFTilNMtilNM(fnm, newMake);
-        }
+
+        Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
 
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    public void lukAction(){
+    public void lukAction() {
         Controller.sletNewMake(newMake);
 
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
@@ -106,7 +106,7 @@ public class PaaFyldDestillatGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
-        if(newMake.getLiter() < antalLiterFraFTilNM() + antalLiter){
+        if (newMake.getLiter() < antalLiterFraFTilNM() + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke tilstrækkelig mængde væske i NewMake, tjek NewMakes liter");
             return;
         }
@@ -122,9 +122,9 @@ public class PaaFyldDestillatGuiController {
     /**
      * hjæple metode til gui
      */
-    private double antalLiterFraFTilNM(){
+    private double antalLiterFraFTilNM() {
         double result = 0;
-        for(FadTilNM f : fadeTilNM){
+        for (FadTilNM f : fadeTilNM) {
             result += f.getLiter();
         }
         return result;

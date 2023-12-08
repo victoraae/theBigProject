@@ -11,9 +11,9 @@ public class Lager implements Serializable {
     private int kapacitet;
     private int pladserTilbage;     // bruges med lagre, der ikke har reoler
     private final int maxAntalReoler;
+    private int antalReolerNu = 0;
     // komposition 1 --> 0..* Reol
     private final List<Reol> reoler = new ArrayList<>();
-    private int antalReolerNu = 0;
 
     public Lager(String navn, String adresse, double størrelse, int kapacitet, int maxAntalReoler) {
         this.navn = navn;

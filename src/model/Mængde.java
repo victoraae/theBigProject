@@ -2,6 +2,7 @@ package model;
 
 public class Mængde {
     private double mængde;
+    //Assositation
     private NewMake newMake;
     private Destillat destillat;
 

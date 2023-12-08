@@ -8,6 +8,7 @@ public class Hylde implements Serializable {
     private final boolean[] pladserArray;
     private boolean erLedig;
     private final int størrelse;
+    //komposition 0..* ---> 1 Reol
     private final Reol reol;
 
     public Hylde(Reol reol, int nummer, int størrelse) {

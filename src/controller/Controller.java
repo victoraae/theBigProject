@@ -122,14 +122,16 @@ public abstract class Controller {
     }
 
     /**
-     * pre: dato <= dagens dato, 0 <= alkoholprocent <= 100, liter > 0, antal gange > 0 */
-    public static Destillat opretDestillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn){
+     * pre: dato <= dagens dato, 0 <= alkoholprocent <= 100, liter > 0, antal gange > 0
+     */
+    public static Destillat opretDestillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn) {
         Destillat destillat = new Destillat(dato, alkoholProcent, ansvarlig, liter, antalGange, rygemateriale, korn);
         storage.tilføjDestillat(destillat);
         return destillat;
     }
 
-    /** Pre: 0 <= alkoholprocent <= 100
+    /**
+     * Pre: 0 <= alkoholprocent <= 100
      * param: newMakesLiter kan være et tomt map
      * Destillaterne i mængder skal have tilstrækkeligt literTilbage
      */
@@ -204,15 +206,38 @@ public abstract class Controller {
     /**
      * Pre: FadTilNM's antal liter må ikke overskride newMake'ts antal liter
      */
-    public static void tilføjFTilNMtilNM(FadTilNM fnm, NewMake nm){
-        nm.tilføjFad(fnm);
-        fnm.getFad().tilføjFadTilNM(fnm);
+    public static void tilføjFTilNMtilNM(List<FadTilNM> fnm, NewMake nm) {
+        for (FadTilNM fadTilNM : fnm) {
+            nm.tilføjFad(fadTilNM);
+            fadTilNM.getFad().tilføjFadTilNM(fadTilNM);
+        }
     }
 
     /**
      * metode til paafyld gui trin 2, hvis man trykker fortryd
      */
-    public static void sletNewMake(NewMake newMake){
+    public static void sletNewMake(NewMake newMake) {
         storage.sletNewMake(newMake);
     }
+
+    /**
+     * Pre: NewMakes liter tilbage må ikke gå under 0
+     */
+    public static NewMake omhældNewMake(Map<NewMake,Double> newMakes, LocalDate dato, String ansvarlig) {
+        String navn = "";
+        double antalLiter = 0;
+        for (Map.Entry<NewMake,Double> entry : newMakes.entrySet()) {
+            navn += entry.getKey().getNavn() + ", ";
+            antalLiter += entry.getValue();
+            entry.getKey().decLiterTilbage(entry.getValue());
+        }
+        navn = navn.substring(0, navn.length() - 2);
+        ArrayList<NewMake> temp = new ArrayList<>(newMakes.keySet());
+        NewMake newMake = new NewMake(navn,dato,beregnAlkoholProcentWhisky(temp, 0),ansvarlig,newMakes);
+        newMake.setLiter(antalLiter);
+        newMake.setLiterTilbage(antalLiter);
+        storage.tilføjNewMake(newMake);
+        return newMake;
+    }
 }
+
