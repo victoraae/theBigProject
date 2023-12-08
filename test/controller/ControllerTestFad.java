@@ -33,21 +33,21 @@ class ControllerTestFad {
     void opretFad() {
         // TC1 -- fad på lager uden reoler og hylder, størrelse: lille (50L)
         // Act
-        Fad fad1 = Controller.opretFad(lager1, null, leverandør1, land1, materiale, "rødvin", FadStørrelser.L50);
+        Fad fad1 = Controller.opretFad(lager1, null, leverandør1, land1, materiale, "rødvin", FadStørrelse.L50);
         // Assert
         List<Fad> fade = Controller.getFade();
         assertEquals(fad1, fade.get(fade.size() - 1));
 
         // TC2 -- fad på lager med reoler og hylder, størrelse: mellem (100L)
         // Act
-        Fad fad2 = Controller.opretFad(lager2, hylde, leverandør2, land2, materiale, "sherry", FadStørrelser.L100);
+        Fad fad2 = Controller.opretFad(lager2, hylde, leverandør2, land2, materiale, "sherry", FadStørrelse.L100);
         // Assert
         fade = Controller.getFade();
         assertEquals(fad2, fade.get(fade.size() - 1));
 
         // TC3 -- fad på lager med reoler og hylder, størrelse: stor (250L)
         // Act
-        Fad fad3 = Controller.opretFad(lager2, hylde, leverandør2, land2, materiale, "bourbon", FadStørrelser.L250);
+        Fad fad3 = Controller.opretFad(lager2, hylde, leverandør2, land2, materiale, "bourbon", FadStørrelse.L250);
         // Assert
         fade = Controller.getFade();
         assertEquals(fad3, fade.get(fade.size() - 1));
