@@ -11,12 +11,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.WhiskyGuiController">
    <children>
-      <ImageView fitHeight="127.0" fitWidth="228.0" layoutX="262.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="129.0" fitWidth="400.0" layoutX="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whisky.png" />
          </image>
       </ImageView>
-      <Label layoutX="320.0" layoutY="128.0" text="Lav whisky">
+      <Label layoutX="320.0" layoutY="115.0" text="Lav whisky">
          <font>
             <Font size="24.0" />
          </font>
