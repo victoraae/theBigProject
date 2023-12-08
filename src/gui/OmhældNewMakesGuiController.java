@@ -9,7 +9,6 @@ import model.Fad;
 import model.FadTilNM;
 import model.NewMake;
 
-import java.awt.event.ActionEvent;
 
 public class OmhældNewMakesGuiController {
     @FXML
@@ -41,17 +40,17 @@ public class OmhældNewMakesGuiController {
     public static NewMake newMake;
 
     @FXML
-    void gemAction(ActionEvent event) {
+    void gemAction() {
 
     }
 
     @FXML
-    void lukAction(ActionEvent event) {
+    void lukAction() {
 
     }
 
     @FXML
-    void omhaeldAction(ActionEvent event) {
+    void omhaeldAction() {
 
     }
 }
