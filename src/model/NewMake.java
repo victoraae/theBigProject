@@ -13,7 +13,9 @@ public class NewMake implements Serializable {
     private double alkoholprocent;
     private final String ansvarlig;
     private double liter;
+    //Assosiation 1 ---> 1..* FadTilNM
     private final List<FadTilNM> fade = new ArrayList<>();
+    //Assosiation 1 ---> 0..* Mængde
     private final List<Mængde> mængder = new ArrayList<>();
     private boolean erAktiv;
     private double literTilbage;
@@ -111,5 +113,12 @@ public class NewMake implements Serializable {
     @Override
     public String toString() {
         return "NewMake: " + ", mængder: "+  mængder;
+    }
+
+    public void setLiterTilbage(double literTilbage) {
+        this.literTilbage = literTilbage;
+    }
+    public void setLiter(double liter) {
+        this.liter = liter;
     }
 }

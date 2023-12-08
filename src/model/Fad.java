@@ -14,10 +14,12 @@ public class Fad implements Serializable {
     private int gangeBrugt;
     private String tidligereIndhold;
     private FadStørrelser størrelse;
+    //Association 0..* ---> 1 Lager
     private Lager lager;
-    //Association 0..* -> 1 Lager
-    private Hylde hylde; //Nullable
-    //Association 0..* -> 0..1 Hylde
+    //Nullable
+    //Association 0..* ---> 0..1 Hylde
+    private Hylde hylde;
+    //Association 1 ---> 0..* FadTilNM
     private final List<FadTilNM> indhold = new ArrayList<>();
 
     /**
