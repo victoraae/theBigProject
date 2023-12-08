@@ -19,6 +19,7 @@ public class NewMake implements Serializable {
     private final List<Mængde> mængder = new ArrayList<>();
     private boolean erAktiv;
     private double literTilbage;
+    //Assosiation 0..* --> 1 NewMake
     private final Map<NewMake, Double> newMakesLiter;
 
     public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<Fad, Double> fadeTilLiter

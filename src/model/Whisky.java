@@ -11,7 +11,9 @@ public class Whisky {
     private double antalLiter;
     private double alkoholProcent;
     private String kvalitetsstempel;
+    //Aggregation 0..1 ---> 1..* NewMake
     private final List<NewMake> newMakes;
+    //Aggregation 1 ---> 0..* Flaske
     private final List<Flaske> flasker = new ArrayList<>();
     private final int år = 2018;
 

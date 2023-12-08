@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.lang.invoke.MutableCallSite;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,8 @@ public class Fad implements Serializable {
     private String materiale;
     private int gangeBrugt;
     private String tidligereIndhold;
-    private FadStørrelser størrelse;
+    //Association 0..* ---> 1 FadStørrelse
+    private FadStørrelse størrelse;
     //Association 0..* ---> 1 Lager
     private Lager lager;
     //Nullable
@@ -25,7 +25,7 @@ public class Fad implements Serializable {
     /**
      * Hylde kan være null, for et fad der er på lager uden reoler.
      */
-    public Fad(String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse, Lager lager, Hylde hylde) {
+    public Fad(String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelse størrelse, Lager lager, Hylde hylde) {
         antalFade++;
         this.nummer = antalFade;
         this.leverandør = leverandør;
@@ -61,7 +61,7 @@ public class Fad implements Serializable {
         return tidligereIndhold;
     }
 
-    public FadStørrelser getStørrelse() {
+    public FadStørrelse getStørrelse() {
         return størrelse;
     }
 

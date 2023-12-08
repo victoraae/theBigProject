@@ -52,8 +52,8 @@ public class HyldeGuiController {
 
     public void initialize() {
         lager = LagerGuiController.valgtLager;
-        int index = lblValgtLager.getText().indexOf(':');
-        lblValgtLager.setText(lblValgtLager.getText().substring(0, index) + " " + lager);
+        int index = lblValgtLager.getText().indexOf('.');
+        lblValgtLager.setText(lblValgtLager.getText().substring(0, index) + " " + lager.getNavn());
 
         if (lager != null) {
             lvwVaelgReol.getItems().setAll(lager.getReoler());
@@ -67,18 +67,6 @@ public class HyldeGuiController {
     }
 
 
-    public void antalPladserTilbage(String besked) {
-        String text = lblAntalPladserTilbage.getText();
-        int index = text.indexOf(':');
-        int size = 0;
-
-        if (index != -1 && index < text.length()) {
-            lblAntalPladserTilbage.setText(text.substring(0, index + 1) + " " + besked);
-        } else {
-            lblAntalPladserTilbage.setText(text + ": " + besked);
-        }
-
-    }
 
 
     @FXML

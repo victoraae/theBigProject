@@ -2,15 +2,13 @@ package gui;
 
 import controller.Controller;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.FadStørrelser;
+import model.FadStørrelse;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class OpretFadGuiController {
     @FXML
@@ -22,7 +20,7 @@ public class OpretFadGuiController {
     @FXML
     private ComboBox<Hylde> cmbVælgHylde;
     @FXML
-    private ComboBox<FadStørrelser> cmbVælgStorelse;
+    private ComboBox<FadStørrelse> cmbVælgStorelse;
     @FXML
     private Label lblFejlBesked;
     @FXML
@@ -35,7 +33,7 @@ public class OpretFadGuiController {
     private TextField txfTidligereIndhold;
 
     public void initialize() {
-        cmbVælgStorelse.getItems().setAll(FadStørrelser.class.getEnumConstants());
+        cmbVælgStorelse.getItems().setAll(FadStørrelse.class.getEnumConstants());
         cmbVælgLager.getItems().setAll(Controller.getLagre());
 
         ChangeListener<Lager> listener = (ov, o, n) -> this.opdaterCmbHylder();
@@ -58,7 +56,7 @@ public class OpretFadGuiController {
     public void opretFadAction() {
         Lager lager = cmbVælgLager.getValue();
         Hylde hylde = cmbVælgHylde.getValue();
-        FadStørrelser størrelse = cmbVælgStorelse.getValue();
+        FadStørrelse størrelse = cmbVælgStorelse.getValue();
 
 
         String materiale = txfMateriale.getText();

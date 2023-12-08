@@ -108,7 +108,7 @@ public class Lager implements Serializable {
 
     @Override
     public String toString() {
-        String result = "Lager " + navn + ", adresse: " + adresse
+        String result = "Lager: " + navn + ", adresse: " + adresse
                 + ". Areal: " + størrelse + " m^2, kapacitet: " + kapacitet + " pladser.";
         if (maxAntalReoler != 0) {
             result += " Max antal reoler: " + maxAntalReoler + ".";

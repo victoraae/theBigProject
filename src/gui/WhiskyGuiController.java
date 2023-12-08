@@ -45,39 +45,48 @@ public class WhiskyGuiController {
         String navn = txfWhiskyNavn.getText().trim();
         String ansvarlig = txfAnsvarligNavn.getText().trim();
 
-        if (navn.isBlank()){
+        if (navn.isBlank()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på whiskyen kan ikke være tom");
             return;
         }
 
-        if (ansvarlig.isBlank()){
+        if (ansvarlig.isBlank()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
             return;
         }
 
         double literVand = 0;
         String vand = txfLiterVand.getText().trim();
-        if (!vand.isBlank()){
+        if (!vand.isBlank()) {
             try {
                 literVand = Double.parseDouble(vand);
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 HovedVindue.setFejlBesked(lblFejlBesked, "Indtast et gyldigt nummer");
                 return;
             }
         }
-        if (literVand < 0){
+        if (literVand < 0) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Indtast et gyldigt nummer");
             return;
         }
-        if (!måViLaveWhisky(newMakes)){
+        if (!måViLaveWhisky(newMakes)) {
             HovedVindue.setFejlBesked(lblFejlBesked,
                     "Du må ikke lave whisky ud fra New Makes der IKKE har lagret i mindst 3 år!");
             return;
         }
-
-        Controller.opretWhisky(navn, ansvarlig, literVand, newMakes);
-        Stage stage = (Stage) btnGem.getScene().getWindow();
-        stage.close();
+        if (newMakes != null) {
+            Controller.opretWhisky(navn, ansvarlig, literVand, newMakes);
+            Stage stage = (Stage) btnGem.getScene().getWindow();
+            stage.close();
+        } else {
+            HovedVindue.setFejlBesked(lblFejlBesked,
+                    "Du mangler at vælge et newMake");
+        }
+        if (txfLiterVand.getText().isBlank()) {
+            HovedVindue.setFejlBesked(lblFejlBesked,
+                    "Du skal indtaste liter vand");
+            return;
+        }
     }
 
     // hjælpemetode der tjekker om alle
@@ -85,12 +94,14 @@ public class WhiskyGuiController {
     @FXML
     public boolean måViLaveWhisky(List<NewMake> newMakes) {
         boolean result = true;
-        for (int i = 0; i < newMakes.size() && result; i++) {
-            NewMake newMake = newMakes.get(i);
-            List<Mængde> mængder = newMake.getMængder();
-            if (!mængder.isEmpty()) {
-                if (newMake.getDatoForPåfyldning().isAfter(LocalDate.now().minusYears(3))) {
-                    result = false;
+        if (newMakes != null) {
+            for (int i = 0; i < newMakes.size() && result; i++) {
+                NewMake newMake = newMakes.get(i);
+                List<Mængde> mængder = newMake.getMængder();
+                if (!mængder.isEmpty()) {
+                    if (newMake.getDatoForPåfyldning().isAfter(LocalDate.now().minusYears(3))) {
+                        result = false;
+                    }
                 }
             }
         }

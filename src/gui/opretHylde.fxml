@@ -24,7 +24,7 @@
       <TextField fx:id="txfIStorrelse" layoutX="292.0" layoutY="220.0" promptText="Indtast størrelse" />
       <TextField fx:id="txfAntalHylder" layoutX="292.0" layoutY="260.0" promptText="Indtast max antal hylder" />
       <Button fx:id="btnOpretReol" layoutX="327.0" layoutY="303.0" mnemonicParsing="false" onAction="#opretReolAction" prefHeight="25.0" prefWidth="79.0" text="Opret reol" />
-      <Label fx:id="lblValgtLager" layoutX="292.0" layoutY="188.0" text="Lager:" />
+      <Label fx:id="lblValgtLager" layoutX="292.0" layoutY="188.0" text="Lager:." />
       <Button fx:id="btnOpretHylde" layoutX="327.0" layoutY="362.0" mnemonicParsing="false" onAction="#opretHyldeAction" prefHeight="25.0" prefWidth="79.0" text="Opret hylde" />
       <Button fx:id="txfLuk" layoutX="42.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnLukAction" prefHeight="25.0" prefWidth="79.0" text="Luk" />
       <ListView fx:id="lvwVaelgHylder" layoutX="475.0" layoutY="212.0" prefHeight="285.0" prefWidth="217.0" />

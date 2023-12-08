@@ -1,8 +1,6 @@
 package model;
 
-import java.io.Serializable;
-
-public enum FadStørrelser {
+public enum FadStørrelse {
     L30("LILLE", 30),
     L50("LILLE", 50),
     L100("MELLEM", 100),
@@ -20,7 +18,7 @@ public enum FadStørrelser {
         return strInt;
     }
 
-    private FadStørrelser(String størrelse, int str) {
+    private FadStørrelse(String størrelse, int str) {
         this.størrelse = størrelse;
         this.strInt = str;
     }

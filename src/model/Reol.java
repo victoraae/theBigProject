@@ -8,6 +8,7 @@ public class Reol implements Serializable {
     private final int størrelse;
     private final int nummer;
     private final int maxAntalHylder;
+    //assosiation 0..* ---> 1 Lager
     private final Lager lager;
     // komposition 1 --> 0..* Hylde
     private final List<Hylde> hylder = new ArrayList<>();

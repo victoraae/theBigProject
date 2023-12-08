@@ -3,7 +3,6 @@ package controller;
 import model.*;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,7 +76,7 @@ public abstract class Controller {
      *
      * @param hylde nullable
      */
-    public static Fad opretFad(Lager lager, Hylde hylde, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelser størrelse) {
+    public static Fad opretFad(Lager lager, Hylde hylde, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelse størrelse) {
         Fad fad = new Fad(leverandør, oprindeslesland, materiale, tidligereIndhold, størrelse, lager, hylde);
         storage.tilføjFad(fad);
         if (hylde != null) {
