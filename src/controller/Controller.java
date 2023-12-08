@@ -133,9 +133,9 @@ public abstract class Controller {
      * param: newMakesLiter kan være et tomt map
      * Destillaterne i mængder skal have tilstrækkeligt literTilbage
      */
-    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter) {
+    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter, LocalDate dato) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
-        NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fadeTilLiter, newMakesLiter);
+        NewMake newMake = new NewMake(navn, dato, alkoholProcent, ansvarlig, fadeTilLiter, newMakesLiter);
 
         for (Mængde mængde : mængder) {
             mængde.setNewMake(newMake);
