@@ -10,32 +10,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KornGuiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KornGuiController">
    <children>
-      <ImageView fitHeight="181.0" fitWidth="270.0" layoutX="191.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="137.0" fitWidth="400.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whisky.png" />
          </image>
       </ImageView>
-      <ListView fx:id="lvwKorn" layoutX="20.0" layoutY="301.0" prefHeight="210.0" prefWidth="189.0" />
-      <Button fx:id="btnVælgKorn" layoutX="135.0" layoutY="522.0" mnemonicParsing="false" onAction="#vælgKornAction" prefHeight="25.0" prefWidth="74.0" text="Vælg" />
-      <TextField fx:id="txfSort" layoutX="416.0" layoutY="220.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast sort" />
-      <TextField fx:id="txfBondemand" layoutX="416.0" layoutY="255.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast navn på bondemand" />
-      <TextField fx:id="txfAar" layoutX="416.0" layoutY="289.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast år" />
-      <TextField fx:id="txfNavnPaaMark" layoutX="416.0" layoutY="334.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast navn på mark" />
-      <TextArea fx:id="txaMaltningsprocess" layoutX="416.0" layoutY="380.0" prefHeight="129.0" prefWidth="173.0" promptText="Beskriv maltningsprocessen" />
-      <Button fx:id="btnOpretKorn" layoutX="515.0" layoutY="522.0" mnemonicParsing="false" onAction="#opretKornAction" prefHeight="25.0" prefWidth="74.0" text="Opret" />
-      <Label layoutX="20.0" layoutY="281.0" prefHeight="17.0" prefWidth="134.0" text="Vælg kornsort fra listen" />
-      <Label layoutX="110.0" layoutY="141.0" text="Vælg, eller opret ny kornsort">
+      <ListView fx:id="lvwKorn" layoutX="25.0" layoutY="221.0" prefHeight="262.0" prefWidth="189.0" />
+      <Button fx:id="btnVælgKorn" layoutX="82.0" layoutY="495.0" mnemonicParsing="false" onAction="#vælgKornAction" prefHeight="25.0" prefWidth="74.0" text="Vælg" />
+      <TextField fx:id="txfSort" layoutX="420.0" layoutY="191.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast sort" />
+      <TextField fx:id="txfBondemand" layoutX="420.0" layoutY="226.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast navn på bondemand" />
+      <TextField fx:id="txfAar" layoutX="420.0" layoutY="260.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast år" />
+      <TextField fx:id="txfNavnPaaMark" layoutX="420.0" layoutY="293.0" prefHeight="25.0" prefWidth="173.0" promptText="Indtast navn på mark" />
+      <TextArea fx:id="txaMaltningsprocess" layoutX="420.0" layoutY="328.0" prefHeight="157.0" prefWidth="173.0" promptText="Beskriv maltningsprocessen" />
+      <Button fx:id="btnOpretKorn" layoutX="470.0" layoutY="495.0" mnemonicParsing="false" onAction="#opretKornAction" prefHeight="25.0" prefWidth="74.0" text="Gem" />
+      <Label layoutX="25.0" layoutY="190.0" prefHeight="27.0" prefWidth="189.0" text="Vælg kornsort fra listen">
          <font>
-            <Font size="37.0" />
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="164.0" layoutY="126.0" text="Vælg eller opret ny kornsort">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblFBKorn" layoutX="21.0" layoutY="567.0" prefHeight="17.0" prefWidth="403.0" text="Fejlbesked:" textFill="#d00a0a" visible="false" />
-      <Label layoutX="326.0" layoutY="224.0" prefHeight="17.0" prefWidth="87.0" text="Kornsort navn:" />
-      <Label layoutX="287.0" layoutY="259.0" prefHeight="17.0" prefWidth="123.0" text="Navn på bondemand:" />
-      <Label layoutX="385.0" layoutY="293.0" prefHeight="17.0" prefWidth="21.0" text="År:" />
-      <Label layoutX="326.0" layoutY="338.0" prefHeight="17.0" prefWidth="87.0" text="Navn på mark:" />
-      <Label layoutX="249.0" layoutY="380.0" prefHeight="17.0" prefWidth="173.0" text="Maltningsprocess beskrivelse:" />
+      <Label fx:id="lblFBKorn" layoutX="25.0" layoutY="538.0" prefHeight="17.0" prefWidth="567.0" text="Fejlbesked:" textFill="#d00a0a" visible="false" />
+      <Label layoutX="330.0" layoutY="195.0" prefHeight="17.0" prefWidth="87.0" text="Kornsort navn:" />
+      <Label layoutX="291.0" layoutY="230.0" prefHeight="17.0" prefWidth="123.0" text="Navn på bondemand:" />
+      <Label layoutX="389.0" layoutY="264.0" prefHeight="17.0" prefWidth="21.0" text="År:" />
+      <Label layoutX="330.0" layoutY="297.0" prefHeight="17.0" prefWidth="87.0" text="Navn på mark:" />
+      <Label layoutX="313.0" layoutY="329.0" prefHeight="25.0" prefWidth="103.0" text="Maltningsprocess:" />
    </children>
 </Pane>

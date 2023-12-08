@@ -9,34 +9,34 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OpretFadGuiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OpretFadGuiController">
    <children>
-      <ImageView fitHeight="126.0" fitWidth="230.0" layoutX="185.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="184.0" fitWidth="400.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@whisky.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="cmbVælgHylde" layoutX="73.0" layoutY="190.0" prefWidth="150.0" promptText="Vælg hylde" />
-      <TextField fx:id="txfNavnPaaLeveradoer" layoutX="257.0" layoutY="228.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast navn på leverandør" />
-      <TextField fx:id="txfOprindelsesland" layoutX="257.0" layoutY="261.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast oprindelsesland" />
-      <TextField fx:id="txfMateriale" layoutX="257.0" layoutY="292.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast materiale" />
-      <TextField fx:id="txfTidligereIndhold" layoutX="257.0" layoutY="324.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast tidligere indhold" />
-      <ComboBox fx:id="cmbVælgStorelse" layoutX="350.0" layoutY="165.0" prefWidth="150.0" promptText="Vælg størrelse" />
-      <Button fx:id="btnOpretFad" layoutX="497.0" layoutY="362.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Opret" />
-      <Label fx:id="lblFejlBesked" layoutX="2.0" layoutY="366.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
-      <Button fx:id="btnFortryd" layoutX="319.0" layoutY="362.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
-      <Label layoutX="31.0" layoutY="60.0" text="Opret fad">
+      <ComboBox fx:id="cmbVælgHylde" layoutX="112.0" layoutY="207.0" prefWidth="150.0" promptText="Vælg hylde" />
+      <TextField fx:id="txfNavnPaaLeveradoer" layoutX="272.0" layoutY="262.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast navn på leverandør" />
+      <TextField fx:id="txfOprindelsesland" layoutX="272.0" layoutY="295.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast oprindelsesland" />
+      <TextField fx:id="txfMateriale" layoutX="272.0" layoutY="326.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast materiale" />
+      <TextField fx:id="txfTidligereIndhold" layoutX="272.0" layoutY="358.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast tidligere indhold" />
+      <ComboBox fx:id="cmbVælgStorelse" layoutX="389.0" layoutY="182.0" prefWidth="150.0" promptText="Vælg størrelse" />
+      <Button fx:id="btnOpretFad" layoutX="448.0" layoutY="410.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Gem" />
+      <Label fx:id="lblFejlBesked" layoutX="23.0" layoutY="449.0" prefHeight="17.0" prefWidth="548.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
+      <Button fx:id="btnFortryd" layoutX="70.0" layoutY="410.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
+      <Label layoutX="249.0" layoutY="114.0" text="Opret fad">
          <font>
-            <Font size="33.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="156.0" prefHeight="17.0" prefWidth="41.0" text="Lager:" />
-      <Label layoutX="25.0" layoutY="192.0" prefHeight="17.0" prefWidth="41.0" text="Hylde:" />
-      <Label layoutX="285.0" layoutY="169.0" prefHeight="17.0" prefWidth="56.0" text="Størrelse: " />
-      <Label layoutX="140.0" layoutY="232.0" text="Navn på leverandør:" />
-      <Label layoutX="158.0" layoutY="265.0" text="Oprindelsesland:" />
-      <Label layoutX="192.0" layoutY="296.0" prefHeight="17.0" prefWidth="56.0" text="Materiale:" />
-      <Label layoutX="157.0" layoutY="328.0" text="Tidligere indhold:" />
-      <ComboBox fx:id="cmbVælgLager" layoutX="73.0" layoutY="153.0" prefWidth="150.0" promptText="Vælg lager" />
+      <Label layoutX="64.0" layoutY="173.0" prefHeight="17.0" prefWidth="41.0" text="Lager:" />
+      <Label layoutX="64.0" layoutY="209.0" prefHeight="17.0" prefWidth="41.0" text="Hylde:" />
+      <Label layoutX="324.0" layoutY="186.0" prefHeight="17.0" prefWidth="56.0" text="Størrelse: " />
+      <Label layoutX="155.0" layoutY="266.0" text="Navn på leverandør:" />
+      <Label layoutX="173.0" layoutY="299.0" text="Oprindelsesland:" />
+      <Label layoutX="207.0" layoutY="330.0" prefHeight="17.0" prefWidth="56.0" text="Materiale:" />
+      <Label layoutX="172.0" layoutY="362.0" text="Tidligere indhold:" />
+      <ComboBox fx:id="cmbVælgLager" layoutX="112.0" layoutY="170.0" prefWidth="150.0" promptText="Vælg lager" />
    </children>
 </Pane>
