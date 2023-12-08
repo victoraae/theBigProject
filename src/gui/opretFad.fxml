@@ -24,7 +24,7 @@
       <ComboBox fx:id="cmbVælgStorelse" layoutX="389.0" layoutY="182.0" prefWidth="150.0" promptText="Vælg størrelse" />
       <Button fx:id="btnOpretFad" layoutX="448.0" layoutY="410.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Gem" />
       <Label fx:id="lblFejlBesked" layoutX="23.0" layoutY="449.0" prefHeight="17.0" prefWidth="548.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
-      <Button fx:id="btnFortryd" layoutX="70.0" layoutY="410.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Fortryd" />
+      <Button fx:id="btnFortryd" layoutX="70.0" layoutY="410.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Luk" />
       <Label layoutX="249.0" layoutY="114.0" text="Opret fad">
          <font>
             <Font size="24.0" />
