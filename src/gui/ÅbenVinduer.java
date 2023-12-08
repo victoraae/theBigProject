@@ -244,7 +244,7 @@ public class ÅbenVinduer {
 
     public void åbenOmhældNewMakesVindue() {
         Stage stage = new Stage();
-        URL fxmlFileName = this.getClass().getResource("omhældNewMakes.fxml");
+        URL fxmlFileName = this.getClass().getResource("omhaeldNewMakes.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
         stage.setResizable(false);
         Parent root = null;
