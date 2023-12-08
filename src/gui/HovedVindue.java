@@ -21,6 +21,7 @@ public class HovedVindue extends Application {
         Parent root = FXMLLoader.load(fxmlFileName);
         stage.setMinWidth(root.minWidth(-1));
         stage.setMinHeight(root.minHeight(-1));
+        stage.setTitle("Sporbarhed i produktionen og fadlagerstyring hos Sall Whisky Distillery");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         ÅbenVinduer.setParent(stage);

@@ -22,6 +22,8 @@ public class HovedGuiController {
 
     @FXML
     private Button btnHistorik;
+    @FXML
+    private Button btnOmhæld;
 
     public void initialize() {
 
