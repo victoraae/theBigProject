@@ -5,10 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Destillat;
-import model.Fad;
-import model.Mængde;
-import model.NewMake;
+import model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -75,6 +72,11 @@ public class WhiskyGuiController {
             return;
         }
         if (newMakes != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
+            alert.setContentText("Er du sikker på, at du vil oprette denne whisky?\n" + navn + ", lavet af: " + ansvarlig);
+            alert.setHeaderText("Bekræft oplysninger");
+            alert.showAndWait();
+
             Controller.opretWhisky(navn, ansvarlig, literVand, newMakes);
             Stage stage = (Stage) btnGem.getScene().getWindow();
             stage.close();

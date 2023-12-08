@@ -65,6 +65,11 @@ public class PaaFyldDestillatGuiController {
 
     @FXML
     public void gemAction() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
+        alert.setContentText("Er du sikker på, at du vil påfylde og lave en ny New Make fra destillat?");
+        alert.setHeaderText("Bekræft oplysninger");
+        alert.showAndWait();
+
         Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
         newMake.setLiter(fadeAntalLiter);
         newMake.setLiterTilbage(fadeAntalLiter);
@@ -111,7 +116,6 @@ public class PaaFyldDestillatGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke tilstrækkelig mængde væske i NewMake, tjek NewMakes liter");
             return;
         }
-
 
         fadeTilNM.add(new FadTilNM(antalLiter, fad, newMake));
         this.fadeAntalLiter += antalLiter;

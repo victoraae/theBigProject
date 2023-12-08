@@ -2,10 +2,7 @@ package gui;
 
 import controller.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.*;
 
@@ -51,6 +48,11 @@ public class OmhældNewMakesGuiController {
 
     @FXML
     void gemAction() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
+        alert.setContentText("Er du sikker på, at du vil omhælde disse New Makes?");
+        alert.setHeaderText("Bekræft oplysninger");
+        alert.showAndWait();
+
         Controller.tilføjFTilNMtilNM(fadeTilBlanding, newMake);
         newMake.setLiter(fadeAntalLiter);
         newMake.setLiterTilbage(fadeAntalLiter);

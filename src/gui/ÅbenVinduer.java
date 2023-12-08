@@ -155,7 +155,7 @@ public class ÅbenVinduer {
         Scene scene = new Scene(root);
         stage.initOwner(parent);
         stage.setScene(scene);
-        stage.setTitle("Liste over newmakes");
+        stage.setTitle("Liste Over New Makes");
 
         stage.showAndWait();
     }
