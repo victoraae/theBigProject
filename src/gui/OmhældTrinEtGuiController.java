@@ -92,7 +92,7 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter >= 1");
             return;
         }
-        if (newMake.getLiterTilbage() < antalLiter || newMake.getLiterTilbage() < antalLiter + sumLiter()) {
+        if (newMake.getLiterTilbage() < antalLiter || newMake.getLiterTilbage() < antalLiter + sumLiter(newMake)) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok New Make væske, tjek New Makes antal liter tilbage");
             return;
         }
@@ -103,11 +103,11 @@ public class OmhældTrinEtGuiController {
         txfAntalLiter.clear();
     }
 
-    public double sumLiter() {
+    public double sumLiter(NewMake newMake) {
         double result = 0;
 
         for (Map.Entry<NewMake, Double> nml : newMakeLiter.entrySet()) {
-            result += nml.getValue();
+            if(newMake.equals(nml.getKey()))result += nml.getValue();
         }
         return result;
     }
