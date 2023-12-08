@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.Fad;
 import model.FadTilNM;
+import model.NewMake;
 
 import java.awt.event.ActionEvent;
 
@@ -37,6 +38,7 @@ public class OmhældNewMakesGuiController {
 
     @FXML
     private TextField txfAntalLiter;
+    public static NewMake newMake;
 
     @FXML
     void gemAction(ActionEvent event) {

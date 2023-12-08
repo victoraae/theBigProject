@@ -149,39 +149,4 @@ public class PaaFyldTrinEtGuiController {
         }
         return result;
     }
-
-    /**
-     * @FXML
-     *     void gemAction() {
-     *
-     *         String navn = txfNewMakeNavn.getText().trim();
-     *         String ansvarlig = txfAnsvarligNavn.getText().trim();
-     *
-     *         if (navn.isBlank()) {
-     *             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på NewMake kan ikke være tom");
-     *             return;
-     *         }
-     *
-     *         if (ansvarlig.isBlank()) {
-     *             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
-     *             return;
-     *         }
-     *         if (!txfNewMakeNavn.getText().matches(".*[a-zA-Z]+.*")) {
-     *             HovedVindue.setFejlBesked(lblFejlBesked, "NewMakes navn må kun indeholde bogstaver");
-     *             return;
-     *         }
-     *         if (!txfAnsvarligNavn.getText().matches(".*[a-zA-Z]+.*")) {
-     *             HovedVindue.setFejlBesked(lblFejlBesked, "Ansvarlig navn må kun indeholde bogstaver");
-     *             return;
-     *         }
-     *         if (lvwMængder.getItems() != null) {
-     *             Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>());
-     *             Stage stage = (Stage) btnGem.getScene().getWindow();
-     *             stage.close();
-     *
-     *         }
-     *
-     *     }
-     */
-
 }

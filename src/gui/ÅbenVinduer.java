@@ -224,7 +224,7 @@ public class ÅbenVinduer {
 
     public void åbenOmhældTrinEtVindue() {
         Stage stage = new Stage();
-        URL fxmlFileName = this.getClass().getResource("omhældTrinEt.fxml");
+        URL fxmlFileName = this.getClass().getResource("omhaeldTrinEt.fxml");
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
         stage.setResizable(false);
         Parent root = null;

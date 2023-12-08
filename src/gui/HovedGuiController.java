@@ -66,6 +66,9 @@ public class HovedGuiController {
         Main.åbenVinduer.åbenPaafyldDestillatVindue();
     }
 
-
+    @FXML
+    public void åbenOmhældTrinEtVindue(){
+        Main.åbenVinduer.åbenOmhældTrinEtVindue();
+    }
 }
 

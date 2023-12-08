@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OmhældTrinEtGuiController">
    <children>
       <ImageView fitHeight="171.0" fitWidth="400.0" layoutX="120.0" pickOnBounds="true" preserveRatio="true">
@@ -37,13 +36,13 @@
       </Label>
       <Label layoutX="41.0" layoutY="408.0" text="Liter:" />
       <TextField fx:id="txfAntalLiter" layoutX="76.0" layoutY="404.0" promptText="Antal liter til blanding" />
-      <Button fx:id="btnTilføjTilBlanding" layoutX="76.0" layoutY="442.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Tilføj til blanding" />
+      <Button fx:id="btnTilføjTilBlanding" layoutX="76.0" layoutY="442.0" mnemonicParsing="false" onAction="#tilføjLiterAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til blanding" />
       <Label layoutX="320.0" layoutY="408.0" text="Navn på ansvarlig:" />
       <Label layoutX="388.0" layoutY="446.0" text="Dato:" />
       <DatePicker fx:id="datoVælger" layoutX="431.0" layoutY="442.0" prefHeight="25.0" prefWidth="165.0" promptText="Vælg dato" />
       <TextField fx:id="txfAnsvarligNavn" layoutX="429.0" layoutY="404.0" prefHeight="25.0" prefWidth="165.0" promptText="Indtast navn på ansvarlig" />
-      <Button fx:id="btnFortryd" layoutX="42.0" layoutY="492.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Luk" />
-      <Button fx:id="btnNæste" layoutX="544.0" layoutY="492.0" mnemonicParsing="false" text="Næste" />
+      <Button fx:id="btnFortryd" layoutX="42.0" layoutY="492.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
+      <Button fx:id="btnNæste" layoutX="544.0" layoutY="492.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
       <Label fx:id="lblFejlBesked" layoutX="23.0" layoutY="537.0" prefHeight="17.0" prefWidth="600.0" text="FejlBesked:" textFill="RED" visible="false" />
    </children>
 </Pane>
