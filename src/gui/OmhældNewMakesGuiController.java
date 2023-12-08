@@ -19,7 +19,7 @@ public class OmhældNewMakesGuiController {
     private Button btnLuk;
 
     @FXML
-    private Button btnPaafyld;
+    private Button btnOmhæld;
 
     @FXML
     private Label lblFadeLiter;
@@ -51,7 +51,7 @@ public class OmhældNewMakesGuiController {
     }
 
     @FXML
-    void omhældAction(ActionEvent event) {
+    void omhaeldAction(ActionEvent event) {
 
     }
 }
