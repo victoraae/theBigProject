@@ -11,6 +11,7 @@ public class Destillat implements Serializable {
     private double alkoholProcent;
     private String ansvarlig;
     private double liter;
+    private double literTilbage;
     private int antalGange;
     private String rygemateriale;
     //association 0..* --> 1 korn
@@ -24,6 +25,7 @@ public class Destillat implements Serializable {
         this.antalGange = antalGange;
         this.rygemateriale = rygemateriale;
         this.korn = korn;
+        this.literTilbage = liter;
     }
 
     public LocalDate getDato() {
@@ -52,6 +54,17 @@ public class Destillat implements Serializable {
 
     public void setAntalGange(int antalGange) {
         this.antalGange = antalGange;
+    }
+
+    public double getLiterTilbage() {
+        return literTilbage;
+    }
+
+    /**
+     * pre: literTilbage-liter må ikke være mindre end nul
+     */
+    public void decLiterTilbage(double liter){
+        literTilbage -= liter;
     }
 
 

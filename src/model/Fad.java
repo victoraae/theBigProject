@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import java.lang.invoke.MutableCallSite;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fad implements Serializable {
     private static int antalFade = 0;      // statisk så den kan deles blandt alle forekomster af Fad-klassen
@@ -16,6 +18,7 @@ public class Fad implements Serializable {
     //Association 0..* -> 1 Lager
     private Hylde hylde; //Nullable
     //Association 0..* -> 0..1 Hylde
+    private final List<FadTilNM> indhold = new ArrayList<>();
 
     /**
      * Hylde kan være null, for et fad der er på lager uden reoler.
@@ -66,6 +69,13 @@ public class Fad implements Serializable {
 
     public Hylde getHylde() {
         return hylde;
+    }
+
+    public List<FadTilNM> getIndhold() {
+        return new ArrayList<>(indhold);
+    }
+    public void tilføjFadTilNM(FadTilNM fnm){
+        indhold.add(fnm);
     }
 
     @Override

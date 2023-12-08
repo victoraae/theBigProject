@@ -3,7 +3,10 @@ package controller;
 import model.*;
 
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Controller {
     private static Storage storage;
@@ -119,20 +122,20 @@ public abstract class Controller {
     }
 
     /**
-     * pre: dato <= dagens dato, 0 <= alkoholprocent <= 100, liter > 0, antal gange > 0
-     */
-    public static Destillat opretDestillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn) {
+     * pre: dato <= dagens dato, 0 <= alkoholprocent <= 100, liter > 0, antal gange > 0 */
+    public static Destillat opretDestillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn){
         Destillat destillat = new Destillat(dato, alkoholProcent, ansvarlig, liter, antalGange, rygemateriale, korn);
         storage.tilføjDestillat(destillat);
         return destillat;
     }
 
-    /**
-     * Pre: 0 <= alkoholprocent <= 100
+    /** Pre: 0 <= alkoholprocent <= 100
+     * param: newMakesLiter kan være et tomt map
+     * Destillaterne i mængder skal have tilstrækkeligt literTilbage
      */
-    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Fad fad) {
+    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
-        NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fad);
+        NewMake newMake = new NewMake(navn, LocalDate.now(), alkoholProcent, ansvarlig, fadeTilLiter, newMakesLiter);
 
         for (Mængde mængde : mængder) {
             mængde.setNewMake(newMake);
@@ -183,6 +186,9 @@ public abstract class Controller {
         return whisky;
     }
 
+    /**
+     * hjælpe metode til controller
+     */
     private static double sumLiter(List<NewMake> newMakes) {
         double result = 0;
 
@@ -193,4 +199,20 @@ public abstract class Controller {
     }
 
     //TODO:: noget med alderen på vores whisky, hvor mange år den har modnet
+    //TODO:: controller metode med tilføj fad på newMake der søger for at literTilbage ikke falder under 0
+
+    /**
+     * Pre: FadTilNM's antal liter må ikke overskride newMake'ts antal liter
+     */
+    public static void tilføjFTilNMtilNM(FadTilNM fnm, NewMake nm){
+        nm.tilføjFad(fnm);
+        fnm.getFad().tilføjFadTilNM(fnm);
+    }
+
+    /**
+     * metode til paafyld gui trin 2, hvis man trykker fortryd
+     */
+    public static void sletNewMake(NewMake newMake){
+        storage.sletNewMake(newMake);
+    }
 }

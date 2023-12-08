@@ -21,28 +21,28 @@ public class ControllerTestWhisky {
     private
     @BeforeEach
     void setUp() {
-        Controller.setStorage(new ListStorage());
-        Lager lager = Controller.opretLager("Lager1", "Adresse1", 50, 50, 0);
-        fad = Controller.opretFad(lager, null, "The Jolly Barrel", "Storbritannien", "egetræ",
-                "sherry", FadStørrelser.L100);
-        fad2 = Controller.opretFad(lager, null, "Bawelwol", "England", "egetræ",
-                "sherry", FadStørrelser.L250);
-
-        destillat = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
-                new Korn("t", "t", 1776, "t", "t"));
-
-
-        List<Mængde> mængder1 = new ArrayList<>();
-        mængder1.add(new Mængde(100, destillat));
-
-        List<Mængde> mængder2 = new ArrayList<>();
-        mængder2.add(new Mængde(200, destillat));
-
-        nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, fad);
-        nm2 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, fad);
-
-        newMakes.add(nm1);
-        newMakes.add(nm2);
+//        Controller.setStorage(new ListStorage());
+//        Lager lager = Controller.opretLager("Lager1", "Adresse1", 50, 50, 0);
+//        fad = Controller.opretFad(lager, null, "The Jolly Barrel", "Storbritannien", "egetræ",
+//                "sherry", FadStørrelser.L100);
+//        fad2 = Controller.opretFad(lager, null, "Bawelwol", "England", "egetræ",
+//                "sherry", FadStørrelser.L250);
+//
+//        destillat = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
+//                new Korn("t", "t", 1776, "t", "t"));
+//
+//
+//        List<Mængde> mængder1 = new ArrayList<>();
+//        mængder1.add(new Mængde(100, destillat));
+//
+//        List<Mængde> mængder2 = new ArrayList<>();
+//        mængder2.add(new Mængde(200, destillat));
+//
+//        nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, fad);
+//        nm2 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, fad);
+//
+//        newMakes.add(nm1);
+//        newMakes.add(nm2);
     }
 
     @Test

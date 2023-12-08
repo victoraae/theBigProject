@@ -3,7 +3,9 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NewMake implements Serializable {
     private String navn;
@@ -11,16 +13,34 @@ public class NewMake implements Serializable {
     private double alkoholprocent;
     private final String ansvarlig;
     private double liter;
-    private final Fad fad;
-    private List<Mængde> mængder = new ArrayList<>();
+    private final List<FadTilNM> fade = new ArrayList<>();
+    private final List<Mængde> mængder = new ArrayList<>();
+    private boolean erAktiv;
+    private double literTilbage;
+    private final Map<NewMake, Double> newMakesLiter;
 
-    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Fad fad) {
+    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<Fad, Double> fadeTilLiter
+    , Map<NewMake, Double> newMakesLiter) {
         this.navn = navn;
         this.datoForPåfyldning = datoForPåfyldning;
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
-        this.fad = fad;
+        this.newMakesLiter = newMakesLiter;
+        lavFadTilNM(fadeTilLiter);
     }
+
+    /**
+     * vi kan ikke huske hvad fadeTilLiter i ovenstående konstruktor skal bruges til
+     */
+    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<NewMake, Double> newMakesLiter) {
+        this.navn = navn;
+        this.datoForPåfyldning = datoForPåfyldning;
+        this.alkoholprocent = alkoholprocent;
+        this.ansvarlig = ansvarlig;
+        this.newMakesLiter = newMakesLiter;
+    }
+
+
 
     // getter metoder laves på alle attributter, da de er alle vigtige for historiefortællingen
     public String getNavn() {
@@ -43,8 +63,8 @@ public class NewMake implements Serializable {
         return liter;
     }
 
-    public Fad getFad() {
-        return fad;
+    public List<FadTilNM> getFad() {
+        return new ArrayList<>(fade);
     }
 
     public List<Mængde> getMængder() {
@@ -54,6 +74,38 @@ public class NewMake implements Serializable {
     public void tilføjMængde(Mængde mængde){
         mængder.add(mængde);
         liter += mængde.getMængde();
+    }
+
+    /**
+     * pre: literTilbage-liter må ikke være mindre end nul
+     */
+    public void tilføjFad(FadTilNM fnm){
+        fade.add(fnm);
+    }
+
+    /**
+     * hjælpe metode til constructoren
+     */
+    private void lavFadTilNM(Map<Fad, Double> fadeTilLiter){
+        for(Map.Entry<Fad, Double> entry : fadeTilLiter.entrySet()){
+            //tilføjFad(entry.getKey(), entry.getValue());
+        }
+    }
+
+    public boolean isErAktiv() {
+        return erAktiv;
+    }
+
+    public double getLiterTilbage() {
+        return literTilbage;
+    }
+
+    public void decLiterTilbage(double liter){
+        literTilbage-=liter;
+    }
+
+    public Map<NewMake, Double> getNewMakesLiter() {
+        return new HashMap<>(newMakesLiter);
     }
 
     @Override
