@@ -37,6 +37,8 @@ public class PaaFyldTrinEtGuiController {
     private TextField txfAnsvarligNavn;
     @FXML
     private TextField txfNMNavn;
+    @FXML
+    private DatePicker datoVælger;
 
     private ArrayList<Mængde> mængder = new ArrayList<>();
 
@@ -96,6 +98,7 @@ public class PaaFyldTrinEtGuiController {
     public void næsteKnapAction() {
         String navn = txfNMNavn.getText().trim();
         String ansvarlig = txfAnsvarligNavn.getText().trim();
+        LocalDate dato = datoVælger.getValue();
 
         if (navn.isBlank()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på NewMake kan ikke være tom");
@@ -117,8 +120,12 @@ public class PaaFyldTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der skal som minimum være en mængde til at skabe et NewMake");
             return;
         }
+        if(dato==null || dato.isAfter(LocalDate.now()) ){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Ugyldig dato, dato skal være idag eller tidligere, og dato skal vælges");
+            return;
+        }
 
-        NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>());
+        NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>(), dato);
         PaaFyldDestillatGuiController.newMake = newMake;
         Main.åbenVinduer.åbenPaafyldDestillatVindue();
         fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes
