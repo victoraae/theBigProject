@@ -65,7 +65,6 @@ public class PaaFyldDestillatGuiController {
 
     @FXML
     public void gemAction() {
-
         Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
         newMake.setLiter(fadeAntalLiter);
         newMake.setLiterTilbage(fadeAntalLiter);
