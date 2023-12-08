@@ -51,7 +51,7 @@ public class OmhældNewMakesGuiController {
     }
 
     @FXML
-    void paaFyldAction(ActionEvent event) {
+    void omhældAction(ActionEvent event) {
 
     }
 }
