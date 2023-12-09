@@ -50,6 +50,11 @@ public class OmhældTrinToGuiController {
 
     @FXML
     void gemAction() {
+        if (fadeTilBlanding.isEmpty()){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Du skal først omhælde blandingen til et eller flere fade!");
+            return;
+        }
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
         alert.setContentText("Er du sikker på, at du vil omhælde disse New Makes?");
         alert.setHeaderText("Bekræft oplysninger");
