@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class FadTilNM {
     private double liter;
     //Assosiation 0..* ---> 1 Fad
@@ -55,4 +57,16 @@ public class FadTilNM {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FadTilNM fadTilNM = (FadTilNM) o;
+        return Objects.equals(fad, fadTilNM.fad) && Objects.equals(newMake, fadTilNM.newMake);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fad, newMake);
+    }
 }

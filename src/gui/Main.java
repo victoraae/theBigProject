@@ -49,6 +49,9 @@ public class Main {
         Fad fad2 = Controller.opretFad(lager,hylde,"awdaw","Danmark","Jern","Weed", FadStørrelse.L250);
         Fad fad3 = Controller.opretFad(lager,hylde,"dddsgg","Danmark","Jern","Weed", FadStørrelse.L100);
 
+        Fad fad4 = Controller.opretFad(lager,hylde,"awdd","Danmark","Jern","Cherry", FadStørrelse.L50);
+        Fad fad5 = Controller.opretFad(lager,hylde,"fsefef","Danmark","Jern","Rødvin", FadStørrelse.L50);
+
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
                 new Korn("t", "t", 1776, "t", "t"));

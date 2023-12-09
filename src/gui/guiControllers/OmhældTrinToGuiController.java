@@ -43,7 +43,7 @@ public class OmhældTrinToGuiController {
     private double fadeAntalLiter;
 
     public void initialize(){
-        lvwFade.getItems().setAll(Controller.getFade());
+        lvwFade.getItems().setAll(Controller.getTommeFade());
         HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter()+"");
     }
 
@@ -72,7 +72,8 @@ public class OmhældTrinToGuiController {
 
     @FXML
     void omhaeldAction() {
-        Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+        Fad fad =  lvwFade.getSelectionModel().getSelectedItem();
+
         if (fad == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
             return;

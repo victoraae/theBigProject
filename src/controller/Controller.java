@@ -210,12 +210,17 @@ public abstract class Controller {
      */
     public static void tilføjFTilNMtilNM(List<FadTilNM> fnm, NewMake nm) {
         for (FadTilNM fadTilNM : fnm) {
-            if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
-            else {
-                if (fadTilNM.getFad().getIndhold() == null) {
-                    fadTilNM.getFad().setIndhold(fadTilNM);
-                } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
-            }
+            if(fadTilNM.getFad().getIndhold()==null){
+                nm.tilføjFad(fadTilNM);
+                fadTilNM.getFad().setIndhold(fadTilNM);
+            } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
+            System.out.println("TEST1");
+//            if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
+//            else {
+//                if (fadTilNM.getFad().getIndhold() == null) {
+//                    fadTilNM.getFad().setIndhold(fadTilNM);
+//                } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
+//            }
         }
     }
 
@@ -247,11 +252,11 @@ public abstract class Controller {
     }
 
     //Bruges til paafyld og omhæld, det skal ske på tomme fade
-    public static List<FadTilNM> getTommeFade(){
-        List<FadTilNM> result = new ArrayList<>();
+    public static List<Fad> getTommeFade(){
+        List<Fad> result = new ArrayList<>();
         for(Fad fad : Controller.getFade()){
             if(fad.getIndhold()==null || fad.getIndhold().getLiter() == 0) {
-                result.add(fad.getIndhold());
+                result.add(fad);
             }
         }
         return result;
