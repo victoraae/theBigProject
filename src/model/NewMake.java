@@ -22,6 +22,7 @@ public class NewMake implements Serializable {
     //Assosiation 0..* --> 1 NewMake
     private final Map<NewMake, Double> newMakesLiter;
 
+    //TODO: denne constructor er vidst nok unødvendig
     public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<Fad, Double> fadeTilLiter
     , Map<NewMake, Double> newMakesLiter) {
         this.navn = navn;
