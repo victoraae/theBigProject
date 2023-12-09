@@ -3,14 +3,19 @@ package gui.guiControllers;
 import controller.Controller;
 import gui.HovedVindue;
 import gui.Main;
+import gui.guiDummies.DestillatGui;
+import gui.guiDummies.NewMakeGui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.Destillat;
 import model.NewMake;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OmhældTrinEtGuiController {
@@ -33,7 +38,7 @@ public class OmhældTrinEtGuiController {
     private ListView<Map.Entry<NewMake, Double>> lvwLiterTilBlanding;
 
     @FXML
-    private ListView<NewMake> lvwNewMakes;
+    private ListView<NewMakeGui> lvwNewMakes;
 
     @FXML
     private TextField txfAnsvarligNavn;
@@ -41,35 +46,40 @@ public class OmhældTrinEtGuiController {
     @FXML
     private TextField txfAntalLiter;
 
-    private Map<NewMake, Double> newMakeLiter = new HashMap<>();
+    private static Map<NewMake, Double> newMakeLiter = new HashMap<>();
+
+    private final List<NewMakeGui> newMakeGuier = new ArrayList<>(konverterTilGuiDummy(Controller.getIkkeTommeNewMakes()));
 
     public OmhældTrinEtGuiController() {
     }
 
 
     public void initialize() {
-        lvwNewMakes.getItems().setAll(Controller.getNewMakes());
+        lvwNewMakes.getItems().setAll(newMakeGuier);
 
-        lvwNewMakes.setCellFactory(new Callback<ListView<NewMake>, ListCell<NewMake>>() {
-            @Override
-            public ListCell<NewMake> call(ListView<NewMake> newMakeListView) {
-                return new ListCell<>() {
-                    @Override
-                    public void updateItem(NewMake newMake, boolean empty) {
-                        super.updateItem(newMake, empty);
-                        if (empty || newMake == null) {
-                            setText(null);
-                        } else {
-                            setText(newMake.toStringKort());
-                        }
-                    }
-                };
-            }
-        });
+
+//        lvwNewMakes.setCellFactory(new Callback<ListView<NewMake>, ListCell<NewMake>>() {
+//            @Override
+//            public ListCell<NewMake> call(ListView<NewMake> newMakeListView) {
+//                return new ListCell<>() {
+//                    @Override
+//                    public void updateItem(NewMake newMake, boolean empty) {
+//                        super.updateItem(newMake, empty);
+//                        if (empty || newMake == null) {
+//                            setText(null);
+//                        } else {
+//                            setText(newMake.toStringKort());
+//                        }
+//                    }
+//                };
+//            }
+//        });
     }
 
     @FXML
     public void fortrydAction() {
+        newMakeLiter = new HashMap<>(); //clear den her statiske feltvariabel til næste gang vinduet åbnes
+
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
     }
@@ -83,8 +93,8 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Forkert format på indtastet tal");
             return;
         }
-
-        NewMake newMake = lvwNewMakes.getSelectionModel().getSelectedItem();
+        NewMakeGui newMakeFake = lvwNewMakes.getSelectionModel().getSelectedItem();
+        NewMake newMake = newMakeFake.getOriginal();
 
         if (newMake == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg en New Make fra listen");
@@ -94,13 +104,19 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter >= 1");
             return;
         }
-        if (newMake.getLiterTilbage() < antalLiter || newMake.getLiterTilbage() < antalLiter + sumLiter(newMake)) {
+        if (newMakeFake.getLiterTilbage() < antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok New Make væske, tjek New Makes antal liter tilbage");
             return;
         }
 
-        newMakeLiter.put(newMake, antalLiter);
-        opdaterLvwLiterTilBlanding();
+        if(!newMakeLiter.containsKey(newMake)) {
+            newMakeLiter.put(newMake, antalLiter);
+        }else {
+            double oldVal = newMakeLiter.get(newMake);
+            newMakeLiter.replace(newMake, oldVal+antalLiter);
+        }
+        newMakeFake.decLiterTilbage(antalLiter);
+        opdaterListviews();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
     }
@@ -114,8 +130,9 @@ public class OmhældTrinEtGuiController {
         return result;
     }
 
-    private void opdaterLvwLiterTilBlanding() {
+    private void opdaterListviews() {
         lvwLiterTilBlanding.getItems().setAll(newMakeLiter.entrySet());
+        lvwNewMakes.getItems().setAll(newMakeGuier);
     }
 
     @FXML
@@ -146,4 +163,22 @@ public class OmhældTrinEtGuiController {
         Main.åbenVinduer.åbenOmhældTrinToVindue();
         fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes
     }
+
+    private List<NewMakeGui> konverterTilGuiDummy(List<NewMake> newMakes){
+        List<NewMakeGui> result = new ArrayList<>();
+        for(NewMake nm : newMakes){
+            result.add(new NewMakeGui(nm));
+        }
+        return result;
+    }
+
+    /**
+     * hjælpe metode lavet til brug i slutningen af omhæld trin to gui controller
+     */
+    public static void opdaterNewMakes(){
+        for(Map.Entry<NewMake, Double> entry : newMakeLiter.entrySet()){
+            entry.getKey().decLiterTilbage(entry.getValue());
+       }
+    }
+
 }

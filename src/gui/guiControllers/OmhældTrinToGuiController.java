@@ -2,6 +2,7 @@ package gui.guiControllers;
 
 import controller.Controller;
 import gui.HovedVindue;
+import gui.guiDummies.NewMakeGui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -39,13 +40,14 @@ public class OmhældTrinToGuiController {
 
     @FXML
     private TextField txfAntalLiter;
+
     public static NewMake newMake;
     private List<FadTilNM> fadeTilBlanding = new ArrayList<>();
     private double fadeAntalLiter;
 
     public void initialize(){
         lvwFade.getItems().setAll(Controller.getFade());
-        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter()+"");
+        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiterTilbage()+"");
     }
 
     @FXML
@@ -59,6 +61,7 @@ public class OmhældTrinToGuiController {
             Controller.tilføjFTilNMtilNM(fadeTilBlanding, newMake);
             newMake.setLiter(fadeAntalLiter);
             newMake.setLiterTilbage(fadeAntalLiter);
+            OmhældTrinEtGuiController.opdaterNewMakes();
             lukActionUdenAtSlette();
         }
     }
@@ -67,11 +70,11 @@ public class OmhældTrinToGuiController {
     void lukAction() {
         Controller.sletNewMake(newMake);
 
-        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
-        stage.close();
+        lukActionUdenAtSlette();
     }
 
     void lukActionUdenAtSlette() {
+        newMake = null;
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
     }
@@ -102,7 +105,7 @@ public class OmhældTrinToGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
-        if (newMake.getLiter() < antalLiterFraFTilNM() + antalLiter) {
+        if (newMake.getLiterTilbage() < antalLiterFraFTilNM() + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke tilstrækkelig mængde væske i NewMake, tjek NewMakes liter");
             return;
         }
