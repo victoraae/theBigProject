@@ -24,6 +24,8 @@ public class WhiskyGuiController {
     @FXML
     private TextField txfWhiskyNavn;
     @FXML
+    private Button btnLuk;
+    @FXML
     private Label lblFejlBesked;
     private List<NewMake> newMakes;
 
@@ -109,5 +111,11 @@ public class WhiskyGuiController {
             }
         }
         return result;
+    }
+
+    @FXML
+    public void lukAction() {
+        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
+        stage.close();
     }
 }
