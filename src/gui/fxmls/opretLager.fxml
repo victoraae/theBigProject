@@ -40,6 +40,6 @@
          </font>
       </Label>
       <Label fx:id="lblFejlBesked" layoutX="13.0" layoutY="619.0" prefHeight="17.0" prefWidth="614.0" text="Fejlbesked! " textFill="#c60505" visible="false" />
-      <Button fx:id="btnLuk" layoutX="56.0" layoutY="578.0" mnemonicParsing="false" onAction="#btnLukKnap" prefHeight="25.0" prefWidth="100.0" text="Luk" />
+      <Button fx:id="btnLuk" focusTraversable="false" layoutX="56.0" layoutY="578.0" mnemonicParsing="false" onAction="#btnLukKnap" prefHeight="25.0" prefWidth="100.0" text="Luk" />
    </children>
 </Pane>
