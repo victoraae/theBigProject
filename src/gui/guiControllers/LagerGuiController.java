@@ -31,6 +31,8 @@ public class LagerGuiController {
 
     @FXML
     private TextField txfLagerNavn;
+    @FXML
+    private Button btnLuk;
 
     @FXML
     private TextField txfMaksReoler;
@@ -52,6 +54,13 @@ public class LagerGuiController {
         valgtLager = lvwVaelgLager.getSelectionModel().getSelectedItem();
     }
 
+
+
+    @FXML
+    void btnLukKnap() {
+    Stage stage = (Stage) btnLuk.getScene().getWindow();
+    stage.close();
+    }
     @FXML
     private void btnGemAction() {
         try {
