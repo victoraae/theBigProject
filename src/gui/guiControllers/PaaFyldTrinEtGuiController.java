@@ -126,7 +126,7 @@ public class PaaFyldTrinEtGuiController {
             return;
         }
 
-        NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>(), dato);
+        NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<NewMake, Double>(), dato);
         PaaFyldTrinToGuiController.newMake = newMake;
         Main.åbenVinduer.åbenPaaFyldTrinToVindue();
         fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes

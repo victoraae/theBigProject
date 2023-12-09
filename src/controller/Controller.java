@@ -135,9 +135,9 @@ public abstract class Controller {
      * Destillaterne i mængder skal have tilstrækkeligt literTilbage
      * param: newMakesLiter kan være et tomt map
      */
-    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter, LocalDate dato) {
+    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<NewMake, Double> newMakesLiter, LocalDate dato) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
-        NewMake newMake = new NewMake(navn, dato, alkoholProcent, ansvarlig, fadeTilLiter, newMakesLiter);
+        NewMake newMake = new NewMake(navn, dato, alkoholProcent, ansvarlig, newMakesLiter);
 
         for (Mængde mængde : mængder) {
             mængde.setNewMake(newMake);
@@ -210,7 +210,8 @@ public abstract class Controller {
      */
     public static void tilføjFTilNMtilNM(List<FadTilNM> fnm, NewMake nm) {
         for (FadTilNM fadTilNM : fnm) {
-            nm.tilføjFad(fadTilNM);
+            if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
+
             if(fadTilNM.getFad().getIndhold()==null) {
                 fadTilNM.getFad().setIndhold(fadTilNM);
             }else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
