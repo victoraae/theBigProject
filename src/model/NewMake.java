@@ -100,12 +100,19 @@ public class NewMake implements Serializable {
         return erAktiv;
     }
 
+    public void setErAktiv(boolean erAktiv) {
+        this.erAktiv = erAktiv;
+    }
+
     public double getLiterTilbage() {
         return literTilbage;
     }
 
     public void decLiterTilbage(double liter){
         literTilbage-=liter;
+        if (literTilbage == 0){
+            setErAktiv(false);
+        }
     }
 
     public Map<NewMake, Double> getNewMakesLiter() {
