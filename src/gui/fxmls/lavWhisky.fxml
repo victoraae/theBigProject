@@ -21,7 +21,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btnGem" focusTraversable="false" layoutX="656.0" layoutY="319.0" mnemonicParsing="false" onAction="#gemAction" prefHeight="35.0" prefWidth="63.0" text="Gem" />
+      <Button fx:id="btnGem" focusTraversable="false" layoutX="656.0" layoutY="327.0" mnemonicParsing="false" onAction="#gemAction" prefHeight="27.0" prefWidth="63.0" text="Gem" />
       <ListView fx:id="lvwNewMakes" focusTraversable="false" layoutX="22.0" layoutY="190.0" prefHeight="164.0" prefWidth="360.0" />
       <Label layoutX="22.0" layoutY="163.0" text="New makes">
          <font>
@@ -35,6 +35,6 @@
       <Label layoutX="410.0" layoutY="252.0" text="Liter vand:" />
       <TextField fx:id="txfLiterVand" focusTraversable="false" layoutX="504.0" layoutY="248.0" prefHeight="25.0" prefWidth="215.0" promptText="Liter vand whiskyen er fortyndet med" />
       <Label fx:id="lblFejlBesked" layoutX="22.0" layoutY="379.0" prefHeight="17.0" prefWidth="480.0" text="FejlBesked: " textFill="RED" visible="false" />
-      <Button fx:id="btnLuk" focusTraversable="false" layoutX="406.0" layoutY="319.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="35.0" prefWidth="63.0" text="Luk" />
+      <Button fx:id="btnLuk" focusTraversable="false" layoutX="406.0" layoutY="327.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="27.0" prefWidth="63.0" text="Luk" />
    </children>
 </Pane>
