@@ -210,7 +210,7 @@ public abstract class Controller {
     public static void tilføjFTilNMtilNM(List<FadTilNM> fnm, NewMake nm) {
         for (FadTilNM fadTilNM : fnm) {
             nm.tilføjFad(fadTilNM);
-            fadTilNM.getFad().tilføjFadTilNM(fadTilNM);
+            fadTilNM.getFad().setIndhold(fadTilNM);
         }
     }
 
@@ -240,5 +240,22 @@ public abstract class Controller {
         storage.tilføjNewMake(newMake);
         return newMake;
     }
+
+    //Bruges til paafyld og omhæld, det skal ske på tomme fade
+    public static List<FadTilNM> getTommeFade(){
+        List<FadTilNM> result = new ArrayList<>();
+        for(Fad fad : Controller.getFade()){
+            if(fad.getIndhold()==null || fad.getIndhold().getLiter() == 0) {
+                result.add(fad.getIndhold());
+            }
+        }
+        return result;
+    }
+
+    public static List<FadTilNM> getIkkeTommeFade(){
+        return new ArrayList<>(); //virker ikke...
+    }
+
+
 }
 

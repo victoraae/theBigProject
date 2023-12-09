@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -10,39 +11,41 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="640.0" stylesheets="@../assets/styleFocus.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.guiControllers.OmhældTrinEtGuiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="825.0" stylesheets="@../assets/styleFocus.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.guiControllers.OmhældTrinEtGuiController">
    <children>
-      <ImageView fitHeight="171.0" fitWidth="400.0" layoutX="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="171.0" fitWidth="400.0" layoutX="213.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
-      <Label layoutX="118.0" layoutY="116.0" text="Trin 1: lav en blanding fra New Makes ">
+      <Label layoutX="211.0" layoutY="110.0" text="Trin 1: lav en blanding fra New Makes ">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ListView fx:id="lvwNewMakes" focusTraversable="false" layoutX="38.0" layoutY="192.0" prefHeight="200.0" prefWidth="272.0" />
-      <Label layoutX="38.0" layoutY="165.0" text="New Makes">
+      <ListView fx:id="lvwNewMakes" focusTraversable="false" layoutX="14.0" layoutY="192.0" prefHeight="275.0" prefWidth="286.0" />
+      <Label layoutX="20.0" layoutY="165.0" text="New Makes">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="lvwLiterTilBlanding" focusTraversable="false" layoutX="324.0" layoutY="192.0" prefHeight="200.0" prefWidth="272.0" />
-      <Label layoutX="323.0" layoutY="165.0" text="Liter til blanding">
+      <ListView fx:id="lvwLiterTilBlanding" focusTraversable="false" layoutX="525.0" layoutY="192.0" prefHeight="275.0" prefWidth="286.0" />
+      <Label layoutX="530.0" layoutY="165.0" text="Liter til blanding">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="408.0" text="Liter:" />
-      <TextField fx:id="txfAntalLiter" focusTraversable="false" layoutX="76.0" layoutY="404.0" promptText="Antal liter til blanding" />
-      <Button fx:id="btnTilføjTilBlanding" focusTraversable="false" layoutX="76.0" layoutY="442.0" mnemonicParsing="false" onAction="#tilføjLiterAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til blanding" />
-      <Label layoutX="320.0" layoutY="408.0" text="Navn på ansvarlig:" />
-      <Label layoutX="388.0" layoutY="446.0" text="Dato:" />
-      <DatePicker fx:id="datoVælger" focusTraversable="false" layoutX="431.0" layoutY="442.0" prefHeight="25.0" prefWidth="165.0" promptText="Vælg dato" />
-      <TextField fx:id="txfAnsvarligNavn" focusTraversable="false" layoutX="429.0" layoutY="404.0" prefHeight="25.0" prefWidth="165.0" promptText="Indtast navn på ansvarlig" />
-      <Button fx:id="btnFortryd" focusTraversable="false" layoutX="42.0" layoutY="492.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
-      <Button fx:id="btnNæste" focusTraversable="false" layoutX="544.0" layoutY="492.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
-      <Label fx:id="lblFejlBesked" layoutX="23.0" layoutY="537.0" prefHeight="17.0" prefWidth="600.0" text="FejlBesked:" textFill="RED" visible="false" />
+      <Label layoutX="320.0" layoutY="284.0" prefHeight="17.0" prefWidth="28.0" text="Liter:" />
+      <TextField fx:id="txfAntalLiter" focusTraversable="false" layoutX="362.0" layoutY="280.0" promptText="Antal liter fra fad" />
+      <Button fx:id="btnTilføjTilBlanding" focusTraversable="false" layoutX="362.0" layoutY="317.0" mnemonicParsing="false" onAction="#tilføjLiterAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til blanding" />
+      <Label layoutX="533.0" layoutY="493.0" text="Navn på ansvarlig:" />
+      <Label layoutX="584.0" layoutY="535.0" text="Dato:" />
+      <DatePicker fx:id="datoVælger" focusTraversable="false" layoutX="645.0" layoutY="531.0" prefHeight="25.0" prefWidth="165.0" promptText="Vælg dato" />
+      <TextField fx:id="txfAnsvarligNavn" focusTraversable="false" layoutX="645.0" layoutY="489.0" prefHeight="25.0" prefWidth="165.0" promptText="Indtast navn på ansvarlig" />
+      <Button fx:id="btnFortryd" focusTraversable="false" layoutX="20.0" layoutY="590.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
+      <Button fx:id="btnNæste" focusTraversable="false" layoutX="760.0" layoutY="590.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
+      <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="623.0" prefHeight="17.0" prefWidth="788.0" text="FejlBesked:" textFill="RED" visible="false" />
+      <ComboBox fx:id="cmbValgtFad" focusTraversable="false" layoutX="363.0" layoutY="244.0" prefWidth="150.0" promptText="Vælg fad" />
+      <Label layoutX="320.0" layoutY="248.0" prefHeight="17.0" prefWidth="28.0" text="Fad:" />
    </children>
 </Pane>

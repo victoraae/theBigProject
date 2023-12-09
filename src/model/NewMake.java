@@ -92,7 +92,7 @@ public class NewMake implements Serializable {
      */
     private void lavFadTilNM(Map<Fad, Double> fadeTilLiter){
         for(Map.Entry<Fad, Double> entry : fadeTilLiter.entrySet()){
-            //tilføjFad(entry.getKey(), entry.getValue());
+            tilføjFad(new FadTilNM(entry.getValue(), entry.getKey(), this));
         }
     }
 

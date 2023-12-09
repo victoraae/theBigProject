@@ -3,11 +3,13 @@ package gui.guiControllers;
 import controller.Controller;
 import gui.HovedVindue;
 import gui.Main;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.NewMake;
+import model.*;
+
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -41,6 +43,9 @@ public class OmhældTrinEtGuiController {
     @FXML
     private TextField txfAntalLiter;
 
+    @FXML
+    private ComboBox<FadTilNM> cmbValgtFad;
+
     private Map<NewMake, Double> newMakeLiter = new HashMap<>();
 
 
@@ -63,6 +68,31 @@ public class OmhældTrinEtGuiController {
                 };
             }
         });
+
+        cmbValgtFad.setCellFactory(new Callback<ListView<FadTilNM>, ListCell<FadTilNM>>() {
+            @Override
+            public ListCell<FadTilNM> call(ListView<FadTilNM> fadTilNMListView) {
+                return new ListCell<>() {
+                    @Override
+                    public void updateItem(FadTilNM ftnm, boolean empty) {
+                        super.updateItem(ftnm, empty);
+                        if (empty || ftnm == null) {
+                            setText(null);
+                        } else {
+                            setText(ftnm.toStringKort());
+                        }
+                    }
+                };
+            }
+        });
+
+        ChangeListener<NewMake> listener = (ov, o, n) -> this.opdaterValgtNewMake();
+        lvwNewMakes.getSelectionModel().selectedItemProperty().addListener(listener);
+    }
+
+    private void opdaterValgtNewMake() {
+        NewMake newMake = lvwNewMakes.getSelectionModel().getSelectedItem();
+        cmbValgtFad.getItems().setAll(newMake.getFad());
     }
 
     @FXML
@@ -82,6 +112,7 @@ public class OmhældTrinEtGuiController {
         }
 
         NewMake newMake = lvwNewMakes.getSelectionModel().getSelectedItem();
+        FadTilNM ftnm = cmbValgtFad.getSelectionModel().getSelectedItem();
 
         if (newMake == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg en New Make fra listen");
@@ -95,11 +126,20 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok New Make væske, tjek New Makes antal liter tilbage");
             return;
         }
+        if(ftnm == null){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
+            return;
+        }
+        if(ftnm.getLiter()<antalLiter){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter overstiger fadets antal liter");
+        }
 
+        ftnm.decLiter(antalLiter);
         newMakeLiter.put(newMake, antalLiter);
         opdaterLvwLiterTilBlanding();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
+        opdaterValgtNewMake();
     }
 
     public double sumLiter(NewMake newMake) {
@@ -129,8 +169,8 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Ansvarlig navn må kun indeholde bogstaver");
             return;
         }
-        if (lvwLiterTilBlanding.getItems().isEmpty() || newMakeLiter.size() == 1) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Der skal som minimum vælges 2 New Makes til at skabe en blanding");
+        if (lvwLiterTilBlanding.getItems().isEmpty() || erNMsGyldige()) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der skal som minimum vælges 2 forskellige New Makes til at skabe en blanding");
             return;
         }
         if(dato==null || dato.isAfter(LocalDate.now()) ){
@@ -142,5 +182,17 @@ public class OmhældTrinEtGuiController {
         OmhældTrinToGuiController.newMake = newMake;
         Main.åbenVinduer.åbenOmhældTrinToVindue();
         fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes
+    }
+
+    private boolean erNMsGyldige(){
+        boolean result = false;
+        NewMake nm = null;
+        for(Map.Entry<NewMake, Double> entry : newMakeLiter.entrySet()){
+            if(nm!=null && !nm.equals(entry.getKey())){
+                result = true;
+            }
+        }
+
+        return result;
     }
 }

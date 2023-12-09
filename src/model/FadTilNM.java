@@ -31,9 +31,23 @@ public class FadTilNM {
     public void setLiter(double liter) {
         this.liter = liter;
     }
+    public void decLiter(double liter){
+        this.liter -= liter;
+    }
 
     @Override
     public String toString() {
         return "Liter: " + liter + ", Fad: " + fad.toStringKort() + ", NewMake: " + newMake.ekstraKortToStringTilFTNM();
+    }
+
+    public String toStringKort(){
+        Fad f = this.getFad();
+        String result = "Liter: " + liter + ", Fad str: " + f.getStørrelse().getInt() + ", Lager: " + f.getLager().getNavn();;
+
+        if(f.getHylde()!=null){
+            result += "Reol: "  + f.getHylde().getReol().getNummer() + ", Hylde: " + f.getHylde().getNummer();
+        }
+
+        return result;
     }
 }

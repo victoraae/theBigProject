@@ -57,12 +57,12 @@ public class Main {
         List<Mængde> mængder2 = new ArrayList<>();
         mængder2.add(new Mængde(50, destillat3));
         Map<Fad, Double> mapTemp1 = new HashMap<>();
-        mapTemp1.put(fad3, 50.0);
+        mapTemp1.put(fad, 50.0);
         NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2017, 1, 1));
         nm1.setLiter(50.0);
         nm1.setLiterTilbage(50.0);
         Map<Fad, Double> mapTemp2 = new HashMap<>();
-        mapTemp2.put(fad3, 50.0);
+        mapTemp2.put(fad2, 50.0);
         NewMake nm2 = Controller.paafyldDestillat("NM78p", "Billy", mængder2, mapTemp2, new HashMap<NewMake, Double>(), LocalDate.of(2018, 1, 1));
         nm2.setLiter(50.0);
         nm2.setLiterTilbage(50.0);
