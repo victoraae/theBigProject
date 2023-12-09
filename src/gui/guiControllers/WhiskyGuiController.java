@@ -92,6 +92,8 @@ public class WhiskyGuiController {
                     "Du skal indtaste liter vand");
             return;
         }
+
+        tømAlleNMsFade();
     }
 
     // hjælpemetode der tjekker om alle
@@ -117,5 +119,14 @@ public class WhiskyGuiController {
     public void lukAction() {
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
+    }
+
+    //metode til WhiskyGuiController
+    private void tømAlleNMsFade(){
+        for(NewMake nm : newMakes){
+            for(FadTilNM ftnm : nm.getFad()){
+                ftnm.setLiter(0);
+            }
+        }
     }
 }

@@ -35,6 +35,10 @@ public class FadTilNM {
         this.liter -= liter;
     }
 
+    public void incLiter(double liter){
+        this.liter += liter;
+    }
+
     @Override
     public String toString() {
         return "Liter: " + liter + ", Fad: " + fad.toStringKort() + ", NewMake: " + newMake.ekstraKortToStringTilFTNM();

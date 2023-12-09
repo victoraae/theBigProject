@@ -67,7 +67,7 @@ public class OmhældTrinEtGuiController {
                         if (empty || newMake == null) {
                             setText(null);
                         } else {
-                            setText(newMake.toStringLiterTotal());
+                            setText(newMake.toStringKort());
                         }
                     }
                 };
