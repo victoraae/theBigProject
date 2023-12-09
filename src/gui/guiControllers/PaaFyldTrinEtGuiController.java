@@ -50,7 +50,7 @@ public class PaaFyldTrinEtGuiController {
                         if (empty || destillat == null) {
                             setText(null);
                         } else {
-                            setText(destillat.toString());
+                            setText(destillat.toStringKortere());
                         }
                     }
                 };
@@ -85,8 +85,14 @@ public class PaaFyldTrinEtGuiController {
 
         mængder.add(new Mængde(antalLiter, destillat));
         opdaterLvwMængder();
+        destillat.decLiterTilbage(antalLiter);      // opdaterer hvor mange liter vi har tilbage fra destillatet
+        opdaterLvwDestillater();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
+    }
+
+    private void opdaterLvwDestillater() {
+        lvwDestillater.getItems().setAll(Controller.getDestillater());
     }
 
     @FXML
