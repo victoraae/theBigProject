@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.NoSuchElementException;
@@ -28,7 +27,7 @@ public class ÅbenVinduer {
 
     public void åbenHyldeVindue() {åbenVindue("fxmls/opretHylde.fxml", "Opret hylde");}
 
-    public void åbenPaafyldDestillatVindue() {åbenVindue("fxmls/paaFyldDestillat.fxml", "Påfyld Destillat");}
+    public void åbenPaaFyldTrinToVindue() {åbenVindue("fxmls/paafyldTrinTo.fxml", "Påfyld Destillat");}
 
     public void åbenNewMakeVindue() {åbenVindue("fxmls/listeNewmakes.fxml", "Liste Over New Makes");}
 
@@ -40,7 +39,7 @@ public class ÅbenVinduer {
 
     public void åbenOmhældTrinEtVindue() {åbenVindue("fxmls/omhaeldTrinEt.fxml", "Omhæld Trin 1: Lav en blanding fra New Makes");}
 
-    public void åbenOmhældNewMakesVindue() {åbenVindue("fxmls/omhaeldNewMakes.fxml", "Omhæld blanding af New Makes");}
+    public void åbenOmhældTrinToVindue() {åbenVindue("fxmls/omhaeldTrinTo.fxml", "Omhæld blanding af New Makes");}
 
     private void åbenVindue(String filNavn, String titel) {
         Stage stage = new Stage();

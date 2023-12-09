@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OmhældNewMakesGuiController {
+public class OmhældTrinToGuiController {
     @FXML
     private Button btnGem;
 

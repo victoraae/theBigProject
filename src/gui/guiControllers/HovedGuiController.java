@@ -63,7 +63,7 @@ public class HovedGuiController {
 
     @FXML
     public void åbenPaafyldDestillatTrin2(){
-        Main.åbenVinduer.åbenPaafyldDestillatVindue();
+        Main.åbenVinduer.åbenPaaFyldTrinToVindue();
     }
 
     @FXML
