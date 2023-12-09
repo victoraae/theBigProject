@@ -96,10 +96,6 @@ public class WhiskyGuiController {
         } else {
             HovedVindue.setFejlBesked(lblFejlBesked,
                     "Du mangler at vælge et newMake");
-        }
-        if (txfLiterVand.getText().isBlank()) {
-            HovedVindue.setFejlBesked(lblFejlBesked,
-                    "Du skal indtaste liter vand");
             return;
         }
     }

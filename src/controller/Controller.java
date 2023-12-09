@@ -79,12 +79,14 @@ public abstract class Controller {
      */
     public static Fad opretFad(Lager lager, Hylde hylde, String leverandør, String oprindeslesland, String materiale, String tidligereIndhold, FadStørrelse størrelse) {
         Fad fad = new Fad(leverandør, oprindeslesland, materiale, tidligereIndhold, størrelse, lager, hylde);
-        storage.tilføjFad(fad);
+
         if (hylde != null) {
             hylde.tilføjFad(størrelse.getStørrelse());
         } else {
             lager.tilføjFad(størrelse.getStørrelse());
         }
+
+        storage.tilføjFad(fad);
 
         return fad;
     }

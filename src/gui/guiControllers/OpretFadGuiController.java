@@ -100,8 +100,7 @@ public class OpretFadGuiController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-        Fad fad = new Fad(leverandør, oprindLand, materiale, tidlIndhold, størrelse, lager, hylde);
-        alert.setContentText(fad.toString());
+        alert.setContentText("Vil du oprette det nye fad?");
         alert.setHeaderText("Bekræft oplysninger");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES) {
