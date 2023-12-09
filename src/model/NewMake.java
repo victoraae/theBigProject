@@ -127,4 +127,8 @@ public class NewMake implements Serializable {
     public String toStringKort() {
         return "New make " + navn + ", liter tilbage: " + literTilbage + "l";
     }
+
+    public String ekstraKortToStringTilFTNM(){
+        return navn;
+    }
 }
