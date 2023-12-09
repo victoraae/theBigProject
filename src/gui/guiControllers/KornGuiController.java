@@ -1,6 +1,7 @@
-package gui;
+package gui.guiControllers;
 
 import controller.Controller;
+import gui.HovedVindue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;

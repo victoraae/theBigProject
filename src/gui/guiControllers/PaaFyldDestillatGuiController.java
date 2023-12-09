@@ -1,59 +1,77 @@
-package gui;
+package gui.guiControllers;
 
 import controller.Controller;
+import controller.Storage;
+import gui.HovedVindue;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.*;
+import storage.ListStorage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-
-public class OmhældNewMakesGuiController {
+public class PaaFyldDestillatGuiController {
     @FXML
     private Button btnGem;
-
     @FXML
     private Button btnLuk;
-
     @FXML
-    private Button btnOmhæld;
-
+    private Button btnPaafyld;
+    @FXML
+    private Label lblFejlBesked;
+    @FXML
+    private ListView<FadTilNM> lvwFadTilNM;
+    @FXML
+    private ListView<Fad> lvwFade;
+    @FXML
+    private TextField txfAntalLiter;
+    @FXML
+    private Label lblNMLiter;
     @FXML
     private Label lblFadeLiter;
 
-    @FXML
-    private Label lblFejlBesked;
-
-    @FXML
-    private Label lblNMLiter;
-
-    @FXML
-    private ListView<FadTilNM> lvwFadTilBlanding;
-
-    @FXML
-    private ListView<Fad> lvwFade;
-
-    @FXML
-    private TextField txfAntalLiter;
+    private Fad fad;
+    private ArrayList<FadTilNM> fadeTilNM = new ArrayList<>();
     public static NewMake newMake;
-    private List<FadTilNM> fadeTilBlanding = new ArrayList<>();
     private double fadeAntalLiter;
 
-    public void initialize(){
+    public void initialize() {
+        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter() + "");
+        HovedVindue.setFejlBesked(lblFadeLiter, 0 + "");
+
+
         lvwFade.getItems().setAll(Controller.getFade());
-        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter()+"");
+
+        ChangeListener<Fad> listener = (ov, o, n) -> this.opdaterValgtFad();
+        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
+
+    }
+
+    private void opdaterValgtFad() {
+        fad = lvwFade.getSelectionModel().getSelectedItem();
+    }
+
+    private void opdaterLvwFadTilNM() {
+        lvwFadTilNM.getItems().setAll(fadeTilNM);
+        HovedVindue.setFejlBesked(lblFadeLiter, this.antalLiterFraFTilNM() + "");
     }
 
     @FXML
-    void gemAction() {
+    public void gemAction() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
-        alert.setContentText("Er du sikker på, at du vil omhælde disse New Makes?");
+        alert.setContentText("Er du sikker på, at du vil påfylde og lave en ny New Make fra destillat?");
         alert.setHeaderText("Bekræft oplysninger");
         alert.showAndWait();
 
-        Controller.tilføjFTilNMtilNM(fadeTilBlanding, newMake);
+        Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
         newMake.setLiter(fadeAntalLiter);
         newMake.setLiterTilbage(fadeAntalLiter);
 
@@ -62,7 +80,7 @@ public class OmhældNewMakesGuiController {
     }
 
     @FXML
-    void lukAction() {
+    public void lukAction() {
         Controller.sletNewMake(newMake);
 
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
@@ -70,7 +88,7 @@ public class OmhældNewMakesGuiController {
     }
 
     @FXML
-    void omhaeldAction() {
+    public void paaFyldAction() {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
         if (fad == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
@@ -100,30 +118,24 @@ public class OmhældNewMakesGuiController {
             return;
         }
 
-        fadeTilBlanding.add(new FadTilNM(antalLiter, fad, newMake));
+        fadeTilNM.add(new FadTilNM(antalLiter, fad, newMake));
         this.fadeAntalLiter += antalLiter;
-        opdaterLvwFadTilBlanding();
-        opdaterLblFadeLiter();
+        opdaterLvwFadTilNM();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
     }
 
-    private void opdaterLblFadeLiter() {
-        HovedVindue.setFejlBesked(lblFadeLiter, fadeAntalLiter+"");
-    }
-
-    private void opdaterLvwFadTilBlanding() {
-        lvwFadTilBlanding.getItems().setAll(fadeTilBlanding);
-    }
 
     /**
      * hjæple metode til gui
      */
     private double antalLiterFraFTilNM() {
         double result = 0;
-        for (FadTilNM f : fadeTilBlanding) {
+        for (FadTilNM f : fadeTilNM) {
             result += f.getLiter();
         }
         return result;
     }
 }
+
+

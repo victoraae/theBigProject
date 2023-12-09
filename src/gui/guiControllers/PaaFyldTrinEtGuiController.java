@@ -1,22 +1,17 @@
-package gui;
+package gui.guiControllers;
 
 import controller.Controller;
-import controller.Storage;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
+import gui.HovedVindue;
+import gui.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.*;
-import storage.ListStorage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class PaaFyldTrinEtGuiController {
     @FXML

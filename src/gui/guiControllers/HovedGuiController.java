@@ -1,4 +1,4 @@
-package gui;
+package gui.guiControllers;
 
 import gui.Main;
 import javafx.fxml.FXML;

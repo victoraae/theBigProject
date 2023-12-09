@@ -18,54 +18,31 @@ public class ÅbenVinduer {
         ÅbenVinduer.parent = parent;
     }
 
-    public void åbenDestillatVindue() {
-        åbenVindue("fxmls/opretDestillat.fxml", "Opret destillat");
-    }
+    public void åbenDestillatVindue() {åbenVindue("fxmls/opretDestillat.fxml", "Opret destillat");}
 
-    public void åbenKornVindue() {
-        åbenVindue("fxmls/kornVindue.fxml", "Opret eller vælg korn");
-    }
+    public void åbenKornVindue() {åbenVindue("fxmls/kornVindue.fxml", "Opret eller vælg korn");}
 
-    public void åbenFadVindue() {
-        åbenVindue("fxmls/opretFad.fxml", "Opret fad");
-    }
+    public void åbenFadVindue() {åbenVindue("fxmls/opretFad.fxml", "Opret fad");}
 
-    public void åbenLagerVindue() {
-        åbenVindue("fxmls/opretLager.fxml", "Opret lager");
-    }
+    public void åbenLagerVindue() {åbenVindue("fxmls/opretLager.fxml", "Opret lager");}
 
-    public void åbenHyldeVindue() {
-        åbenVindue("fxmls/opretHylde.fxml", "Opret hylde");
-    }
+    public void åbenHyldeVindue() {åbenVindue("fxmls/opretHylde.fxml", "Opret hylde");}
 
-    public void åbenPaafyldDestillatVindue() {
-        åbenVindue("fxmls/paaFyldDestillat.fxml", "Påfyld Destillat");
-    }
+    public void åbenPaafyldDestillatVindue() {åbenVindue("fxmls/paaFyldDestillat.fxml", "Påfyld Destillat");}
 
-    public void åbenNewMakeVindue() {
-        åbenVindue("fxmls/listeNewmakes.fxml", "Liste Over New Makes");
-    }
+    public void åbenNewMakeVindue() {åbenVindue("fxmls/listeNewmakes.fxml", "Liste Over New Makes");}
 
-    public void åbenLavWhiskyVindue() {
-        åbenVindue("fxmls/lavWhisky.fxml", "Lav whisky");
-    }
+    public void åbenLavWhiskyVindue() {åbenVindue("fxmls/lavWhisky.fxml", "Lav whisky");}
 
-    public void åbenHistorikVindue() {
-        åbenVindue("fxmls/whiskyHistorik.fxml", "Whisky Historik");
-    }
+    public void åbenHistorikVindue() {åbenVindue("fxmls/whiskyHistorik.fxml", "Whisky Historik");}
 
-    public void åbenPaaFyldTrinEtVindue() {
-        åbenVindue("fxmls/paafyldTrinEt.fxml", "Påfyld Destillat: Trin 1");
-    }
+    public void åbenPaaFyldTrinEtVindue() {åbenVindue("fxmls/paafyldTrinEt.fxml", "Påfyld Destillat: Trin 1");}
 
-    public void åbenOmhældTrinEtVindue() {
-        åbenVindue("fxmls/omhaeldTrinEt.fxml", "Omhæld Trin 1: Lav en blanding fra New Makes");
-    }
+    public void åbenOmhældTrinEtVindue() {åbenVindue("fxmls/omhaeldTrinEt.fxml", "Omhæld Trin 1: Lav en blanding fra New Makes");}
 
-    public void åbenOmhældNewMakesVindue() {
-        åbenVindue("fxmls/omhaeldNewMakes.fxml", "Omhæld blanding af New Makes");
-    }
-    private void åbenVindue(String filNavn, String titel){
+    public void åbenOmhældNewMakesVindue() {åbenVindue("fxmls/omhaeldNewMakes.fxml", "Omhæld blanding af New Makes");}
+
+    private void åbenVindue(String filNavn, String titel) {
         Stage stage = new Stage();
         URL fxmlFileName = this.getClass().getResource(filNavn);
         if (fxmlFileName == null) throw new NoSuchElementException("FXML file not found");
