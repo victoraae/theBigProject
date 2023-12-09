@@ -23,4 +23,9 @@ public class FadTilNM {
     public NewMake getNewMake() {
         return newMake;
     }
+
+    @Override
+    public String toString() {
+        return "Liter: " + liter + ", Fad: " + fad.toStringKort() + ", NewMake: " + newMake.toStringKort();
+    }
 }

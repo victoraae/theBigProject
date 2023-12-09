@@ -14,14 +14,14 @@
             <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnOpretDestillat" layoutX="561.0" layoutY="188.0" mnemonicParsing="false" onAction="#åbenDestillatVindueAction" prefHeight="28.0" prefWidth="128.0" text="Opret destillat" />
-      <Button fx:id="btnOpretFad" layoutX="362.0" layoutY="188.0" mnemonicParsing="false" onAction="#åbenFadVindueAction" prefHeight="28.0" prefWidth="128.0" text="Opret fad" />
-      <Button fx:id="btnOpretLager" layoutX="161.0" layoutY="188.0" mnemonicParsing="false" onAction="#åbenLagerVindueAction" prefHeight="28.0" prefWidth="128.0" text="Opret lager" />
-      <Button fx:id="btnPaafyldDestillat" layoutX="161.0" layoutY="262.0" mnemonicParsing="false" onAction="#åbenPaafyldDestillatAction" prefHeight="28.0" prefWidth="128.0" text="Påfyld destillat" />
-      <Button fx:id="btnListeOverNewmakes" layoutX="259.0" layoutY="331.0" mnemonicParsing="false" onAction="#åbenNewMakesVindueAction" prefHeight="28.0" prefWidth="128.0" text="Vis alle New Makes" />
-      <Button fx:id="btnLavWhisky" layoutX="561.0" layoutY="262.0" mnemonicParsing="false" onAction="#åbenLavWhiskyVindueAction" prefHeight="28.0" prefWidth="128.0" text="Lav whisky" />
-      <Button fx:id="btnHistorik" layoutX="468.0" layoutY="331.0" mnemonicParsing="false" onAction="#åbenHistorikVindueAction" prefHeight="28.0" prefWidth="128.0" text="Vis whisky historik" />
-      <Button fx:id="btnOmhæld" layoutX="362.0" layoutY="262.0" mnemonicParsing="false" onAction="#åbenOmhældTrinEtVindue" prefHeight="28.0" prefWidth="128.0" text="Omhæld New Make" />
+      <Button fx:id="btnOpretDestillat" focusTraversable="false" layoutX="561.0" layoutY="188.0" mnemonicParsing="false" onAction="#åbenDestillatVindueAction" prefHeight="28.0" prefWidth="128.0" text="Opret destillat" />
+      <Button fx:id="btnOpretFad" focusTraversable="false" layoutX="362.0" layoutY="188.0" mnemonicParsing="false" onAction="#åbenFadVindueAction" prefHeight="28.0" prefWidth="128.0" text="Opret fad" />
+      <Button fx:id="btnOpretLager" focusTraversable="false" layoutX="161.0" layoutY="188.0" mnemonicParsing="false" onAction="#åbenLagerVindueAction" prefHeight="28.0" prefWidth="128.0" text="Opret lager" />
+      <Button fx:id="btnPaafyldDestillat" focusTraversable="false" layoutX="161.0" layoutY="262.0" mnemonicParsing="false" onAction="#åbenPaafyldDestillatAction" prefHeight="28.0" prefWidth="128.0" text="Påfyld destillat" />
+      <Button fx:id="btnListeOverNewmakes" focusTraversable="false" layoutX="259.0" layoutY="331.0" mnemonicParsing="false" onAction="#åbenNewMakesVindueAction" prefHeight="28.0" prefWidth="128.0" text="Vis alle New Makes" />
+      <Button fx:id="btnLavWhisky" focusTraversable="false" layoutX="561.0" layoutY="262.0" mnemonicParsing="false" onAction="#åbenLavWhiskyVindueAction" prefHeight="28.0" prefWidth="128.0" text="Lav whisky" />
+      <Button fx:id="btnHistorik" focusTraversable="false" layoutX="468.0" layoutY="331.0" mnemonicParsing="false" onAction="#åbenHistorikVindueAction" prefHeight="28.0" prefWidth="128.0" text="Vis whisky historik" />
+      <Button fx:id="btnOmhæld" focusTraversable="false" layoutX="362.0" layoutY="262.0" mnemonicParsing="false" onAction="#åbenOmhældTrinEtVindue" prefHeight="28.0" prefWidth="128.0" text="Omhæld New Make" />
       <Label layoutX="360.0" layoutY="118.0" text="Hovedmenu">
          <font>
             <Font size="24.0" />

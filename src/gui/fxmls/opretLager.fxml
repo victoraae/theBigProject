@@ -16,19 +16,19 @@
             <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txfLagerNavn" layoutX="168.0" layoutY="166.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast lagernavn" />
-      <TextField fx:id="txfAdresse" layoutX="169.0" layoutY="203.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast adresse" />
-      <TextField fx:id="txfStørrelse" layoutX="169.0" layoutY="239.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast størrelse på lageret (m^2)" />
-      <TextField fx:id="txfKapacitet" layoutX="169.0" layoutY="275.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast pladser på lager" />
-      <TextField fx:id="txfMaksReoler" layoutX="168.0" layoutY="312.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast det maksimale antal reoler" />
-      <ListView fx:id="lvwVaelgLager" layoutX="95.0" layoutY="411.0" prefHeight="156.0" prefWidth="493.0" />
-      <Button fx:id="btnGem" layoutX="488.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnGemAction" prefHeight="26.0" prefWidth="100.0" text="Gem" />
+      <TextField fx:id="txfLagerNavn" focusTraversable="false" layoutX="168.0" layoutY="166.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast lagernavn" />
+      <TextField fx:id="txfAdresse" focusTraversable="false" layoutX="169.0" layoutY="203.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast adresse" />
+      <TextField fx:id="txfStørrelse" focusTraversable="false" layoutX="169.0" layoutY="239.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast størrelse på lageret (m^2)" />
+      <TextField fx:id="txfKapacitet" focusTraversable="false" layoutX="169.0" layoutY="275.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast pladser på lager" />
+      <TextField fx:id="txfMaksReoler" focusTraversable="false" layoutX="168.0" layoutY="312.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast det maksimale antal reoler" />
+      <ListView fx:id="lvwVaelgLager" focusTraversable="false" layoutX="95.0" layoutY="411.0" prefHeight="156.0" prefWidth="493.0" />
+      <Button fx:id="btnGem" focusTraversable="false" layoutX="488.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnGemAction" prefHeight="26.0" prefWidth="100.0" text="Gem" />
       <Label layoutX="95.0" layoutY="381.0" prefHeight="17.0" prefWidth="74.0" text="Lager:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnOpretHylde" layoutX="488.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnÅbenHylde" prefHeight="26.0" prefWidth="100.0" text="Opret hylde..." />
+      <Button fx:id="btnOpretHylde" focusTraversable="false" layoutX="488.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnÅbenHylde" prefHeight="26.0" prefWidth="100.0" text="Opret hylde..." />
       <Label layoutX="95.0" layoutY="171.0" text="Lagermavn:" />
       <Label layoutX="95.0" layoutY="208.0" prefHeight="17.0" prefWidth="64.0" text="Adresse:" />
       <Label layoutX="95.0" layoutY="244.0" prefHeight="17.0" prefWidth="64.0" text="Størrelse:" />
