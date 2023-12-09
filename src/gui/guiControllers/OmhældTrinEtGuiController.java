@@ -43,6 +43,9 @@ public class OmhældTrinEtGuiController {
 
     private Map<NewMake, Double> newMakeLiter = new HashMap<>();
 
+    public OmhældTrinEtGuiController() {
+    }
+
 
     public void initialize() {
         lvwNewMakes.getItems().setAll(Controller.getNewMakes());

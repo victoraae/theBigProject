@@ -8,14 +8,13 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PaaFyldTrinEtGuiController {
     @FXML
-    private Button btnFortryd;
+    private Button btnFortryd = null;
     @FXML
     private Button btnNæste;
     @FXML

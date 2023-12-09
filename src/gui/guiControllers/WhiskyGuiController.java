@@ -11,6 +11,7 @@ import model.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class WhiskyGuiController {
     @FXML
@@ -54,6 +55,15 @@ public class WhiskyGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Navn på ansvarlig kan ikke være tom");
             return;
         }
+        if (!navn.matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked,"Whiskyen's navn kan kun indeholde bogstaver");
+            return;
+        }
+        if (!ansvarlig.matches(".*[a-zA-Z]+.*")) {
+            HovedVindue.setFejlBesked(lblFejlBesked,"Den ansvarligesnavn kan kun indeholde bogstaver");
+            return;
+        }
+
 
         double literVand = 0;
         String vand = txfLiterVand.getText().trim();
@@ -78,11 +88,11 @@ public class WhiskyGuiController {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
             alert.setContentText("Er du sikker på, at du vil oprette denne whisky?\n" + navn + ", lavet af: " + ansvarlig);
             alert.setHeaderText("Bekræft oplysninger");
-            alert.showAndWait();
-
-            Controller.opretWhisky(navn, ansvarlig, literVand, newMakes);
-            Stage stage = (Stage) btnGem.getScene().getWindow();
-            stage.close();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.YES) {
+                Controller.opretWhisky(navn, ansvarlig, literVand, newMakes);
+                lukAction();
+            }
         } else {
             HovedVindue.setFejlBesked(lblFejlBesked,
                     "Du mangler at vælge et newMake");

@@ -9,6 +9,7 @@ import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class OmhældTrinToGuiController {
@@ -52,14 +53,14 @@ public class OmhældTrinToGuiController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
         alert.setContentText("Er du sikker på, at du vil omhælde disse New Makes?");
         alert.setHeaderText("Bekræft oplysninger");
-        alert.showAndWait();
 
-        Controller.tilføjFTilNMtilNM(fadeTilBlanding, newMake);
-        newMake.setLiter(fadeAntalLiter);
-        newMake.setLiterTilbage(fadeAntalLiter);
-
-        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
-        stage.close();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.YES) {
+            Controller.tilføjFTilNMtilNM(fadeTilBlanding, newMake);
+            newMake.setLiter(fadeAntalLiter);
+            newMake.setLiterTilbage(fadeAntalLiter);
+            lukAction();
+        }
     }
 
     @FXML

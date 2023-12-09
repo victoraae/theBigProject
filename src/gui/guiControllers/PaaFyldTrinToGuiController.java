@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class PaaFyldTrinToGuiController {
     @FXML
@@ -53,7 +54,7 @@ public class PaaFyldTrinToGuiController {
 
     private void opdaterLvwFadTilNM() {
         lvwFadTilNM.getItems().setAll(fadeTilNM);
-        HovedVindue.setFejlBesked(lblFadeLiter, this.antalLiterFraFTilNM() + "");
+        HovedVindue.setFejlBesked(lblFadeLiter, antalLiterFraFTilNM() + "");
     }
 
     @FXML
@@ -61,16 +62,15 @@ public class PaaFyldTrinToGuiController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
         alert.setContentText("Er du sikker på, at du vil påfylde og lave en ny New Make fra destillat?");
         alert.setHeaderText("Bekræft oplysninger");
-        alert.showAndWait();
 
-        Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
-        newMake.setLiter(fadeAntalLiter);
-        newMake.setLiterTilbage(fadeAntalLiter);
-
-        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
-        stage.close();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.YES) {
+            Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
+            newMake.setLiter(fadeAntalLiter);
+            newMake.setLiterTilbage(fadeAntalLiter);
+            lukAction();
+        }
     }
-
     @FXML
     public void lukAction() {
         Controller.sletNewMake(newMake);
@@ -111,7 +111,7 @@ public class PaaFyldTrinToGuiController {
         }
 
         fadeTilNM.add(new FadTilNM(antalLiter, fad, newMake));
-        this.fadeAntalLiter += antalLiter;
+        fadeAntalLiter += antalLiter;
         opdaterLvwFadTilNM();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();

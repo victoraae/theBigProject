@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import model.Hylde;
 import model.Lager;
 
+import java.util.Optional;
+
 
 public class LagerGuiController {
     @FXML
@@ -89,18 +91,24 @@ public class LagerGuiController {
                     setFejlBesked(lblFejlBesked, "Adressen skal indeholde bogstaver");
                     return;
                 }
+                if (maxAntalHylder <= 0 || kapacitet <= 0 || størrelse <= 0) {
+                    setFejlBesked(lblFejlBesked, "Kapacitet, størrelse og max reoler skal være større end 0");
+                    return;
+
+                }
 
                 Alert dialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
                 dialog.setContentText("KVITTERING:\n" + "--------------\n" + "Lagernavn: " + txfLagerNavn.getText() + "\nadresse: "
                         + txfAdresse.getText() + "\nstørrelse pr. m^2: " + txfKapacitet.getText() + "\npladser på lager: " + txfStørrelse.getText() + "\nmaksimale antaler reoler: " + txfMaksReoler.getText() + "\n--------------");
-                dialog.showAndWait();
                 dialog.setHeaderText("Bekræft oplysninger:");
                 dialog.setTitle("Er du sikker?");
 
-                Lager lager = Controller.opretLager(txfLagerNavn.getText(), txfAdresse.getText(), størrelse, kapacitet, maxAntalHylder);
+                Optional<ButtonType> result = dialog.showAndWait();
+                if (result.get() == ButtonType.YES) {
+                    Lager lager = Controller.opretLager(txfLagerNavn.getText(), txfAdresse.getText(), størrelse, kapacitet, maxAntalHylder);
+                    opdaterListView();
 
-                opdaterListView();
-
+                }
             } else {
                 setFejlBesked(lblFejlBesked, "Venligst udfyld alle felterne før du fortsætter");
             }

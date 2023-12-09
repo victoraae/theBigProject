@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Flaske {
-    private int nummer;
+    private final int nummer;
     private final Whisky whisky;
     private int antalFlasker;
     public Flaske(int nummer, Whisky whisky, int antalFlasker) {

@@ -61,9 +61,9 @@ public class Main {
         NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2017, 1, 1));
         nm1.setLiter(50.0);
         nm1.setLiterTilbage(50.0);
-        Map<Fad, Double> mapTemp2 = new HashMap<>();
+        final Map<Fad, Double> mapTemp2 = new HashMap<>();
         mapTemp2.put(fad3, 50.0);
-        NewMake nm2 = Controller.paafyldDestillat("NM78p", "Billy", mængder2, mapTemp2, new HashMap<NewMake, Double>(), LocalDate.of(2018, 1, 1));
+        final NewMake nm2 = Controller.paafyldDestillat("NM78p", "Billy", mængder2, mapTemp2, new HashMap<NewMake, Double>(), LocalDate.of(2018, 1, 1));
         nm2.setLiter(50.0);
         nm2.setLiterTilbage(50.0);
 //        List<NewMake> newMakes = new ArrayList<>();
@@ -73,11 +73,11 @@ public class Main {
 
         Destillat destillat4 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
                 new Korn("t2", "t", 1776, "t", "t"));
-        List<Mængde> mængder3 = new ArrayList<>();
+        final List<Mængde> mængder3 = new ArrayList<>();
         mængder3.add(new Mængde(50.0, destillat3));
-        List<Mængde> mængder4 = new ArrayList<>();
+        final List<Mængde> mængder4 = new ArrayList<>();
         mængder4.add(new Mængde(25.0, destillat3));
-        Map<Fad, Double> mapTemp3 = new HashMap<>();
+        final Map<Fad, Double> mapTemp3 = new HashMap<>();
         mapTemp3.put(fad3, 50.0);
         NewMake nm3 = Controller.paafyldDestillat("NM79p", "Billy", mængder3, mapTemp3, new HashMap<NewMake, Double>(), LocalDate.of(2019, 1, 1));
         nm3.setLiter(50.0);

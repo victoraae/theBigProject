@@ -6,19 +6,19 @@ import java.util.List;
 
 public class Fad implements Serializable {
     private static int antalFade = 0;      // statisk så den kan deles blandt alle forekomster af Fad-klassen
-    private int nummer;
-    private String leverandør;
-    private String oprindeslesland;
-    private String materiale;
+    private final int nummer;
+    private final String leverandør;
+    private final String oprindeslesland;
+    private final String materiale;
     private int gangeBrugt;
-    private String tidligereIndhold;
+    private final String tidligereIndhold;
     //Association 0..* ---> 1 FadStørrelse
-    private FadStørrelse størrelse;
+    private final FadStørrelse størrelse;
     //Association 0..* ---> 1 Lager
-    private Lager lager;
+    private final Lager lager;
     //Nullable
     //Association 0..* ---> 0..1 Hylde
-    private Hylde hylde;
+    private final Hylde hylde;
     //Association 1 ---> 0..* FadTilNM
     private final List<FadTilNM> indhold = new ArrayList<>();
     private double literTilbage;
@@ -39,30 +39,6 @@ public class Fad implements Serializable {
         this.hylde = hylde;
     }
 
-    public int getNummer() {
-        return nummer;
-    }
-
-    public String getLeverandør() {
-        return leverandør;
-    }
-
-    public String getOprindeslesland() {
-        return oprindeslesland;
-    }
-
-    public String getMateriale() {
-        return materiale;
-    }
-
-    public int getGangeBrugt() {
-        return gangeBrugt;
-    }
-
-    public String getTidligereIndhold() {
-        return tidligereIndhold;
-    }
-
     public FadStørrelse getStørrelse() {
         return størrelse;
     }
@@ -75,9 +51,6 @@ public class Fad implements Serializable {
         return hylde;
     }
 
-    public List<FadTilNM> getIndhold() {
-        return new ArrayList<>(indhold);
-    }
     public void tilføjFadTilNM(FadTilNM fnm){
         indhold.add(fnm);
     }

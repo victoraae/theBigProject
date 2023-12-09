@@ -1,11 +1,11 @@
 package model;
 
 public class Mængde {
-    private double mængde;
+    private final double mængde;
     //Assositation 0..* ---> 1 NewMake
-    private NewMake newMake;
+    private NewMake newMake = null;
     //Aggregation 0..* ---> 1 Destillat
-    private Destillat destillat;
+    private final Destillat destillat;
 
     public Mængde(double mængde, Destillat destillat) {
         this.mængde = mængde;

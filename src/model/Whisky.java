@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Whisky {
-    private String navn;
-    private String ansvarlig;
-    private LocalDate dato;
-    private double antalLiter;
-    private double alkoholProcent;
-    private String kvalitetsstempel;
+    private final String navn;
+    private final String ansvarlig;
+    private final LocalDate dato;
+    private final double antalLiter;
+    private final double alkoholProcent;
+    private final String kvalitetsstempel;
     //Aggregation 0..1 ---> 1..* NewMake
     private final List<NewMake> newMakes;
     //Aggregation 1 ---> 0..* Flaske
@@ -37,14 +37,6 @@ public class Whisky {
 
     public LocalDate getDato() {
         return dato;
-    }
-
-    public double getAntalLiter() {
-        return antalLiter;
-    }
-
-    public double getAlkoholProcent() {
-        return alkoholProcent;
     }
 
     public String getKvalitetsstempel() {

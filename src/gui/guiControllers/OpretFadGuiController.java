@@ -10,6 +10,8 @@ import model.FadStørrelse;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.function.LongUnaryOperator;
 
 public class OpretFadGuiController {
     @FXML
@@ -82,11 +84,11 @@ public class OpretFadGuiController {
             return;
         }
         if (!txfNavnPaaLeveradoer.getText().matches(".*[a-zA-Z]+.*")) {
-            HovedVindue.setFejlBesked(lblFejlBesked,"Leverandørens navn skal indeholde bostaver");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Leverandørens navn skal indeholde bostaver");
             return;
         }
         if (!txfOprindelsesland.getText().matches(".*[a-zA-Z]+.*")) {
-            HovedVindue.setFejlBesked(lblFejlBesked,"Oprindelsesland skal indeholde bogstaver");
+            HovedVindue.setFejlBesked(lblFejlBesked, "Oprindelsesland skal indeholde bogstaver");
             return;
         }
         if (!txfMateriale.getText().matches(".*[a-zA-Z]+.*")) {
@@ -101,10 +103,11 @@ public class OpretFadGuiController {
         Fad fad = new Fad(leverandør, oprindLand, materiale, tidlIndhold, størrelse, lager, hylde);
         alert.setContentText(fad.toString());
         alert.setHeaderText("Bekræft oplysninger");
-        alert.showAndWait();
-
-        Controller.opretFad(lager, hylde, leverandør, oprindLand, materiale, tidlIndhold, størrelse);
-        fortrydAction();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.YES) {
+            Controller.opretFad(lager, hylde, leverandør, oprindLand, materiale, tidlIndhold, størrelse);
+            fortrydAction();
+        }
     }
 
     @FXML

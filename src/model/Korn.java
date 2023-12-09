@@ -22,22 +22,6 @@ public class Korn implements Serializable {
         return sort;
     }
 
-    public String getBondemand() {
-        return bondemand;
-    }
-
-    public int getÅr() {
-        return år;
-    }
-
-    public String getMark() {
-        return mark;
-    }
-
-    public String getMaltningsprocess() {
-        return maltningsprocess;
-    }
-
     @Override
     public String toString() {
         String result = "Korn sort " + sort + ", dyrket af " + bondemand + " i " + år + " på marken "

@@ -7,9 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Destillat;
-import model.Fad;
 import model.Korn;
-
 import java.time.LocalDate;
 import java.util.Optional;
 

@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Hylde implements Serializable {
     private final int nummer;
     private final boolean[] pladserArray;
-    private boolean erLedig;
+    private final boolean erLedig;
     private final int størrelse;
     //komposition 0..* ---> 1 Reol
     private final Reol reol;
@@ -26,20 +26,8 @@ public class Hylde implements Serializable {
         return nummer;
     }
 
-    public boolean[] getPladserArray() {
-        return Arrays.copyOf(pladserArray, størrelse);
-    }
-
-    public boolean erLedig() {
-        return erLedig;
-    }
-
     public int getStørrelse() {
         return størrelse;
-    }
-
-    public boolean erPladsLedig(int index) {
-        return pladserArray[index];
     }
 
 

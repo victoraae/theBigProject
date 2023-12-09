@@ -13,9 +13,9 @@ public class Destillat implements Serializable {
     private final double liter;
     private double literTilbage;
     private int antalGange;
-    private String rygemateriale;
+    private final String rygemateriale;
     //association 0..* --> 1 korn
-    private Korn korn;
+    private final Korn korn;
 
     public Destillat(LocalDate dato, double alkoholProcent, String ansvarlig, double liter, int antalGange, String rygemateriale, Korn korn) {
         this.dato = dato;
@@ -34,26 +34,6 @@ public class Destillat implements Serializable {
 
     public double getAlkoholProcent() {
         return alkoholProcent;
-    }
-
-    public String getAnsvarlig() {
-        return ansvarlig;
-    }
-
-    public double getLiter() {
-        return liter;
-    }
-
-    public int getAntalGange() {
-        return antalGange;
-    }
-
-    public String getRygemateriale() {
-        return rygemateriale;
-    }
-
-    public void setAntalGange(int antalGange) {
-        this.antalGange = antalGange;
     }
 
     public double getLiterTilbage() {

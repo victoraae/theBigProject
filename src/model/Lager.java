@@ -8,7 +8,7 @@ public class Lager implements Serializable {
     private String navn;
     private final String adresse;
     private final double størrelse;
-    private int kapacitet;
+    private final int kapacitet;
     private int pladserTilbage;     // bruges med lagre, der ikke har reoler
     private final int maxAntalReoler;
     private int antalReolerNu = 0;
@@ -28,16 +28,8 @@ public class Lager implements Serializable {
         return navn;
     }
 
-    public String getAdresse() {
-        return adresse;
-    }
-
     public double getStørrelse() {
         return størrelse;
-    }
-
-    public int getKapacitet() {
-        return kapacitet;
     }
 
     public ArrayList<Reol> getReoler() {
@@ -121,14 +113,6 @@ public class Lager implements Serializable {
 
     public int getAntalReolerNu() {
         return ++antalReolerNu;
-    }
-
-    public int getPladserTilbage() {
-        return pladserTilbage;
-    }
-
-    public void incPladserTilbage() {
-        pladserTilbage++;
     }
 
     public int getMaxAntalReoler() {

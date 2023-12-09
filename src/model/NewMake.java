@@ -10,14 +10,14 @@ import java.util.Map;
 public class NewMake implements Serializable {
     private String navn;
     private final LocalDate datoForPåfyldning;
-    private double alkoholprocent;
+    private final double alkoholprocent;
     private final String ansvarlig;
     private double liter;
     //Assosiation 1 ---> 1..* FadTilNM
     private final List<FadTilNM> fade = new ArrayList<>();
     //Assosiation 1 ---> 0..* Mængde
     private final List<Mængde> mængder = new ArrayList<>();
-    private boolean erAktiv;
+    private boolean erAktiv = false;
     private double literTilbage;
     //Assosiation 0..* --> 1 NewMake
     private final Map<NewMake, Double> newMakesLiter;
@@ -96,10 +96,6 @@ public class NewMake implements Serializable {
         }
     }
 
-    public boolean isErAktiv() {
-        return erAktiv;
-    }
-
     public void setErAktiv(boolean erAktiv) {
         this.erAktiv = erAktiv;
     }
@@ -115,9 +111,6 @@ public class NewMake implements Serializable {
         }
     }
 
-    public Map<NewMake, Double> getNewMakesLiter() {
-        return new HashMap<>(newMakesLiter);
-    }
 
     @Override
     public String toString() {

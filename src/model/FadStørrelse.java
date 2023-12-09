@@ -7,8 +7,8 @@ public enum FadStørrelse {
     L190("STOR", 190),
     L250("STOR", 250);
 
-    private String størrelse;
-    private int strInt;
+    private final String størrelse;
+    private final int strInt;
 
     public String getStørrelse() {
         return størrelse;
