@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -123,7 +124,11 @@ public class NewMake implements Serializable, Comparable<NewMake> {
 
     @Override
     public String toString() {
-        return "NewMake: " + navn + ", mængder: " +  mængder;
+        String result = "NewMake: " + navn + ", påfyldt: " +  datoForPåfyldning.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+        if (!mængder.isEmpty()){
+            result += ", mængder: " + mængder;
+        }
+        return result;
     }
 
     public void setLiterTilbage(double literTilbage) {
