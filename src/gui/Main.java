@@ -58,7 +58,7 @@ public class Main {
         mængder2.add(new Mængde(50, destillat3));
         Map<Fad, Double> mapTemp1 = new HashMap<>();
         mapTemp1.put(fad3, 50.0);
-        NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2017, 1, 1));
+        NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2020, 1, 1));
         nm1.setLiter(50.0);
         nm1.setLiterTilbage(50.0);
         Map<Fad, Double> mapTemp2 = new HashMap<>();

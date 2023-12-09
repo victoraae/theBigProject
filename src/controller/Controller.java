@@ -4,6 +4,7 @@ import model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -239,6 +240,13 @@ public abstract class Controller {
         newMake.setLiterTilbage(antalLiter);
         storage.tilføjNewMake(newMake);
         return newMake;
+    }
+
+    public static List<NewMake> getSorteredeNewMakes() {
+        List<NewMake> newMakes = storage.getNewMakes();
+        NewMakeCompare newMakeCompare = new NewMakeCompare();
+        Collections.sort(newMakes, newMakeCompare);
+        return newMakes;
     }
 }
 

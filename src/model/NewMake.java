@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NewMake implements Serializable {
+public class NewMake implements Serializable, Comparable<NewMake> {
     private String navn;
     private final LocalDate datoForPåfyldning;
     private double alkoholprocent;
@@ -137,5 +137,10 @@ public class NewMake implements Serializable {
 
     public String ekstraKortToStringTilFTNM(){
         return navn;
+    }
+
+    @Override
+    public int compareTo(NewMake newMake){
+        return datoForPåfyldning.compareTo(newMake.getDatoForPåfyldning());
     }
 }
