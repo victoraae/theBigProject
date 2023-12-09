@@ -268,5 +268,13 @@ public abstract class Controller {
         Collections.sort(newMakes, newMakeCompare);
         return newMakes;
     }
+
+    public static List<Destillat> getIkkeTommeDestillater(){
+        List<Destillat> result = new ArrayList<>();
+        for(Destillat destillat : Controller.getDestillater()){
+            if(destillat.getLiterTilbage()!=0) result.add(destillat);
+        }
+        return result;
+    }
 }
 

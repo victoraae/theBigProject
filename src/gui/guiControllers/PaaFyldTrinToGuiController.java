@@ -69,6 +69,7 @@ public class PaaFyldTrinToGuiController {
             newMake.setLiter(fadeAntalLiter);
             newMake.setLiterTilbage(fadeAntalLiter);
             lukAction();
+            PaaFyldTrinEtGuiController.decLiterTilbageDestillater(); //Trække de liter fra destillater i trin et vinduet, når det gemmes til sidst
         }
     }
     @FXML

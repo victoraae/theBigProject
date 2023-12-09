@@ -40,6 +40,14 @@ public class Destillat implements Serializable {
         return literTilbage;
     }
 
+    public Korn getKorn() {
+        return korn;
+    }
+
+    public String getRygemateriale() {
+        return rygemateriale;
+    }
+
     /**
      * pre: literTilbage-liter må ikke være mindre end nul
      */

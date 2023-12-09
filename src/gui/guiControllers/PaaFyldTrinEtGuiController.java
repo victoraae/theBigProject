@@ -3,6 +3,7 @@ package gui.guiControllers;
 import controller.Controller;
 import gui.HovedVindue;
 import gui.Main;
+import gui.guiDummies.DestillatGui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -11,6 +12,8 @@ import model.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PaaFyldTrinEtGuiController {
     @FXML
@@ -22,7 +25,7 @@ public class PaaFyldTrinEtGuiController {
     @FXML
     private Label lblFejlBesked;
     @FXML
-    private ListView<Destillat> lvwDestillater;
+    private ListView<DestillatGui> lvwDestillater;
     @FXML
     private ListView<Mængde> lvwMængder;
     @FXML
@@ -33,28 +36,29 @@ public class PaaFyldTrinEtGuiController {
     private TextField txfNMNavn;
     @FXML
     private DatePicker datoVælger;
-
     private ArrayList<Mængde> mængder = new ArrayList<>();
+    private static Map<Destillat, Double> destillatDecLiters = new HashMap<>();
+    private final List<DestillatGui> destillatGuier = new ArrayList<>(konverterTilGuiDummy(Controller.getIkkeTommeDestillater()));
 
     public void initialize() {
-        lvwDestillater.getItems().setAll(Controller.getDestillater());
+        opdaterLvwDestillater();
 
-        lvwDestillater.setCellFactory(new Callback<ListView<Destillat>, ListCell<Destillat>>() {
-            @Override
-            public ListCell<Destillat> call(ListView<Destillat> destillatListView) {
-                return new ListCell<>() {
-                    @Override
-                    public void updateItem(Destillat destillat, boolean empty) {
-                        super.updateItem(destillat, empty);
-                        if (empty || destillat == null) {
-                            setText(null);
-                        } else {
-                            setText(destillat.toStringKortere());
-                        }
-                    }
-                };
-            }
-        });
+//        lvwDestillater.setCellFactory(new Callback<ListView<Destillat>, ListCell<Destillat>>() {
+//            @Override
+//            public ListCell<Destillat> call(ListView<Destillat> destillatListView) {
+//                return new ListCell<>() {
+//                    @Override
+//                    public void updateItem(Destillat destillat, boolean empty) {
+//                        super.updateItem(destillat, empty);
+//                        if (empty || destillat == null) {
+//                            setText(null);
+//                        } else {
+//                            setText(destillat.toStringKortere());
+//                        }
+//                    }
+//                };
+//            }
+//        });
     }
 
     @FXML
@@ -67,7 +71,7 @@ public class PaaFyldTrinEtGuiController {
             return;
         }
 
-        Destillat destillat = lvwDestillater.getSelectionModel().getSelectedItem();
+        DestillatGui destillat = lvwDestillater.getSelectionModel().getSelectedItem();
 
         if (destillat == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et destillat fra listen");
@@ -82,16 +86,19 @@ public class PaaFyldTrinEtGuiController {
             return;
         }
 
-        mængder.add(new Mængde(antalLiter, destillat));
+        Destillat destillat1 = findOriginal(destillat);
+
+        mængder.add(new Mængde(antalLiter, destillat1));
         opdaterLvwMængder();
-        destillat.decLiterTilbage(antalLiter);      // opdaterer hvor mange liter vi har tilbage fra destillatet
+        destillat.decLiterTilbage(antalLiter); // opdaterer hvor mange liter vi har tilbage fra destillatet
+        destillatDecLiters.put(destillat1, antalLiter);
         opdaterLvwDestillater();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
     }
 
     private void opdaterLvwDestillater() {
-        lvwDestillater.getItems().setAll(Controller.getDestillater());
+        lvwDestillater.getItems().setAll(destillatGuier);
     }
 
     @FXML
@@ -128,6 +135,7 @@ public class PaaFyldTrinEtGuiController {
         NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>(), dato);
         PaaFyldTrinToGuiController.newMake = newMake;
         Main.åbenVinduer.åbenPaaFyldTrinToVindue();
+        destillatDecLiters = new HashMap<>(); //Mappet clearers da det er statisk og vi vil have andre værdi i næste gang
         fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes
     }
 
@@ -148,5 +156,32 @@ public class PaaFyldTrinEtGuiController {
             result += mængde.getMængde();
         }
         return result;
+    }
+
+    private List<DestillatGui> konverterTilGuiDummy(List<Destillat> destillater){
+        List<DestillatGui> result = new ArrayList<>();
+        for(Destillat d : destillater){
+            result.add(new DestillatGui(d));
+        }
+        return result;
+    }
+
+    private Destillat findOriginal(DestillatGui destillatGui){
+        Destillat result = null;
+        for(Destillat destillat : Controller.getIkkeTommeDestillater()){
+            if(destillatGui.getOriginal().equals(destillat)){
+                result = destillat;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * hjælpemetode til at decrement liter fra literTilbage på destillaterne, til trin to vinduet
+     */
+    public static void decLiterTilbageDestillater(){
+        for(Map.Entry<Destillat, Double> entry : destillatDecLiters.entrySet()){
+            entry.getKey().decLiterTilbage(entry.getValue());
+        }
     }
 }
