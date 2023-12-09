@@ -51,6 +51,10 @@ public class Main {
 
         Fad fad4 = Controller.opretFad(lager,hylde,"awdd","Danmark","Jern","Cherry", FadStørrelse.L50);
         Fad fad5 = Controller.opretFad(lager,hylde,"fsefef","Danmark","Jern","Rødvin", FadStørrelse.L50);
+        Fad fad6 = Controller.opretFad(lager,hylde,"FEJL","FEJL","FEJL","FEJL", FadStørrelse.L50); //Dette fad skal ikke ses i gui
+        fad6.setGangeBrugt(3);
+        Fad fad7 = Controller.opretFad(lager,hylde,"Gange brugt 2","Danmark","Jern","Rødvin", FadStørrelse.L50);
+        fad7.setGangeBrugt(2);
 
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",

@@ -251,11 +251,11 @@ public abstract class Controller {
         return newMake;
     }
 
-    //Bruges til paafyld og omhæld, det skal ske på tomme fade
+    //Bruges til paafyld og omhæld, det skal ske på tomme fade, inkluderer ikke fade der brugt 3 gange
     public static List<Fad> getTommeFade(){
         List<Fad> result = new ArrayList<>();
         for(Fad fad : Controller.getFade()){
-            if(fad.getIndhold()==null || fad.getIndhold().getLiter() == 0) {
+            if((fad.getIndhold()==null || fad.getIndhold().getLiter() == 0) && fad.getGangeBrugt()<3) {
                 result.add(fad);
             }
         }

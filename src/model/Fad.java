@@ -80,6 +80,14 @@ public class Fad implements Serializable {
     }
     public void setIndhold(FadTilNM fnm){
        indhold = fnm;
+       gangeBrugt++;
+    }
+
+    /**
+     * Må kun bruges i initStorage inde i main!!!
+     */
+    public void setGangeBrugt(int gangeBrugt){
+        this.gangeBrugt = gangeBrugt;
     }
 
     public void opdaterLiterTilbage(){
