@@ -59,7 +59,7 @@ public class OmhældTrinToGuiController {
             Controller.tilføjFTilNMtilNM(fadeTilBlanding, newMake);
             newMake.setLiter(fadeAntalLiter);
             newMake.setLiterTilbage(fadeAntalLiter);
-            lukAction();
+            lukActionUdenAtSlette();
         }
     }
 
@@ -67,6 +67,11 @@ public class OmhældTrinToGuiController {
     void lukAction() {
         Controller.sletNewMake(newMake);
 
+        Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
+        stage.close();
+    }
+
+    void lukActionUdenAtSlette() {
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
     }
