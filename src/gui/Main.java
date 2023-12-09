@@ -46,8 +46,8 @@ public class Main {
         Controller.opretKorn("Irina Byg", "Keld Keldsen", 2018, "Mark 2", "Ristet mørk");
         Controller.opretDestillat(LocalDate.of(23,4,12),42,"Karsten",20,1,"Weed",korn);
         Fad fad = Controller.opretFad(lager,hylde,"Karsten","Danmark","Jern","Weed", FadStørrelse.L50);
-        Fad fad2 = Controller.opretFad(lager,hylde,"awdaw","Danmark","Jern","Weed", FadStørrelse.L250);
-        Fad fad3 = Controller.opretFad(lager,hylde,"dddsgg","Danmark","Jern","Weed", FadStørrelse.L100);
+        Fad fad2 = Controller.opretFad(lager,hylde,"The Jolly Barrel","Irland","egetræ","sherry", FadStørrelse.L250);
+        Fad fad3 = Controller.opretFad(lager,hylde,"Des Enormes Barriles","Spanien","egetræ","rødvin", FadStørrelse.L100);
 
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
