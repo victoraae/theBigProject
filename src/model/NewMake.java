@@ -17,7 +17,7 @@ public class NewMake implements Serializable, Comparable<NewMake> {
     private final List<FadTilNM> fade = new ArrayList<>();
     //Assosiation 1 ---> 0..* Mængde
     private final List<Mængde> mængder = new ArrayList<>();
-    private boolean erAktiv;
+    private boolean erOpbrugt;
     private double literTilbage;
     //Assosiation 0..* --> 1 NewMake
     private final Map<NewMake, Double> newMakesLiter;
@@ -30,6 +30,7 @@ public class NewMake implements Serializable, Comparable<NewMake> {
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
         this.newMakesLiter = newMakesLiter;
+        this.erOpbrugt = false;
         lavFadTilNM(fadeTilLiter);
     }
 
@@ -42,6 +43,7 @@ public class NewMake implements Serializable, Comparable<NewMake> {
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
         this.newMakesLiter = newMakesLiter;
+        this.erOpbrugt = false;
     }
 
 
@@ -96,12 +98,12 @@ public class NewMake implements Serializable, Comparable<NewMake> {
         }
     }
 
-    public boolean isErAktiv() {
-        return erAktiv;
+    public boolean erOpbrugt() {
+        return erOpbrugt;
     }
 
-    public void setErAktiv(boolean erAktiv) {
-        this.erAktiv = erAktiv;
+    public void setErOpbrugt(boolean erOpbrugt) {
+        this.erOpbrugt = erOpbrugt;
     }
 
     public double getLiterTilbage() {
@@ -109,9 +111,9 @@ public class NewMake implements Serializable, Comparable<NewMake> {
     }
 
     public void decLiterTilbage(double liter){
-        literTilbage-=liter;
+        literTilbage -= liter;
         if (literTilbage == 0){
-            setErAktiv(false);
+            setErOpbrugt(true);
         }
     }
 
@@ -121,7 +123,7 @@ public class NewMake implements Serializable, Comparable<NewMake> {
 
     @Override
     public String toString() {
-        return "NewMake: " + ", mængder: "+  mængder;
+        return "NewMake: " + navn + ", mængder: " +  mængder;
     }
 
     public void setLiterTilbage(double literTilbage) {
