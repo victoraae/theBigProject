@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import storage.ListStorage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -256,6 +257,13 @@ public abstract class Controller {
         return new ArrayList<>(); //virker ikke...
     }
 
+    public static List<NewMake> getIkkeTommeNewMakes(){
+        List<NewMake> result = new ArrayList<>();
+        for(NewMake nm : Controller.getNewMakes()){
+            if(nm.getLiterTilbage()!=0)result.add(nm);
+        }
+        return result;
+    }
 
 }
 

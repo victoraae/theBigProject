@@ -9,10 +9,13 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.*;
+import storage.ListStorage;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OmhældTrinEtGuiController {
@@ -49,8 +52,10 @@ public class OmhældTrinEtGuiController {
     private Map<NewMake, Double> newMakeLiter = new HashMap<>();
 
 
+
+
     public void initialize() {
-        lvwNewMakes.getItems().setAll(Controller.getNewMakes());
+        lvwNewMakes.getItems().setAll(Controller.getIkkeTommeNewMakes());
 
         lvwNewMakes.setCellFactory(new Callback<ListView<NewMake>, ListCell<NewMake>>() {
             @Override
@@ -62,7 +67,24 @@ public class OmhældTrinEtGuiController {
                         if (empty || newMake == null) {
                             setText(null);
                         } else {
-                            setText(newMake.toStringKort());
+                            setText(newMake.toStringLiterTotal());
+                        }
+                    }
+                };
+            }
+        });
+
+        lvwLiterTilBlanding.setCellFactory(new Callback<ListView<Map.Entry<NewMake, Double>>, ListCell<Map.Entry<NewMake, Double>>>() {
+            @Override
+            public ListCell<Map.Entry<NewMake, Double>> call(ListView<Map.Entry<NewMake, Double>> newMakeLiterListView) {
+                return new ListCell<>() {
+                    @Override
+                    public void updateItem(Map.Entry<NewMake, Double> entry, boolean empty) {
+                        super.updateItem(entry, empty);
+                        if (empty || entry == null) {
+                            setText(null);
+                        } else {
+                            setText("Liter: " + entry.getValue() + ", NewMake: " + entry.getKey().getNavn());
                         }
                     }
                 };
@@ -97,6 +119,7 @@ public class OmhældTrinEtGuiController {
 
     @FXML
     public void fortrydAction() {
+
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
     }
@@ -194,5 +217,15 @@ public class OmhældTrinEtGuiController {
         }
 
         return result;
+    }
+
+    private void etablerBackup(){
+        List<NewMake> storedNewmakes = Controller.getNewMakes();
+
+        for(NewMake nm : storedNewmakes){
+            Controller.sletNewMake(nm);
+        }
+
+        //prøv med storage bagefter, lav en backup af liststorage
     }
 }

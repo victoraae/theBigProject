@@ -138,4 +138,8 @@ public class NewMake implements Serializable {
     public String ekstraKortToStringTilFTNM(){
         return navn;
     }
+
+    public String toStringLiterTotal(){
+        return "New make " + navn + ", total liter: " + liter+ "l";
+    }
 }
