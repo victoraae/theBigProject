@@ -211,10 +211,11 @@ public abstract class Controller {
     public static void tilføjFTilNMtilNM(List<FadTilNM> fnm, NewMake nm) {
         for (FadTilNM fadTilNM : fnm) {
             if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
-
-            if(fadTilNM.getFad().getIndhold()==null) {
-                fadTilNM.getFad().setIndhold(fadTilNM);
-            }else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
+            else {
+                if (fadTilNM.getFad().getIndhold() == null) {
+                    fadTilNM.getFad().setIndhold(fadTilNM);
+                } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
+            }
         }
     }
 
