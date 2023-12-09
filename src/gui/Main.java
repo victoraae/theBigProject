@@ -46,8 +46,8 @@ public class Main {
         Controller.opretKorn("Irina Byg", "Keld Keldsen", 2018, "Mark 2", "Ristet mørk");
         Controller.opretDestillat(LocalDate.of(23,4,12),42,"Karsten",20,1,"Weed",korn);
         Fad fad = Controller.opretFad(lager,hylde,"Karsten","Danmark","Jern","Weed", FadStørrelse.L50);
-        Fad fad2 = Controller.opretFad(lager,hylde,"awdaw","Danmark","Jern","Weed", FadStørrelse.L250);
-        Fad fad3 = Controller.opretFad(lager,hylde,"dddsgg","Danmark","Jern","Weed", FadStørrelse.L100);
+        Fad fad2 = Controller.opretFad(lager,hylde,"The Jolly Barrel","Irland","egetræ","sherry", FadStørrelse.L250);
+        Fad fad3 = Controller.opretFad(lager,hylde,"Des Enormes Barriles","Spanien","egetræ","rødvin", FadStørrelse.L100);
 
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
@@ -58,7 +58,7 @@ public class Main {
         mængder2.add(new Mængde(50, destillat3));
         Map<Fad, Double> mapTemp1 = new HashMap<>();
         mapTemp1.put(fad3, 50.0);
-        NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2017, 1, 1));
+        NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2020, 1, 1));
         nm1.setLiter(50.0);
         nm1.setLiterTilbage(50.0);
         final Map<Fad, Double> mapTemp2 = new HashMap<>();

@@ -4,6 +4,7 @@ import model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -183,6 +184,10 @@ public abstract class Controller {
             whisky.opretFlaske(i, antalFlasker);
         }
 
+        for (int i = 0; i < newMakes.size(); i++){
+            newMakes.get(i).setErOpbrugt(true);
+        }
+
         storage.tilføjWhisky(whisky);
         return whisky;
     }
@@ -227,11 +232,20 @@ public abstract class Controller {
     public static NewMake omhældNewMake(Map<NewMake,Double> newMakes, LocalDate dato, String ansvarlig) {
         String navn = "";
         double antalLiter = 0;
+        ArrayList<NewMake> newMakeArrayList = new ArrayList<>();
+        ArrayList<Double> doubleArrayList = new ArrayList<>();
+
         for (Map.Entry<NewMake,Double> entry : newMakes.entrySet()) {
             navn += entry.getKey().getNavn() + ", ";
             antalLiter += entry.getValue();
-            entry.getKey().decLiterTilbage(entry.getValue());
+            newMakeArrayList.add(entry.getKey());
+            doubleArrayList.add(entry.getValue());
         }
+
+        for (int i = 0; i < newMakeArrayList.size(); i++){
+            newMakeArrayList.get(i).decLiterTilbage(doubleArrayList.get(i));
+        }
+
         navn = navn.substring(0, navn.length() - 2);
         ArrayList<NewMake> temp = new ArrayList<>(newMakes.keySet());
         NewMake newMake = new NewMake(navn,dato,beregnAlkoholProcentWhisky(temp, 0),ansvarlig,newMakes);
@@ -239,6 +253,20 @@ public abstract class Controller {
         newMake.setLiterTilbage(antalLiter);
         storage.tilføjNewMake(newMake);
         return newMake;
+    }
+
+    public static List<NewMake> getSorteredeNewMakes() {
+        List<NewMake> newMakes = new ArrayList<>();
+
+        for (NewMake newMake : storage.getNewMakes()){
+            if (!newMake.erOpbrugt()){
+                newMakes.add(newMake);
+            }
+        }
+
+        NewMakeCompare newMakeCompare = new NewMakeCompare();
+        Collections.sort(newMakes, newMakeCompare);
+        return newMakes;
     }
 }
 

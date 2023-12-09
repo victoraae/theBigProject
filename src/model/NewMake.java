@@ -2,12 +2,13 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NewMake implements Serializable {
+public class NewMake implements Serializable, Comparable<NewMake> {
     private String navn;
     private final LocalDate datoForPåfyldning;
     private final double alkoholprocent;
@@ -17,7 +18,7 @@ public class NewMake implements Serializable {
     private final List<FadTilNM> fade = new ArrayList<>();
     //Assosiation 1 ---> 0..* Mængde
     private final List<Mængde> mængder = new ArrayList<>();
-    private boolean erAktiv = false;
+    private boolean erOpbrugt;
     private double literTilbage;
     //Assosiation 0..* --> 1 NewMake
     private final Map<NewMake, Double> newMakesLiter;
@@ -30,6 +31,7 @@ public class NewMake implements Serializable {
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
         this.newMakesLiter = newMakesLiter;
+        this.erOpbrugt = false;
         lavFadTilNM(fadeTilLiter);
     }
 
@@ -42,6 +44,7 @@ public class NewMake implements Serializable {
         this.alkoholprocent = alkoholprocent;
         this.ansvarlig = ansvarlig;
         this.newMakesLiter = newMakesLiter;
+        this.erOpbrugt = false;
     }
 
 
@@ -96,8 +99,12 @@ public class NewMake implements Serializable {
         }
     }
 
-    public void setErAktiv(boolean erAktiv) {
-        this.erAktiv = erAktiv;
+    public boolean erOpbrugt() {
+        return erOpbrugt;
+    }
+
+    public void setErOpbrugt(boolean erOpbrugt) {
+        this.erOpbrugt = erOpbrugt;
     }
 
     public double getLiterTilbage() {
@@ -105,16 +112,19 @@ public class NewMake implements Serializable {
     }
 
     public void decLiterTilbage(double liter){
-        literTilbage-=liter;
+        literTilbage -= liter;
         if (literTilbage == 0){
-            setErAktiv(false);
+            setErOpbrugt(true);
         }
     }
 
-
     @Override
     public String toString() {
-        return "NewMake: " + ", mængder: "+  mængder;
+        String result = "NewMake: " + navn + ", påfyldt: " +  datoForPåfyldning.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+        if (!mængder.isEmpty()){
+            result += ", mængder: " + mængder;
+        }
+        return result;
     }
 
     public void setLiterTilbage(double literTilbage) {
@@ -130,5 +140,10 @@ public class NewMake implements Serializable {
 
     public String ekstraKortToStringTilFTNM(){
         return navn;
+    }
+
+    @Override
+    public int compareTo(NewMake newMake){
+        return datoForPåfyldning.compareTo(newMake.getDatoForPåfyldning());
     }
 }

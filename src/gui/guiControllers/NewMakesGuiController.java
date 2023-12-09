@@ -16,7 +16,7 @@ public class NewMakesGuiController {
     private ListView<NewMake> lvwOpretNewmakes;
 
     public void initialize() {
-        lvwOpretNewmakes.getItems().setAll(Controller.getNewMakes());
+        lvwOpretNewmakes.getItems().setAll(Controller.getSorteredeNewMakes());
     }
     @FXML
     void btnLukAction() {
