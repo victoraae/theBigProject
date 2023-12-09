@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="129.0" fitWidth="400.0" layoutX="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@whisky.png" />
+            <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
       <Label layoutX="320.0" layoutY="115.0" text="Lav whisky">

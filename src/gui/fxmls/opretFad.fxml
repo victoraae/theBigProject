@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="184.0" fitWidth="400.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@whisky.png" />
+            <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
       <ComboBox fx:id="cmbVælgHylde" layoutX="112.0" layoutY="207.0" prefWidth="150.0" promptText="Vælg hylde" />

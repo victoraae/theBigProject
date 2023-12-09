@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="160.0" fitWidth="400.0" layoutX="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@whisky.png" />
+            <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
       <Button fx:id="btnÅbenKorn" layoutX="140.0" layoutY="195.0" mnemonicParsing="false" onAction="#åbenKornVindueAction" prefHeight="30.0" prefWidth="90.0" text="Vælg korn..." />

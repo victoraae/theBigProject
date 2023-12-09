@@ -17,7 +17,7 @@
       </Label>
       <ImageView fitHeight="203.0" fitWidth="400.0" layoutX="125.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@whisky.png" />
+            <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
       <ListView fx:id="lvwOpretNewmakes" layoutX="25.0" layoutY="151.0" prefHeight="217.0" prefWidth="600.0" />

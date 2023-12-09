@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="162.0" fitWidth="400.0" layoutX="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@whisky.png" />
+            <Image url="@../assets/whisky.png" />
          </image>
       </ImageView>
       <TextField fx:id="txfLagerNavn" layoutX="168.0" layoutY="166.0" prefHeight="26.0" prefWidth="318.0" promptText="Indtast lagernavn" />

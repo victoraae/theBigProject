@@ -19,51 +19,51 @@ public class ÅbenVinduer {
     }
 
     public void åbenDestillatVindue() {
-        åbenVindue("opretDestillat.fxml", "Opret destillat");
+        åbenVindue("fxmls/opretDestillat.fxml", "Opret destillat");
     }
 
     public void åbenKornVindue() {
-        åbenVindue("kornVindue.fxml", "Opret eller vælg korn");
+        åbenVindue("fxmls/kornVindue.fxml", "Opret eller vælg korn");
     }
 
     public void åbenFadVindue() {
-        åbenVindue("opretFad.fxml", "Opret fad");
+        åbenVindue("fxmls/opretFad.fxml", "Opret fad");
     }
 
     public void åbenLagerVindue() {
-        åbenVindue("opretLager.fxml", "Opret lager");
+        åbenVindue("fxmls/opretLager.fxml", "Opret lager");
     }
 
     public void åbenHyldeVindue() {
-        åbenVindue("opretHylde.fxml", "Opret hylde");
+        åbenVindue("fxmls/opretHylde.fxml", "Opret hylde");
     }
 
     public void åbenPaafyldDestillatVindue() {
-        åbenVindue("paaFyldDestillat.fxml", "Påfyld Destillat");
+        åbenVindue("fxmls/paaFyldDestillat.fxml", "Påfyld Destillat");
     }
 
     public void åbenNewMakeVindue() {
-        åbenVindue("listeNewmakes.fxml", "Liste Over New Makes");
+        åbenVindue("fxmls/listeNewmakes.fxml", "Liste Over New Makes");
     }
 
     public void åbenLavWhiskyVindue() {
-        åbenVindue("lavWhisky.fxml", "Lav whisky");
+        åbenVindue("fxmls/lavWhisky.fxml", "Lav whisky");
     }
 
     public void åbenHistorikVindue() {
-        åbenVindue("whiskyHistorik.fxml", "Whisky Historik");
+        åbenVindue("fxmls/whiskyHistorik.fxml", "Whisky Historik");
     }
 
     public void åbenPaaFyldTrinEtVindue() {
-        åbenVindue("paafyldTrinEt.fxml", "Påfyld Destillat: Trin 1");
+        åbenVindue("fxmls/paafyldTrinEt.fxml", "Påfyld Destillat: Trin 1");
     }
 
     public void åbenOmhældTrinEtVindue() {
-        åbenVindue("omhaeldTrinEt.fxml", "Omhæld Trin 1: Lav en blanding fra New Makes");
+        åbenVindue("fxmls/omhaeldTrinEt.fxml", "Omhæld Trin 1: Lav en blanding fra New Makes");
     }
 
     public void åbenOmhældNewMakesVindue() {
-        åbenVindue("omhaeldNewMakes.fxml", "Omhæld blanding af New Makes");
+        åbenVindue("fxmls/omhaeldNewMakes.fxml", "Omhæld blanding af New Makes");
     }
     private void åbenVindue(String filNavn, String titel){
         Stage stage = new Stage();
