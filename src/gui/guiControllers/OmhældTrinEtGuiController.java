@@ -140,7 +140,7 @@ public class OmhældTrinEtGuiController {
 
         NewMake newMake = Controller.omhældNewMake(newMakeLiter, dato, ansvarlig);
         OmhældNewMakesGuiController.newMake = newMake;
-        Main.åbenVinduer.åbenOmhældNewMakesVindue();
+        Main.åbenVinduer.åbenOmhældTrinToVindue();
         fortrydAction(); //Lukke vinduet når trin 2  vinduet lukkes
     }
 }
