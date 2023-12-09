@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Destillat implements Serializable {
-    private LocalDate dato;
-    private double alkoholProcent;
-    private String ansvarlig;
-    private double liter;
+    private final LocalDate dato;
+    private final double alkoholProcent;
+    private final String ansvarlig;
+    private final double liter;
     private double literTilbage;
     private int antalGange;
     private String rygemateriale;

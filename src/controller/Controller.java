@@ -151,7 +151,7 @@ public abstract class Controller {
         double alkoholLiter = 0;
         for (Mængde m : mængder) {
             totalLiter += m.getMængde();
-            alkoholLiter += m.getMængde() * (m.getDestillat().getAlkoholProcent() / 100);
+            alkoholLiter += (m.getMængde() * (m.getDestillat().getAlkoholProcent()) / 100);
         }
 
         return alkoholLiter / totalLiter * 100;
