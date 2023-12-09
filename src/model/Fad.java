@@ -21,6 +21,7 @@ public class Fad implements Serializable {
     private Hylde hylde;
     //Association 1 ---> 0..* FadTilNM
     private final List<FadTilNM> indhold = new ArrayList<>();
+    private double literTilbage;
 
     /**
      * Hylde kan være null, for et fad der er på lager uden reoler.
@@ -33,6 +34,7 @@ public class Fad implements Serializable {
         this.materiale = materiale;
         this.tidligereIndhold = tidligereIndhold;
         this.størrelse = størrelse;
+        this.literTilbage = størrelse.getInt();
         this.lager = lager;
         this.hylde = hylde;
     }
@@ -80,6 +82,11 @@ public class Fad implements Serializable {
         indhold.add(fnm);
     }
 
+    public void opdaterLiterTilbage(){
+        for (FadTilNM ftnm : indhold){
+            literTilbage -= ftnm.getLiter();
+        }
+    }
     @Override
     public String toString() {
             String result = "Fad nr. " + nummer + ", størrelse: " + størrelse + ", lavet af " + materiale + ". Leverandør: '"
@@ -95,7 +102,7 @@ public class Fad implements Serializable {
 
 
     public String toStringKort(){
-        String result = "nr: " + nummer +", str: " + størrelse + ", " + lager.getNavn();
+        String result = "nr: " + nummer +", str: " + størrelse + ", l tilbage:" + literTilbage + ", " + lager.getNavn();
         if (getHylde() != null) result += ", reol: " + hylde.getReol().getNummer();
         return result;
     }

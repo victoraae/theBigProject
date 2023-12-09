@@ -201,6 +201,8 @@ public abstract class Controller {
 
     //TODO:: noget med alderen på vores whisky, hvor mange år den har modnet
     //TODO:: controller metode med tilføj fad på newMake der søger for at literTilbage ikke falder under 0
+    //TODO:: kode, som kan tømme vores fade når man laver en whisky + inkrementerer gangeBrugt
+    //TODO:: kode, som kan tomme vores fade når man omhælder
 
     /**
      * Pre: FadTilNM's antal liter må ikke overskride newMake'ts antal liter

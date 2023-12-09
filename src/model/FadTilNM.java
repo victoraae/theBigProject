@@ -24,6 +24,14 @@ public class FadTilNM {
         return newMake;
     }
 
+    /**
+     * pre: liter>=0
+     * bruges til at justere liter på fadet efter enten omhældning eller lavWhisky
+     */
+    public void setLiter(double liter) {
+        this.liter = liter;
+    }
+
     @Override
     public String toString() {
         return "Liter: " + liter + ", Fad: " + fad.toStringKort() + ", NewMake: " + newMake.ekstraKortToStringTilFTNM();
