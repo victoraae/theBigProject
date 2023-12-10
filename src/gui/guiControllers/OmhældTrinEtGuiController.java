@@ -4,6 +4,7 @@ import controller.Controller;
 import gui.HovedVindue;
 import gui.Main;
 import gui.guiDummies.DestillatGui;
+import gui.guiDummies.FadTilNMGui;
 import gui.guiDummies.NewMakeGui;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
@@ -53,12 +54,16 @@ public class OmhældTrinEtGuiController {
     private final List<NewMakeGui> newMakeGuier = new ArrayList<>(konverterTilGuiDummy(Controller.getIkkeTommeNewMakes()));
 
     @FXML
-    private ComboBox<FadTilNM> cmbValgtFad;
+    private ComboBox<FadTilNMGui> cmbValgtFad;
 
+    private static Map<FadTilNM, Double> fadeÆndret = new HashMap<>();
+
+    private Map<NewMake, List<FadTilNMGui>> hjælpeMap = new HashMap<>();
 
 
     public void initialize() {
         lvwNewMakes.getItems().setAll(newMakeGuier);
+        initHjælpeMap();
 
         lvwLiterTilBlanding.setCellFactory(new Callback<ListView<Map.Entry<NewMake, Double>>, ListCell<Map.Entry<NewMake, Double>>>() {
             @Override
@@ -77,22 +82,22 @@ public class OmhældTrinEtGuiController {
             }
         });
 
-        cmbValgtFad.setCellFactory(new Callback<ListView<FadTilNM>, ListCell<FadTilNM>>() {
-            @Override
-            public ListCell<FadTilNM> call(ListView<FadTilNM> fadTilNMListView) {
-                return new ListCell<>() {
-                    @Override
-                    public void updateItem(FadTilNM ftnm, boolean empty) {
-                        super.updateItem(ftnm, empty);
-                        if (empty || ftnm == null) {
-                            setText(null);
-                        } else {
-                            setText(ftnm.toStringKort());
-                        }
-                    }
-                };
-            }
-        });
+//        cmbValgtFad.setCellFactory(new Callback<ListView<FadTilNM>, ListCell<FadTilNM>>() {
+//            @Override
+//            public ListCell<FadTilNM> call(ListView<FadTilNM> fadTilNMListView) {
+//                return new ListCell<>() {
+//                    @Override
+//                    public void updateItem(FadTilNM ftnm, boolean empty) {
+//                        super.updateItem(ftnm, empty);
+//                        if (empty || ftnm == null) {
+//                            setText(null);
+//                        } else {
+//                            setText(ftnm.toStringKort());
+//                        }
+//                    }
+//                };
+//            }
+//        });
 
         ChangeListener<NewMakeGui> listener = (ov, o, n) -> this.opdaterValgtNewMake();
         lvwNewMakes.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -102,7 +107,7 @@ public class OmhældTrinEtGuiController {
         NewMakeGui newMakeGui = lvwNewMakes.getSelectionModel().getSelectedItem();
         if(newMakeGui!=null ){
             NewMake newMake = findOriginal(newMakeGui);
-            cmbValgtFad.getItems().setAll(newMake.getFad());
+            cmbValgtFad.getItems().setAll(hjælpeMap.get(newMake));
         }
     }
 
@@ -125,7 +130,7 @@ public class OmhældTrinEtGuiController {
         }
         NewMakeGui newMakeFake = lvwNewMakes.getSelectionModel().getSelectedItem();
         NewMake newMake = newMakeFake.getOriginal();
-        FadTilNM ftnm = cmbValgtFad.getSelectionModel().getSelectedItem();
+        FadTilNMGui ftnmFake = cmbValgtFad.getSelectionModel().getSelectedItem();
 
         if (newMakeFake == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg en New Make fra listen");
@@ -139,11 +144,11 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok New Make væske, tjek New Makes antal liter tilbage");
             return;
         }
-        if(ftnm == null){
+        if(ftnmFake == null){
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
             return;
         }
-        if(ftnm.getLiter()<antalLiter){
+        if(ftnmFake.getLiter()<antalLiter){
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter overstiger fadets antal liter");
         }
 
@@ -154,10 +159,14 @@ public class OmhældTrinEtGuiController {
             newMakeLiter.replace(newMake, oldVal+antalLiter);
         }
         newMakeFake.decLiterTilbage(antalLiter);
+        ftnmFake.decLiter(antalLiter);
+        fadeÆndret.put(ftnmFake.getOriginal(), antalLiter);
         opdaterListviews();
+        opdaterValgtNewMake();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
-        opdaterValgtNewMake();
+        lvwNewMakes.getSelectionModel().clearSelection();
+        cmbValgtFad.getSelectionModel().clearSelection();
     }
 
     public double sumLiter(NewMake newMake) {
@@ -220,6 +229,15 @@ public class OmhældTrinEtGuiController {
        }
     }
 
+    /**
+     * hjælpe metode lavet til brug i slutningen af omhæld trin to gui controller
+     */
+    public static void opdaterFade(){
+        for(Map.Entry<FadTilNM, Double> entry : fadeÆndret.entrySet()){
+            entry.getKey().decLiter(entry.getValue());
+        }
+    }
+
 
     private boolean erNMsGyldige(){
         boolean result = false;
@@ -241,5 +259,19 @@ public class OmhældTrinEtGuiController {
             }
         }
         return result;
+    }
+
+    private List<FadTilNMGui> konverterFtnmTilGui(List<FadTilNM> fade){
+        List<FadTilNMGui> result = new ArrayList<>();
+        for(FadTilNM ftnm : fade){
+            result.add(new FadTilNMGui(ftnm));
+        }
+        return result;
+    }
+
+    private void initHjælpeMap(){
+        for(NewMake nm : Controller.getIkkeTommeNewMakes()){
+            hjælpeMap.put(nm, konverterFtnmTilGui(nm.getFad()));
+        }
     }
 }

@@ -68,6 +68,7 @@ public class OmhældTrinToGuiController {
             newMake.setLiter(fadeAntalLiter);
             newMake.setLiterTilbage(fadeAntalLiter);
             OmhældTrinEtGuiController.opdaterNewMakes();
+            OmhældTrinEtGuiController.opdaterFade();
             lukActionUdenAtSlette();
         }
     }
