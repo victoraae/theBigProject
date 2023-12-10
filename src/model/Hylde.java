@@ -82,7 +82,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("MELLEM")) {
             for (int i = 0; i < pladserArray.length - 1 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && (i + 1) % 2 == 0) { //TODO:: virker ikke...
+                if (pladserArray[i] && pladserArray[i + 1] && (i + 1) % 4 != 0) {
                     result = true;
                 }
             }
@@ -90,7 +90,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("STOR")) {
             for (int i = 0; i < pladserArray.length - 3 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i + 1) % 4 == 0) {//TODO:: virker måske heller ikke
+                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i + 1) % 4 == 0) {
                     result = true;
                 }
             }
