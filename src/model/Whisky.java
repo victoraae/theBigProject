@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Whisky {
     private final List<NewMake> newMakes;
     //Aggregation 1 ---> 0..* Flaske
     private final List<Flaske> flasker = new ArrayList<>();
-    private final int år = 2018;
+    private int år;
 
     public Whisky(String navn, String ansvarlig, LocalDate dato, double antalLiter, double alkoholProcent, String kvalitetsstempel, List<NewMake> newMakes) {
         this.navn = navn;
@@ -25,6 +26,7 @@ public class Whisky {
         this.alkoholProcent = alkoholProcent;
         this.kvalitetsstempel = kvalitetsstempel;
         this.newMakes = newMakes;
+        this.år = beregnAlderPåWhisky(this.getAlleNewMakesRekursiv(newMakes));
     }
 
     public String getNavn() {
@@ -56,6 +58,40 @@ public class Whisky {
 
     public int getÅr() {
         return år;
+    }
+
+    /**
+     * hjælpemetode til WhiskyGuiController og flaske historik generering
+     */
+    public List<NewMake> getAlleNewMakesRekursiv(List<NewMake> newMakes){
+        List<NewMake> result = new ArrayList<>();
+        result.addAll(newMakes);
+        for(NewMake nm : newMakes){
+            if(nm.getNewMakesLiter().size()!=0){ //stop klodsen her er de 'yderste' newMakes som er dem der oprettes i paafyld vinduet
+                getAlleNewMakesRekursiv(nm.getNewMakesFraNMLiters());
+            }
+        }
+        return result;
+    }
+
+    /**
+     * hjælpemetode til WhiskyGuiController og flaske historik generering
+     */
+    public static int  beregnAlderPåWhisky(List<NewMake> newMakes) {
+        LocalDate yngsteDato = LocalDate.of(1066, 1, 1); //En meget gammel dato
+        if (newMakes != null) {
+            for (int i = 0; i < newMakes.size(); i++) {
+                NewMake newMake = newMakes.get(i);
+                List<Mængde> mængder = newMake.getMængder();
+                if (!mængder.isEmpty()) {
+                    if (newMake.getDatoForPåfyldning().isAfter(yngsteDato)) {
+                        yngsteDato = newMake.getDatoForPåfyldning();
+                    }
+                }
+            }
+        }
+        Period period = Period.between(yngsteDato, LocalDate.now());
+        return period.getYears();
     }
 
     @Override

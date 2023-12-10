@@ -57,12 +57,15 @@ public class Main {
         fad7.setGangeBrugt(2);
 
         //--------------------- Til whisky historik test ----------------------
-        Destillat destillat3 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
-                new Korn("t", "t", 1776, "t", "t"));
+        Destillat destillat3 = Controller.opretDestillat(LocalDate.of(2017, 1, 1), 70, "Bob", 300, 2, "Tørv",
+                new Korn("Byg", "Lars Larsen", 2017, "Mark 1", "Maltning 1"));
+        Destillat destillat4 = Controller.opretDestillat(LocalDate.of(2015, 1, 1), 67, "Henrik", 300, 2, "Rygemateriale",
+                new Korn("Byg Stairway", "Bob", 2015, "Mark 3", "Maltning 2"));
+
         List<Mængde> mængder1 = new ArrayList<>();
         mængder1.add(new Mængde(50, destillat3));
         List<Mængde> mængder2 = new ArrayList<>();
-        mængder2.add(new Mængde(50, destillat3));
+        mængder2.add(new Mængde(50, destillat4));
         NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, new HashMap<NewMake, Double>(), LocalDate.of(2017, 1, 1));
         List<FadTilNM> listFtnm1 = new ArrayList<>();
         listFtnm1.add(new FadTilNM(50, fad, nm1));
@@ -76,17 +79,16 @@ public class Main {
         Controller.tilføjFTilNMtilNM(listFtnm2, nm2);
         nm2.setLiter(50.0);
         nm2.setLiterTilbage(50.0);
-//        List<NewMake> newMakes = new ArrayList<>();
-//        newMakes.add(nm1);
-//        newMakes.add(nm2);
-//        Controller.opretWhisky("Whisky1", "Billy", 50, newMakes);
+        List<NewMake> newMakes = new ArrayList<>();
+        newMakes.add(nm1);
+        newMakes.add(nm2);
+        Controller.opretWhisky("Whisky1", "Billy", 50, newMakes);
 
-        Destillat destillat4 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
-                new Korn("t2", "t", 1776, "t", "t"));
+
         List<Mængde> mængder3 = new ArrayList<>();
-        mængder3.add(new Mængde(50.0, destillat3));
+        mængder3.add(new Mængde(50.0, destillat4));
         List<Mængde> mængder4 = new ArrayList<>();
-        mængder4.add(new Mængde(25.0, destillat3));
+        mængder4.add(new Mængde(25.0, destillat4));
         NewMake nm3 = Controller.paafyldDestillat("NM79p", "Billy", mængder3, new HashMap<NewMake, Double>(), LocalDate.of(2019, 1, 1));
         List<FadTilNM> listFtnm3 = new ArrayList<>();
         listFtnm3.add(new FadTilNM(50, fad3, nm3));

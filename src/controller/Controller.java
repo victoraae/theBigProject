@@ -180,7 +180,7 @@ public abstract class Controller {
 
         Whisky whisky = new Whisky(navn, ansvarlig, LocalDate.now(), Controller.sumLiter(newMakes), beregnAlkoholProcentWhisky(newMakes, literVand), kvalitetsstempel, newMakes);
 
-        Double antalFlasker2 = Controller.sumLiter(newMakes) * 0.7;
+        Double antalFlasker2 = Controller.sumLiter(newMakes) / 0.7;
         int antalFlasker = antalFlasker2.intValue();
 
         for (int i = 1; i <= antalFlasker; i++) {
@@ -202,7 +202,7 @@ public abstract class Controller {
         double result = 0;
 
         for (NewMake newMake : newMakes) {
-            result += newMake.getLiter();
+            result += newMake.getLiterTilbage();
         }
         return result;
     }
