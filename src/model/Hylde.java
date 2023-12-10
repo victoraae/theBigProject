@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Hylde implements Serializable {
     private final int nummer;
@@ -31,7 +30,8 @@ public class Hylde implements Serializable {
     }
 
 
-    public void tilføjFad(String størrelse) {
+
+    public boolean tilføjFad(String størrelse) {
         boolean result = false;
 
         if (størrelse.equals("LILLE")) {
@@ -45,7 +45,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("MELLEM")) {
             for (int i = 0; i < pladserArray.length - 1 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1]) {
+                if (i < pladserArray.length - 1 && pladserArray[i] && pladserArray[i + 1] && (i % 2 == 0)) {
                     result = true;
                     pladserArray[i] = false;
                     pladserArray[i + 1] = false;
@@ -55,7 +55,7 @@ public class Hylde implements Serializable {
 
         if (størrelse.equals("STOR")) {
             for (int i = 0; i < pladserArray.length - 3 && !result; i++) {
-                if (pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3]) {
+                if (i < pladserArray.length - 3 && pladserArray[i] && pladserArray[i + 1] && pladserArray[i + 2] && pladserArray[i + 3] && (i % 4 == 0)) {
                     result = true;
                     pladserArray[i] = false;
                     pladserArray[i + 1] = false;
@@ -64,8 +64,17 @@ public class Hylde implements Serializable {
                 }
             }
         }
-    }
 
+        return result;
+    }
+    public boolean erFuld() {
+        for (int i = 0; i < pladserArray.length; i++) {
+            if (!pladserArray[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * Hjælpemetode tiltænkt GUI
      */
@@ -107,5 +116,9 @@ public class Hylde implements Serializable {
         String result = "Hylde nr. " + nummer + " Reol nr: " + reol.getNummer() + ", antal pladser: " + størrelse + ", har ledige pladser: " + erLedig + ".";
 
         return result;
+    }
+
+    public boolean[] getPladserArray() {
+        return pladserArray;
     }
 }

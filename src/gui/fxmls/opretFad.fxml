@@ -22,9 +22,9 @@
       <TextField fx:id="txfMateriale" focusTraversable="false" layoutX="272.0" layoutY="326.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast materiale" />
       <TextField fx:id="txfTidligereIndhold" focusTraversable="false" layoutX="272.0" layoutY="358.0" prefHeight="25.0" prefWidth="174.0" promptText="Indtast tidligere indhold" />
       <ComboBox fx:id="cmbVælgStorelse" focusTraversable="false" layoutX="389.0" layoutY="182.0" prefWidth="150.0" promptText="Vælg størrelse" />
-      <Button fx:id="btnOpretFad" focusTraversable="false" layoutX="448.0" layoutY="410.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Gem" />
+      <Button fx:id="btnOpretFad" focusTraversable="false" layoutX="434.0" layoutY="410.0" mnemonicParsing="false" onAction="#opretFadAction" prefHeight="25.0" prefWidth="89.0" text="Gem" />
       <Label fx:id="lblFejlBesked" layoutX="23.0" layoutY="449.0" prefHeight="17.0" prefWidth="548.0" text="FejlBesked:" textFill="#dd0303" visible="false" />
-      <Button fx:id="btnFortryd" focusTraversable="false" layoutX="70.0" layoutY="410.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="81.0" text="Luk" />
+      <Button fx:id="btnFortryd" focusTraversable="false" layoutX="70.0" layoutY="410.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="89.0" text="Luk" />
       <Label layoutX="249.0" layoutY="114.0" text="Opret fad">
          <font>
             <Font size="24.0" />
