@@ -37,7 +37,7 @@ public abstract class Controller {
         return null;
     }
 
-
+    /** Pre: 0 < nummer <= reol.getMaxAntalHylder() */
     public static Hylde opretHylde(Reol reol, int nummer) {
         if (reol.getHylder().size() < reol.getMaxAntalHylder()) {
             int næsteHyldeNummer = reol.getHylder().size() + 1;

@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,8 +24,10 @@ public class Flaske {
         int år = whisky.getÅr();
         String kval = whisky.getKvalitetsstempel();
 
-        sb.append(whisky.getNavn() + ", flaske nr: " + nummer + " ud af " + antalFlasker + ". \n");
-        sb.append("Denne " + kval + "  whisky har lagret i " + år + " år. Alc. %: " + Math.floor(whisky.getAlkoholProcent()) + ". \n");
+        sb.append(whisky.getNavn() + ", flaske nr: " + nummer + " ud af " + antalFlasker + ", tappet på flasker af " +
+                whisky.getAnsvarlig() + " d." + whisky.getDato().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString() + ". ");
+        sb.append("Denne " + kval + "  whisky har lagret i " + år + " år hos Sall Whisky Distillery lager ");
+        // fortsætter efter vi får alle oplysninger fra løkkene
 
         Set<String> marker = new HashSet<>();
         Set<String> landmænd = new HashSet<>();
@@ -34,6 +37,7 @@ public class Flaske {
         Set<String> fadTræSort = new HashSet<>();
         Set<String> fadOprindLand = new HashSet<>();
         Set<String> fadTidlIndhold = new HashSet<>();
+        Set<String> fadLager = new HashSet<>();
         Set<Integer> årHøst = new HashSet<>();
 
         List<NewMake> alleNewMakes = whisky.getAlleNewMakesRekursiv(whisky.getNewMakes());
@@ -46,6 +50,7 @@ public class Flaske {
             fadTræSort.add(ftnm.getFad().getMateriale());
             fadOprindLand.add(ftnm.getFad().getOprindeslesland());
             fadTidlIndhold.add(ftnm.getFad().getTidligereIndhold());
+            fadLager.add(ftnm.getFad().getLager().getNavn());
         }
 
         for(Destillat d : alleDestillater){
@@ -53,21 +58,25 @@ public class Flaske {
         }
 
         for(Korn k : alleKorn){
-            maltningsProcessor.add(k.getSort());
+            maltningsProcessor.add(k.getMaltningsprocess());
             kornsorter.add(k.getSort());
             marker.add(k.getMark());
             landmænd.add(k.getBondemand());
             årHøst.add(k.getÅr());
         }
 
-        sb.append("Denne whisky består af kornsorterne: " + setTilString(kornsorter) + ". \n");
-        sb.append("Kornet er høstet fra markerne: " + setTilString(marker));
-        sb.append(", af landmænd: " + setTilString(landmænd) + ". I årene: " + setTilString(årHøst) + ". \n");
-        sb.append("Kornet har været igennem maltningsprocesserne: " + setTilString(maltningsProcessor) + ". \n");
-        if(rygemateriale.size()!=0)sb.append("Kornet er røget med: " + setTilString(rygemateriale)+ ". \n");
-        sb.append("Whiskyen har lagret på fade af: " + setTilString(fadTræSort) + ". \n");
-        sb.append("Fadene er fra: " + setTilString(fadOprindLand) + ". \n");
-        sb.append("Fadene har tidligere indeholdt: " + setTilString(fadTidlIndhold) + ". \n");
+        sb.append(setTilString(fadLager) + ".\n");
+        sb.append("Denne whisky består af kornsorterne " + setTilString(kornsorter) + ". \n");
+        sb.append("Kornet er høstet fra markerne " + setTilString(marker));
+        sb.append(", af landmænd " + setTilString(landmænd) + " i årene " + setTilString(årHøst) + ". \n");
+        sb.append("Kornet har været igennem maltningsprocesserne " + setTilString(maltningsProcessor) + ". \n");
+        if(rygemateriale.size()!=0)sb.append("Kornet er røget med " + setTilString(rygemateriale)+ ". \n");
+        sb.append("Whiskyen har lagret på fade af " + setTilString(fadTræSort) + ". \n");
+        sb.append("Fadene er fra " + setTilString(fadOprindLand) + ". \n");
+        sb.append("Fadene har tidligere indeholdt " + setTilString(fadTidlIndhold) + ". \n");
+        sb.append("Alc. %: " + Math.floor(whisky.getAlkoholProcent()) + " \n");
+
+        sb.append("\nSall Whisky Distillery håber du nyder denne flaske! Skål/Skál!");
 
         return sb.toString();
     }

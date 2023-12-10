@@ -26,7 +26,7 @@ public class Whisky {
         this.alkoholProcent = alkoholProcent;
         this.kvalitetsstempel = kvalitetsstempel;
         this.newMakes = newMakes;
-        this.år = beregnAlderPåWhisky(this.getAlleNewMakesRekursiv(newMakes));
+        this.år = beregnAlderPåWhisky(this.getAlleNewMakesRekursiv(newMakes), this.dato);
     }
 
     public String getNavn() {
@@ -79,10 +79,12 @@ public class Whisky {
     }
 
     /**
-     * hjælpemetode til WhiskyGuiController og flaske historik generering
+     * hjælpemetode til WhiskyGuiController og flaske historik generering.
+     * Den finder den seneste dato fra de oprindelige New Makes (altså dem, der bliver oprettet i systemet
+     * når man påfylder destillat), og beregner hvor mange år der er gået til datoen whiskyen blev tappet på flasker.
      */
-    public static int  beregnAlderPåWhisky(List<NewMake> newMakes) {
-        LocalDate yngsteDato = LocalDate.of(1066, 1, 1); //En meget gammel dato
+    public static int  beregnAlderPåWhisky(List<NewMake> newMakes, LocalDate dato) {
+        LocalDate yngsteDato = LocalDate.of(1000, 1, 1); //En meget gammel dato, der bliver overskrevet i metoden
         if (newMakes != null) {
             for (int i = 0; i < newMakes.size(); i++) {
                 NewMake newMake = newMakes.get(i);
@@ -94,7 +96,7 @@ public class Whisky {
                 }
             }
         }
-        Period period = Period.between(yngsteDato, LocalDate.now());
+        Period period = Period.between(yngsteDato, dato);
         return period.getYears();
     }
 
