@@ -24,7 +24,7 @@
          </font>
       </Label>
       <ListView fx:id="lvwNewMakes" focusTraversable="false" layoutX="14.0" layoutY="192.0" prefHeight="275.0" prefWidth="286.0" />
-      <Label layoutX="20.0" layoutY="165.0" text="New Makes">
+      <Label layoutX="14.0" layoutY="165.0" text="New Makes">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,17 +35,22 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="320.0" layoutY="284.0" prefHeight="17.0" prefWidth="28.0" text="Liter:" />
-      <TextField fx:id="txfAntalLiter" focusTraversable="false" layoutX="362.0" layoutY="280.0" promptText="Antal liter fra fad" />
-      <Button fx:id="btnTilføjTilBlanding" focusTraversable="false" layoutX="362.0" layoutY="317.0" mnemonicParsing="false" onAction="#tilføjLiterAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til blanding" />
+      <Label layoutX="318.0" layoutY="232.0" prefHeight="17.0" prefWidth="28.0" text="Liter:" />
+      <TextField fx:id="txfAntalLiter" focusTraversable="false" layoutX="360.0" layoutY="228.0" promptText="Antal liter fra fad" />
+      <Button fx:id="btnTilføjTilBlanding" focusTraversable="false" layoutX="360.0" layoutY="263.0" mnemonicParsing="false" onAction="#tilføjLiterAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til blanding" />
       <Label layoutX="533.0" layoutY="493.0" text="Navn på ansvarlig:" />
       <Label layoutX="584.0" layoutY="535.0" text="Dato:" />
       <DatePicker fx:id="datoVælger" focusTraversable="false" layoutX="645.0" layoutY="531.0" prefHeight="25.0" prefWidth="165.0" promptText="Vælg dato" />
       <TextField fx:id="txfAnsvarligNavn" focusTraversable="false" layoutX="645.0" layoutY="489.0" prefHeight="25.0" prefWidth="165.0" promptText="Indtast navn på ansvarlig" />
-      <Button fx:id="btnFortryd" focusTraversable="false" layoutX="20.0" layoutY="590.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
+      <Button fx:id="btnFortryd" focusTraversable="false" layoutX="14.0" layoutY="590.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
       <Button fx:id="btnNæste" focusTraversable="false" layoutX="760.0" layoutY="590.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
       <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="623.0" prefHeight="17.0" prefWidth="788.0" text="FejlBesked:" textFill="RED" visible="false" />
-      <ComboBox fx:id="cmbValgtFad" focusTraversable="false" layoutX="363.0" layoutY="244.0" prefWidth="150.0" promptText="Vælg fad" />
-      <Label layoutX="320.0" layoutY="248.0" prefHeight="17.0" prefWidth="28.0" text="Fad:" />
+      <ComboBox fx:id="cmbValgtFad" focusTraversable="false" layoutX="361.0" layoutY="192.0" prefWidth="150.0" promptText="Vælg fad" />
+      <Label layoutX="318.0" layoutY="196.0" prefHeight="17.0" prefWidth="28.0" text="Fad:" />
+      <ImageView fitHeight="172.0" fitWidth="165.0" layoutX="332.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/korn.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
