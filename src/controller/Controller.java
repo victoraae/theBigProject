@@ -237,7 +237,7 @@ public abstract class Controller {
         for (Map.Entry<NewMake,Double> entry : newMakes.entrySet()) {
             navn += entry.getKey().getNavn() + ", ";
             antalLiter += entry.getValue();
-            entry.getKey().decLiterTilbage(entry.getValue());
+            //entry.getKey().decLiterTilbage(entry.getValue()); sker et andet sted i koden, fordi vores gui er i to vinduer
         }
         navn = navn.substring(0, navn.length() - 2);
         ArrayList<NewMake> temp = new ArrayList<>(newMakes.keySet());
