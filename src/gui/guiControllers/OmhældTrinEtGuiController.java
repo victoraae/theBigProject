@@ -94,13 +94,16 @@ public class OmhældTrinEtGuiController {
             }
         });
 
-        ChangeListener<NewMake> listener = (ov, o, n) -> this.opdaterValgtNewMake();
+        ChangeListener<NewMakeGui> listener = (ov, o, n) -> this.opdaterValgtNewMake();
         lvwNewMakes.getSelectionModel().selectedItemProperty().addListener(listener);
     }
 
     private void opdaterValgtNewMake() {
-        NewMake newMake = lvwNewMakes.getSelectionModel().getSelectedItem();
-        cmbValgtFad.getItems().setAll(newMake.getFad());
+        NewMakeGui newMakeGui = lvwNewMakes.getSelectionModel().getSelectedItem();
+        if(newMakeGui!=null ){
+            NewMake newMake = findOriginal(newMakeGui);
+            cmbValgtFad.getItems().setAll(newMake.getFad());
+        }
     }
 
     @FXML
@@ -124,7 +127,7 @@ public class OmhældTrinEtGuiController {
         NewMake newMake = newMakeFake.getOriginal();
         FadTilNM ftnm = cmbValgtFad.getSelectionModel().getSelectedItem();
 
-        if (newMake == null) {
+        if (newMakeFake == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg en New Make fra listen");
             return;
         }
@@ -227,6 +230,16 @@ public class OmhældTrinEtGuiController {
             }
         }
 
+        return result;
+    }
+
+    private NewMake findOriginal(NewMakeGui newMakeGui){
+        NewMake result = null;
+        for(NewMake nm : Controller.getIkkeTommeNewMakes()){
+            if(newMakeGui.getOriginal().equals(nm)){
+                result = nm;
+            }
+        }
         return result;
     }
 }
