@@ -173,4 +173,13 @@ public class NewMake implements Serializable, Comparable<NewMake> {
 
         return result;
     }
+
+    //Hjælpe metode, skal kun bruges i flaske klassen til at genere historik
+    public List<NewMake> getNewMakesFraNMLiters(){
+        List<NewMake> result = new ArrayList<>();
+        for(Map.Entry<NewMake, Double> entry : newMakesLiter.entrySet()){
+            result.add(entry.getKey());
+        }
+        return result;
+    }
 }
