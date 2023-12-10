@@ -207,10 +207,7 @@ public abstract class Controller {
         return result;
     }
 
-    //TODO:: noget med alderen på vores whisky, hvor mange år den har modnet
-    //TODO:: controller metode med tilføj fad på newMake der søger for at literTilbage ikke falder under 0
-    //TODO:: kode, som kan tømme vores fade når man laver en whisky + inkrementerer gangeBrugt
-    //TODO:: kode, som kan tomme vores fade når man omhælder
+
 
     /**
      * Pre: FadTilNM's antal liter må ikke overskride newMake'ts antal liter
@@ -221,12 +218,6 @@ public abstract class Controller {
                 nm.tilføjFad(fadTilNM);
                 fadTilNM.getFad().setIndhold(fadTilNM);
             } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
-//            if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
-//            else {
-//                if (fadTilNM.getFad().getIndhold() == null) {
-//                    fadTilNM.getFad().setIndhold(fadTilNM);
-//                } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
-//            }
         }
     }
 
@@ -246,7 +237,7 @@ public abstract class Controller {
         for (Map.Entry<NewMake,Double> entry : newMakes.entrySet()) {
             navn += entry.getKey().getNavn() + ", ";
             antalLiter += entry.getValue();
-            entry.getKey().decLiterTilbage(entry.getValue()); //skal måske flyttes
+            entry.getKey().decLiterTilbage(entry.getValue());
         }
         navn = navn.substring(0, navn.length() - 2);
         ArrayList<NewMake> temp = new ArrayList<>(newMakes.keySet());
