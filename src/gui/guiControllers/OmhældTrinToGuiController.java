@@ -46,8 +46,8 @@ public class OmhældTrinToGuiController {
     private double fadeAntalLiter;
 
     public void initialize(){
-        lvwFade.getItems().setAll(Controller.getFade());
-        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiterTilbage()+"");
+        lvwFade.getItems().setAll(Controller.getTommeFade());
+        HovedVindue.setFejlBesked(lblNMLiter, newMake.getLiter()+"");
     }
 
     @FXML
@@ -60,6 +60,7 @@ public class OmhældTrinToGuiController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
         alert.setContentText("Er du sikker på, at du vil omhælde disse New Makes?");
         alert.setHeaderText("Bekræft oplysninger");
+
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES) {
@@ -86,7 +87,8 @@ public class OmhældTrinToGuiController {
 
     @FXML
     void omhaeldAction() {
-        Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+        Fad fad =  lvwFade.getSelectionModel().getSelectedItem();
+
         if (fad == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
             return;

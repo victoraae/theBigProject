@@ -132,7 +132,7 @@ public class PaaFyldTrinEtGuiController {
             return;
         }
 
-        NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<Fad, Double>(), new HashMap<NewMake, Double>(), dato);
+        NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<NewMake, Double>(), dato);
         PaaFyldTrinToGuiController.newMake = newMake;
         Main.åbenVinduer.åbenPaaFyldTrinToVindue();
         destillatDecLiters = new HashMap<>(); //Mappet clearers da det er statisk og vi vil have andre værdi i næste gang

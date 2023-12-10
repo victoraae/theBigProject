@@ -95,7 +95,11 @@ public class NewMake implements Serializable, Comparable<NewMake> {
      */
     private void lavFadTilNM(Map<Fad, Double> fadeTilLiter){
         for(Map.Entry<Fad, Double> entry : fadeTilLiter.entrySet()){
-            //tilføjFad(entry.getKey(), entry.getValue());
+            FadTilNM ftnm = findFadTilNMfraFad(entry.getKey());
+            if(ftnm==null){
+                tilføjFad(new FadTilNM(entry.getValue(), entry.getKey(), this));
+            } else ftnm.incLiter(entry.getValue());
+
         }
     }
 
@@ -116,6 +120,10 @@ public class NewMake implements Serializable, Comparable<NewMake> {
         if (literTilbage == 0){
             setErOpbrugt(true);
         }
+    }
+
+    public Map<NewMake, Double> getNewMakesLiter() {
+        return new HashMap<>(newMakesLiter);
     }
 
     @Override
@@ -145,5 +153,24 @@ public class NewMake implements Serializable, Comparable<NewMake> {
     @Override
     public int compareTo(NewMake newMake){
         return datoForPåfyldning.compareTo(newMake.getDatoForPåfyldning());
+    }
+
+    public String toStringLiterTotal(){
+        return "New make " + navn + ", total liter: " + liter+ "l";
+    }
+
+    /**
+     * hjælpemetode
+     * kan returne null hvis fad ikke optræder i nogle FadTilNM
+     */
+    private FadTilNM findFadTilNMfraFad(Fad fad){
+        FadTilNM result = null;
+        for(FadTilNM ftnm : fade){
+            if(ftnm.getFad().equals(fad)){
+                result = ftnm;
+            }
+        }
+
+        return result;
     }
 }

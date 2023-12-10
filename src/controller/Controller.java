@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import storage.ListStorage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -137,9 +138,9 @@ public abstract class Controller {
      * Destillaterne i mængder skal have tilstrækkeligt literTilbage
      * param: newMakesLiter kan være et tomt map
      */
-    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<Fad, Double> fadeTilLiter, Map<NewMake, Double> newMakesLiter, LocalDate dato) {
+    public static NewMake paafyldDestillat(String navn, String ansvarlig, List<Mængde> mængder, Map<NewMake, Double> newMakesLiter, LocalDate dato) {
         double alkoholProcent = beregnAlkoholProcent(mængder);
-        NewMake newMake = new NewMake(navn, dato, alkoholProcent, ansvarlig, fadeTilLiter, newMakesLiter);
+        NewMake newMake = new NewMake(navn, dato, alkoholProcent, ansvarlig, newMakesLiter);
 
         for (Mængde mængde : mængder) {
             mængde.setNewMake(newMake);
@@ -216,8 +217,17 @@ public abstract class Controller {
      */
     public static void tilføjFTilNMtilNM(List<FadTilNM> fnm, NewMake nm) {
         for (FadTilNM fadTilNM : fnm) {
-            nm.tilføjFad(fadTilNM);
-            fadTilNM.getFad().tilføjFadTilNM(fadTilNM);
+            if(fadTilNM.getFad().getIndhold()==null){
+                nm.tilføjFad(fadTilNM);
+                fadTilNM.getFad().setIndhold(fadTilNM);
+            } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
+            System.out.println("TEST1");
+//            if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
+//            else {
+//                if (fadTilNM.getFad().getIndhold() == null) {
+//                    fadTilNM.getFad().setIndhold(fadTilNM);
+//                } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
+//            }
         }
     }
 
@@ -234,20 +244,11 @@ public abstract class Controller {
     public static NewMake omhældNewMake(Map<NewMake,Double> newMakes, LocalDate dato, String ansvarlig) {
         String navn = "";
         double antalLiter = 0;
-        ArrayList<NewMake> newMakeArrayList = new ArrayList<>();
-        ArrayList<Double> doubleArrayList = new ArrayList<>();
-
         for (Map.Entry<NewMake,Double> entry : newMakes.entrySet()) {
             navn += entry.getKey().getNavn() + ", ";
             antalLiter += entry.getValue();
-            newMakeArrayList.add(entry.getKey());
-            doubleArrayList.add(entry.getValue());
+            entry.getKey().decLiterTilbage(entry.getValue()); //skal måske flyttes
         }
-
-//        for (int i = 0; i < newMakeArrayList.size(); i++){            jeg har smidt det her ind  omhæld trin et vindue
-//            newMakeArrayList.get(i).decLiterTilbage(doubleArrayList.get(i));
-//        }
-
         navn = navn.substring(0, navn.length() - 2);
         ArrayList<NewMake> temp = new ArrayList<>(newMakes.keySet());
         NewMake newMake = new NewMake(navn,dato,beregnAlkoholProcentWhisky(temp, 0),ansvarlig,newMakes);
@@ -286,5 +287,21 @@ public abstract class Controller {
         }
         return result;
     }
+
+    //Bruges til paafyld og omhæld, det skal ske på tomme fade, inkluderer ikke fade der brugt 3 gange
+    public static List<Fad> getTommeFade(){
+        List<Fad> result = new ArrayList<>();
+        for(Fad fad : Controller.getFade()){
+            if((fad.getIndhold()==null || fad.getIndhold().getLiter() == 0) && fad.getGangeBrugt()<3) {
+                result.add(fad);
+            }
+        }
+        return result;
+    }
+
+    public static List<FadTilNM> getIkkeTommeFade(){
+        return new ArrayList<>(); //virker ikke...
+    }
+
 }
 

@@ -49,6 +49,13 @@ public class Main {
         Fad fad2 = Controller.opretFad(lager,hylde,"The Jolly Barrel","Irland","egetræ","sherry", FadStørrelse.L250);
         Fad fad3 = Controller.opretFad(lager,hylde,"Des Enormes Barriles","Spanien","egetræ","rødvin", FadStørrelse.L100);
 
+        Fad fad4 = Controller.opretFad(lager,hylde,"awdd","Danmark","Jern","Cherry", FadStørrelse.L50);
+        Fad fad5 = Controller.opretFad(lager,hylde,"fsefef","Danmark","Jern","Rødvin", FadStørrelse.L50);
+        Fad fad6 = Controller.opretFad(lager,hylde,"FEJL","FEJL","FEJL","FEJL", FadStørrelse.L50); //Dette fad skal ikke ses i gui
+        fad6.setGangeBrugt(3);
+        Fad fad7 = Controller.opretFad(lager,hylde,"Gange brugt 2","Danmark","Jern","Rødvin", FadStørrelse.L50);
+        fad7.setGangeBrugt(2);
+
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
                 new Korn("t", "t", 1776, "t", "t"));
@@ -56,14 +63,17 @@ public class Main {
         mængder1.add(new Mængde(50, destillat3));
         List<Mængde> mængder2 = new ArrayList<>();
         mængder2.add(new Mængde(50, destillat3));
-        Map<Fad, Double> mapTemp1 = new HashMap<>();
-        mapTemp1.put(fad3, 50.0);
-        NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, mapTemp1, new HashMap<NewMake, Double>(), LocalDate.of(2020, 1, 1));
+        NewMake nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, new HashMap<NewMake, Double>(), LocalDate.of(2017, 1, 1));
+        List<FadTilNM> listFtnm1 = new ArrayList<>();
+        listFtnm1.add(new FadTilNM(50, fad, nm1));
+        Controller.tilføjFTilNMtilNM(listFtnm1, nm1);
         nm1.setLiter(50.0);
         nm1.setLiterTilbage(50.0);
-        final Map<Fad, Double> mapTemp2 = new HashMap<>();
-        mapTemp2.put(fad3, 50.0);
-        final NewMake nm2 = Controller.paafyldDestillat("NM78p", "Billy", mængder2, mapTemp2, new HashMap<NewMake, Double>(), LocalDate.of(2018, 1, 1));
+
+        NewMake nm2 = Controller.paafyldDestillat("NM78p", "Billy", mængder2, new HashMap<NewMake, Double>(), LocalDate.of(2018, 1, 1));
+        List<FadTilNM> listFtnm2 = new ArrayList<>();
+        listFtnm2.add(new FadTilNM(50, fad2, nm2));
+        Controller.tilføjFTilNMtilNM(listFtnm2, nm2);
         nm2.setLiter(50.0);
         nm2.setLiterTilbage(50.0);
 //        List<NewMake> newMakes = new ArrayList<>();
@@ -73,13 +83,14 @@ public class Main {
 
         Destillat destillat4 = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
                 new Korn("t2", "t", 1776, "t", "t"));
-        final List<Mængde> mængder3 = new ArrayList<>();
+        List<Mængde> mængder3 = new ArrayList<>();
         mængder3.add(new Mængde(50.0, destillat3));
-        final List<Mængde> mængder4 = new ArrayList<>();
+        List<Mængde> mængder4 = new ArrayList<>();
         mængder4.add(new Mængde(25.0, destillat3));
-        final Map<Fad, Double> mapTemp3 = new HashMap<>();
-        mapTemp3.put(fad3, 50.0);
-        NewMake nm3 = Controller.paafyldDestillat("NM79p", "Billy", mængder3, mapTemp3, new HashMap<NewMake, Double>(), LocalDate.of(2019, 1, 1));
+        NewMake nm3 = Controller.paafyldDestillat("NM79p", "Billy", mængder3, new HashMap<NewMake, Double>(), LocalDate.of(2019, 1, 1));
+        List<FadTilNM> listFtnm3 = new ArrayList<>();
+        listFtnm3.add(new FadTilNM(50, fad3, nm3));
+        Controller.tilføjFTilNMtilNM(listFtnm3, nm3);
         nm3.setLiter(50.0);
         nm3.setLiterTilbage(50.0);
 //        List<NewMake> newMakes2 = new ArrayList<>();

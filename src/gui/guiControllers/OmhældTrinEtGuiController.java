@@ -5,12 +5,14 @@ import gui.HovedVindue;
 import gui.Main;
 import gui.guiDummies.DestillatGui;
 import gui.guiDummies.NewMakeGui;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.Destillat;
-import model.NewMake;
+import model.*;
+
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -50,30 +52,55 @@ public class OmhældTrinEtGuiController {
 
     private final List<NewMakeGui> newMakeGuier = new ArrayList<>(konverterTilGuiDummy(Controller.getIkkeTommeNewMakes()));
 
-    public OmhældTrinEtGuiController() {
-    }
+    @FXML
+    private ComboBox<FadTilNM> cmbValgtFad;
+
 
 
     public void initialize() {
         lvwNewMakes.getItems().setAll(newMakeGuier);
 
+        lvwLiterTilBlanding.setCellFactory(new Callback<ListView<Map.Entry<NewMake, Double>>, ListCell<Map.Entry<NewMake, Double>>>() {
+            @Override
+            public ListCell<Map.Entry<NewMake, Double>> call(ListView<Map.Entry<NewMake, Double>> newMakeLiterListView) {
+                return new ListCell<>() {
+                    @Override
+                    public void updateItem(Map.Entry<NewMake, Double> entry, boolean empty) {
+                        super.updateItem(entry, empty);
+                        if (empty || entry == null) {
+                            setText(null);
+                        } else {
+                            setText("Liter: " + entry.getValue() + ", NewMake: " + entry.getKey().getNavn());
+                        }
+                    }
+                };
+            }
+        });
 
-//        lvwNewMakes.setCellFactory(new Callback<ListView<NewMake>, ListCell<NewMake>>() {
-//            @Override
-//            public ListCell<NewMake> call(ListView<NewMake> newMakeListView) {
-//                return new ListCell<>() {
-//                    @Override
-//                    public void updateItem(NewMake newMake, boolean empty) {
-//                        super.updateItem(newMake, empty);
-//                        if (empty || newMake == null) {
-//                            setText(null);
-//                        } else {
-//                            setText(newMake.toStringKort());
-//                        }
-//                    }
-//                };
-//            }
-//        });
+        cmbValgtFad.setCellFactory(new Callback<ListView<FadTilNM>, ListCell<FadTilNM>>() {
+            @Override
+            public ListCell<FadTilNM> call(ListView<FadTilNM> fadTilNMListView) {
+                return new ListCell<>() {
+                    @Override
+                    public void updateItem(FadTilNM ftnm, boolean empty) {
+                        super.updateItem(ftnm, empty);
+                        if (empty || ftnm == null) {
+                            setText(null);
+                        } else {
+                            setText(ftnm.toStringKort());
+                        }
+                    }
+                };
+            }
+        });
+
+        ChangeListener<NewMake> listener = (ov, o, n) -> this.opdaterValgtNewMake();
+        lvwNewMakes.getSelectionModel().selectedItemProperty().addListener(listener);
+    }
+
+    private void opdaterValgtNewMake() {
+        NewMake newMake = lvwNewMakes.getSelectionModel().getSelectedItem();
+        cmbValgtFad.getItems().setAll(newMake.getFad());
     }
 
     @FXML
@@ -95,6 +122,7 @@ public class OmhældTrinEtGuiController {
         }
         NewMakeGui newMakeFake = lvwNewMakes.getSelectionModel().getSelectedItem();
         NewMake newMake = newMakeFake.getOriginal();
+        FadTilNM ftnm = cmbValgtFad.getSelectionModel().getSelectedItem();
 
         if (newMake == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg en New Make fra listen");
@@ -108,6 +136,13 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok New Make væske, tjek New Makes antal liter tilbage");
             return;
         }
+        if(ftnm == null){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Vælg et fad");
+            return;
+        }
+        if(ftnm.getLiter()<antalLiter){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter overstiger fadets antal liter");
+        }
 
         if(!newMakeLiter.containsKey(newMake)) {
             newMakeLiter.put(newMake, antalLiter);
@@ -119,6 +154,7 @@ public class OmhældTrinEtGuiController {
         opdaterListviews();
         lblFejlBesked.setVisible(false);
         txfAntalLiter.clear();
+        opdaterValgtNewMake();
     }
 
     public double sumLiter(NewMake newMake) {
@@ -149,8 +185,8 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Ansvarlig navn må kun indeholde bogstaver");
             return;
         }
-        if (lvwLiterTilBlanding.getItems().isEmpty() || newMakeLiter.size() == 1) {
-            HovedVindue.setFejlBesked(lblFejlBesked, "Der skal som minimum vælges 2 New Makes til at skabe en blanding");
+        if (lvwLiterTilBlanding.getItems().isEmpty() || erNMsGyldige()) {
+            HovedVindue.setFejlBesked(lblFejlBesked, "Der skal som minimum vælges 2 forskellige New Makes til at skabe en blanding");
             return;
         }
         if(dato==null || dato.isAfter(LocalDate.now()) ){
@@ -181,4 +217,16 @@ public class OmhældTrinEtGuiController {
        }
     }
 
+
+    private boolean erNMsGyldige(){
+        boolean result = false;
+        NewMake nm = null;
+        for(Map.Entry<NewMake, Double> entry : newMakeLiter.entrySet()){
+            if(nm!=null && !nm.equals(entry.getKey())){
+                result = true;
+            }
+        }
+
+        return result;
+    }
 }

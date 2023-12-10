@@ -20,7 +20,7 @@ public class Fad implements Serializable {
     //Association 0..* ---> 0..1 Hylde
     private final Hylde hylde;
     //Association 1 ---> 0..* FadTilNM
-    private final List<FadTilNM> indhold = new ArrayList<>();
+    private FadTilNM indhold; //TODO:: den her skal vel ikke være en liste...
     private double literTilbage;
 
     /**
@@ -39,6 +39,30 @@ public class Fad implements Serializable {
         this.hylde = hylde;
     }
 
+    public int getNummer() {
+        return nummer;
+    }
+
+    public String getLeverandør() {
+        return leverandør;
+    }
+
+    public String getOprindeslesland() {
+        return oprindeslesland;
+    }
+
+    public String getMateriale() {
+        return materiale;
+    }
+
+    public int getGangeBrugt() {
+        return gangeBrugt;
+    }
+
+    public String getTidligereIndhold() {
+        return tidligereIndhold;
+    }
+
     public FadStørrelse getStørrelse() {
         return størrelse;
     }
@@ -51,15 +75,25 @@ public class Fad implements Serializable {
         return hylde;
     }
 
-    public void tilføjFadTilNM(FadTilNM fnm){
-        indhold.add(fnm);
+    public FadTilNM getIndhold() {
+        return indhold;
+    }
+    public void setIndhold(FadTilNM fnm){
+       indhold = fnm;
+       gangeBrugt++;
+    }
+
+    /**
+     * Må kun bruges i initStorage inde i main!!!
+     */
+    public void setGangeBrugt(int gangeBrugt){
+        this.gangeBrugt = gangeBrugt;
     }
 
     public void opdaterLiterTilbage(){
-        for (FadTilNM ftnm : indhold){
-            literTilbage -= ftnm.getLiter();
-        }
+            literTilbage -= indhold.getLiter();
     }
+
     @Override
     public String toString() {
             String result = "Fad nr. " + nummer + ", størrelse: " + størrelse + ", lavet af " + materiale + ". Leverandør: '"
