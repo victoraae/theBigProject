@@ -69,10 +69,17 @@ public class Whisky {
      */
     public static List<NewMake> getAlleNewMakesRekursiv(List<NewMake> newMakes){
         List<NewMake> result = new ArrayList<>();
+
+        alleNewMakesHelper(newMakes, result);
+
+        return result;
+    }
+
+    private static List<NewMake> alleNewMakesHelper(List<NewMake> newMakes, List<NewMake> result){
         result.addAll(newMakes);
         for(NewMake nm : newMakes){
             if(nm.getNewMakesLiter().size()!=0){ //stop klodsen her er de 'yderste' newMakes som er dem der oprettes i paafyld vinduet
-                getAlleNewMakesRekursiv(nm.getNewMakesFraNMLiters());
+                alleNewMakesHelper(nm.getNewMakesFraNMLiters(), result);
             }
         }
         return result;
@@ -92,6 +99,7 @@ public class Whisky {
                 if (!mængder.isEmpty()) {
                     if (newMake.getDatoForPåfyldning().isAfter(yngsteDato)) {
                         yngsteDato = newMake.getDatoForPåfyldning();
+                        System.out.println("Test 2: " + yngsteDato);
                     }
                 }
             }

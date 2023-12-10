@@ -273,7 +273,7 @@ public abstract class Controller {
     public static List<NewMake> getIkkeTommeNewMakes(){
         List<NewMake> result = new ArrayList<>();
         for(NewMake nm : Controller.getNewMakes()){
-            if(nm.getLiterTilbage()!=0) result.add(nm);
+            if(nm.getLiterTilbage()!=0 && !nm.erOpbrugt()) result.add(nm);
         }
         return result;
     }

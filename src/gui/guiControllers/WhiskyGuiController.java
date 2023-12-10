@@ -31,7 +31,7 @@ public class WhiskyGuiController {
     private List<NewMake> newMakes;
 
     public void initialize() {
-        lvwNewMakes.getItems().setAll(Controller.getNewMakes());
+        lvwNewMakes.getItems().setAll(Controller.getIkkeTommeNewMakes());
         ChangeListener<NewMake> listener = (ov, o, n) -> this.opdaterValgtNewMake();
         lvwNewMakes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         lvwNewMakes.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -79,7 +79,7 @@ public class WhiskyGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Indtast et gyldigt nummer");
             return;
         }
-        if (!måViLaveWhisky(newMakes)) {
+        if (!måViLaveWhisky(newMakes, LocalDate.now())) {
             HovedVindue.setFejlBesked(lblFejlBesked,
                     "Du må ikke lave whisky ud fra New Makes der IKKE har lagret i mindst 3 år!");
             return;
@@ -105,11 +105,9 @@ public class WhiskyGuiController {
     // hjælpemetode der tjekker om alle
     //TODO:: en omhlædig skaber newmakes der har tomme mængder lister
     @FXML
-    public boolean måViLaveWhisky(List<NewMake> newMakes) {
-        boolean result = true;
-
+    public boolean måViLaveWhisky(List<NewMake> newMakes, LocalDate dato) {
         List<NewMake> alleNewMakes = Whisky.getAlleNewMakesRekursiv(newMakes);
-        int år = Whisky.beregnAlderPåWhisky(alleNewMakes);
+        int år = Whisky.beregnAlderPåWhisky(alleNewMakes, dato);
 
         return år>=3;
     }
