@@ -221,7 +221,6 @@ public abstract class Controller {
                 nm.tilføjFad(fadTilNM);
                 fadTilNM.getFad().setIndhold(fadTilNM);
             } else fadTilNM.getFad().getIndhold().incLiter(fadTilNM.getLiter());
-            System.out.println("TEST1");
 //            if(!nm.getFad().contains(fadTilNM)) nm.tilføjFad(fadTilNM);
 //            else {
 //                if (fadTilNM.getFad().getIndhold() == null) {
