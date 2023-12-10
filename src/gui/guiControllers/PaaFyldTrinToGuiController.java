@@ -67,7 +67,7 @@ public class PaaFyldTrinToGuiController {
             Controller.tilføjFTilNMtilNM(fadeTilNM, newMake);
             newMake.setLiter(fadeAntalLiter);
             newMake.setLiterTilbage(fadeAntalLiter);
-            lukAction();
+            lukUdenSlet();
             PaaFyldTrinEtGuiController.decLiterTilbageDestillater(); //Trække de liter fra destillater i trin et vinduet, når det gemmes til sidst
         }
     }
@@ -75,6 +75,10 @@ public class PaaFyldTrinToGuiController {
     public void lukAction() {
         Controller.sletNewMake(newMake);
 
+        lukUdenSlet();
+    }
+
+    private void lukUdenSlet(){
         Stage stage = (Stage) lblFejlBesked.getScene().getWindow();
         stage.close();
     }

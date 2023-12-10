@@ -49,6 +49,10 @@ public class Whisky {
         return new ArrayList<>(newMakes);
     }
 
+    public double getAlkoholProcent() {
+        return alkoholProcent;
+    }
+
     public List<Flaske> getFlasker() {
         return new ArrayList<>(flasker);
     }
@@ -63,7 +67,7 @@ public class Whisky {
     /**
      * hjælpemetode til WhiskyGuiController og flaske historik generering
      */
-    public List<NewMake> getAlleNewMakesRekursiv(List<NewMake> newMakes){
+    public static List<NewMake> getAlleNewMakesRekursiv(List<NewMake> newMakes){
         List<NewMake> result = new ArrayList<>();
         result.addAll(newMakes);
         for(NewMake nm : newMakes){

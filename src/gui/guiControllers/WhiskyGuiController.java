@@ -107,18 +107,11 @@ public class WhiskyGuiController {
     @FXML
     public boolean måViLaveWhisky(List<NewMake> newMakes) {
         boolean result = true;
-        if (newMakes != null) {
-            for (int i = 0; i < newMakes.size() && result; i++) {
-                NewMake newMake = newMakes.get(i);
-                List<Mængde> mængder = newMake.getMængder();
-                if (!mængder.isEmpty()) {
-                    if (newMake.getDatoForPåfyldning().isAfter(LocalDate.now().minusYears(3))) {
-                        result = false;
-                    }
-                }
-            }
-        }
-        return result;
+
+        List<NewMake> alleNewMakes = Whisky.getAlleNewMakesRekursiv(newMakes);
+        int år = Whisky.beregnAlderPåWhisky(alleNewMakes);
+
+        return år>=3;
     }
 
     @FXML

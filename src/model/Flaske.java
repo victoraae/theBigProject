@@ -23,8 +23,8 @@ public class Flaske {
         int år = whisky.getÅr();
         String kval = whisky.getKvalitetsstempel();
 
-        sb.append(whisky.getNavn() + ", flaske nr: " + nummer + " ud af " + antalFlasker + "\n");
-        sb.append("Denne " + kval + "  whisky har lagret i " + år + " år. ");
+        sb.append(whisky.getNavn() + ", flaske nr: " + nummer + " ud af " + antalFlasker + ". \n");
+        sb.append("Denne " + kval + "  whisky har lagret i " + år + " år. Alc. %: " + Math.floor(whisky.getAlkoholProcent()) + ". \n");
 
         Set<String> marker = new HashSet<>();
         Set<String> landmænd = new HashSet<>();

@@ -178,9 +178,9 @@ public abstract class Controller {
     public static Whisky opretWhisky(String navn, String ansvarlig, double literVand, List<NewMake> newMakes) {
         String kvalitetsstempel = newMakes.size() > 1 ? "single malt" : "single cask";
 
-        Whisky whisky = new Whisky(navn, ansvarlig, LocalDate.now(), Controller.sumLiter(newMakes), beregnAlkoholProcentWhisky(newMakes, literVand), kvalitetsstempel, newMakes);
+        Whisky whisky = new Whisky(navn, ansvarlig, LocalDate.now(), Controller.sumLiter(newMakes)+literVand, beregnAlkoholProcentWhisky(newMakes, literVand), kvalitetsstempel, newMakes);
 
-        Double antalFlasker2 = Controller.sumLiter(newMakes) / 0.7;
+        Double antalFlasker2 = (Controller.sumLiter(newMakes)+literVand) / 0.7;
         int antalFlasker = antalFlasker2.intValue();
 
         for (int i = 1; i <= antalFlasker; i++) {
