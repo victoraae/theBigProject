@@ -20,5 +20,10 @@
       <TextArea fx:id="txaHistorik" editable="false" focusTraversable="false" layoutX="102.0" layoutY="166.0" prefHeight="251.0" prefWidth="490.0" />
       <Label layoutX="47.0" layoutY="166.0" prefHeight="17.0" prefWidth="52.0" text="Historik:" />
       <Button fx:id="btnLuk" focusTraversable="false" layoutX="294.0" layoutY="434.0" mnemonicParsing="false" onAction="#btnLukAction" prefHeight="25.0" prefWidth="85.0" text="Luk" />
+      <ImageView fitHeight="138.0" fitWidth="173.0" layoutX="516.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/korn.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

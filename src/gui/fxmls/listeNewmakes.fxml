@@ -22,5 +22,15 @@
       </ImageView>
       <ListView fx:id="lvwOpretNewmakes" focusTraversable="false" layoutX="25.0" layoutY="151.0" prefHeight="217.0" prefWidth="600.0" />
       <Button fx:id="btnLuk" focusTraversable="false" layoutX="274.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnLukAction" prefHeight="26.0" prefWidth="101.0" text="Luk" />
+      <ImageView fitHeight="111.0" fitWidth="120.0" layoutX="25.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/korn.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="120.0" layoutX="514.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/korn.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
