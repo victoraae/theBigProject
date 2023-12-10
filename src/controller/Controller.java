@@ -174,6 +174,7 @@ public abstract class Controller {
 
     /**
      * Pre: den yngste newMake skal mindst have lagret i 3 år
+     * Pre: literVand>=0
      */
     public static Whisky opretWhisky(String navn, String ansvarlig, double literVand, List<NewMake> newMakes) {
         String kvalitetsstempel = newMakes.size() > 1 ? "single malt" : "single cask";
