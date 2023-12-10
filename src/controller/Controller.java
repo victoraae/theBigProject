@@ -244,9 +244,9 @@ public abstract class Controller {
             doubleArrayList.add(entry.getValue());
         }
 
-        for (int i = 0; i < newMakeArrayList.size(); i++){
-            newMakeArrayList.get(i).decLiterTilbage(doubleArrayList.get(i));
-        }
+//        for (int i = 0; i < newMakeArrayList.size(); i++){            jeg har smidt det her ind  omhæld trin et vindue
+//            newMakeArrayList.get(i).decLiterTilbage(doubleArrayList.get(i));
+//        }
 
         navn = navn.substring(0, navn.length() - 2);
         ArrayList<NewMake> temp = new ArrayList<>(newMakes.keySet());
@@ -269,6 +269,22 @@ public abstract class Controller {
         NewMakeCompare newMakeCompare = new NewMakeCompare();
         Collections.sort(newMakes, newMakeCompare);
         return newMakes;
+    }
+
+    public static List<Destillat> getIkkeTommeDestillater(){
+        List<Destillat> result = new ArrayList<>();
+        for(Destillat destillat : Controller.getDestillater()){
+            if(destillat.getLiterTilbage()!=0) result.add(destillat);
+        }
+        return result;
+    }
+
+    public static List<NewMake> getIkkeTommeNewMakes(){
+        List<NewMake> result = new ArrayList<>();
+        for(NewMake nm : Controller.getNewMakes()){
+            if(nm.getLiterTilbage()!=0) result.add(nm);
+        }
+        return result;
     }
 }
 
