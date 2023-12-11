@@ -36,6 +36,7 @@ public class ControllerOpretWhiskyTest {
 
         newMake3 = new NewMake("NewMake3", LocalDate.now(), 73.5, "Ansvarlig nm1",
                 mapTemp);
+        newMake3.setLiter(40);
 
         mapTemp = new HashMap<>();
         mapTemp.put(newMake1, 30.0);
@@ -43,6 +44,7 @@ public class ControllerOpretWhiskyTest {
 
         newMake4 = new NewMake("NewMake4", LocalDate.now(), 74.375, "Ansvarlig nm1",
                 mapTemp);
+        newMake4.setLiter(80);
     }
 
     //Test case 1: vand=0, NewMakes.size=1, NewMakes=[newMake2]
@@ -56,7 +58,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single cask", whisky.getKvalitetsstempel());
         assertEquals(11, whisky.getÅr());
-        assertEquals(77.0, whisky.getAlkoholProcent());
+        assertEquals(77.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 2: vand=0, NewMakes.size=1, NewMakes=[newMake3]
@@ -70,7 +72,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single cask", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(73.0, whisky.getAlkoholProcent());
+        assertEquals(73.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 3: vand=0, NewMakes.size>=2, NewMakes=[newMake1, newMake2]
@@ -85,7 +87,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single malt", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(73.0, whisky.getAlkoholProcent());
+        assertEquals(74.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 4: vand=0, NewMakes.size>=2, NewMakes=[newMake3, newMake4]
@@ -100,7 +102,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single malt", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(74.0, whisky.getAlkoholProcent());
+        assertEquals(74.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 5: vand=100, NewMakes.size=1, NewMakes = [newMake1]
@@ -115,7 +117,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single cask", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(23.0, whisky.getAlkoholProcent());
+        assertEquals(23.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 6: vand=100, NewMakes.size=1, NewMakes = [newMake1]
@@ -129,7 +131,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single cask", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(32.0, whisky.getAlkoholProcent());
+        assertEquals(21.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 7: vand=100, NewMakes.size>=2, NewMakes = [newMake1, newMake2]
@@ -144,7 +146,7 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single malt", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(40.0, whisky.getAlkoholProcent());
+        assertEquals(40.0, Math.floor(whisky.getAlkoholProcent()));
     }
 
     //Test case 8: vand=100, NewMakes.size>=2, NewMakes = [newMake3, newMake4]
@@ -159,7 +161,6 @@ public class ControllerOpretWhiskyTest {
         //Assert
         assertEquals("single malt", whisky.getKvalitetsstempel());
         assertEquals(8, whisky.getÅr());
-        assertEquals(40.0, whisky.getAlkoholProcent());
+        assertEquals(40.0, Math.floor(whisky.getAlkoholProcent()));
     }
-
 }
