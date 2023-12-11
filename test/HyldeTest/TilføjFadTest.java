@@ -21,8 +21,8 @@ public class TilføjFadTest {
         storage = new ListStorage();
         Controller.setStorage(storage);
         Lager lager = Controller.opretLager("Lager 1", "Adresse 1", 230, 500, 7);
-        Reol reol = Controller.opretReol(lager, 1, 15, 3);
-        hylde = Controller.opretHylde(reol, 1);
+        Reol reol = Controller.opretReol(lager, 1, 25, 3);
+        hylde = Controller.opretHylde(reol,1);
     }
 
     @Test
