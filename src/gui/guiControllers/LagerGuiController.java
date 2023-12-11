@@ -107,7 +107,7 @@ public class LagerGuiController {
                 if (result.get() == ButtonType.YES) {
                     Lager lager = Controller.opretLager(txfLagerNavn.getText(), txfAdresse.getText(), størrelse, kapacitet, maxAntalHylder);
                     opdaterListView();
-
+                    clearFelter();
                 }
             } else {
                 setFejlBesked(lblFejlBesked, "Venligst udfyld alle felterne før du fortsætter");
@@ -151,6 +151,14 @@ public class LagerGuiController {
 
     public Lager getValgtLager() {
         return lvwVaelgLager.getSelectionModel().getSelectedItem();
+    }
+
+    private void clearFelter(){
+        txfAdresse.clear();
+        txfKapacitet.clear();
+        txfLagerNavn.clear();
+        txfStørrelse.clear();
+        txfMaksReoler.clear();
     }
 }
 

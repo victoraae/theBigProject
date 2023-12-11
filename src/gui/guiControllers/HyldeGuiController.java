@@ -97,6 +97,9 @@ public class HyldeGuiController {
                         if (reol != null) {
                             opdaterListViewReol();
                             this.reol = reol;
+                            lvwVaelgReol.getSelectionModel().selectLast();
+                            txfIStorrelse.clear();
+                            txfAntalHylder.clear();
                         }
                     }
                 }
