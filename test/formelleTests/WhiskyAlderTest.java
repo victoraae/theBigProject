@@ -1,6 +1,10 @@
-package model;
+package formelleTests;
 
 import controller.Controller;
+import model.Destillat;
+import model.Mængde;
+import model.NewMake;
+import model.Whisky;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import storage.ListStorage;
