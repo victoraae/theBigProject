@@ -1,3 +1,4 @@
+package formelleTests;
 
 import controller.Controller;
 import model.*;

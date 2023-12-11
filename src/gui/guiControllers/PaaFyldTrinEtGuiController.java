@@ -42,23 +42,6 @@ public class PaaFyldTrinEtGuiController {
 
     public void initialize() {
         opdaterLvwDestillater();
-
-//        lvwDestillater.setCellFactory(new Callback<ListView<Destillat>, ListCell<Destillat>>() {
-//            @Override
-//            public ListCell<Destillat> call(ListView<Destillat> destillatListView) {
-//                return new ListCell<>() {
-//                    @Override
-//                    public void updateItem(Destillat destillat, boolean empty) {
-//                        super.updateItem(destillat, empty);
-//                        if (empty || destillat == null) {
-//                            setText(null);
-//                        } else {
-//                            setText(destillat.toStringKortere());
-//                        }
-//                    }
-//                };
-//            }
-//        });
     }
 
     @FXML
@@ -130,6 +113,13 @@ public class PaaFyldTrinEtGuiController {
         if(dato==null || dato.isAfter(LocalDate.now()) ){
             HovedVindue.setFejlBesked(lblFejlBesked, "Ugyldig dato, dato skal være idag eller tidligere, og dato skal vælges");
             return;
+        }
+
+        for (Map.Entry<Destillat, Double> entry : destillatDecLiters.entrySet()){
+            if(dato.isBefore(entry.getKey().getDato())) {
+                HovedVindue.setFejlBesked(lblFejlBesked, "Ugyldig dato, dato skal være efter datoen af New Maken!");
+                return;
+            }
         }
 
         NewMake newMake = Controller.paafyldDestillat(navn, ansvarlig, mængder, new HashMap<NewMake, Double>(), dato);

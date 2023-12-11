@@ -1,4 +1,4 @@
-package HyldeTest;
+package formelleTests.HyldeTest;
 
 import controller.Controller;
 import model.Hylde;
