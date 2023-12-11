@@ -186,6 +186,7 @@ public abstract class Controller {
         for (int i = 0; i < newMakes.size(); i++){
             newMakes.get(i).setErOpbrugt(true);
         }
+        tømAlleNMsFade(newMakes);
 
         storage.tilføjWhisky(whisky);
         return whisky;
@@ -283,6 +284,17 @@ public abstract class Controller {
             }
         }
         return result;
+    }
+
+    /**
+     * hjælpe metode
+     */
+    private static void tømAlleNMsFade(List<NewMake> newMakes){
+        for(NewMake nm : newMakes){
+            for(FadTilNM ftnm : nm.getFad()){
+                ftnm.setLiter(0);
+            }
+        }
     }
 }
 
