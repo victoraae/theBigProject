@@ -6,9 +6,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Optional;
 
 public class PaaFyldTrinToGuiController {
@@ -45,6 +47,23 @@ public class PaaFyldTrinToGuiController {
 
         ChangeListener<Fad> listener = (ov, o, n) -> this.opdaterValgtFad();
         lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
+
+        lvwFadTilNM.setCellFactory(new Callback<ListView<FadTilNM>, ListCell<FadTilNM>>() {
+            @Override
+            public ListCell<FadTilNM> call(ListView<FadTilNM> fadTilNMListView) {
+                return new ListCell<>() {
+                    @Override
+                    public void updateItem(FadTilNM ftnm, boolean empty) {
+                        super.updateItem(ftnm, empty);
+                        if (empty || ftnm == null) {
+                            setText(null);
+                        } else {
+                            setText(ftnm.toStringKort());
+                        }
+                    }
+                };
+            }
+        });
     }
 
     private void opdaterValgtFad() {

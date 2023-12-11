@@ -48,7 +48,7 @@ public class FadTilNM {
 
     public String toStringKort(){
         Fad f = this.getFad();
-        String result = "Liter: " + liter + ", Fad str: " + f.getStørrelse().getInt() + ", Lager: " + f.getLager().getNavn();;
+        String result = "Liter: " + liter + ", Fad str: " + f.getStørrelse().getInt() + ", Fad nr: " + f.getNummer() +", Lager: " + f.getLager().getNavn();;
 
         if(f.getHylde()!=null){
             result += "Reol: "  + f.getHylde().getReol().getNummer() + ", Hylde: " + f.getHylde().getNummer();
