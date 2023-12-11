@@ -76,7 +76,7 @@ public class Destillat implements Serializable {
     public String toStringKortere(){
         String result = "";
         if (dato != null) {
-            result = literTilbage + "liter tilbage lavet d." + dato.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
+            result = literTilbage + " liter tilbage lavet d." + dato.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
                     + ", " + alkoholProcent + "%, Lavet med " + korn.getSort() + " kornsort";
 
             if (!rygemateriale.isBlank()) {
