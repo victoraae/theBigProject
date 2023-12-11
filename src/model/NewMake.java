@@ -23,21 +23,6 @@ public class NewMake implements Serializable, Comparable<NewMake> {
     //Assosiation 0..* --> 1 NewMake
     private final Map<NewMake, Double> newMakesLiter;
 
-    //TODO: denne constructor er vidst nok unødvendig
-    public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<Fad, Double> fadeTilLiter
-    , Map<NewMake, Double> newMakesLiter) {
-        this.navn = navn;
-        this.datoForPåfyldning = datoForPåfyldning;
-        this.alkoholprocent = alkoholprocent;
-        this.ansvarlig = ansvarlig;
-        this.newMakesLiter = newMakesLiter;
-        this.erOpbrugt = false;
-        lavFadTilNM(fadeTilLiter);
-    }
-
-    /**
-     * vi kan ikke huske hvad fadeTilLiter i ovenstående konstruktor skal bruges til
-     */
     public NewMake(String navn, LocalDate datoForPåfyldning, double alkoholprocent, String ansvarlig, Map<NewMake, Double> newMakesLiter) {
         this.navn = navn;
         this.datoForPåfyldning = datoForPåfyldning;

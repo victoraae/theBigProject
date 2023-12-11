@@ -20,7 +20,7 @@ public class Fad implements Serializable {
     //Association 0..* ---> 0..1 Hylde
     private final Hylde hylde;
     //Association 1 ---> 0..* FadTilNM
-    private FadTilNM indhold; //TODO:: den her skal vel ikke være en liste...
+    private FadTilNM indhold;
     private double literTilbage;
 
     /**
