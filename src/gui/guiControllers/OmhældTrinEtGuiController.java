@@ -82,23 +82,6 @@ public class OmhældTrinEtGuiController {
             }
         });
 
-//        cmbValgtFad.setCellFactory(new Callback<ListView<FadTilNM>, ListCell<FadTilNM>>() {
-//            @Override
-//            public ListCell<FadTilNM> call(ListView<FadTilNM> fadTilNMListView) {
-//                return new ListCell<>() {
-//                    @Override
-//                    public void updateItem(FadTilNM ftnm, boolean empty) {
-//                        super.updateItem(ftnm, empty);
-//                        if (empty || ftnm == null) {
-//                            setText(null);
-//                        } else {
-//                            setText(ftnm.toStringKort());
-//                        }
-//                    }
-//                };
-//            }
-//        });
-
         ChangeListener<NewMakeGui> listener = (ov, o, n) -> this.opdaterValgtNewMake();
         lvwNewMakes.getSelectionModel().selectedItemProperty().addListener(listener);
     }
