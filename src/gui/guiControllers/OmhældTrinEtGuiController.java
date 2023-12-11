@@ -129,13 +129,14 @@ public class OmhældTrinEtGuiController {
             return;
         }
         NewMakeGui newMakeFake = lvwNewMakes.getSelectionModel().getSelectedItem();
-        NewMake newMake = newMakeFake.getOriginal();
         FadTilNMGui ftnmFake = cmbValgtFad.getSelectionModel().getSelectedItem();
 
         if (newMakeFake == null) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Vælg en New Make fra listen");
             return;
         }
+        NewMake newMake = newMakeFake.getOriginal();
+
         if (antalLiter <= 0) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter >= 1");
             return;

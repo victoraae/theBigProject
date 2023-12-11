@@ -56,6 +56,10 @@ public class OmhældTrinToGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Du skal først omhælde blandingen til et eller flere fade!");
             return;
         }
+        if(fadeAntalLiter<newMake.getLiter()){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Hele NewMake væsken skal på fad");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
         alert.setContentText("Er du sikker på, at du vil omhælde disse New Makes?");
@@ -109,7 +113,7 @@ public class OmhældTrinToGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-        if (fad.getStørrelse().getInt() < antalLiterFraFTilNM() + antalLiter) {
+        if (fad.getStørrelse().getInt() < antalLiterFraFTilNM2(fad) + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
@@ -141,6 +145,17 @@ public class OmhældTrinToGuiController {
         double result = 0;
         for (FadTilNM f : fadeTilBlanding) {
             result += f.getLiter();
+        }
+        return result;
+    }
+
+    /**
+     * hjæple metode til gui
+     */
+    private double antalLiterFraFTilNM2(Fad fad) {
+        double result = 0;
+        for (FadTilNM f : fadeTilBlanding) {
+            if(f.getFad().equals(fad))result += f.getLiter();
         }
         return result;
     }

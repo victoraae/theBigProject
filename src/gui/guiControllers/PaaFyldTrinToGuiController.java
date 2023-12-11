@@ -58,6 +58,11 @@ public class PaaFyldTrinToGuiController {
 
     @FXML
     public void gemAction() {
+        if(fadeAntalLiter<newMake.getLiter()){
+            HovedVindue.setFejlBesked(lblFejlBesked, "Hele NewMake væsken skal på fad");
+            return;
+        }
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bekræft", ButtonType.YES, ButtonType.NO);
         alert.setContentText("Er du sikker på, at du vil påfylde og lave en ny New Make fra destillat?");
         alert.setHeaderText("Bekræft oplysninger");
