@@ -105,7 +105,7 @@ public class PaaFyldTrinToGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Det indtastede antal liter er ugyldigt, prøv antalLiter>=1");
             return;
         }
-        if (fad.getStørrelse().getInt() < antalLiterFraFTilNM() + antalLiter) {
+        if (fad.getStørrelse().getInt() < antalLiterFraFTilNM2(fad) + antalLiter) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der er ikke nok plads i fadet, til de eksisterende mængder og den nye");
             return;
         }
@@ -129,6 +129,17 @@ public class PaaFyldTrinToGuiController {
         double result = 0;
         for (FadTilNM f : fadeTilNM) {
             result += f.getLiter();
+        }
+        return result;
+    }
+
+    /**
+     * hjæple metode til gui
+     */
+    private double antalLiterFraFTilNM2(Fad fad) {
+        double result = 0;
+        for (FadTilNM f : fadeTilNM) {
+            if(f.getFad().equals(fad))result += f.getLiter();
         }
         return result;
     }
