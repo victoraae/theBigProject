@@ -1,5 +1,6 @@
-package controller;
+package HyldeTest;
 
+import controller.Controller;
 import model.Hylde;
 import model.Lager;
 import model.Reol;
