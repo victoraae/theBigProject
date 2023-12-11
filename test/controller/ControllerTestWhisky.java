@@ -12,6 +12,8 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ControllerTestWhisky {
+    // uformel test, der virkede i de tidligere iterationer, men virker ikke efter Construction iteration 1/2,
+    // da der blev lavet mange ændringer i Controller metoderne, der opretter objekterne.
     private List<NewMake> newMakes = new ArrayList<>();
     private NewMake nm1;
     private NewMake nm2;
@@ -21,12 +23,12 @@ public class ControllerTestWhisky {
     private
     @BeforeEach
     void setUp() {
-//        Controller.setStorage(new ListStorage());
+//       Controller.setStorage(new ListStorage());
 //        Lager lager = Controller.opretLager("Lager1", "Adresse1", 50, 50, 0);
 //        fad = Controller.opretFad(lager, null, "The Jolly Barrel", "Storbritannien", "egetræ",
-//                "sherry", FadStørrelser.L100);
+//                "sherry", FadStørrelse.L100.L100);
 //        fad2 = Controller.opretFad(lager, null, "Bawelwol", "England", "egetræ",
-//                "sherry", FadStørrelser.L250);
+//                "sherry", FadStørrelse.L250);
 //
 //        destillat = Controller.opretDestillat(LocalDate.now(), 70, "Bob", 300, 2, "Tørv",
 //                new Korn("t", "t", 1776, "t", "t"));
@@ -39,7 +41,7 @@ public class ControllerTestWhisky {
 //        mængder2.add(new Mængde(200, destillat));
 //
 //        nm1 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, fad);
-//        nm2 = Controller.paafyldDestillat("NM77p", "Billy", mængder1, fad);
+//        nm2 = Controller.paafyldDestillat("NM78p", "Billy", mængder1, fad2);
 //
 //        newMakes.add(nm1);
 //        newMakes.add(nm2);
