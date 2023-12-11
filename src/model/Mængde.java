@@ -29,7 +29,7 @@ public class Mængde {
     }
 
     @Override
-    public String toString() {//TODO:: lav en navn variabel eller id i destillat klasse
+    public String toString() {
         String result = "Mængde: " + mængde + ", destillat: " + destillat.getDato();
         if(newMake!=null) result += ", newMake: " + newMake.getNavn();
         return result;

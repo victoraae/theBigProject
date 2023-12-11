@@ -102,8 +102,7 @@ public class WhiskyGuiController {
         tømAlleNMsFade();
     }
 
-    // hjælpemetode der tjekker om alle
-    //TODO:: en omhlædig skaber newmakes der har tomme mængder lister
+
     @FXML
     public boolean måViLaveWhisky(List<NewMake> newMakes, LocalDate dato) {
         List<NewMake> alleNewMakes = Whisky.getAlleNewMakesRekursiv(newMakes);

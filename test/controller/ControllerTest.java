@@ -25,7 +25,7 @@ class ControllerTest {
         //Assert
         List<Lager> lagre = Controller.getLagre();
         //assertNotEquals(lager, lagre.get(lagre.size()-1));
-        //TODO:: sørg for at et lager med størrelse 0 ikke oprettes!!!
+
 
         //Testcase 2
         //Act
@@ -65,7 +65,6 @@ class ControllerTest {
         //Assert
         List<Reol> reoler = Controller.getLagre().get(0).getReoler();
         //assertNotEquals(reol, reoler.get(reoler.size()-1));
-        //TODO: En reol med størrelse nul skal ikke oprettes!!!
 
         //Testcase 2
         //Act
@@ -87,7 +86,7 @@ class ControllerTest {
         //Assert
         reoler = Controller.getLagre().get(0).getReoler();
         //assertNotEquals(reol, reoler.get(reoler.size()-1));
-        //TODO: Lagrets maks antal reoler må ikke overskrides!!!
+
 
         // udskriver alle reoler - en slags test af Reols toString()-metode
         for (Reol r : reoler){
@@ -114,7 +113,7 @@ class ControllerTest {
         //Assert
         hylder = Controller.getLagre().get(0).getReoler().get(0).getHylder();
         //assertNotEquals(hylde, hylder.get(hylder.size()-1));
-        //TODO: Reolens maks antal hylder må ikke overskrides!!!
+
 
         // udskriver alle hylder - en slags test af Hyldes toString()-metode
         for (Hylde h : hylder){

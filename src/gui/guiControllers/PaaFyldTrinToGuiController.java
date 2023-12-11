@@ -41,7 +41,7 @@ public class PaaFyldTrinToGuiController {
         HovedVindue.setFejlBesked(lblFadeLiter, 0 + "");
 
 
-        lvwFade.getItems().setAll(Controller.getTommeFade()); //TODO: skal være tomme fade
+        lvwFade.getItems().setAll(Controller.getTommeFade());
 
         ChangeListener<Fad> listener = (ov, o, n) -> this.opdaterValgtFad();
         lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
