@@ -67,6 +67,7 @@ public class DestillatGuiController {
                 }
             } else {
                 HovedVindue.setFejlBesked(lblFBDestillat, "Du skal angive en dato");
+                return;
             }
             if (!txfNavnPaaAnsvarlig.getText().matches(".*[a-zA-Z]+.*")) {
                 HovedVindue.setFejlBesked(lblFBDestillat, "Navn på ansvarlig skal indeholde bogstaver");
