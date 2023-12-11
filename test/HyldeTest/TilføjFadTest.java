@@ -56,15 +56,18 @@ public class TilføjFadTest {
     @Test
     public void testTilføjStortFadTilFuldtArray() {
         // Arrange
-        for (int i = 0; i < hylde.getStørrelse(); i++) {
-            hylde.tilføjFad("STOR");
-        }
+        //Arrange
+        hylde.tilføjFad("STOR");
+        hylde.tilføjFad("STOR");
+        hylde.tilføjFad("STOR");
+        hylde.tilføjFad("STOR");
+        hylde.tilføjFad("STOR");
 
         // Act
         boolean result = hylde.tilføjFad("STOR");
 
         // Assert
-        assertTrue(result);
+        assertEquals(true, result);
     }
 
     @Test
@@ -77,6 +80,11 @@ public class TilføjFadTest {
 
         // Assert
         assertFalse(resultat);
+        assertEquals(true, pladserArray[0]);
+        assertEquals(true, pladserArray[1]);
+        assertEquals(true, pladserArray[2]);
+        assertEquals(true, pladserArray[3]);
+        assertEquals(true, pladserArray[4]);
     }
 
     @Test

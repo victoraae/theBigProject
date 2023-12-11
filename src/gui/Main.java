@@ -56,6 +56,7 @@ public class Main {
         Fad fad7 = Controller.opretFad(lager,hylde,"Gange brugt 2","Danmark","Jern","Rødvin", FadStørrelse.L50);
         fad7.setGangeBrugt(2);
 
+
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.of(2017, 1, 1), 70, "Bob", 300, 2, "Tørv",
                 new Korn("Byg", "Lars Larsen", 2017, "Mark 1", "Maltning 1"));
