@@ -67,14 +67,6 @@ public class Hylde implements Serializable {
 
         return result;
     }
-    public boolean erFuld() {
-        for (int i = 0; i < pladserArray.length; i++) {
-            if (!pladserArray[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
     /**
      * Hjælpemetode tiltænkt GUI
      */
