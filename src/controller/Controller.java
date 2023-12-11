@@ -50,11 +50,6 @@ public abstract class Controller {
         return null;
     }
 
-    public static void opdaterLager(Lager lager, String navn) {
-        lager.setNavn(navn);
-    }
-
-
     public static Lager sletLager(Lager lager) {
         storage.sletLager(lager);
         return lager; //Skal dette måske være en kopi i stedet for, eller noget hvor forbindelserne er bevaret???
@@ -289,10 +284,5 @@ public abstract class Controller {
         }
         return result;
     }
-
-    public static List<FadTilNM> getIkkeTommeFade(){
-        return new ArrayList<>(); //virker ikke...
-    }
-
 }
 
