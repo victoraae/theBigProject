@@ -181,7 +181,7 @@ public class OmhældTrinEtGuiController {
             HovedVindue.setFejlBesked(lblFejlBesked, "Ansvarlig navn må kun indeholde bogstaver");
             return;
         }
-        if (lvwLiterTilBlanding.getItems().isEmpty() || erNMsGyldige()) {
+        if (lvwLiterTilBlanding.getItems().isEmpty() || !erNMsGyldige()) {
             HovedVindue.setFejlBesked(lblFejlBesked, "Der skal som minimum vælges 2 forskellige New Makes til at skabe en blanding");
             return;
         }
@@ -223,14 +223,13 @@ public class OmhældTrinEtGuiController {
     }
 
 
+    /**
+     * Hjælpe metode der tjekker om der er valgt mindst 2 forskellige NewMakes til omhældning
+     */
     private boolean erNMsGyldige(){
         boolean result = false;
-        NewMake nm = null;
-        for(Map.Entry<NewMake, Double> entry : newMakeLiter.entrySet()){
-            if(nm!=null && !nm.equals(entry.getKey())){
-                result = true;
-            }
-        }
+
+        result = newMakeLiter.keySet().size()>1;
 
         return result;
     }
