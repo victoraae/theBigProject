@@ -99,7 +99,6 @@ public class Whisky {
                 if (!mængder.isEmpty()) {
                     if (newMake.getDatoForPåfyldning().isAfter(yngsteDato)) {
                         yngsteDato = newMake.getDatoForPåfyldning();
-                        System.out.println("Test 2: " + yngsteDato);
                     }
                 }
             }
