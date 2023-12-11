@@ -29,11 +29,11 @@
          </font>
       </Label>
       <Label layoutX="410.0" layoutY="190.0" text="Whisky navn:" />
-      <TextField fx:id="txfWhiskyNavn" focusTraversable="false" layoutX="504.0" layoutY="186.0" prefHeight="25.0" prefWidth="215.0" promptText="Indtast navn på whiskyen" />
+      <TextField fx:id="txfWhiskyNavn" layoutX="504.0" layoutY="186.0" prefHeight="25.0" prefWidth="215.0" promptText="Indtast navn på whiskyen" />
       <Label layoutX="410.0" layoutY="221.0" text="Ansvarligs navn:" />
-      <TextField fx:id="txfAnsvarligNavn" focusTraversable="false" layoutX="504.0" layoutY="217.0" prefHeight="25.0" prefWidth="215.0" promptText="Indtast navn på den ansvarlige" />
+      <TextField fx:id="txfAnsvarligNavn" layoutX="504.0" layoutY="217.0" prefHeight="25.0" prefWidth="215.0" promptText="Indtast navn på den ansvarlige" />
       <Label layoutX="410.0" layoutY="252.0" text="Liter vand:" />
-      <TextField fx:id="txfLiterVand" focusTraversable="false" layoutX="504.0" layoutY="248.0" prefHeight="25.0" prefWidth="215.0" promptText="Liter vand whiskyen er fortyndet med" />
+      <TextField fx:id="txfLiterVand" layoutX="504.0" layoutY="248.0" prefHeight="25.0" prefWidth="215.0" promptText="Liter vand whiskyen er fortyndet med" />
       <Label fx:id="lblFejlBesked" layoutX="22.0" layoutY="379.0" prefHeight="17.0" prefWidth="480.0" text="FejlBesked: " textFill="RED" visible="false" />
       <Button fx:id="btnLuk" focusTraversable="false" layoutX="406.0" layoutY="327.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="27.0" prefWidth="63.0" text="Luk" />
    </children>

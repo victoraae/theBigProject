@@ -34,14 +34,14 @@
       </Label>
       <Button fx:id="btnNæste" focusTraversable="false" layoutX="547.0" layoutY="565.0" mnemonicParsing="false" onAction="#næsteKnapAction" text="Næste" />
       <Button fx:id="btnFortryd" focusTraversable="false" layoutX="20.0" layoutY="565.0" mnemonicParsing="false" onAction="#fortrydAction" prefHeight="25.0" prefWidth="50.0" text="Luk" />
-      <TextField fx:id="txfAntalLiter" focusTraversable="false" layoutX="71.0" layoutY="425.0" promptText="Indtast antal liter" />
+      <TextField fx:id="txfAntalLiter" layoutX="71.0" layoutY="425.0" promptText="Indtast antal liter" />
       <Label layoutX="29.0" layoutY="429.0" prefHeight="17.0" prefWidth="35.0" text="Liter:" />
       <Button fx:id="btnTilføjTilNM" focusTraversable="false" layoutX="71.0" layoutY="464.0" mnemonicParsing="false" onAction="#tilføjMængdeAction" prefHeight="25.0" prefWidth="149.0" text="Tilføj til NewMake" />
       <Label fx:id="lblFejlBesked" layoutX="20.0" layoutY="603.0" prefHeight="17.0" prefWidth="591.0" text="FejlBesked:" textFill="RED" visible="false" />
       <Label layoutX="326.0" layoutY="430.0" prefHeight="17.0" prefWidth="111.0" text="Navn på NewMake:" />
       <Label layoutX="329.0" layoutY="469.0" prefHeight="17.0" prefWidth="111.0" text="Navn på ansvarlig:" />
-      <TextField fx:id="txfNMNavn" focusTraversable="false" layoutX="442.0" layoutY="425.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på NewMake" />
-      <TextField fx:id="txfAnsvarligNavn" focusTraversable="false" layoutX="442.0" layoutY="464.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på ansvarlig" />
+      <TextField fx:id="txfNMNavn" layoutX="442.0" layoutY="425.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på NewMake" />
+      <TextField fx:id="txfAnsvarligNavn" layoutX="442.0" layoutY="464.0" prefHeight="25.0" prefWidth="160.0" promptText="Indtast navn på ansvarlig" />
       <DatePicker fx:id="datoVælger" focusTraversable="false" layoutX="442.0" layoutY="501.0" prefHeight="25.0" prefWidth="160.0" promptText="Vælg dato" />
       <Label layoutX="396.0" layoutY="506.0" prefHeight="17.0" prefWidth="35.0" text="Dato:" />
    </children>

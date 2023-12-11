@@ -23,12 +23,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txfAlkoholProcent" focusTraversable="false" layoutX="257.0" layoutY="233.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast alkoholprocent" />
-      <TextField fx:id="txfNavnPaaAnsvarlig" focusTraversable="false" layoutX="257.0" layoutY="270.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast navn på ansvarlig" />
-      <TextField fx:id="txfRygeMateriale" focusTraversable="false" layoutX="257.0" layoutY="307.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast rygemateriale" />
+      <TextField fx:id="txfAlkoholProcent" layoutX="257.0" layoutY="233.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast alkoholprocent" />
+      <TextField fx:id="txfNavnPaaAnsvarlig" layoutX="257.0" layoutY="270.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast navn på ansvarlig" />
+      <TextField fx:id="txfRygeMateriale" layoutX="257.0" layoutY="307.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast rygemateriale" />
       <DatePicker fx:id="dateSelector" focusTraversable="false" layoutX="257.0" layoutY="380.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast Dato" />
       <Button fx:id="btnDestilleriGem" focusTraversable="false" layoutX="504.0" layoutY="415.0" mnemonicParsing="false" onAction="#opretDestillatAction" prefHeight="30.0" prefWidth="78.0" text="Gem" />
-      <TextField fx:id="txfAntalLiter" focusTraversable="false" layoutX="257.0" layoutY="343.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast antal liter" />
+      <TextField fx:id="txfAntalLiter" layoutX="257.0" layoutY="343.0" prefHeight="26.0" prefWidth="198.0" promptText="Indtast antal liter" />
       <Label fx:id="lblFBDestillat" layoutX="39.0" layoutY="457.0" prefHeight="17.0" prefWidth="543.0" text="FejlBesked:" textFill="RED" visible="false" />
       <Button fx:id="btnDestillatLuk" focusTraversable="false" layoutX="39.0" layoutY="415.0" mnemonicParsing="false" onAction="#lukAction" prefHeight="30.0" prefWidth="56.0" text="Luk" />
       <Label layoutX="140.0" layoutY="238.0" prefHeight="17.0" prefWidth="90.0" text="Alkohol procent:" />
