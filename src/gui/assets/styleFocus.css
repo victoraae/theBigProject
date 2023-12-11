@@ -1,4 +1,4 @@
 .root * { /* til at ændre fokus farven når man skriver i et textfelt eller lign.*/
-    /*-fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;*/
+    -fx-focus-color: Black;
+    -fx-faint-focus-color: transparent;
 }
