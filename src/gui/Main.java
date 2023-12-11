@@ -44,7 +44,7 @@ public class Main {
         Hylde hylde =  Controller.opretHylde(reol, 1);
         Korn korn = Controller.opretKorn("Evergreen Byg", "Lars Larsen", 2017, "Mark 1", "Ristet lys");
         Controller.opretKorn("Irina Byg", "Keld Keldsen", 2018, "Mark 2", "Ristet mørk");
-        Controller.opretDestillat(LocalDate.of(23,4,12),42,"Billy",20,1,"",korn);
+        Controller.opretDestillat(LocalDate.of(2023,4,12),42,"Billy",20,1,"",korn);
         Fad fad = Controller.opretFad(lager,hylde,"Barrel Company Inc.","USA","Fyrretræ","bourbon", FadStørrelse.L50);
         Fad fad2 = Controller.opretFad(lager,hylde,"The Jolly Barrel","Irland","egetræ","sherry", FadStørrelse.L250);
         Fad fad3 = Controller.opretFad(lager,hylde,"Des Enormes Barriles","Spanien","egetræ","rødvin", FadStørrelse.L100);
