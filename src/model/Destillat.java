@@ -60,7 +60,7 @@ public class Destillat implements Serializable {
     public String toString() {
         String result = "";
         if (dato != null) {
-            result = liter + "l destillat lavet d." + dato.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
+            result = liter + " l destillat lavet d." + dato.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString()
                     + " af " + ansvarlig + ", " + alkoholProcent + "%, destilleret " + antalGange + " gange. Lavet med "
                     + korn.getSort() + " kornsort";
 
