@@ -49,8 +49,8 @@ public class Main {
         Fad fad2 = Controller.opretFad(lager,hylde,"The Jolly Barrel","Irland","egetræ","sherry", FadStørrelse.L250);
         Fad fad3 = Controller.opretFad(lager,hylde,"Des Enormes Barriles","Spanien","egetræ","rødvin", FadStørrelse.L100);
 
-        Fad fad4 = Controller.opretFad(lager,hylde,"Leverandør 2","Danmark","Asketræ","sherry", FadStørrelse.L50);
-        Fad fad5 = Controller.opretFad(lager,hylde,"Leverandør 1","Frankrig","Fyrretræ","bourbon", FadStørrelse.L100);
+        Fad fad4 = Controller.opretFad(lager,hylde,"Das Barel","Tyskland","Asketræ","øl", FadStørrelse.L50);
+        Fad fad5 = Controller.opretFad(lager,hylde,"Le petite barrillette","Frankrig","Fyrretræ","bourbon", FadStørrelse.L100);
         Fad fad6 = Controller.opretFad(lager,hylde,"FEJL","FEJL","FEJL","FEJL", FadStørrelse.L50); //Dette fad skal ikke ses i gui
         fad6.setGangeBrugt(3);
         Fad fad7 = Controller.opretFad(lager,hylde,"Dollar Barrels","Portugal","Bøgetræ","rødvin", FadStørrelse.L190);
@@ -61,7 +61,7 @@ public class Main {
 
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.of(2017, 1, 1), 70, "Bob", 300, 2, "Tørv",
-                new Korn("Byg", "Lars Larsen", 2017, "Mark 1", "Maltning 1"));
+                new Korn("Byg Irina", "Lars Larsen", 2017, "Mosevangen", "Maltning 1"));
         Destillat destillat4 = Controller.opretDestillat(LocalDate.of(2015, 1, 1), 67, "Henrik", 300, 2, "Rygemateriale 1",
                 new Korn("Byg Stairway", "Bob", 2015, "Mark 3", "Maltning 2"));
 
