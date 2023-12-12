@@ -1,11 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Whisky {
+public class Whisky implements Serializable {
     private final String navn;
     private final String ansvarlig;
     private final LocalDate dato;

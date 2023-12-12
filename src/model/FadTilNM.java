@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class FadTilNM {
+public class FadTilNM implements Serializable {
     private double liter;
     //Assosiation 0..* ---> 1 Fad
     private final Fad fad;

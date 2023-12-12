@@ -1,6 +1,8 @@
 package model;
 
-public class Mængde {
+import java.io.Serializable;
+
+public class Mængde implements Serializable {
     private final double mængde;
     //Assositation 0..* ---> 1 NewMake
     private NewMake newMake = null;
