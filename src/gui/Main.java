@@ -63,7 +63,7 @@ public class Main {
         Destillat destillat3 = Controller.opretDestillat(LocalDate.of(2017, 1, 1), 70, "Bob", 300, 2, "Tørv",
                 new Korn("Byg Irina", "Lars Larsen", 2017, "Mosevangen", "Maltning 1"));
         Destillat destillat4 = Controller.opretDestillat(LocalDate.of(2015, 1, 1), 67, "Henrik", 300, 2, "Rygemateriale 1",
-                new Korn("Byg Stairway", "Bob", 2015, "Mark 3", "Maltning 2"));
+                new Korn("Byg Stairway", "Bob Bobsson", 2015, "Stadsgaard", "Maltning 2"));
 
         List<Mængde> mængder1 = new ArrayList<>();
         mængder1.add(new Mængde(50, destillat3));
