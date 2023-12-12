@@ -2,3 +2,9 @@
     -fx-focus-color: #a6a6a6;
     -fx-faint-focus-color: transparent;
 }
+.root{
+    -fx-background-color: linear-gradient(to right, #fdb88b, #8d431d);
+}
+.button{
+    -fx-background-color: #fff3eb;
+}
