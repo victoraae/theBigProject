@@ -56,6 +56,8 @@ public class Main {
         Fad fad7 = Controller.opretFad(lager,hylde,"Dollar Barrels","Portugal","Bøgetræ","rødvin", FadStørrelse.L190);
         fad7.setGangeBrugt(2);
 
+        Fad fad8 = Controller.opretFad(lager,hylde,"Bwitish Bawels","England","Asketræ","brandy", FadStørrelse.L250);
+
 
         //--------------------- Til whisky historik test ----------------------
         Destillat destillat3 = Controller.opretDestillat(LocalDate.of(2017, 1, 1), 70, "Bob", 300, 2, "Tørv",
@@ -90,15 +92,20 @@ public class Main {
         mængder3.add(new Mængde(50.0, destillat4));
         List<Mængde> mængder4 = new ArrayList<>();
         mængder4.add(new Mængde(25.0, destillat4));
+
         NewMake nm3 = Controller.paafyldDestillat("NM79p", "Billy", mængder3, new HashMap<NewMake, Double>(), LocalDate.of(2019, 1, 1));
         List<FadTilNM> listFtnm3 = new ArrayList<>();
         listFtnm3.add(new FadTilNM(50, fad3, nm3));
         Controller.tilføjFTilNMtilNM(listFtnm3, nm3);
         nm3.setLiter(50.0);
         nm3.setLiterTilbage(50.0);
-//        List<NewMake> newMakes2 = new ArrayList<>();
-//        newMakes2.add(nm3);
-//        Controller.opretWhisky("Whisky2", "Billy", 50, newMakes2);
+
+        NewMake nm4 = Controller.paafyldDestillat("NM80p", "Kimmy", mængder4, new HashMap<NewMake, Double>(), LocalDate.of(2015, 1, 4));
+        List<FadTilNM> listFtnm4 = new ArrayList<>();
+        listFtnm4.add(new FadTilNM(25, fad8, nm4));
+        Controller.tilføjFTilNMtilNM(listFtnm4, nm4);
+        nm4.setLiter(25.0);
+        nm4.setLiterTilbage(25.0);
 
     }
 }
